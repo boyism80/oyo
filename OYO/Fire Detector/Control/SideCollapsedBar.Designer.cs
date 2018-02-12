@@ -45,7 +45,7 @@
             this.buttonExpand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonExpand.TabIndex = 0;
             this.buttonExpand.TabStop = false;
-            this.buttonExpand.Zoom = 1;
+            this.buttonExpand.Zoom = 10;
             this.buttonExpand.Click += new System.EventHandler(this.buttonExpand_Click);
             // 
             // SideCollapsedBar
