@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fire_Detector.Control
@@ -17,14 +10,16 @@ namespace Fire_Detector.Control
             InitializeComponent();
         }
 
-        private void buttonCollapse_Click(object sender, EventArgs e)
+        public void SetActiveTab(UserControl customTab)
         {
-            var mainform = this.FindForm() as MainForm;
-            if(mainform == null)
-                return;
+            foreach(var control in this.Controls)
+            {
+                var tab = control as UserControl;
+                if(tab == null)
+                    continue;
 
-            this.Visible = false;
-            mainform.defaultView.sideCollapsedBar.Visible = true;
+                tab.Visible = tab == customTab;
+            }
         }
     }
 }
