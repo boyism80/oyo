@@ -1,0 +1,12 @@
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire Detector.csprojResolveAssemblyReference.cache
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire_Detector.Control.SideExpandedBar.resources
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire_Detector.Properties.Resources.resources
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire Detector.csproj.GenerateResource.Cache
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire Detector.csproj.CoreCompileInputs.cache
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire Detector.pdb
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\bin\Debug\Fire Detector.exe.config
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\bin\Debug\Fire Detector.exe
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\bin\Debug\Fire Detector.pdb
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\bin\Debug\Bunifu_UI_v1.5.3.dll
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire Detector.exe
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire_Detector.Control.SideCollapsedBar.resources
