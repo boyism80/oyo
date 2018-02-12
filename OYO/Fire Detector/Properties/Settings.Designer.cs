@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Infrared_Bebop_2.Properties
+namespace Fire_Detector.Properties
 {
 
 

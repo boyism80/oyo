@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Infrared_Bebop_2
+namespace Fire_Detector
 {
     public partial class MainForm : Form
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Infrared_Bebop_2
+namespace Fire_Detector
 {
     static class Program
     {

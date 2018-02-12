@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Infrared Bebop 2")]
+[assembly: AssemblyTitle("Fire Detector")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Infrared Bebop 2")]
+[assembly: AssemblyProduct("Fire Detector")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d40496bc-dcbc-456f-93b5-aba031000fbc")]
+[assembly: Guid("f248ede0-5613-470b-b0ae-4ecb36e2fba5")]
 
 // Version information for an assembly consists of the following four values:
 //
