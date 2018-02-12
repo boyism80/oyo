@@ -51,22 +51,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.droneTabButton)).BeginInit();
             this.SuspendLayout();
             // 
-<<<<<<< HEAD
-            // buttonExpand
-            // 
-            this.buttonExpand.BackColor = System.Drawing.Color.SeaGreen;
-            this.buttonExpand.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonExpand.Image = ((System.Drawing.Image)(resources.GetObject("buttonExpand.Image")));
-            this.buttonExpand.ImageActive = null;
-            this.buttonExpand.Location = new System.Drawing.Point(0, 0);
-            this.buttonExpand.Name = "buttonExpand";
-            this.buttonExpand.Size = new System.Drawing.Size(50, 50);
-            this.buttonExpand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.buttonExpand.TabIndex = 0;
-            this.buttonExpand.TabStop = false;
-            this.buttonExpand.Zoom = 10;
-            this.buttonExpand.Click += new System.EventHandler(this.buttonExpand_Click);
-=======
             // homeButton
             // 
             this.homeButton.BackColor = System.Drawing.Color.Transparent;
@@ -195,7 +179,6 @@
             this.droneTabButton.TabStop = false;
             this.droneTabButton.Zoom = 1;
             this.droneTabButton.Click += new System.EventHandler(this.droneTabButton_Click);
->>>>>>> benny
             // 
             // SideCollapsedBar
             // 
