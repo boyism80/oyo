@@ -11,3 +11,13 @@ D:\Projects\Visual studio 2017\OYO\Fire Detector\obj\Debug\Fire Detector.csproj.
 D:\Projects\Visual studio 2017\OYO\Fire Detector\obj\Debug\Fire Detector.csproj.CoreCompileInputs.cache
 D:\Projects\Visual studio 2017\OYO\Fire Detector\obj\Debug\Fire Detector.exe
 D:\Projects\Visual studio 2017\OYO\Fire Detector\obj\Debug\Fire Detector.pdb
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\bin\Debug\Fire Detector.exe.config
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\bin\Debug\Fire Detector.exe
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\bin\Debug\Fire Detector.pdb
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire Detector.csprojResolveAssemblyReference.cache
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire_Detector.Properties.Resources.resources
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire Detector.csproj.GenerateResource.Cache
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire Detector.csproj.CoreCompileInputs.cache
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire Detector.exe
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire Detector.pdb
+C:\Users\김지승\Desktop\졸작\oyo\oyo\OYO\Fire Detector\obj\Debug\Fire_Detector.Control.SideExpandedBar.resources
