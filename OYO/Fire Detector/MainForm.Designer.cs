@@ -33,6 +33,8 @@
             this.caption = new System.Windows.Forms.Panel();
             this.bunifuDragControl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.defaultView = new Fire_Detector.Control.DefaultView();
+            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.caption.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse
@@ -43,6 +45,7 @@
             // caption
             // 
             this.caption.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.caption.Controls.Add(this.bunifuCustomLabel1);
             this.caption.Dock = System.Windows.Forms.DockStyle.Top;
             this.caption.Location = new System.Drawing.Point(0, 0);
             this.caption.Name = "caption";
@@ -65,6 +68,17 @@
             this.defaultView.Size = new System.Drawing.Size(1024, 738);
             this.defaultView.TabIndex = 1;
             // 
+            // bunifuCustomLabel1
+            // 
+            this.bunifuCustomLabel1.AutoSize = true;
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.White;
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(29, 8);
+            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(83, 15);
+            this.bunifuCustomLabel1.TabIndex = 0;
+            this.bunifuCustomLabel1.Text = "Fire Detector";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -75,6 +89,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.caption.ResumeLayout(false);
+            this.caption.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -85,6 +101,7 @@
         private System.Windows.Forms.Panel caption;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl;
         public Control.DefaultView defaultView;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
     }
 }
 
