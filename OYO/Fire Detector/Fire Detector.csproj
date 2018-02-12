@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>..\..\..\..\Program Files (x86)\Bunifu Technologies\Bunifu Framework Manager\bin\updates\Bunifu UI 1.5.3\Bunifu_UI_v1.5.3.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Bunifu Technologies\Bunifu Framework Manager\bin\updates\Bunifu UI 1.5.3\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,6 +53,24 @@
     </Compile>
     <Compile Include="Control\DefaultView.Designer.cs">
       <DependentUpon>DefaultView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\DroneTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\DroneTab.Designer.cs">
+      <DependentUpon>DroneTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\LeapmotionTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\LeapmotionTab.Designer.cs">
+      <DependentUpon>LeapmotionTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\MainView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\SideCollapsedBar.cs">
       <SubType>UserControl</SubType>
@@ -74,8 +92,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Control\DefaultView.resx">
+      <DependentUpon>DefaultView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\DroneTab.resx">
+      <DependentUpon>DroneTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\LeapmotionTab.resx">
+      <DependentUpon>LeapmotionTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\SideCollapsedBar.resx">
+      <DependentUpon>SideCollapsedBar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\SideExpandedBar.resx">
       <DependentUpon>SideExpandedBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
