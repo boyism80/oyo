@@ -32,16 +32,16 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.droneTabButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.homeButton = new Bunifu.Framework.UI.BunifuImageButton();
+            this.alarmTabButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.cameraTabButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.leapmotionTabButton = new Bunifu.Framework.UI.BunifuImageButton();
-            this.alarmTabButton = new Bunifu.Framework.UI.BunifuImageButton();
-            this.homeButton = new Bunifu.Framework.UI.BunifuImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.droneTabButton)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.homeButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.alarmTabButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cameraTabButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.leapmotionTabButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.alarmTabButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.homeButton)).BeginInit();
             this.SuspendLayout();
             // 
             // panel5
@@ -55,7 +55,7 @@
             // 
             // droneTabButton
             // 
-            this.droneTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(160)))));
+            this.droneTabButton.BackColor = System.Drawing.Color.Transparent;
             this.droneTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.droneTabButton.Image = ((System.Drawing.Image)(resources.GetObject("droneTabButton.Image")));
             this.droneTabButton.ImageActive = null;
@@ -92,9 +92,40 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(70, 738);
             this.tableLayoutPanel1.TabIndex = 15;
             // 
+            // homeButton
+            // 
+            this.homeButton.BackColor = System.Drawing.Color.Transparent;
+            this.homeButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.homeButton.Image = ((System.Drawing.Image)(resources.GetObject("homeButton.Image")));
+            this.homeButton.ImageActive = null;
+            this.homeButton.Location = new System.Drawing.Point(0, 280);
+            this.homeButton.Margin = new System.Windows.Forms.Padding(0);
+            this.homeButton.Name = "homeButton";
+            this.homeButton.Size = new System.Drawing.Size(70, 70);
+            this.homeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.homeButton.TabIndex = 7;
+            this.homeButton.TabStop = false;
+            this.homeButton.Zoom = 1;
+            this.homeButton.Click += new System.EventHandler(this.homeButton_Click);
+            // 
+            // alarmTabButton
+            // 
+            this.alarmTabButton.BackColor = System.Drawing.Color.Transparent;
+            this.alarmTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.alarmTabButton.Image = ((System.Drawing.Image)(resources.GetObject("alarmTabButton.Image")));
+            this.alarmTabButton.ImageActive = null;
+            this.alarmTabButton.Location = new System.Drawing.Point(0, 210);
+            this.alarmTabButton.Margin = new System.Windows.Forms.Padding(0);
+            this.alarmTabButton.Name = "alarmTabButton";
+            this.alarmTabButton.Size = new System.Drawing.Size(70, 70);
+            this.alarmTabButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.alarmTabButton.TabIndex = 6;
+            this.alarmTabButton.TabStop = false;
+            this.alarmTabButton.Zoom = 1;
+            this.alarmTabButton.Click += new System.EventHandler(this.alarmTabButton_Click);
+            // 
             // cameraTabButton
             // 
-            this.cameraTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(200)))));
             this.cameraTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cameraTabButton.Image = ((System.Drawing.Image)(resources.GetObject("cameraTabButton.Image")));
             this.cameraTabButton.ImageActive = null;
@@ -110,7 +141,6 @@
             // 
             // leapmotionTabButton
             // 
-            this.leapmotionTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(190)))));
             this.leapmotionTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.leapmotionTabButton.Image = ((System.Drawing.Image)(resources.GetObject("leapmotionTabButton.Image")));
             this.leapmotionTabButton.ImageActive = null;
@@ -124,38 +154,6 @@
             this.leapmotionTabButton.Zoom = 1;
             this.leapmotionTabButton.Click += new System.EventHandler(this.leapmotionTabButton_Click);
             // 
-            // alarmTabButton
-            // 
-            this.alarmTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(180)))), ((int)(((byte)(150)))));
-            this.alarmTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.alarmTabButton.Image = ((System.Drawing.Image)(resources.GetObject("alarmTabButton.Image")));
-            this.alarmTabButton.ImageActive = null;
-            this.alarmTabButton.Location = new System.Drawing.Point(0, 210);
-            this.alarmTabButton.Margin = new System.Windows.Forms.Padding(0);
-            this.alarmTabButton.Name = "alarmTabButton";
-            this.alarmTabButton.Size = new System.Drawing.Size(70, 70);
-            this.alarmTabButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.alarmTabButton.TabIndex = 6;
-            this.alarmTabButton.TabStop = false;
-            this.alarmTabButton.Zoom = 1;
-            this.alarmTabButton.Click += new System.EventHandler(this.alarmTabButton_Click);
-            // 
-            // homeButton
-            // 
-            this.homeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(190)))), ((int)(((byte)(180)))));
-            this.homeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.homeButton.Image = ((System.Drawing.Image)(resources.GetObject("homeButton.Image")));
-            this.homeButton.ImageActive = null;
-            this.homeButton.Location = new System.Drawing.Point(0, 280);
-            this.homeButton.Margin = new System.Windows.Forms.Padding(0);
-            this.homeButton.Name = "homeButton";
-            this.homeButton.Size = new System.Drawing.Size(70, 70);
-            this.homeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.homeButton.TabIndex = 7;
-            this.homeButton.TabStop = false;
-            this.homeButton.Zoom = 1;
-            this.homeButton.Click += new System.EventHandler(this.homeButton_Click);
-            // 
             // SideCollapsedBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -167,10 +165,10 @@
             this.Size = new System.Drawing.Size(70, 738);
             ((System.ComponentModel.ISupportInitialize)(this.droneTabButton)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.homeButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.alarmTabButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cameraTabButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.leapmotionTabButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.alarmTabButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.homeButton)).EndInit();
             this.ResumeLayout(false);
 
         }
