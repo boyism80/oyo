@@ -72,6 +72,12 @@
     <Compile Include="Control\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\PaletteTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\PaletteTab.Designer.cs">
+      <DependentUpon>PaletteTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\SideCollapsedBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\PaletteTab.resx">
+      <DependentUpon>PaletteTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\SideCollapsedBar.resx">
       <DependentUpon>SideCollapsedBar.cs</DependentUpon>

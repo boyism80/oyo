@@ -16,5 +16,7 @@ namespace Fire_Detector.Control
         {
             InitializeComponent();
         }
+
+        
     }
 }

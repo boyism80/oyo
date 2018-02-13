@@ -32,16 +32,16 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.droneTabButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.cameraTabButton = new Bunifu.Framework.UI.BunifuImageButton();
-            this.leapmotionTabButton = new Bunifu.Framework.UI.BunifuImageButton();
-            this.alarmTabButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.homeButton = new Bunifu.Framework.UI.BunifuImageButton();
+            this.alarmTabButton = new Bunifu.Framework.UI.BunifuImageButton();
+            this.paletteTabButton = new Bunifu.Framework.UI.BunifuImageButton();
+            this.leapmotionTabButton = new Bunifu.Framework.UI.BunifuImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.droneTabButton)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cameraTabButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.leapmotionTabButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.alarmTabButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.homeButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.alarmTabButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paletteTabButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leapmotionTabButton)).BeginInit();
             this.SuspendLayout();
             // 
             // panel5
@@ -75,7 +75,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Controls.Add(this.homeButton, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.alarmTabButton, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.cameraTabButton, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.paletteTabButton, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.droneTabButton, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.leapmotionTabButton, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -91,54 +91,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(70, 738);
             this.tableLayoutPanel1.TabIndex = 15;
-            // 
-            // cameraTabButton
-            // 
-            this.cameraTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(200)))));
-            this.cameraTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cameraTabButton.Image = ((System.Drawing.Image)(resources.GetObject("cameraTabButton.Image")));
-            this.cameraTabButton.ImageActive = null;
-            this.cameraTabButton.Location = new System.Drawing.Point(0, 70);
-            this.cameraTabButton.Margin = new System.Windows.Forms.Padding(0);
-            this.cameraTabButton.Name = "cameraTabButton";
-            this.cameraTabButton.Size = new System.Drawing.Size(70, 70);
-            this.cameraTabButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.cameraTabButton.TabIndex = 4;
-            this.cameraTabButton.TabStop = false;
-            this.cameraTabButton.Zoom = 1;
-            this.cameraTabButton.Click += new System.EventHandler(this.paletteTabButton_Click);
-            // 
-            // leapmotionTabButton
-            // 
-            this.leapmotionTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(190)))));
-            this.leapmotionTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.leapmotionTabButton.Image = ((System.Drawing.Image)(resources.GetObject("leapmotionTabButton.Image")));
-            this.leapmotionTabButton.ImageActive = null;
-            this.leapmotionTabButton.Location = new System.Drawing.Point(0, 140);
-            this.leapmotionTabButton.Margin = new System.Windows.Forms.Padding(0);
-            this.leapmotionTabButton.Name = "leapmotionTabButton";
-            this.leapmotionTabButton.Size = new System.Drawing.Size(70, 70);
-            this.leapmotionTabButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.leapmotionTabButton.TabIndex = 5;
-            this.leapmotionTabButton.TabStop = false;
-            this.leapmotionTabButton.Zoom = 1;
-            this.leapmotionTabButton.Click += new System.EventHandler(this.leapmotionTabButton_Click);
-            // 
-            // alarmTabButton
-            // 
-            this.alarmTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(180)))), ((int)(((byte)(150)))));
-            this.alarmTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.alarmTabButton.Image = ((System.Drawing.Image)(resources.GetObject("alarmTabButton.Image")));
-            this.alarmTabButton.ImageActive = null;
-            this.alarmTabButton.Location = new System.Drawing.Point(0, 210);
-            this.alarmTabButton.Margin = new System.Windows.Forms.Padding(0);
-            this.alarmTabButton.Name = "alarmTabButton";
-            this.alarmTabButton.Size = new System.Drawing.Size(70, 70);
-            this.alarmTabButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.alarmTabButton.TabIndex = 6;
-            this.alarmTabButton.TabStop = false;
-            this.alarmTabButton.Zoom = 1;
-            this.alarmTabButton.Click += new System.EventHandler(this.alarmTabButton_Click);
             // 
             // homeButton
             // 
@@ -156,6 +108,54 @@
             this.homeButton.Zoom = 1;
             this.homeButton.Click += new System.EventHandler(this.homeButton_Click);
             // 
+            // alarmTabButton
+            // 
+            this.alarmTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(180)))), ((int)(((byte)(150)))));
+            this.alarmTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.alarmTabButton.Image = ((System.Drawing.Image)(resources.GetObject("alarmTabButton.Image")));
+            this.alarmTabButton.ImageActive = null;
+            this.alarmTabButton.Location = new System.Drawing.Point(0, 210);
+            this.alarmTabButton.Margin = new System.Windows.Forms.Padding(0);
+            this.alarmTabButton.Name = "alarmTabButton";
+            this.alarmTabButton.Size = new System.Drawing.Size(70, 70);
+            this.alarmTabButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.alarmTabButton.TabIndex = 6;
+            this.alarmTabButton.TabStop = false;
+            this.alarmTabButton.Zoom = 1;
+            this.alarmTabButton.Click += new System.EventHandler(this.alarmTabButton_Click);
+            // 
+            // paletteTabButton
+            // 
+            this.paletteTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(200)))));
+            this.paletteTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.paletteTabButton.Image = ((System.Drawing.Image)(resources.GetObject("paletteTabButton.Image")));
+            this.paletteTabButton.ImageActive = null;
+            this.paletteTabButton.Location = new System.Drawing.Point(0, 70);
+            this.paletteTabButton.Margin = new System.Windows.Forms.Padding(0);
+            this.paletteTabButton.Name = "paletteTabButton";
+            this.paletteTabButton.Size = new System.Drawing.Size(70, 70);
+            this.paletteTabButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.paletteTabButton.TabIndex = 4;
+            this.paletteTabButton.TabStop = false;
+            this.paletteTabButton.Zoom = 1;
+            this.paletteTabButton.Click += new System.EventHandler(this.paletteTabButton_Click);
+            // 
+            // leapmotionTabButton
+            // 
+            this.leapmotionTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(190)))));
+            this.leapmotionTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.leapmotionTabButton.Image = ((System.Drawing.Image)(resources.GetObject("leapmotionTabButton.Image")));
+            this.leapmotionTabButton.ImageActive = null;
+            this.leapmotionTabButton.Location = new System.Drawing.Point(0, 140);
+            this.leapmotionTabButton.Margin = new System.Windows.Forms.Padding(0);
+            this.leapmotionTabButton.Name = "leapmotionTabButton";
+            this.leapmotionTabButton.Size = new System.Drawing.Size(70, 70);
+            this.leapmotionTabButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.leapmotionTabButton.TabIndex = 5;
+            this.leapmotionTabButton.TabStop = false;
+            this.leapmotionTabButton.Zoom = 1;
+            this.leapmotionTabButton.Click += new System.EventHandler(this.leapmotionTabButton_Click);
+            // 
             // SideCollapsedBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -167,10 +167,10 @@
             this.Size = new System.Drawing.Size(70, 738);
             ((System.ComponentModel.ISupportInitialize)(this.droneTabButton)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cameraTabButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.leapmotionTabButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.alarmTabButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.homeButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.alarmTabButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paletteTabButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leapmotionTabButton)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -181,7 +181,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private Bunifu.Framework.UI.BunifuImageButton homeButton;
         private Bunifu.Framework.UI.BunifuImageButton alarmTabButton;
-        private Bunifu.Framework.UI.BunifuImageButton cameraTabButton;
+        private Bunifu.Framework.UI.BunifuImageButton paletteTabButton;
         private Bunifu.Framework.UI.BunifuImageButton leapmotionTabButton;
     }
 }

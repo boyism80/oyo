@@ -39,6 +39,22 @@ namespace Fire_Detector.Control
             //landButton.Normalcolor = System.Drawing.Color.LightCoral;
         }
 
-        
+        private void connectDroneButton_Click(object sender, EventArgs e)
+        {
+            if(connectDroneProgressbar.animated == true)
+            {
+                connectDroneProgressbar.animated = false;
+                connectDroneProgressbar.Value = 0;
+
+
+            }
+            else
+            {
+                connectDroneProgressbar.animated = true;
+                connectDroneProgressbar.Value = 15;
+
+
+            }
+        }
     }
 }
