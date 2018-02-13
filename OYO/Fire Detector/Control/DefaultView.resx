@@ -183,37 +183,15 @@
         H/8hJD3qu37I689fUdBhovee0S8AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="bunifuCircleProgressbar3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEySURBVEhLYxgFo2AUjAKqAXt7ew4gdoBiAagwbQDIAgcH
-        h/lA/B+GV6fI/D+WK/SmJ1LNBqqMegBooQTQkvtIFh53d7I5+LmG5f//Bob/QPrfhEglL6hy6gCgJcuh
-        lp0HOkADKsywO1tK7UEZ11uQxdeLeT9ChSkHUF+CLPwOZCtAheHgarGA/IsK9j+z4pT+A+UdoMKUAaBB
-        AVBL90OFMICXs81kkBqg2gaoEGUAaFAC1NL1UCEMALIMqqYfKkQZABpoADXwPZDNARVGAUC5/SA1QPkA
-        qBDlAGjgdajF06FCcAC0qAAq9xzIpl6+BRpmATUYhEEpuAGIK4Ds7TBxID8Bqpx6AGioB9Bw5LwKw6Bg
-        p76FMAA0HFQEglJzPxBPB7IjgFgCKj0KRsEoGBaAgQEAJbWCfb2Eq0YAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="bunifuCircleProgressbar2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEySURBVEhLYxgFo2AUjAKqAXt7ew4gdoBiAagwbQDIAgcH
-        h/lA/B+GV6fI/D+WK/SmJ1LNBqqMegBooQTQkvtIFh53d7I5+LmG5f//Bob/QPrfhEglL6hy6gCgJcuh
-        lp0HOkADKsywO1tK7UEZ11uQxdeLeT9ChSkHUF+CLPwOZCtAheHgarGA/IsK9j+z4pT+A+UdoMKUAaBB
-        AVBL90OFMICXs81kkBqg2gaoEGUAaFAC1NL1UCEMALIMqqYfKkQZABpoADXwPZDNARVGAUC5/SA1QPkA
-        qBDlAGjgdajF06FCcAC0qAAq9xzIpl6+BRpmATUYhEEpuAGIK4Ds7TBxID8Bqpx6AGioB9Bw5LwKw6Bg
-        p76FMAA0HFQEglJzPxBPB7IjgFgCKj0KRsEoGBaAgQEAJbWCfb2Eq0YAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="bunifuCircleProgressbar1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEySURBVEhLYxgFo2AUjAKqAXt7ew4gdoBiAagwbQDIAgcH
-        h/lA/B+GV6fI/D+WK/SmJ1LNBqqMegBooQTQkvtIFh53d7I5+LmG5f//Bob/QPrfhEglL6hy6gCgJcuh
-        lp0HOkADKsywO1tK7UEZ11uQxdeLeT9ChSkHUF+CLPwOZCtAheHgarGA/IsK9j+z4pT+A+UdoMKUAaBB
-        AVBL90OFMICXs81kkBqg2gaoEGUAaFAC1NL1UCEMALIMqqYfKkQZABpoADXwPZDNARVGAUC5/SA1QPkA
-        qBDlAGjgdajF06FCcAC0qAAq9xzIpl6+BRpmATUYhEEpuAGIK4Ds7TBxID8Bqpx6AGioB9Bw5LwKw6Bg
-        p76FMAA0HFQEglJzPxBPB7IjgFgCKj0KRsEoGBaAgQEAJbWCfb2Eq0YAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEjSURBVEhLYxgFo2AUjAKqAXt7ew4gdoBiAagwbQDIAgcH
+        h/lA/B8NHwfKaUCVUQ8ADZUAGn4f2SIg3o/E/w5UYwBVTh0ANHQ51PDzyL6C+n49VO44VJhyAPUlzDcK
+        UGE4AIpxAOWeg9QA2Q5QYcoA0KAAqKX7oUIYACjXD7W0ASpEGQAalAC1dD1UCAOALIOq6YcKUQaABhpA
+        DXwPZHNAhVHAozLOz9szJP4neZtGQ4UoB0ALr0Mtng4VgoMDWaKb/zcw/H9byfq3NUJHHCpMOQD60AJq
+        KQiDUnADEFfszxZ9BLIQhHdliC2EKqceAFriAbQQOa/+z/Iz+v+uiu3v+lRpjBCgGgDFKRCDUjMotU4H
+        siOKgwzlodKjYBSMgmEBGBgARMKCZoN2q70AAAAASUVORK5CYII=
 </value>
   </data>
 </root>

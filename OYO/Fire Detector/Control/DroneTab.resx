@@ -118,6 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="droneFlightProgressbar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALeSURBVGhD7VkrUCNBEI1EnkRGIk8ikcjISOTJk0gcEolE
+        RiKRKyMjybdWRkZGwnvUo2oz07sk89ncVc2renXFTud193TPZ/cGBQUFBQUF/xvm8/nVcrm832w2z+v1
+        umoSz15Wq9UDeCPzfw91XV8ySAT8Dn4cQ9hvmfBisfgtmfMCSfzSTO+tgI8lfj+B1lCy/QMBjMCdFVwo
+        2Z6S7w90agWTgqrShVzlBRexFYTDVyT8F4HdNMlnHHNsLU6zJ/RTRZDoE9eRzFtBGyXb1aavMk8POB4Z
+        Dr9ZhSxgJsUJMPS++SjTdIBTbr3mjsXtVWbBgM64TR/Pb2WWBm2zx+cyiUZH5WcyiUdHVSqZJEPHmryT
+        SRwg9OgIs/R7JimTpID+zPUHvms4DhCqHeGk7eWird1CNpgDoOzXrqiq8uP2GwP48e543Mo1HAaIWC02
+        0XA2wAcvrQd+wTcNh4GBG6JpFmMHrI4A49YNBPgeciCKBLO/i7CNDb97DYcBIt7ij16IR4LBG77D1yoE
+        t4ZgX8l49zb4Dj8OIDB1BdnPGs4GBH3h+iU1HAYIeNd1zNhIw9nA7wiuX7DWcBh4iXRF8exFw9mA6v9x
+        /YJTDYcBAmNHkJXZsQ1kkgXw8+b6BeNeBxi0tavkbDUu8haf8UcCRKyDEz7zVMfyh2c7DccBQubFD32d
+        /EsKZ9/ylfRiC0Gvh+F4T+cyiQYqPWQFLD9sPZnFg18dXSdytEtx7jAR6Hm3DRL6cbdlC9Y2TXLm8O9Y
+        ZieDk2FVRJxlWZsUhbh38WywOuW7MVunbYJEmOR5m/0CxHmbNduhwYqHHmy9O5x+f4dKTFRR6/df7dvL
+        B3XOFhx6d7Y2IrAtaY21sO71fwaQEA9T6/yJJddIvtbqApyzZU6ZdZPQ4Db/wEmS9HnAAHiAhiTFJLgJ
+        nK0aXeA2iyD5EaRioM3AG5wyAYxnf5VIDsz6kO8n+rOgoKCgoAODwSfmmcyRLxTABgAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
   <data name="buttonCollapse.Iconimage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -227,25 +246,6 @@
         yxAAOLcMAYBzyxAAOLcMAYBzyxAAOLcMAYBzyxAAOLcMAYBzyxAAOLcMAYBzyxAAOLcMAYBzyxAAOLcM
         AYBzyxAAOLcMAYBzyxAAOLcMAYBzyxAAOLcMAYBzyxAAOLcMAYAz+/1//j/X57d8Lh/ZqQAAAABJRU5E
         rkJggg==
-</value>
-  </data>
-  <data name="droneFlightProgressbar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALeSURBVGhD7VkrUCNBEI1EnkRGIk8ikcjISOTJk0gcEolE
-        RiKRKyMjybdWRkZGwnvUo2oz07sk89ncVc2renXFTud193TPZ/cGBQUFBQUF/xvm8/nVcrm832w2z+v1
-        umoSz15Wq9UDeCPzfw91XV8ySAT8Dn4cQ9hvmfBisfgtmfMCSfzSTO+tgI8lfj+B1lCy/QMBjMCdFVwo
-        2Z6S7w90agWTgqrShVzlBRexFYTDVyT8F4HdNMlnHHNsLU6zJ/RTRZDoE9eRzFtBGyXb1aavMk8POB4Z
-        Dr9ZhSxgJsUJMPS++SjTdIBTbr3mjsXtVWbBgM64TR/Pb2WWBm2zx+cyiUZH5WcyiUdHVSqZJEPHmryT
-        SRwg9OgIs/R7JimTpID+zPUHvms4DhCqHeGk7eWird1CNpgDoOzXrqiq8uP2GwP48e543Mo1HAaIWC02
-        0XA2wAcvrQd+wTcNh4GBG6JpFmMHrI4A49YNBPgeciCKBLO/i7CNDb97DYcBIt7ij16IR4LBG77D1yoE
-        t4ZgX8l49zb4Dj8OIDB1BdnPGs4GBH3h+iU1HAYIeNd1zNhIw9nA7wiuX7DWcBh4iXRF8exFw9mA6v9x
-        /YJTDYcBAmNHkJXZsQ1kkgXw8+b6BeNeBxi0tavkbDUu8haf8UcCRKyDEz7zVMfyh2c7DccBQubFD32d
-        /EsKZ9/ylfRiC0Gvh+F4T+cyiQYqPWQFLD9sPZnFg18dXSdytEtx7jAR6Hm3DRL6cbdlC9Y2TXLm8O9Y
-        ZieDk2FVRJxlWZsUhbh38WywOuW7MVunbYJEmOR5m/0CxHmbNduhwYqHHmy9O5x+f4dKTFRR6/df7dvL
-        B3XOFhx6d7Y2IrAtaY21sO71fwaQEA9T6/yJJddIvtbqApyzZU6ZdZPQ4Db/wEmS9HnAAHiAhiTFJLgJ
-        nK0aXeA2iyD5EaRioM3AG5wyAYxnf5VIDsz6kO8n+rOgoKCgoAODwSfmmcyRLxTABgAAAABJRU5ErkJg
-        gg==
 </value>
   </data>
 </root>

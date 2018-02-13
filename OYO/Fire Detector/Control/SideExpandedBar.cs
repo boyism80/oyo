@@ -21,5 +21,7 @@ namespace Fire_Detector.Control
                 tab.Visible = tab == customTab;
             }
         }
+
+       
     }
 }

@@ -38,5 +38,7 @@ namespace Fire_Detector.Control
             landButton.Normalcolor = System.Drawing.Color.IndianRed;
             //landButton.Normalcolor = System.Drawing.Color.LightCoral;
         }
+
+        
     }
 }

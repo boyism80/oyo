@@ -65,11 +65,11 @@ namespace Fire_Detector.Control
             }
         }
 
-        private void bunifuCustomLabel9_MouseEnter(object sender, EventArgs e)
+        private void droneControlTab_MouseEnter(object sender, EventArgs e)
         {
             try
             {
-                this.activatedConnectionIconPanel.BackColor = Color.Coral;
+                this.activatedConnectionIconPanel.BackColor = Color.Tomato;
                 this.activatedConnectionIconPanel.Visible = true;
                 this.connectionIconsPanel.Visible = false;
             }
@@ -77,7 +77,81 @@ namespace Fire_Detector.Control
             { }
         }
 
-        private void bunifuCustomLabel9_MouseLeave(object sender, EventArgs e)
+        
+
+        private void droneControlTab_Click(object sender, EventArgs e)
+        {
+            var mainform = this.FindForm() as MainForm;
+            if(mainform == null)
+                return;
+
+            this.Visible = false;
+            mainform.defaultView.Visible = true;
+        }
+
+        private void panel4_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void panel4_MouseEnter(object sender, EventArgs e)
+        {
+            try
+            {
+                this.activatedConnectionIconPanel.BackColor = Color.Gray;
+                this.activatedConnectionIconPanel.Visible = true;
+                this.connectionIconsPanel.Visible = false;
+            }
+            catch(Exception)
+            { }
+        }
+
+        private void cameraTab_MouseEnter(object sender, EventArgs e)
+        {
+            try
+            {
+                this.activatedConnectionIconPanel.BackColor = Color.Coral;
+                this.activatedConnectionIconPanel.Visible = true;
+                this.connectionIconsPanel.Visible = false;
+            }
+            catch (Exception)
+            { }
+        }
+
+        
+        private void cameraTab_Click(object sender, EventArgs e)
+        {
+            var mainform = this.FindForm() as MainForm;
+            if (mainform == null)
+                return;
+
+            this.Visible = false;
+            mainform.defaultView.Visible = true;
+        }
+
+        private void leapmotionTab_Click(object sender, EventArgs e)
+        {
+            var mainform = this.FindForm() as MainForm;
+            if (mainform == null)
+                return;
+
+            this.Visible = false;
+            mainform.defaultView.Visible = true;
+        }
+
+        private void leapmotionTab_MouseEnter(object sender, EventArgs e)
+        {
+            try
+            {
+                this.activatedConnectionIconPanel.BackColor = Color.Salmon;
+                this.activatedConnectionIconPanel.Visible = true;
+                this.connectionIconsPanel.Visible = false;
+            }
+            catch (Exception)
+            { }
+        }
+
+        private void tab_MouseLeave(object sender, EventArgs e)
         {
             try
             {
@@ -103,34 +177,51 @@ namespace Fire_Detector.Control
                     this.bunifuTransition2.Show(this.leapMotionImageButton);
                 }
             }
-            catch(Exception)
+            catch (Exception)
             { }
         }
 
-        private void bunifuCustomLabel9_Click(object sender, EventArgs e)
+        private void detectFireTab_MouseEnter(object sender, EventArgs e)
+        {
+            try
+            {
+                this.activatedConnectionIconPanel.BackColor = Color.LightCoral;
+                this.activatedConnectionIconPanel.Visible = true;
+                this.connectionIconsPanel.Visible = false;
+            }
+            catch (Exception)
+            { }
+        }
+
+        private void detectFireTab_Click(object sender, EventArgs e)
         {
             var mainform = this.FindForm() as MainForm;
-            if(mainform == null)
+            if (mainform == null)
                 return;
 
             this.Visible = false;
             mainform.defaultView.Visible = true;
         }
 
-        private void panel4_MouseMove(object sender, MouseEventArgs e)
+        private void etcTab_Click(object sender, EventArgs e)
         {
+            var mainform = this.FindForm() as MainForm;
+            if (mainform == null)
+                return;
 
+            this.Visible = false;
+            mainform.defaultView.Visible = true;
         }
 
-        private void panel4_MouseEnter(object sender, EventArgs e)
+        private void etcTab_MouseEnter(object sender, EventArgs e)
         {
             try
             {
-                this.activatedConnectionIconPanel.BackColor = Color.Gray;
+                this.activatedConnectionIconPanel.BackColor = Color.DarkSalmon;
                 this.activatedConnectionIconPanel.Visible = true;
                 this.connectionIconsPanel.Visible = false;
             }
-            catch(Exception)
+            catch (Exception)
             { }
         }
     }
