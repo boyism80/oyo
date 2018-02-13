@@ -39,8 +39,8 @@
             this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.streamingFrameBox = new System.Windows.Forms.PictureBox();
-            this.sideCollapsedBar = new Fire_Detector.Control.SideCollapsedBar();
             this.sideExpandedBar = new Fire_Detector.Control.SideExpandedBar();
+            this.sideCollapsedBar = new Fire_Detector.Control.SideCollapsedBar();
             this.currentStateBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.streamingFrameBox)).BeginInit();
@@ -61,7 +61,7 @@
             this.currentStateBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.currentStateBar.Location = new System.Drawing.Point(0, 688);
             this.currentStateBar.Name = "currentStateBar";
-            this.currentStateBar.Size = new System.Drawing.Size(624, 50);
+            this.currentStateBar.Size = new System.Drawing.Size(604, 50);
             this.currentStateBar.TabIndex = 2;
             // 
             // bunifuProgressBar1
@@ -166,29 +166,29 @@
             this.streamingFrameBox.Image = global::Fire_Detector.Properties.Resources._34620595595_b4c90a2e22_b;
             this.streamingFrameBox.Location = new System.Drawing.Point(0, 0);
             this.streamingFrameBox.Name = "streamingFrameBox";
-            this.streamingFrameBox.Size = new System.Drawing.Size(624, 688);
+            this.streamingFrameBox.Size = new System.Drawing.Size(604, 688);
             this.streamingFrameBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.streamingFrameBox.TabIndex = 3;
             this.streamingFrameBox.TabStop = false;
-            // 
-            // sideCollapsedBar
-            // 
-            this.sideCollapsedBar.BackColor = System.Drawing.SystemColors.Control;
-            this.sideCollapsedBar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sideCollapsedBar.Location = new System.Drawing.Point(974, 0);
-            this.sideCollapsedBar.Name = "sideCollapsedBar";
-            this.sideCollapsedBar.Size = new System.Drawing.Size(50, 738);
-            this.sideCollapsedBar.TabIndex = 0;
             // 
             // sideExpandedBar
             // 
             this.sideExpandedBar.BackColor = System.Drawing.SystemColors.Control;
             this.sideExpandedBar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sideExpandedBar.Location = new System.Drawing.Point(624, 0);
+            this.sideExpandedBar.Location = new System.Drawing.Point(604, 0);
             this.sideExpandedBar.Name = "sideExpandedBar";
             this.sideExpandedBar.Size = new System.Drawing.Size(350, 738);
             this.sideExpandedBar.TabIndex = 1;
             this.sideExpandedBar.Visible = false;
+            // 
+            // sideCollapsedBar
+            // 
+            this.sideCollapsedBar.BackColor = System.Drawing.SystemColors.Control;
+            this.sideCollapsedBar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sideCollapsedBar.Location = new System.Drawing.Point(954, 0);
+            this.sideCollapsedBar.Name = "sideCollapsedBar";
+            this.sideCollapsedBar.Size = new System.Drawing.Size(70, 738);
+            this.sideCollapsedBar.TabIndex = 0;
             // 
             // DefaultView
             // 

@@ -16,7 +16,7 @@ namespace Fire_Detector.Control
             if(mainform == null)
                 return;
 
-            this.Visible = false;
+            //this.Visible = false;
             mainform.defaultView.sideExpandedBar.Visible = true;
             mainform.defaultView.sideExpandedBar.SetActiveTab(mainform.defaultView.sideExpandedBar.droneTab);
         }
@@ -37,18 +37,18 @@ namespace Fire_Detector.Control
             if(mainform == null)
                 return;
 
-            this.Visible = false;
+            //this.Visible = false;
             mainform.defaultView.sideExpandedBar.Visible = true;
             mainform.defaultView.sideExpandedBar.SetActiveTab(mainform.defaultView.sideExpandedBar.leapmotionTab);
         }
 
-        private void cameraTabButton_Click(object sender, EventArgs e)
+        private void paletteTabButton_Click(object sender, EventArgs e)
         {
             var mainform = this.FindForm() as MainForm;
             if(mainform == null)
                 return;
 
-            this.Visible = false;
+            //this.Visible = false;
             mainform.defaultView.sideExpandedBar.Visible = true;
         }
 
@@ -58,7 +58,7 @@ namespace Fire_Detector.Control
             if(mainform == null)
                 return;
 
-            this.Visible = false;
+           // this.Visible = false;
             mainform.defaultView.sideExpandedBar.Visible = true;
         }
     }

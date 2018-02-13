@@ -29,29 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DroneTab));
-            this.sideCollapsedBar1 = new Fire_Detector.Control.SideCollapsedBar();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonCollapse = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.speedSlider = new Bunifu.Framework.UI.BunifuSlider();
-            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.droneFlightProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.landButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.takeoffButton = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.droneFlightProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.speedSlider = new Bunifu.Framework.UI.BunifuSlider();
+            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.buttonCollapse = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // sideCollapsedBar1
-            // 
-            this.sideCollapsedBar1.BackColor = System.Drawing.SystemColors.Control;
-            this.sideCollapsedBar1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sideCollapsedBar1.Location = new System.Drawing.Point(0, 0);
-            this.sideCollapsedBar1.Name = "sideCollapsedBar1";
-            this.sideCollapsedBar1.Size = new System.Drawing.Size(50, 738);
-            this.sideCollapsedBar1.TabIndex = 9;
             // 
             // panel2
             // 
@@ -60,84 +50,32 @@
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.buttonCollapse);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(50, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(300, 738);
+            this.panel2.Size = new System.Drawing.Size(350, 738);
             this.panel2.TabIndex = 17;
             // 
-            // buttonCollapse
+            // droneFlightProgressbar
             // 
-            this.buttonCollapse.Activecolor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.BackColor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonCollapse.BorderRadius = 0;
-            this.buttonCollapse.ButtonText = "Drone Control";
-            this.buttonCollapse.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonCollapse.DisabledColor = System.Drawing.Color.Gray;
-            this.buttonCollapse.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonCollapse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonCollapse.Iconcolor = System.Drawing.Color.Transparent;
-            this.buttonCollapse.Iconimage = ((System.Drawing.Image)(resources.GetObject("buttonCollapse.Iconimage")));
-            this.buttonCollapse.Iconimage_right = null;
-            this.buttonCollapse.Iconimage_right_Selected = null;
-            this.buttonCollapse.Iconimage_Selected = null;
-            this.buttonCollapse.IconMarginLeft = 0;
-            this.buttonCollapse.IconMarginRight = 0;
-            this.buttonCollapse.IconRightVisible = true;
-            this.buttonCollapse.IconRightZoom = 0D;
-            this.buttonCollapse.IconVisible = true;
-            this.buttonCollapse.IconZoom = 30D;
-            this.buttonCollapse.IsTab = false;
-            this.buttonCollapse.Location = new System.Drawing.Point(0, 0);
-            this.buttonCollapse.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.buttonCollapse.Name = "buttonCollapse";
-            this.buttonCollapse.Normalcolor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.OnHovercolor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.OnHoverTextColor = System.Drawing.Color.White;
-            this.buttonCollapse.selected = false;
-            this.buttonCollapse.Size = new System.Drawing.Size(300, 44);
-            this.buttonCollapse.TabIndex = 13;
-            this.buttonCollapse.Text = "Drone Control";
-            this.buttonCollapse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonCollapse.Textcolor = System.Drawing.Color.White;
-            this.buttonCollapse.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.speedSlider);
-            this.panel1.Controls.Add(this.bunifuCustomLabel1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 44);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(300, 65);
-            this.panel1.TabIndex = 14;
-            // 
-            // speedSlider
-            // 
-            this.speedSlider.BackColor = System.Drawing.Color.Transparent;
-            this.speedSlider.BackgroudColor = System.Drawing.Color.DarkGray;
-            this.speedSlider.BorderRadius = 0;
-            this.speedSlider.Dock = System.Windows.Forms.DockStyle.Top;
-            this.speedSlider.IndicatorColor = System.Drawing.Color.Tomato;
-            this.speedSlider.Location = new System.Drawing.Point(5, 30);
-            this.speedSlider.MaximumValue = 100;
-            this.speedSlider.Name = "speedSlider";
-            this.speedSlider.Size = new System.Drawing.Size(290, 28);
-            this.speedSlider.TabIndex = 8;
-            this.speedSlider.Value = 0;
-            // 
-            // bunifuCustomLabel1
-            // 
-            this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.Coral;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(5, 5);
-            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(74, 25);
-            this.bunifuCustomLabel1.TabIndex = 7;
-            this.bunifuCustomLabel1.Text = "Speed";
+            this.droneFlightProgressbar.animated = false;
+            this.droneFlightProgressbar.animationIterval = 5;
+            this.droneFlightProgressbar.animationSpeed = 3;
+            this.droneFlightProgressbar.BackColor = System.Drawing.Color.Transparent;
+            this.droneFlightProgressbar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("droneFlightProgressbar.BackgroundImage")));
+            this.droneFlightProgressbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
+            this.droneFlightProgressbar.ForeColor = System.Drawing.Color.SeaGreen;
+            this.droneFlightProgressbar.LabelVisible = false;
+            this.droneFlightProgressbar.LineProgressThickness = 5;
+            this.droneFlightProgressbar.LineThickness = 5;
+            this.droneFlightProgressbar.Location = new System.Drawing.Point(147, 628);
+            this.droneFlightProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.droneFlightProgressbar.MaxValue = 100;
+            this.droneFlightProgressbar.Name = "droneFlightProgressbar";
+            this.droneFlightProgressbar.ProgressBackColor = System.Drawing.Color.Gainsboro;
+            this.droneFlightProgressbar.ProgressColor = System.Drawing.Color.IndianRed;
+            this.droneFlightProgressbar.Size = new System.Drawing.Size(51, 51);
+            this.droneFlightProgressbar.TabIndex = 18;
+            this.droneFlightProgressbar.Value = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -151,7 +89,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(300, 50);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(350, 50);
             this.tableLayoutPanel1.TabIndex = 17;
             // 
             // landButton
@@ -176,13 +114,13 @@
             this.landButton.IconVisible = true;
             this.landButton.IconZoom = 90D;
             this.landButton.IsTab = false;
-            this.landButton.Location = new System.Drawing.Point(153, 3);
+            this.landButton.Location = new System.Drawing.Point(178, 3);
             this.landButton.Name = "landButton";
             this.landButton.Normalcolor = System.Drawing.Color.LightGray;
             this.landButton.OnHovercolor = System.Drawing.Color.Coral;
             this.landButton.OnHoverTextColor = System.Drawing.Color.White;
             this.landButton.selected = false;
-            this.landButton.Size = new System.Drawing.Size(144, 44);
+            this.landButton.Size = new System.Drawing.Size(169, 44);
             this.landButton.TabIndex = 2;
             this.landButton.Text = "Land";
             this.landButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -218,7 +156,7 @@
             this.takeoffButton.OnHovercolor = System.Drawing.Color.Coral;
             this.takeoffButton.OnHoverTextColor = System.Drawing.Color.White;
             this.takeoffButton.selected = false;
-            this.takeoffButton.Size = new System.Drawing.Size(144, 44);
+            this.takeoffButton.Size = new System.Drawing.Size(169, 44);
             this.takeoffButton.TabIndex = 1;
             this.takeoffButton.Text = "Take off";
             this.takeoffButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -226,46 +164,96 @@
             this.takeoffButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.takeoffButton.Click += new System.EventHandler(this.takeoffButton_Click);
             // 
-            // droneFlightProgressbar
+            // panel1
             // 
-            this.droneFlightProgressbar.animated = false;
-            this.droneFlightProgressbar.animationIterval = 5;
-            this.droneFlightProgressbar.animationSpeed = 3;
-            this.droneFlightProgressbar.BackColor = System.Drawing.Color.Transparent;
-            this.droneFlightProgressbar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("droneFlightProgressbar.BackgroundImage")));
-            this.droneFlightProgressbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.droneFlightProgressbar.ForeColor = System.Drawing.Color.SeaGreen;
-            this.droneFlightProgressbar.LabelVisible = false;
-            this.droneFlightProgressbar.LineProgressThickness = 5;
-            this.droneFlightProgressbar.LineThickness = 5;
-            this.droneFlightProgressbar.Location = new System.Drawing.Point(118, 613);
-            this.droneFlightProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.droneFlightProgressbar.MaxValue = 100;
-            this.droneFlightProgressbar.Name = "droneFlightProgressbar";
-            this.droneFlightProgressbar.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            this.droneFlightProgressbar.ProgressColor = System.Drawing.Color.IndianRed;
-            this.droneFlightProgressbar.Size = new System.Drawing.Size(51, 51);
-            this.droneFlightProgressbar.TabIndex = 18;
-            this.droneFlightProgressbar.Value = 0;
+            this.panel1.Controls.Add(this.speedSlider);
+            this.panel1.Controls.Add(this.bunifuCustomLabel1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 44);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(5);
+            this.panel1.Size = new System.Drawing.Size(350, 65);
+            this.panel1.TabIndex = 14;
+            // 
+            // speedSlider
+            // 
+            this.speedSlider.BackColor = System.Drawing.Color.Transparent;
+            this.speedSlider.BackgroudColor = System.Drawing.Color.DarkGray;
+            this.speedSlider.BorderRadius = 0;
+            this.speedSlider.Dock = System.Windows.Forms.DockStyle.Top;
+            this.speedSlider.IndicatorColor = System.Drawing.Color.Tomato;
+            this.speedSlider.Location = new System.Drawing.Point(5, 30);
+            this.speedSlider.MaximumValue = 100;
+            this.speedSlider.Name = "speedSlider";
+            this.speedSlider.Size = new System.Drawing.Size(340, 28);
+            this.speedSlider.TabIndex = 8;
+            this.speedSlider.Value = 0;
+            // 
+            // bunifuCustomLabel1
+            // 
+            this.bunifuCustomLabel1.AutoSize = true;
+            this.bunifuCustomLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.Coral;
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(5, 5);
+            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(74, 25);
+            this.bunifuCustomLabel1.TabIndex = 7;
+            this.bunifuCustomLabel1.Text = "Speed";
+            // 
+            // buttonCollapse
+            // 
+            this.buttonCollapse.Activecolor = System.Drawing.Color.Tomato;
+            this.buttonCollapse.BackColor = System.Drawing.Color.Tomato;
+            this.buttonCollapse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonCollapse.BorderRadius = 0;
+            this.buttonCollapse.ButtonText = "Drone Control";
+            this.buttonCollapse.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonCollapse.DisabledColor = System.Drawing.Color.Gray;
+            this.buttonCollapse.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonCollapse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.buttonCollapse.Iconcolor = System.Drawing.Color.Transparent;
+            this.buttonCollapse.Iconimage = ((System.Drawing.Image)(resources.GetObject("buttonCollapse.Iconimage")));
+            this.buttonCollapse.Iconimage_right = null;
+            this.buttonCollapse.Iconimage_right_Selected = null;
+            this.buttonCollapse.Iconimage_Selected = null;
+            this.buttonCollapse.IconMarginLeft = 0;
+            this.buttonCollapse.IconMarginRight = 0;
+            this.buttonCollapse.IconRightVisible = true;
+            this.buttonCollapse.IconRightZoom = 0D;
+            this.buttonCollapse.IconVisible = true;
+            this.buttonCollapse.IconZoom = 30D;
+            this.buttonCollapse.IsTab = false;
+            this.buttonCollapse.Location = new System.Drawing.Point(0, 0);
+            this.buttonCollapse.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.buttonCollapse.Name = "buttonCollapse";
+            this.buttonCollapse.Normalcolor = System.Drawing.Color.Tomato;
+            this.buttonCollapse.OnHovercolor = System.Drawing.Color.Tomato;
+            this.buttonCollapse.OnHoverTextColor = System.Drawing.Color.White;
+            this.buttonCollapse.selected = false;
+            this.buttonCollapse.Size = new System.Drawing.Size(350, 44);
+            this.buttonCollapse.TabIndex = 13;
+            this.buttonCollapse.Text = "Drone Control";
+            this.buttonCollapse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.buttonCollapse.Textcolor = System.Drawing.Color.White;
+            this.buttonCollapse.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // DroneTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.sideCollapsedBar1);
             this.Name = "DroneTab";
             this.Size = new System.Drawing.Size(350, 738);
             this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private SideCollapsedBar sideCollapsedBar1;
         private System.Windows.Forms.Panel panel2;
         private Bunifu.Framework.UI.BunifuCircleProgressbar droneFlightProgressbar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
