@@ -17,7 +17,7 @@ namespace Fire_Detector.Control
                 return;
 
             mainform.defaultView.sideExpandedBar.Visible = false;
-            mainform.defaultView.sideCollapsedBar.Visible = true;
+            //mainform.defaultView.sideCollapsedBar.Visible = true;
         }
 
         private void takeoffButton_Click(object sender, EventArgs e)

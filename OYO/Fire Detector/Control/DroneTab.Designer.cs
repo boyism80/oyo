@@ -358,6 +358,7 @@
             this.buttonCollapse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.buttonCollapse.Textcolor = System.Drawing.Color.White;
             this.buttonCollapse.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCollapse.Click += new System.EventHandler(this.buttonCollapse_Click);
             // 
             // panel7
             // 
@@ -371,6 +372,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.panel2);
             this.Name = "DroneTab";
             this.Size = new System.Drawing.Size(350, 738);

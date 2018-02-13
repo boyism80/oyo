@@ -245,7 +245,7 @@
             this.bunifuTransition1.SetDecoration(this.detectFirePanel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.detectFirePanel, BunifuAnimatorNS.DecorationType.None);
             this.detectFirePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.detectFirePanel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.detectFirePanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.detectFirePanel.ForeColor = System.Drawing.SystemColors.Control;
             this.detectFirePanel.Location = new System.Drawing.Point(612, 0);
             this.detectFirePanel.Margin = new System.Windows.Forms.Padding(0);
@@ -265,7 +265,7 @@
             this.bunifuTransition.SetDecoration(this.detectFireLabel, BunifuAnimatorNS.DecorationType.None);
             this.detectFireLabel.Location = new System.Drawing.Point(47, 12);
             this.detectFireLabel.Name = "detectFireLabel";
-            this.detectFireLabel.Size = new System.Drawing.Size(110, 23);
+            this.detectFireLabel.Size = new System.Drawing.Size(128, 25);
             this.detectFireLabel.TabIndex = 21;
             this.detectFireLabel.Text = "Detect Fire";
             this.detectFireLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -281,7 +281,7 @@
             this.bunifuTransition1.SetDecoration(this.etcPanel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.etcPanel, BunifuAnimatorNS.DecorationType.None);
             this.etcPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.etcPanel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.etcPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.etcPanel.ForeColor = System.Drawing.SystemColors.Control;
             this.etcPanel.Location = new System.Drawing.Point(816, 0);
             this.etcPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -301,7 +301,7 @@
             this.bunifuTransition.SetDecoration(this.etcLabel, BunifuAnimatorNS.DecorationType.None);
             this.etcLabel.Location = new System.Drawing.Point(86, 12);
             this.etcLabel.Name = "etcLabel";
-            this.etcLabel.Size = new System.Drawing.Size(39, 23);
+            this.etcLabel.Size = new System.Drawing.Size(44, 25);
             this.etcLabel.TabIndex = 21;
             this.etcLabel.Text = "etc";
             this.etcLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -317,7 +317,7 @@
             this.bunifuTransition1.SetDecoration(this.leapmotionPanel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.leapmotionPanel, BunifuAnimatorNS.DecorationType.None);
             this.leapmotionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.leapmotionPanel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.leapmotionPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.leapmotionPanel.ForeColor = System.Drawing.SystemColors.Control;
             this.leapmotionPanel.Location = new System.Drawing.Point(408, 0);
             this.leapmotionPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -336,7 +336,7 @@
             this.bunifuTransition.SetDecoration(this.leapmotionLabel, BunifuAnimatorNS.DecorationType.None);
             this.leapmotionLabel.Location = new System.Drawing.Point(45, 12);
             this.leapmotionLabel.Name = "leapmotionLabel";
-            this.leapmotionLabel.Size = new System.Drawing.Size(118, 23);
+            this.leapmotionLabel.Size = new System.Drawing.Size(134, 25);
             this.leapmotionLabel.TabIndex = 21;
             this.leapmotionLabel.Text = "Leapmotion";
             this.leapmotionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -352,7 +352,7 @@
             this.bunifuTransition1.SetDecoration(this.droneControlPanel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.droneControlPanel, BunifuAnimatorNS.DecorationType.None);
             this.droneControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.droneControlPanel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.droneControlPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.droneControlPanel.ForeColor = System.Drawing.SystemColors.Control;
             this.droneControlPanel.Location = new System.Drawing.Point(0, 0);
             this.droneControlPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -371,7 +371,7 @@
             this.bunifuTransition.SetDecoration(this.droneControlLabel, BunifuAnimatorNS.DecorationType.None);
             this.droneControlLabel.Location = new System.Drawing.Point(33, 12);
             this.droneControlLabel.Name = "droneControlLabel";
-            this.droneControlLabel.Size = new System.Drawing.Size(138, 23);
+            this.droneControlLabel.Size = new System.Drawing.Size(158, 25);
             this.droneControlLabel.TabIndex = 21;
             this.droneControlLabel.Text = "Drone Control";
             this.droneControlLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -387,7 +387,7 @@
             this.bunifuTransition1.SetDecoration(this.cameraPanel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.cameraPanel, BunifuAnimatorNS.DecorationType.None);
             this.cameraPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cameraPanel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cameraPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cameraPanel.ForeColor = System.Drawing.SystemColors.Control;
             this.cameraPanel.Location = new System.Drawing.Point(204, 0);
             this.cameraPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -406,7 +406,7 @@
             this.bunifuTransition.SetDecoration(this.cameraLabel, BunifuAnimatorNS.DecorationType.None);
             this.cameraLabel.Location = new System.Drawing.Point(63, 12);
             this.cameraLabel.Name = "cameraLabel";
-            this.cameraLabel.Size = new System.Drawing.Size(78, 23);
+            this.cameraLabel.Size = new System.Drawing.Size(93, 25);
             this.cameraLabel.TabIndex = 21;
             this.cameraLabel.Text = "Camera";
             this.cameraLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -471,7 +471,7 @@
             this.bunifuTransition2.SetDecoration(this.raspCamImageButton, BunifuAnimatorNS.DecorationType.None);
             this.raspCamImageButton.Image = ((System.Drawing.Image)(resources.GetObject("raspCamImageButton.Image")));
             this.raspCamImageButton.ImageActive = null;
-            this.raspCamImageButton.Location = new System.Drawing.Point(471, 70);
+            this.raspCamImageButton.Location = new System.Drawing.Point(471, 78);
             this.raspCamImageButton.Name = "raspCamImageButton";
             this.raspCamImageButton.Size = new System.Drawing.Size(110, 110);
             this.raspCamImageButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -482,17 +482,17 @@
             // 
             // bunifuCustomLabel7
             // 
-            this.bunifuCustomLabel7.AutoSize = true;
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel7, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel7, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel7, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel7.ForeColor = System.Drawing.Color.Coral;
-            this.bunifuCustomLabel7.Location = new System.Drawing.Point(460, 229);
+            this.bunifuCustomLabel7.Location = new System.Drawing.Point(426, 229);
             this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
-            this.bunifuCustomLabel7.Size = new System.Drawing.Size(168, 31);
+            this.bunifuCustomLabel7.Size = new System.Drawing.Size(200, 31);
             this.bunifuCustomLabel7.TabIndex = 16;
             this.bunifuCustomLabel7.Text = "RaspPiCam";
+            this.bunifuCustomLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // leapMotionImageButton
             // 
@@ -502,7 +502,7 @@
             this.bunifuTransition2.SetDecoration(this.leapMotionImageButton, BunifuAnimatorNS.DecorationType.None);
             this.leapMotionImageButton.Image = ((System.Drawing.Image)(resources.GetObject("leapMotionImageButton.Image")));
             this.leapMotionImageButton.ImageActive = null;
-            this.leapMotionImageButton.Location = new System.Drawing.Point(810, 78);
+            this.leapMotionImageButton.Location = new System.Drawing.Point(810, 88);
             this.leapMotionImageButton.Name = "leapMotionImageButton";
             this.leapMotionImageButton.Size = new System.Drawing.Size(90, 90);
             this.leapMotionImageButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -526,7 +526,7 @@
             this.leapmotionProgressbar.LabelVisible = false;
             this.leapmotionProgressbar.LineProgressThickness = 5;
             this.leapmotionProgressbar.LineThickness = 5;
-            this.leapmotionProgressbar.Location = new System.Drawing.Point(752, 23);
+            this.leapmotionProgressbar.Location = new System.Drawing.Point(752, 31);
             this.leapmotionProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.leapmotionProgressbar.MaxValue = 100;
             this.leapmotionProgressbar.Name = "leapmotionProgressbar";
@@ -538,17 +538,17 @@
             // 
             // bunifuCustomLabel6
             // 
-            this.bunifuCustomLabel6.AutoSize = true;
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel6.ForeColor = System.Drawing.Color.Coral;
-            this.bunifuCustomLabel6.Location = new System.Drawing.Point(140, 237);
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(84, 229);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
-            this.bunifuCustomLabel6.Size = new System.Drawing.Size(93, 31);
+            this.bunifuCustomLabel6.Size = new System.Drawing.Size(200, 31);
             this.bunifuCustomLabel6.TabIndex = 13;
             this.bunifuCustomLabel6.Text = "Drone";
+            this.bunifuCustomLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // raspCamProgressbar
             // 
@@ -565,7 +565,7 @@
             this.raspCamProgressbar.LabelVisible = false;
             this.raspCamProgressbar.LineProgressThickness = 5;
             this.raspCamProgressbar.LineThickness = 5;
-            this.raspCamProgressbar.Location = new System.Drawing.Point(426, 23);
+            this.raspCamProgressbar.Location = new System.Drawing.Point(426, 31);
             this.raspCamProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.raspCamProgressbar.MaxValue = 100;
             this.raspCamProgressbar.Name = "raspCamProgressbar";
@@ -577,17 +577,17 @@
             // 
             // bunifuCustomLabel8
             // 
-            this.bunifuCustomLabel8.AutoSize = true;
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel8.ForeColor = System.Drawing.Color.Coral;
-            this.bunifuCustomLabel8.Location = new System.Drawing.Point(786, 229);
+            this.bunifuCustomLabel8.Location = new System.Drawing.Point(752, 229);
             this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
-            this.bunifuCustomLabel8.Size = new System.Drawing.Size(165, 31);
+            this.bunifuCustomLabel8.Size = new System.Drawing.Size(200, 31);
             this.bunifuCustomLabel8.TabIndex = 19;
             this.bunifuCustomLabel8.Text = "Leapmotion";
+            this.bunifuCustomLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // droneProgressbar
             // 
@@ -708,7 +708,6 @@
             this.cameraPanel.ResumeLayout(false);
             this.cameraPanel.PerformLayout();
             this.connectionIconsPanel.ResumeLayout(false);
-            this.connectionIconsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.droneImageButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.raspCamImageButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.leapMotionImageButton)).EndInit();

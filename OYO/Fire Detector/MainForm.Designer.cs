@@ -56,6 +56,7 @@
             this.caption.Name = "caption";
             this.caption.Size = new System.Drawing.Size(1024, 30);
             this.caption.TabIndex = 0;
+            this.caption.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.caption_MouseDoubleClick);
             // 
             // exitButton1
             // 
