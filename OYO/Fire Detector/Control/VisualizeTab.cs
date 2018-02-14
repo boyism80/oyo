@@ -14,6 +14,30 @@ namespace Fire_Detector.Control
             foreach (var cname in Enum.GetNames(typeof(ColormapTypes)))
                 this.palettesDropDown.AddItem(cname);
         }
+
+        private void UpdateUI(MainForm mainform)
+        {
+            if(mainform == null)
+                return;
+
+            var backgroundActiveColor = System.Drawing.Color.LightCoral;
+            var backgroundInactiveColor = System.Drawing.Color.DarkGray;
+
+            this.infraredViewButton.Invoke(new MethodInvoker(delegate ()
+            {
+                this.infraredViewButton.color   = (mainform.Receiver.Connected && !mainform.Blending && mainform.StreamingType == oyo.StreamingType.Infrared) ? backgroundActiveColor : backgroundInactiveColor;
+            }));
+
+            this.visualViewButton.Invoke(new MethodInvoker(delegate ()
+            {
+                this.visualViewButton.color     = (mainform.Receiver.Connected && !mainform.Blending && mainform.StreamingType == oyo.StreamingType.Visual  ) ? backgroundActiveColor : backgroundInactiveColor;
+            }));
+
+            this.blendingViewButton.Invoke(new MethodInvoker(delegate ()
+            {
+                this.blendingViewButton.color   = (mainform.Receiver.Connected && mainform.Blending) ? backgroundActiveColor : backgroundInactiveColor;
+            }));
+        }
         
         public void OnStateChanged(bool connected)
         {
@@ -29,6 +53,8 @@ namespace Fire_Detector.Control
                 {
                     connectionLabel.Text = connected ? "서버와 연결되었습니다." : "서버와 연결되지 않았습니다.";
                 }));
+
+                this.UpdateUI(this.FindForm() as MainForm);
             }
             catch (Exception)
             { }
@@ -53,10 +79,7 @@ namespace Fire_Detector.Control
                 return;
 
             mainform.StreamingType = oyo.StreamingType.Infrared;
-            infraredViewButton.color = System.Drawing.Color.LightCoral;
-            visualViewButton.color = System.Drawing.Color.DarkGray;
-            //blendingViewButton.color = System.Drawing.Color.DarkGray;
-
+            this.UpdateUI(mainform);
         }
 
         private void visualViewButton_Click(object sender, EventArgs e)
@@ -66,9 +89,7 @@ namespace Fire_Detector.Control
                 return;
 
             mainform.StreamingType = oyo.StreamingType.Visual;
-            infraredViewButton.color = System.Drawing.Color.DarkGray;
-            visualViewButton.color = System.Drawing.Color.LightCoral;
-            //blendingViewButton.color = System.Drawing.Color.DarkGray;
+            this.UpdateUI(mainform);
         }
 
         private void palettesDropDown_onItemSelected(object sender, EventArgs e)
@@ -78,6 +99,15 @@ namespace Fire_Detector.Control
                 return;
 
             mainform.Palette = this.palettesDropDown.selectedValue;
+        }
+
+        private void VisualizeTab_Load(object sender, EventArgs e)
+        {
+            var mainform = this.FindForm() as MainForm;
+            if(mainform == null)
+                return;
+
+            this.UpdateUI(mainform);
         }
     }
 }
