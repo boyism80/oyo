@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 using static Fire_Detector.MainForm;
 
@@ -6,9 +7,13 @@ namespace Fire_Detector.Control
 {
     public partial class DefaultView : UserControl, IStateChangedListener
     {
+        public Mutex StreamingFrameBoxLock { get; private set; }
+
         public DefaultView()
         {
             InitializeComponent();
+
+            this.StreamingFrameBoxLock = new Mutex();
         }
 
         public void OnStateChanged(bool connected)
