@@ -61,6 +61,7 @@ namespace Fire_Detector.Control
 
            // this.Visible = false;
             mainform.defaultView.sideExpandedBar.Visible = true;
+            mainform.defaultView.sideExpandedBar.SetActiveTab(mainform.defaultView.sideExpandedBar.detectFireTab);
         }
     }
 }

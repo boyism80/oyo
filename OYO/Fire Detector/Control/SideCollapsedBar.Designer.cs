@@ -55,7 +55,7 @@
             // 
             // droneTabButton
             // 
-            this.droneTabButton.BackColor = System.Drawing.Color.Transparent;
+            this.droneTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(160)))));
             this.droneTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.droneTabButton.Image = ((System.Drawing.Image)(resources.GetObject("droneTabButton.Image")));
             this.droneTabButton.ImageActive = null;

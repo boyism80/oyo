@@ -5,7 +5,7 @@ using static Fire_Detector.MainForm;
 
 namespace Fire_Detector.Control
 {
-    public partial class VisualizeTab : UserControl, IStateChangedListener
+    public partial class VisualizeTab : UserControl , IStateChangedListener
     {
         public VisualizeTab()
         {
@@ -14,7 +14,7 @@ namespace Fire_Detector.Control
             foreach (var cname in Enum.GetNames(typeof(ColormapTypes)))
                 this.palettesDropDown.AddItem(cname);
         }
-
+        
         public void OnStateChanged(bool connected)
         {
             try
@@ -34,7 +34,7 @@ namespace Fire_Detector.Control
             { }
         }
 
-        private void connectCameraProgressbar_Click(object sender, EventArgs e)
+        private void connectCameraButton_Click(object sender, EventArgs e)
         {
             var mainform = this.FindForm() as MainForm;
             if(mainform == null)
@@ -53,6 +53,10 @@ namespace Fire_Detector.Control
                 return;
 
             mainform.StreamingType = oyo.StreamingType.Infrared;
+            infraredViewButton.color = System.Drawing.Color.LightCoral;
+            visualViewButton.color = System.Drawing.Color.DarkGray;
+            //blendingViewButton.color = System.Drawing.Color.DarkGray;
+
         }
 
         private void visualViewButton_Click(object sender, EventArgs e)
@@ -62,6 +66,9 @@ namespace Fire_Detector.Control
                 return;
 
             mainform.StreamingType = oyo.StreamingType.Visual;
+            infraredViewButton.color = System.Drawing.Color.DarkGray;
+            visualViewButton.color = System.Drawing.Color.LightCoral;
+            //blendingViewButton.color = System.Drawing.Color.DarkGray;
         }
 
         private void palettesDropDown_onItemSelected(object sender, EventArgs e)

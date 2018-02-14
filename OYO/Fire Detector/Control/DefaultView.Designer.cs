@@ -31,19 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DefaultView));
             this.currentStateBar = new System.Windows.Forms.Panel();
             this.bunifuProgressBar1 = new Bunifu.Framework.UI.BunifuProgressBar();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.bunifuCircleProgressbar2 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel9 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.streamingFrameBox = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.bunifuCircleProgressbar2 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.sideCollapsedBar = new Fire_Detector.Control.SideCollapsedBar();
             this.sideExpandedBar = new Fire_Detector.Control.SideExpandedBar();
             this.currentStateBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.streamingFrameBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.streamingFrameBox)).BeginInit();
             this.SuspendLayout();
             // 
             // currentStateBar
@@ -76,6 +76,39 @@
             this.bunifuProgressBar1.Size = new System.Drawing.Size(37, 13);
             this.bunifuProgressBar1.TabIndex = 7;
             this.bunifuProgressBar1.Value = 67;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(47, 20);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // bunifuCircleProgressbar2
+            // 
+            this.bunifuCircleProgressbar2.animated = true;
+            this.bunifuCircleProgressbar2.animationIterval = 5;
+            this.bunifuCircleProgressbar2.animationSpeed = 3;
+            this.bunifuCircleProgressbar2.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuCircleProgressbar2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuCircleProgressbar2.BackgroundImage")));
+            this.bunifuCircleProgressbar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
+            this.bunifuCircleProgressbar2.ForeColor = System.Drawing.Color.SeaGreen;
+            this.bunifuCircleProgressbar2.LabelVisible = false;
+            this.bunifuCircleProgressbar2.LineProgressThickness = 2;
+            this.bunifuCircleProgressbar2.LineThickness = 2;
+            this.bunifuCircleProgressbar2.Location = new System.Drawing.Point(458, 10);
+            this.bunifuCircleProgressbar2.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.bunifuCircleProgressbar2.MaxValue = 100;
+            this.bunifuCircleProgressbar2.Name = "bunifuCircleProgressbar2";
+            this.bunifuCircleProgressbar2.ProgressBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bunifuCircleProgressbar2.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bunifuCircleProgressbar2.Size = new System.Drawing.Size(29, 29);
+            this.bunifuCircleProgressbar2.TabIndex = 5;
+            this.bunifuCircleProgressbar2.Value = 15;
             // 
             // bunifuCustomLabel4
             // 
@@ -140,42 +173,9 @@
             this.streamingFrameBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.streamingFrameBox_MouseDoubleClick);
             this.streamingFrameBox.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.streamingFrameBox_MouseWheel);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(47, 20);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // bunifuCircleProgressbar2
-            // 
-            this.bunifuCircleProgressbar2.animated = true;
-            this.bunifuCircleProgressbar2.animationIterval = 5;
-            this.bunifuCircleProgressbar2.animationSpeed = 3;
-            this.bunifuCircleProgressbar2.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuCircleProgressbar2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuCircleProgressbar2.BackgroundImage")));
-            this.bunifuCircleProgressbar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.bunifuCircleProgressbar2.ForeColor = System.Drawing.Color.SeaGreen;
-            this.bunifuCircleProgressbar2.LabelVisible = false;
-            this.bunifuCircleProgressbar2.LineProgressThickness = 2;
-            this.bunifuCircleProgressbar2.LineThickness = 2;
-            this.bunifuCircleProgressbar2.Location = new System.Drawing.Point(458, 10);
-            this.bunifuCircleProgressbar2.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.bunifuCircleProgressbar2.MaxValue = 100;
-            this.bunifuCircleProgressbar2.Name = "bunifuCircleProgressbar2";
-            this.bunifuCircleProgressbar2.ProgressBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuCircleProgressbar2.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.bunifuCircleProgressbar2.Size = new System.Drawing.Size(29, 29);
-            this.bunifuCircleProgressbar2.TabIndex = 5;
-            this.bunifuCircleProgressbar2.Value = 15;
-            // 
             // sideCollapsedBar
             // 
-            this.sideCollapsedBar.BackColor = System.Drawing.Color.SeaGreen;
+            this.sideCollapsedBar.BackColor = System.Drawing.Color.LightGray;
             this.sideCollapsedBar.Dock = System.Windows.Forms.DockStyle.Right;
             this.sideCollapsedBar.Location = new System.Drawing.Point(604, 0);
             this.sideCollapsedBar.Name = "sideCollapsedBar";
@@ -184,7 +184,7 @@
             // 
             // sideExpandedBar
             // 
-            this.sideExpandedBar.BackColor = System.Drawing.Color.SeaGreen;
+            this.sideExpandedBar.BackColor = System.Drawing.Color.White;
             this.sideExpandedBar.Dock = System.Windows.Forms.DockStyle.Right;
             this.sideExpandedBar.Location = new System.Drawing.Point(674, 0);
             this.sideExpandedBar.Name = "sideExpandedBar";
@@ -205,8 +205,8 @@
             this.Size = new System.Drawing.Size(1024, 738);
             this.currentStateBar.ResumeLayout(false);
             this.currentStateBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.streamingFrameBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.streamingFrameBox)).EndInit();
             this.ResumeLayout(false);
 
         }
