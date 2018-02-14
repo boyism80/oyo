@@ -32,13 +32,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.bunifuElipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.caption = new System.Windows.Forms.Panel();
-            this.exitButton1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.exitButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuDragControl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.defaultView = new Fire_Detector.Control.DefaultView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.maximizeButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.mainView = new Fire_Detector.Control.MainView();
+            this.defaultView = new Fire_Detector.Control.DefaultView();
             this.caption.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exitButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exitButton)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maximizeButton)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse
@@ -49,28 +55,31 @@
             // caption
             // 
             this.caption.BackColor = System.Drawing.Color.Coral;
-            this.caption.Controls.Add(this.exitButton1);
+            this.caption.Controls.Add(this.panel2);
+            this.caption.Controls.Add(this.panel1);
             this.caption.Controls.Add(this.bunifuCustomLabel1);
             this.caption.Dock = System.Windows.Forms.DockStyle.Top;
             this.caption.Location = new System.Drawing.Point(0, 0);
             this.caption.Name = "caption";
+            this.caption.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.caption.Size = new System.Drawing.Size(1024, 30);
             this.caption.TabIndex = 0;
             this.caption.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.caption_MouseDoubleClick);
             // 
-            // exitButton1
+            // exitButton
             // 
-            this.exitButton1.BackColor = System.Drawing.Color.Transparent;
-            this.exitButton1.Image = ((System.Drawing.Image)(resources.GetObject("exitButton1.Image")));
-            this.exitButton1.ImageActive = null;
-            this.exitButton1.Location = new System.Drawing.Point(994, 5);
-            this.exitButton1.Name = "exitButton1";
-            this.exitButton1.Size = new System.Drawing.Size(20, 20);
-            this.exitButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.exitButton1.TabIndex = 5;
-            this.exitButton1.TabStop = false;
-            this.exitButton1.Zoom = 10;
-            this.exitButton1.Click += new System.EventHandler(this.ExitButton_Click);
+            this.exitButton.BackColor = System.Drawing.Color.Transparent;
+            this.exitButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
+            this.exitButton.ImageActive = null;
+            this.exitButton.Location = new System.Drawing.Point(4, 4);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(16, 22);
+            this.exitButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.exitButton.TabIndex = 1;
+            this.exitButton.TabStop = false;
+            this.exitButton.Zoom = 10;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // bunifuCustomLabel1
             // 
@@ -90,6 +99,49 @@
             this.bunifuDragControl.TargetControl = this.caption;
             this.bunifuDragControl.Vertical = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.exitButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(995, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(4);
+            this.panel1.Size = new System.Drawing.Size(24, 30);
+            this.panel1.TabIndex = 3;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.maximizeButton);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(971, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(4);
+            this.panel2.Size = new System.Drawing.Size(24, 30);
+            this.panel2.TabIndex = 4;
+            // 
+            // maximizeButton
+            // 
+            this.maximizeButton.BackColor = System.Drawing.Color.Transparent;
+            this.maximizeButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.maximizeButton.Image = ((System.Drawing.Image)(resources.GetObject("maximizeButton.Image")));
+            this.maximizeButton.ImageActive = null;
+            this.maximizeButton.Location = new System.Drawing.Point(4, 4);
+            this.maximizeButton.Name = "maximizeButton";
+            this.maximizeButton.Size = new System.Drawing.Size(16, 22);
+            this.maximizeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.maximizeButton.TabIndex = 1;
+            this.maximizeButton.TabStop = false;
+            this.maximizeButton.Zoom = 10;
+            this.maximizeButton.Click += new System.EventHandler(this.maximizeButton_Click);
+            // 
+            // mainView
+            // 
+            this.mainView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainView.Location = new System.Drawing.Point(0, 30);
+            this.mainView.Name = "mainView";
+            this.mainView.Size = new System.Drawing.Size(1024, 738);
+            this.mainView.TabIndex = 2;
+            // 
             // defaultView
             // 
             this.defaultView.BackColor = System.Drawing.Color.Transparent;
@@ -99,14 +151,6 @@
             this.defaultView.Size = new System.Drawing.Size(1024, 738);
             this.defaultView.TabIndex = 1;
             this.defaultView.Visible = false;
-            // 
-            // mainView
-            // 
-            this.mainView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainView.Location = new System.Drawing.Point(0, 30);
-            this.mainView.Name = "mainView";
-            this.mainView.Size = new System.Drawing.Size(1024, 738);
-            this.mainView.TabIndex = 2;
             // 
             // MainForm
             // 
@@ -121,7 +165,10 @@
             this.Text = "Form1";
             this.caption.ResumeLayout(false);
             this.caption.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exitButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exitButton)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.maximizeButton)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -133,8 +180,11 @@
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl;
         public Control.DefaultView defaultView;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
-        private Bunifu.Framework.UI.BunifuImageButton exitButton1;
         public Control.MainView mainView;
+        private Bunifu.Framework.UI.BunifuImageButton exitButton;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private Bunifu.Framework.UI.BunifuImageButton maximizeButton;
     }
 }
 

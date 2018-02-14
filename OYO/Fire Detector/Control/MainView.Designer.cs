@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation10 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
-            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
-            BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation11 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation12 = new BunifuAnimatorNS.Animation();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -252,20 +252,17 @@
             this.detectFirePanel.Name = "detectFirePanel";
             this.detectFirePanel.Size = new System.Drawing.Size(204, 46);
             this.detectFirePanel.TabIndex = 7;
-            this.detectFirePanel.Click += new System.EventHandler(this.detectFireTab_Click);
-            this.detectFirePanel.MouseEnter += new System.EventHandler(this.detectFireTab_MouseEnter);
-            this.detectFirePanel.MouseLeave += new System.EventHandler(this.tab_MouseLeave);
             // 
             // detectFireLabel
             // 
-            this.detectFireLabel.AutoSize = true;
             this.detectFireLabel.BackColor = System.Drawing.Color.LightCoral;
             this.bunifuTransition2.SetDecoration(this.detectFireLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.detectFireLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.detectFireLabel, BunifuAnimatorNS.DecorationType.None);
-            this.detectFireLabel.Location = new System.Drawing.Point(47, 12);
+            this.detectFireLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.detectFireLabel.Location = new System.Drawing.Point(0, 0);
             this.detectFireLabel.Name = "detectFireLabel";
-            this.detectFireLabel.Size = new System.Drawing.Size(128, 25);
+            this.detectFireLabel.Size = new System.Drawing.Size(204, 46);
             this.detectFireLabel.TabIndex = 21;
             this.detectFireLabel.Text = "Detect Fire";
             this.detectFireLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -288,20 +285,17 @@
             this.etcPanel.Name = "etcPanel";
             this.etcPanel.Size = new System.Drawing.Size(208, 46);
             this.etcPanel.TabIndex = 6;
-            this.etcPanel.Click += new System.EventHandler(this.etcTab_Click);
-            this.etcPanel.MouseEnter += new System.EventHandler(this.etcTab_MouseEnter);
-            this.etcPanel.MouseLeave += new System.EventHandler(this.tab_MouseLeave);
             // 
             // etcLabel
             // 
-            this.etcLabel.AutoSize = true;
             this.etcLabel.BackColor = System.Drawing.Color.DarkSalmon;
             this.bunifuTransition2.SetDecoration(this.etcLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.etcLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.etcLabel, BunifuAnimatorNS.DecorationType.None);
-            this.etcLabel.Location = new System.Drawing.Point(86, 12);
+            this.etcLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.etcLabel.Location = new System.Drawing.Point(0, 0);
             this.etcLabel.Name = "etcLabel";
-            this.etcLabel.Size = new System.Drawing.Size(44, 25);
+            this.etcLabel.Size = new System.Drawing.Size(208, 46);
             this.etcLabel.TabIndex = 21;
             this.etcLabel.Text = "etc";
             this.etcLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -324,19 +318,16 @@
             this.leapmotionPanel.Name = "leapmotionPanel";
             this.leapmotionPanel.Size = new System.Drawing.Size(204, 46);
             this.leapmotionPanel.TabIndex = 5;
-            this.leapmotionPanel.Click += new System.EventHandler(this.leapmotionTab_Click);
-            this.leapmotionPanel.MouseEnter += new System.EventHandler(this.leapmotionTab_MouseEnter);
-            this.leapmotionPanel.MouseLeave += new System.EventHandler(this.tab_MouseLeave);
             // 
             // leapmotionLabel
             // 
-            this.leapmotionLabel.AutoSize = true;
             this.bunifuTransition2.SetDecoration(this.leapmotionLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.leapmotionLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.leapmotionLabel, BunifuAnimatorNS.DecorationType.None);
-            this.leapmotionLabel.Location = new System.Drawing.Point(45, 12);
+            this.leapmotionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.leapmotionLabel.Location = new System.Drawing.Point(0, 0);
             this.leapmotionLabel.Name = "leapmotionLabel";
-            this.leapmotionLabel.Size = new System.Drawing.Size(134, 25);
+            this.leapmotionLabel.Size = new System.Drawing.Size(204, 46);
             this.leapmotionLabel.TabIndex = 21;
             this.leapmotionLabel.Text = "Leapmotion";
             this.leapmotionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -359,19 +350,16 @@
             this.droneControlPanel.Name = "droneControlPanel";
             this.droneControlPanel.Size = new System.Drawing.Size(204, 46);
             this.droneControlPanel.TabIndex = 3;
-            this.droneControlPanel.Click += new System.EventHandler(this.droneControlTab_Click);
-            this.droneControlPanel.MouseEnter += new System.EventHandler(this.droneControlTab_MouseEnter);
-            this.droneControlPanel.MouseLeave += new System.EventHandler(this.tab_MouseLeave);
             // 
             // droneControlLabel
             // 
-            this.droneControlLabel.AutoSize = true;
             this.bunifuTransition2.SetDecoration(this.droneControlLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.droneControlLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.droneControlLabel, BunifuAnimatorNS.DecorationType.None);
-            this.droneControlLabel.Location = new System.Drawing.Point(33, 12);
+            this.droneControlLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.droneControlLabel.Location = new System.Drawing.Point(0, 0);
             this.droneControlLabel.Name = "droneControlLabel";
-            this.droneControlLabel.Size = new System.Drawing.Size(158, 25);
+            this.droneControlLabel.Size = new System.Drawing.Size(204, 46);
             this.droneControlLabel.TabIndex = 21;
             this.droneControlLabel.Text = "Drone Control";
             this.droneControlLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -394,19 +382,16 @@
             this.cameraPanel.Name = "cameraPanel";
             this.cameraPanel.Size = new System.Drawing.Size(204, 46);
             this.cameraPanel.TabIndex = 2;
-            this.cameraPanel.Click += new System.EventHandler(this.cameraTab_Click);
-            this.cameraPanel.MouseEnter += new System.EventHandler(this.cameraTab_MouseEnter);
-            this.cameraPanel.MouseLeave += new System.EventHandler(this.tab_MouseLeave);
             // 
             // cameraLabel
             // 
-            this.cameraLabel.AutoSize = true;
             this.bunifuTransition2.SetDecoration(this.cameraLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.cameraLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.cameraLabel, BunifuAnimatorNS.DecorationType.None);
-            this.cameraLabel.Location = new System.Drawing.Point(63, 12);
+            this.cameraLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cameraLabel.Location = new System.Drawing.Point(0, 0);
             this.cameraLabel.Name = "cameraLabel";
-            this.cameraLabel.Size = new System.Drawing.Size(93, 25);
+            this.cameraLabel.Size = new System.Drawing.Size(204, 46);
             this.cameraLabel.TabIndex = 21;
             this.cameraLabel.Text = "Camera";
             this.cameraLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -618,66 +603,66 @@
             // 
             this.bunifuTransition.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
             this.bunifuTransition.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(0);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 1F;
-            this.bunifuTransition.DefaultAnimation = animation1;
+            animation10.AnimateOnlyDifferences = true;
+            animation10.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.BlindCoeff")));
+            animation10.LeafCoeff = 0F;
+            animation10.MaxTime = 1F;
+            animation10.MinTime = 0F;
+            animation10.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.MosaicCoeff")));
+            animation10.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation10.MosaicShift")));
+            animation10.MosaicSize = 0;
+            animation10.Padding = new System.Windows.Forms.Padding(0);
+            animation10.RotateCoeff = 0F;
+            animation10.RotateLimit = 0F;
+            animation10.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.ScaleCoeff")));
+            animation10.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.SlideCoeff")));
+            animation10.TimeCoeff = 0F;
+            animation10.TransparencyCoeff = 1F;
+            this.bunifuTransition.DefaultAnimation = animation10;
             this.bunifuTransition.Interval = 20;
             // 
             // bunifuTransition1
             // 
             this.bunifuTransition1.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
             this.bunifuTransition1.Cursor = null;
-            animation2.AnimateOnlyDifferences = true;
-            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
-            animation2.LeafCoeff = 0F;
-            animation2.MaxTime = 1F;
-            animation2.MinTime = 0F;
-            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
-            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
-            animation2.MosaicSize = 0;
-            animation2.Padding = new System.Windows.Forms.Padding(0);
-            animation2.RotateCoeff = 0F;
-            animation2.RotateLimit = 0F;
-            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
-            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
-            animation2.TimeCoeff = 0F;
-            animation2.TransparencyCoeff = 1F;
-            this.bunifuTransition1.DefaultAnimation = animation2;
+            animation11.AnimateOnlyDifferences = true;
+            animation11.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.BlindCoeff")));
+            animation11.LeafCoeff = 0F;
+            animation11.MaxTime = 1F;
+            animation11.MinTime = 0F;
+            animation11.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.MosaicCoeff")));
+            animation11.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation11.MosaicShift")));
+            animation11.MosaicSize = 0;
+            animation11.Padding = new System.Windows.Forms.Padding(0);
+            animation11.RotateCoeff = 0F;
+            animation11.RotateLimit = 0F;
+            animation11.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.ScaleCoeff")));
+            animation11.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.SlideCoeff")));
+            animation11.TimeCoeff = 0F;
+            animation11.TransparencyCoeff = 1F;
+            this.bunifuTransition1.DefaultAnimation = animation11;
             this.bunifuTransition1.Interval = 20;
             // 
             // bunifuTransition2
             // 
             this.bunifuTransition2.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
             this.bunifuTransition2.Cursor = null;
-            animation3.AnimateOnlyDifferences = true;
-            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
-            animation3.LeafCoeff = 0F;
-            animation3.MaxTime = 1F;
-            animation3.MinTime = 0F;
-            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
-            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
-            animation3.MosaicSize = 0;
-            animation3.Padding = new System.Windows.Forms.Padding(0);
-            animation3.RotateCoeff = 0F;
-            animation3.RotateLimit = 0F;
-            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
-            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
-            animation3.TimeCoeff = 0F;
-            animation3.TransparencyCoeff = 1F;
-            this.bunifuTransition2.DefaultAnimation = animation3;
+            animation12.AnimateOnlyDifferences = true;
+            animation12.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.BlindCoeff")));
+            animation12.LeafCoeff = 0F;
+            animation12.MaxTime = 1F;
+            animation12.MinTime = 0F;
+            animation12.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.MosaicCoeff")));
+            animation12.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation12.MosaicShift")));
+            animation12.MosaicSize = 0;
+            animation12.Padding = new System.Windows.Forms.Padding(0);
+            animation12.RotateCoeff = 0F;
+            animation12.RotateLimit = 0F;
+            animation12.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.ScaleCoeff")));
+            animation12.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.SlideCoeff")));
+            animation12.TimeCoeff = 0F;
+            animation12.TransparencyCoeff = 1F;
+            this.bunifuTransition2.DefaultAnimation = animation12;
             this.bunifuTransition2.Interval = 20;
             // 
             // MainView
@@ -698,15 +683,10 @@
             this.connectionPanel.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.detectFirePanel.ResumeLayout(false);
-            this.detectFirePanel.PerformLayout();
             this.etcPanel.ResumeLayout(false);
-            this.etcPanel.PerformLayout();
             this.leapmotionPanel.ResumeLayout(false);
-            this.leapmotionPanel.PerformLayout();
             this.droneControlPanel.ResumeLayout(false);
-            this.droneControlPanel.PerformLayout();
             this.cameraPanel.ResumeLayout(false);
-            this.cameraPanel.PerformLayout();
             this.connectionIconsPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.droneImageButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.raspCamImageButton)).EndInit();

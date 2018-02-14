@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Fire_Detector.MainForm;
 
 namespace Fire_Detector.Control
 {
-    public partial class MainView : UserControl
+    public partial class MainView : UserControl, IStateChangedListener
     {
         public MainView()
         {
@@ -35,18 +30,14 @@ namespace Fire_Detector.Control
 
         private void RaspCamImageButton_Click(object sender, EventArgs e)
         {
-            if (this.raspCamProgressbar.animated == true)
-            {        
-                this.raspCamProgressbar.Value = 0;
-                this.raspCamProgressbar.animated = false;
-                this.raspCamProgressbar.ProgressBackColor = System.Drawing.Color.FromArgb(255, 200, 150);
-            }        
-            else     
-            {        
-                this.raspCamProgressbar.Value = 15;
-                this.raspCamProgressbar.animated = true;
-                this.raspCamProgressbar.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            }
+            var mainform = this.FindForm() as MainForm;
+            if(mainform == null)
+                return;
+
+            if(mainform.Receiver.Connected)
+                mainform.DisconnectToCamera();
+            else
+                mainform.ConnectToCamera();
         }
 
         private void LeapmotionImageButton_Click(object sender, EventArgs e)
@@ -87,23 +78,6 @@ namespace Fire_Detector.Control
 
             this.Visible = false;
             mainform.defaultView.Visible = true;
-        }
-
-        private void panel4_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void panel4_MouseEnter(object sender, EventArgs e)
-        {
-            try
-            {
-                this.activatedConnectionIconPanel.BackColor = Color.Gray;
-                this.activatedConnectionIconPanel.Visible = true;
-                this.connectionIconsPanel.Visible = false;
-            }
-            catch(Exception)
-            { }
         }
 
         private void cameraTab_MouseEnter(object sender, EventArgs e)
@@ -223,6 +197,23 @@ namespace Fire_Detector.Control
             }
             catch (Exception)
             { }
+        }
+
+        public void OnStateChanged(bool connected)
+        {
+            try
+            {
+                this.raspCamProgressbar.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.raspCamProgressbar.Value = connected ? 15 : 0;
+                    this.raspCamProgressbar.animated = connected;
+                    this.raspCamProgressbar.ProgressBackColor = connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
+                }));
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
