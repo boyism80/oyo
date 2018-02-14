@@ -118,26 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bunifuCircleProgressbar3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADwSURBVEhL7ZQhE4JAEIWJRCPRaDQaiUaikZ9gNPoPjESj
-        kWg8GtFoNBKNRv3WeTAo8c7i3DfzZpa3O2/nmIMkEolEguGcS1EuzWT/BlvQNM0RPb/U0ltoLByEZoTf
-        xouQGz0/mFlqPAyEnhR+GZ9Kp6/Va2X7o1P2p5nLHsBL6XU2Q53L9oOgQkudrAn0Dlq6l+UHQaWW1rIm
-        2DLNHGT5QeBSgXfqVPYH9N6Xin4hyx8Cr1pcyRpg0Va9jjrcd0vYSsEmu8F7tKM+9z7PpcbDQeia8PG3
-        2stee/iFPYTbL9Bus93WinqDMrUjkchfkCQvKir9n/kIbcgAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="bunifuCircleProgressbar2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADwSURBVEhL7ZQhE4JAEIWJRCPRaDQaiUaikZ9gNPoPjESj
-        kWg8GtFoNBKNRv3WeTAo8c7i3DfzZpa3O2/nmIMkEolEguGcS1EuzWT/BlvQNM0RPb/U0ltoLByEZoTf
-        xouQGz0/mFlqPAyEnhR+GZ9Kp6/Va2X7o1P2p5nLHsBL6XU2Q53L9oOgQkudrAn0Dlq6l+UHQaWW1rIm
-        2DLNHGT5QeBSgXfqVPYH9N6Xin4hyx8Cr1pcyRpg0Va9jjrcd0vYSsEmu8F7tKM+9z7PpcbDQeia8PG3
-        2stee/iFPYTbL9Bus93WinqDMrUjkchfkCQvKir9n/kIbcgAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="connectLeapmotionButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhvAK8AuZ/ANLS0i0tLUFBQdzc3DQ0NNTU1NDQ0ISEhDExMSkpKcTExNra2iEhIcfHx8DAwLq6
@@ -2446,6 +2426,26 @@
         Dh0pbKh6YHIO6IEWXodk+1WFDYfDL738oCAM1xZ6T+37swlDPoSJnG7sqI1FgEszwJi+d5CgbHYJd0zK
         Vj1lukRs186OXQFDLgx1Ur9tDYeJ4A3+PzkRFI2C6MAJIWbou7nG+UIIIYQQQgjRx5s3/wGQm3j5Dcba
         SgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="bunifuCircleProgressbar3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADwSURBVEhL7ZQhE4JAEIWJRCPRaDQaiUaikZ9gNPoPjESj
+        kWg8GtFoNBKNRv3WeTAo8c7i3DfzZpa3O2/nmIMkEolEguGcS1EuzWT/BlvQNM0RPb/U0ltoLByEZoTf
+        xouQGz0/mFlqPAyEnhR+GZ9Kp6/Va2X7o1P2p5nLHsBL6XU2Q53L9oOgQkudrAn0Dlq6l+UHQaWW1rIm
+        2DLNHGT5QeBSgXfqVPYH9N6Xin4hyx8Cr1pcyRpg0Va9jjrcd0vYSsEmu8F7tKM+9z7PpcbDQeia8PG3
+        2stee/iFPYTbL9Bus93WinqDMrUjkchfkCQvKir9n/kIbcgAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="bunifuCircleProgressbar2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADwSURBVEhL7ZQhE4JAEIWJRCPRaDQaiUaikZ9gNPoPjESj
+        kWg8GtFoNBKNRv3WeTAo8c7i3DfzZpa3O2/nmIMkEolEguGcS1EuzWT/BlvQNM0RPb/U0ltoLByEZoTf
+        xouQGz0/mFlqPAyEnhR+GZ9Kp6/Va2X7o1P2p5nLHsBL6XU2Q53L9oOgQkudrAn0Dlq6l+UHQaWW1rIm
+        2DLNHGT5QeBSgXfqVPYH9N6Xin4hyx8Cr1pcyRpg0Va9jjrcd0vYSsEmu8F7tKM+9z7PpcbDQeia8PG3
+        2stee/iFPYTbL9Bus93WinqDMrUjkchfkCQvKir9n/kIbcgAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="buttonCollapse.Iconimage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

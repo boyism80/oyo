@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation10 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation4 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
-            BunifuAnimatorNS.Animation animation11 = new BunifuAnimatorNS.Animation();
-            BunifuAnimatorNS.Animation animation12 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation5 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation6 = new BunifuAnimatorNS.Animation();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -123,11 +123,11 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel5, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel5, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel5, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel5.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel5.ForeColor = System.Drawing.Color.DarkSalmon;
             this.bunifuCustomLabel5.Location = new System.Drawing.Point(218, 111);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
-            this.bunifuCustomLabel5.Size = new System.Drawing.Size(55, 16);
+            this.bunifuCustomLabel5.Size = new System.Drawing.Size(49, 15);
             this.bunifuCustomLabel5.TabIndex = 0;
             this.bunifuCustomLabel5.Text = "JE Park";
             // 
@@ -137,11 +137,11 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel4, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel4, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel4, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel4.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel4.ForeColor = System.Drawing.Color.LightCoral;
             this.bunifuCustomLabel4.Location = new System.Drawing.Point(168, 111);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
-            this.bunifuCustomLabel4.Size = new System.Drawing.Size(49, 16);
+            this.bunifuCustomLabel4.Size = new System.Drawing.Size(44, 15);
             this.bunifuCustomLabel4.TabIndex = 0;
             this.bunifuCustomLabel4.Text = "JS Kim";
             // 
@@ -151,11 +151,11 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel3.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.OrangeRed;
             this.bunifuCustomLabel3.Location = new System.Drawing.Point(109, 111);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
-            this.bunifuCustomLabel3.Size = new System.Drawing.Size(62, 16);
+            this.bunifuCustomLabel3.Size = new System.Drawing.Size(53, 15);
             this.bunifuCustomLabel3.TabIndex = 0;
             this.bunifuCustomLabel3.Text = "SH Chae";
             // 
@@ -165,11 +165,11 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel2, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel2, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel2, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel2.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.Tomato;
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(109, 84);
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(109, 86);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(184, 20);
+            this.bunifuCustomLabel2.Size = new System.Drawing.Size(159, 18);
             this.bunifuCustomLabel2.TabIndex = 0;
             this.bunifuCustomLabel2.Text = "Old Young Old in KPU";
             // 
@@ -179,11 +179,11 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.Coral;
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(107, 57);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(310, 29);
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(291, 27);
             this.bunifuCustomLabel1.TabIndex = 0;
             this.bunifuCustomLabel1.Text = "Detecting Fire with Drone";
             // 
@@ -256,10 +256,12 @@
             // detectFireLabel
             // 
             this.detectFireLabel.BackColor = System.Drawing.Color.LightCoral;
+            this.detectFireLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition2.SetDecoration(this.detectFireLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.detectFireLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.detectFireLabel, BunifuAnimatorNS.DecorationType.None);
             this.detectFireLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.detectFireLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.detectFireLabel.Location = new System.Drawing.Point(0, 0);
             this.detectFireLabel.Name = "detectFireLabel";
             this.detectFireLabel.Size = new System.Drawing.Size(204, 46);
@@ -289,10 +291,12 @@
             // etcLabel
             // 
             this.etcLabel.BackColor = System.Drawing.Color.DarkSalmon;
+            this.etcLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition2.SetDecoration(this.etcLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.etcLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.etcLabel, BunifuAnimatorNS.DecorationType.None);
             this.etcLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.etcLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.etcLabel.Location = new System.Drawing.Point(0, 0);
             this.etcLabel.Name = "etcLabel";
             this.etcLabel.Size = new System.Drawing.Size(208, 46);
@@ -321,10 +325,12 @@
             // 
             // leapmotionLabel
             // 
+            this.leapmotionLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition2.SetDecoration(this.leapmotionLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.leapmotionLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.leapmotionLabel, BunifuAnimatorNS.DecorationType.None);
             this.leapmotionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.leapmotionLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.leapmotionLabel.Location = new System.Drawing.Point(0, 0);
             this.leapmotionLabel.Name = "leapmotionLabel";
             this.leapmotionLabel.Size = new System.Drawing.Size(204, 46);
@@ -353,10 +359,12 @@
             // 
             // droneControlLabel
             // 
+            this.droneControlLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition2.SetDecoration(this.droneControlLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.droneControlLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.droneControlLabel, BunifuAnimatorNS.DecorationType.None);
             this.droneControlLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.droneControlLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.droneControlLabel.Location = new System.Drawing.Point(0, 0);
             this.droneControlLabel.Name = "droneControlLabel";
             this.droneControlLabel.Size = new System.Drawing.Size(204, 46);
@@ -385,10 +393,12 @@
             // 
             // cameraLabel
             // 
+            this.cameraLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition2.SetDecoration(this.cameraLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.cameraLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.cameraLabel, BunifuAnimatorNS.DecorationType.None);
             this.cameraLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cameraLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cameraLabel.Location = new System.Drawing.Point(0, 0);
             this.cameraLabel.Name = "cameraLabel";
             this.cameraLabel.Size = new System.Drawing.Size(204, 46);
@@ -434,6 +444,7 @@
             // droneImageButton
             // 
             this.droneImageButton.BackColor = System.Drawing.Color.Transparent;
+            this.droneImageButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition.SetDecoration(this.droneImageButton, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.droneImageButton, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.droneImageButton, BunifuAnimatorNS.DecorationType.None);
@@ -451,6 +462,7 @@
             // raspCamImageButton
             // 
             this.raspCamImageButton.BackColor = System.Drawing.Color.Transparent;
+            this.raspCamImageButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition.SetDecoration(this.raspCamImageButton, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.raspCamImageButton, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.raspCamImageButton, BunifuAnimatorNS.DecorationType.None);
@@ -470,9 +482,9 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel7, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel7, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel7, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel7.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel7.ForeColor = System.Drawing.Color.Coral;
-            this.bunifuCustomLabel7.Location = new System.Drawing.Point(426, 229);
+            this.bunifuCustomLabel7.Location = new System.Drawing.Point(426, 233);
             this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
             this.bunifuCustomLabel7.Size = new System.Drawing.Size(200, 31);
             this.bunifuCustomLabel7.TabIndex = 16;
@@ -482,6 +494,7 @@
             // leapMotionImageButton
             // 
             this.leapMotionImageButton.BackColor = System.Drawing.Color.Transparent;
+            this.leapMotionImageButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuTransition.SetDecoration(this.leapMotionImageButton, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.leapMotionImageButton, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.leapMotionImageButton, BunifuAnimatorNS.DecorationType.None);
@@ -526,9 +539,9 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel6.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel6.ForeColor = System.Drawing.Color.Coral;
-            this.bunifuCustomLabel6.Location = new System.Drawing.Point(84, 229);
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(84, 233);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
             this.bunifuCustomLabel6.Size = new System.Drawing.Size(200, 31);
             this.bunifuCustomLabel6.TabIndex = 13;
@@ -565,9 +578,9 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel8.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel8.ForeColor = System.Drawing.Color.Coral;
-            this.bunifuCustomLabel8.Location = new System.Drawing.Point(752, 229);
+            this.bunifuCustomLabel8.Location = new System.Drawing.Point(752, 233);
             this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
             this.bunifuCustomLabel8.Size = new System.Drawing.Size(200, 31);
             this.bunifuCustomLabel8.TabIndex = 19;
@@ -603,66 +616,66 @@
             // 
             this.bunifuTransition.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
             this.bunifuTransition.Cursor = null;
-            animation10.AnimateOnlyDifferences = true;
-            animation10.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.BlindCoeff")));
-            animation10.LeafCoeff = 0F;
-            animation10.MaxTime = 1F;
-            animation10.MinTime = 0F;
-            animation10.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.MosaicCoeff")));
-            animation10.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation10.MosaicShift")));
-            animation10.MosaicSize = 0;
-            animation10.Padding = new System.Windows.Forms.Padding(0);
-            animation10.RotateCoeff = 0F;
-            animation10.RotateLimit = 0F;
-            animation10.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.ScaleCoeff")));
-            animation10.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.SlideCoeff")));
-            animation10.TimeCoeff = 0F;
-            animation10.TransparencyCoeff = 1F;
-            this.bunifuTransition.DefaultAnimation = animation10;
+            animation4.AnimateOnlyDifferences = true;
+            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
+            animation4.LeafCoeff = 0F;
+            animation4.MaxTime = 1F;
+            animation4.MinTime = 0F;
+            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
+            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
+            animation4.MosaicSize = 0;
+            animation4.Padding = new System.Windows.Forms.Padding(0);
+            animation4.RotateCoeff = 0F;
+            animation4.RotateLimit = 0F;
+            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
+            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
+            animation4.TimeCoeff = 0F;
+            animation4.TransparencyCoeff = 1F;
+            this.bunifuTransition.DefaultAnimation = animation4;
             this.bunifuTransition.Interval = 20;
             // 
             // bunifuTransition1
             // 
             this.bunifuTransition1.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
             this.bunifuTransition1.Cursor = null;
-            animation11.AnimateOnlyDifferences = true;
-            animation11.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.BlindCoeff")));
-            animation11.LeafCoeff = 0F;
-            animation11.MaxTime = 1F;
-            animation11.MinTime = 0F;
-            animation11.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.MosaicCoeff")));
-            animation11.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation11.MosaicShift")));
-            animation11.MosaicSize = 0;
-            animation11.Padding = new System.Windows.Forms.Padding(0);
-            animation11.RotateCoeff = 0F;
-            animation11.RotateLimit = 0F;
-            animation11.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.ScaleCoeff")));
-            animation11.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.SlideCoeff")));
-            animation11.TimeCoeff = 0F;
-            animation11.TransparencyCoeff = 1F;
-            this.bunifuTransition1.DefaultAnimation = animation11;
+            animation5.AnimateOnlyDifferences = true;
+            animation5.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.BlindCoeff")));
+            animation5.LeafCoeff = 0F;
+            animation5.MaxTime = 1F;
+            animation5.MinTime = 0F;
+            animation5.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicCoeff")));
+            animation5.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicShift")));
+            animation5.MosaicSize = 0;
+            animation5.Padding = new System.Windows.Forms.Padding(0);
+            animation5.RotateCoeff = 0F;
+            animation5.RotateLimit = 0F;
+            animation5.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.ScaleCoeff")));
+            animation5.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.SlideCoeff")));
+            animation5.TimeCoeff = 0F;
+            animation5.TransparencyCoeff = 1F;
+            this.bunifuTransition1.DefaultAnimation = animation5;
             this.bunifuTransition1.Interval = 20;
             // 
             // bunifuTransition2
             // 
             this.bunifuTransition2.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
             this.bunifuTransition2.Cursor = null;
-            animation12.AnimateOnlyDifferences = true;
-            animation12.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.BlindCoeff")));
-            animation12.LeafCoeff = 0F;
-            animation12.MaxTime = 1F;
-            animation12.MinTime = 0F;
-            animation12.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.MosaicCoeff")));
-            animation12.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation12.MosaicShift")));
-            animation12.MosaicSize = 0;
-            animation12.Padding = new System.Windows.Forms.Padding(0);
-            animation12.RotateCoeff = 0F;
-            animation12.RotateLimit = 0F;
-            animation12.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.ScaleCoeff")));
-            animation12.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.SlideCoeff")));
-            animation12.TimeCoeff = 0F;
-            animation12.TransparencyCoeff = 1F;
-            this.bunifuTransition2.DefaultAnimation = animation12;
+            animation6.AnimateOnlyDifferences = true;
+            animation6.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.BlindCoeff")));
+            animation6.LeafCoeff = 0F;
+            animation6.MaxTime = 1F;
+            animation6.MinTime = 0F;
+            animation6.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.MosaicCoeff")));
+            animation6.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation6.MosaicShift")));
+            animation6.MosaicSize = 0;
+            animation6.Padding = new System.Windows.Forms.Padding(0);
+            animation6.RotateCoeff = 0F;
+            animation6.RotateLimit = 0F;
+            animation6.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.ScaleCoeff")));
+            animation6.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.SlideCoeff")));
+            animation6.TimeCoeff = 0F;
+            animation6.TransparencyCoeff = 1F;
+            this.bunifuTransition2.DefaultAnimation = animation6;
             this.bunifuTransition2.Interval = 20;
             // 
             // MainView

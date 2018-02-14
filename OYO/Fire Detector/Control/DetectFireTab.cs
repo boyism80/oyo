@@ -17,11 +17,34 @@ namespace Fire_Detector.Control
             InitializeComponent();
         }
 
-        private void desiredTemperatureProgressbar_ValueChanged(object sender, EventArgs e)
+        private void desiredTemperatureSlider_ValueChanged(object sender, EventArgs e)
         {
-            desiredTemperatureLabel.Text = desiredTemperatureProgressbar.Value.ToString();
+            desiredTemperatureLabel.Text = desiredTemperatureSlider.Value.ToString();
 
 
+        }
+
+        private void detectionStateSwitch_OnValueChange(object sender, EventArgs e)
+        {
+            if (detectionStateSwitch.Value == true)
+            {
+                detectionStateLabel.Text = "감지중";
+                fireDetectionTemperatruePanel.Visible = true;
+            }
+            else
+            {
+                detectionStateLabel.Text = "감지 안함";
+                fireDetectionTemperatruePanel.Visible = false;
+            }
+            
+
+        }
+
+        private void notificationSwitch_OnValueChange(object sender, EventArgs e)
+        {
+            if (notificationSwitch.Value == true)
+                notificationLabel.Text = "On";
+            else notificationLabel.Text = "Off";
         }
     }
 }

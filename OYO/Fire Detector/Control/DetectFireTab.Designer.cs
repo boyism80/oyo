@@ -41,6 +41,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel10 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.desiredTemperatureSlider = new Bunifu.Framework.UI.BunifuSlider();
+            this.desiredTemperatureLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel13 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel12 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel11 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -52,13 +55,13 @@
             this.maxTemperature = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.desiredTemperatureLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel13 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.desiredTemperatureProgressbar = new Bunifu.Framework.UI.BunifuTrackbar();
+            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.fireDetectionTemperatruePanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.fireDetectionTemperatruePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonCollapse
@@ -108,16 +111,13 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.notificationSwitch);
             this.panel1.Controls.Add(this.detectionStateSwitch);
-            this.panel1.Controls.Add(this.notificationLabel);
-            this.panel1.Controls.Add(this.bunifuCustomLabel2);
             this.panel1.Controls.Add(this.detectionStateLabel);
             this.panel1.Controls.Add(this.bunifuCustomLabel9);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 278);
+            this.panel1.Location = new System.Drawing.Point(0, 232);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(350, 109);
+            this.panel1.Size = new System.Drawing.Size(350, 36);
             this.panel1.TabIndex = 23;
             // 
             // notificationSwitch
@@ -126,13 +126,14 @@
             this.notificationSwitch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("notificationSwitch.BackgroundImage")));
             this.notificationSwitch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.notificationSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.notificationSwitch.Location = new System.Drawing.Point(118, 40);
+            this.notificationSwitch.Location = new System.Drawing.Point(116, 6);
             this.notificationSwitch.Name = "notificationSwitch";
             this.notificationSwitch.OffColor = System.Drawing.Color.Gray;
             this.notificationSwitch.OnColor = System.Drawing.Color.Salmon;
             this.notificationSwitch.Size = new System.Drawing.Size(35, 20);
             this.notificationSwitch.TabIndex = 7;
             this.notificationSwitch.Value = true;
+            this.notificationSwitch.OnValueChange += new System.EventHandler(this.notificationSwitch_OnValueChange);
             // 
             // detectionStateSwitch
             // 
@@ -140,20 +141,21 @@
             this.detectionStateSwitch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("detectionStateSwitch.BackgroundImage")));
             this.detectionStateSwitch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.detectionStateSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.detectionStateSwitch.Location = new System.Drawing.Point(118, 6);
+            this.detectionStateSwitch.Location = new System.Drawing.Point(116, 6);
             this.detectionStateSwitch.Name = "detectionStateSwitch";
             this.detectionStateSwitch.OffColor = System.Drawing.Color.Gray;
             this.detectionStateSwitch.OnColor = System.Drawing.Color.Salmon;
             this.detectionStateSwitch.Size = new System.Drawing.Size(35, 20);
             this.detectionStateSwitch.TabIndex = 7;
             this.detectionStateSwitch.Value = true;
+            this.detectionStateSwitch.OnValueChange += new System.EventHandler(this.detectionStateSwitch_OnValueChange);
             // 
             // notificationLabel
             // 
             this.notificationLabel.AutoSize = true;
             this.notificationLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.notificationLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.notificationLabel.Location = new System.Drawing.Point(168, 44);
+            this.notificationLabel.Location = new System.Drawing.Point(166, 10);
             this.notificationLabel.Name = "notificationLabel";
             this.notificationLabel.Size = new System.Drawing.Size(23, 15);
             this.notificationLabel.TabIndex = 1;
@@ -164,7 +166,7 @@
             this.bunifuCustomLabel2.AutoSize = true;
             this.bunifuCustomLabel2.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(40, 44);
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(38, 10);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(28, 15);
             this.bunifuCustomLabel2.TabIndex = 0;
@@ -175,7 +177,7 @@
             this.detectionStateLabel.AutoSize = true;
             this.detectionStateLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.detectionStateLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.detectionStateLabel.Location = new System.Drawing.Point(168, 10);
+            this.detectionStateLabel.Location = new System.Drawing.Point(166, 10);
             this.detectionStateLabel.Name = "detectionStateLabel";
             this.detectionStateLabel.Size = new System.Drawing.Size(40, 15);
             this.detectionStateLabel.TabIndex = 1;
@@ -186,18 +188,18 @@
             this.bunifuCustomLabel9.AutoSize = true;
             this.bunifuCustomLabel9.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel9.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bunifuCustomLabel9.Location = new System.Drawing.Point(40, 10);
+            this.bunifuCustomLabel9.Location = new System.Drawing.Point(38, 10);
             this.bunifuCustomLabel9.Name = "bunifuCustomLabel9";
-            this.bunifuCustomLabel9.Size = new System.Drawing.Size(51, 15);
+            this.bunifuCustomLabel9.Size = new System.Drawing.Size(73, 15);
             this.bunifuCustomLabel9.TabIndex = 0;
-            this.bunifuCustomLabel9.Text = "산불감지";
+            this.bunifuCustomLabel9.Text = "산불감지모드";
             // 
             // panel3
             // 
             this.panel3.AutoSize = true;
             this.panel3.Controls.Add(this.bunifuCustomLabel10);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 252);
+            this.panel3.Location = new System.Drawing.Point(0, 206);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5);
             this.panel3.Size = new System.Drawing.Size(350, 26);
@@ -206,19 +208,16 @@
             // bunifuCustomLabel10
             // 
             this.bunifuCustomLabel10.AutoSize = true;
-            this.bunifuCustomLabel10.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel10.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel10.ForeColor = System.Drawing.Color.Salmon;
             this.bunifuCustomLabel10.Location = new System.Drawing.Point(24, 5);
             this.bunifuCustomLabel10.Name = "bunifuCustomLabel10";
-            this.bunifuCustomLabel10.Size = new System.Drawing.Size(34, 16);
+            this.bunifuCustomLabel10.Size = new System.Drawing.Size(33, 16);
             this.bunifuCustomLabel10.TabIndex = 0;
             this.bunifuCustomLabel10.Text = "상태";
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.desiredTemperatureLabel);
-            this.panel2.Controls.Add(this.bunifuCustomLabel13);
-            this.panel2.Controls.Add(this.desiredTemperatureProgressbar);
             this.panel2.Controls.Add(this.bunifuCustomLabel12);
             this.panel2.Controls.Add(this.bunifuCustomLabel8);
             this.panel2.Controls.Add(this.bunifuCustomLabel11);
@@ -231,8 +230,43 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 96);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(350, 156);
+            this.panel2.Size = new System.Drawing.Size(350, 110);
             this.panel2.TabIndex = 21;
+            // 
+            // desiredTemperatureSlider
+            // 
+            this.desiredTemperatureSlider.BackColor = System.Drawing.Color.Transparent;
+            this.desiredTemperatureSlider.BackgroudColor = System.Drawing.Color.DarkGray;
+            this.desiredTemperatureSlider.BorderRadius = 0;
+            this.desiredTemperatureSlider.IndicatorColor = System.Drawing.Color.Salmon;
+            this.desiredTemperatureSlider.Location = new System.Drawing.Point(116, 39);
+            this.desiredTemperatureSlider.MaximumValue = 300;
+            this.desiredTemperatureSlider.Name = "desiredTemperatureSlider";
+            this.desiredTemperatureSlider.Size = new System.Drawing.Size(170, 28);
+            this.desiredTemperatureSlider.TabIndex = 15;
+            this.desiredTemperatureSlider.Value = 0;
+            this.desiredTemperatureSlider.ValueChanged += new System.EventHandler(this.desiredTemperatureSlider_ValueChanged);
+            // 
+            // desiredTemperatureLabel
+            // 
+            this.desiredTemperatureLabel.AutoSize = true;
+            this.desiredTemperatureLabel.ForeColor = System.Drawing.Color.Salmon;
+            this.desiredTemperatureLabel.Location = new System.Drawing.Point(294, 44);
+            this.desiredTemperatureLabel.Name = "desiredTemperatureLabel";
+            this.desiredTemperatureLabel.Size = new System.Drawing.Size(11, 12);
+            this.desiredTemperatureLabel.TabIndex = 14;
+            this.desiredTemperatureLabel.Text = "0";
+            // 
+            // bunifuCustomLabel13
+            // 
+            this.bunifuCustomLabel13.AutoSize = true;
+            this.bunifuCustomLabel13.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel13.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bunifuCustomLabel13.Location = new System.Drawing.Point(39, 44);
+            this.bunifuCustomLabel13.Name = "bunifuCustomLabel13";
+            this.bunifuCustomLabel13.Size = new System.Drawing.Size(71, 15);
+            this.bunifuCustomLabel13.TabIndex = 12;
+            this.bunifuCustomLabel13.Text = "산불인식온도";
             // 
             // bunifuCustomLabel12
             // 
@@ -263,9 +297,9 @@
             this.bunifuCustomLabel11.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel11.Location = new System.Drawing.Point(40, 78);
             this.bunifuCustomLabel11.Name = "bunifuCustomLabel11";
-            this.bunifuCustomLabel11.Size = new System.Drawing.Size(51, 15);
+            this.bunifuCustomLabel11.Size = new System.Drawing.Size(50, 15);
             this.bunifuCustomLabel11.TabIndex = 0;
-            this.bunifuCustomLabel11.Text = "최저온도";
+            this.bunifuCustomLabel11.Text = "평균온도";
             // 
             // bunifuCustomLabel7
             // 
@@ -347,7 +381,7 @@
             // bunifuCustomLabel3
             // 
             this.bunifuCustomLabel3.AutoSize = true;
-            this.bunifuCustomLabel3.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel3.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.Salmon;
             this.bunifuCustomLabel3.Location = new System.Drawing.Point(24, 5);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
@@ -355,48 +389,38 @@
             this.bunifuCustomLabel3.TabIndex = 0;
             this.bunifuCustomLabel3.Text = "온도";
             // 
-            // desiredTemperatureLabel
+            // bunifuCustomLabel1
             // 
-            this.desiredTemperatureLabel.AutoSize = true;
-            this.desiredTemperatureLabel.ForeColor = System.Drawing.Color.Salmon;
-            this.desiredTemperatureLabel.Location = new System.Drawing.Point(309, 111);
-            this.desiredTemperatureLabel.Name = "desiredTemperatureLabel";
-            this.desiredTemperatureLabel.Size = new System.Drawing.Size(11, 12);
-            this.desiredTemperatureLabel.TabIndex = 14;
-            this.desiredTemperatureLabel.Text = "0";
+            this.bunifuCustomLabel1.AutoSize = true;
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(317, 44);
+            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(21, 15);
+            this.bunifuCustomLabel1.TabIndex = 1;
+            this.bunifuCustomLabel1.Text = "ºC";
             // 
-            // bunifuCustomLabel13
+            // fireDetectionTemperatruePanel
             // 
-            this.bunifuCustomLabel13.AutoSize = true;
-            this.bunifuCustomLabel13.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel13.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bunifuCustomLabel13.Location = new System.Drawing.Point(39, 111);
-            this.bunifuCustomLabel13.Name = "bunifuCustomLabel13";
-            this.bunifuCustomLabel13.Size = new System.Drawing.Size(71, 15);
-            this.bunifuCustomLabel13.TabIndex = 12;
-            this.bunifuCustomLabel13.Text = "산불인식온도";
-            // 
-            // desiredTemperatureProgressbar
-            // 
-            this.desiredTemperatureProgressbar.BackColor = System.Drawing.Color.Transparent;
-            this.desiredTemperatureProgressbar.BackgroudColor = System.Drawing.Color.DarkGray;
-            this.desiredTemperatureProgressbar.BorderRadius = 0;
-            this.desiredTemperatureProgressbar.IndicatorColor = System.Drawing.Color.Salmon;
-            this.desiredTemperatureProgressbar.Location = new System.Drawing.Point(118, 105);
-            this.desiredTemperatureProgressbar.MaximumValue = 400;
-            this.desiredTemperatureProgressbar.MinimumValue = 0;
-            this.desiredTemperatureProgressbar.Name = "desiredTemperatureProgressbar";
-            this.desiredTemperatureProgressbar.Size = new System.Drawing.Size(181, 28);
-            this.desiredTemperatureProgressbar.SliderRadius = 0;
-            this.desiredTemperatureProgressbar.TabIndex = 13;
-            this.desiredTemperatureProgressbar.Value = 100;
-            this.desiredTemperatureProgressbar.ValueChanged += new System.EventHandler(this.desiredTemperatureProgressbar_ValueChanged);
+            this.fireDetectionTemperatruePanel.Controls.Add(this.desiredTemperatureSlider);
+            this.fireDetectionTemperatruePanel.Controls.Add(this.desiredTemperatureLabel);
+            this.fireDetectionTemperatruePanel.Controls.Add(this.notificationSwitch);
+            this.fireDetectionTemperatruePanel.Controls.Add(this.bunifuCustomLabel1);
+            this.fireDetectionTemperatruePanel.Controls.Add(this.bunifuCustomLabel2);
+            this.fireDetectionTemperatruePanel.Controls.Add(this.bunifuCustomLabel13);
+            this.fireDetectionTemperatruePanel.Controls.Add(this.notificationLabel);
+            this.fireDetectionTemperatruePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.fireDetectionTemperatruePanel.Location = new System.Drawing.Point(0, 268);
+            this.fireDetectionTemperatruePanel.Name = "fireDetectionTemperatruePanel";
+            this.fireDetectionTemperatruePanel.Size = new System.Drawing.Size(350, 72);
+            this.fireDetectionTemperatruePanel.TabIndex = 24;
             // 
             // DetectFireTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.fireDetectionTemperatruePanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -413,6 +437,8 @@
             this.panel2.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            this.fireDetectionTemperatruePanel.ResumeLayout(false);
+            this.fireDetectionTemperatruePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -444,6 +470,8 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
         private Bunifu.Framework.UI.BunifuCustomLabel desiredTemperatureLabel;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel13;
-        private Bunifu.Framework.UI.BunifuTrackbar desiredTemperatureProgressbar;
+        private Bunifu.Framework.UI.BunifuSlider desiredTemperatureSlider;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
+        private System.Windows.Forms.Panel fireDetectionTemperatruePanel;
     }
 }

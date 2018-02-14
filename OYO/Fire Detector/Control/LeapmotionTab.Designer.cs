@@ -32,10 +32,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.connectLeapmotionButton = new Bunifu.Framework.UI.BunifuImageButton();
+            this.connectLeapmotionProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.bunifuCircleProgressbar3 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
+            this.bunifuCircleProgressbar2 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -43,17 +47,13 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCircleProgressbar3 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
-            this.bunifuCircleProgressbar2 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
-            this.connectLeapmotionButton = new Bunifu.Framework.UI.BunifuImageButton();
-            this.connectLeapmotionProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.buttonCollapse = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.connectLeapmotionButton)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.connectLeapmotionButton)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -88,6 +88,42 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(350, 124);
             this.panel3.TabIndex = 34;
+            // 
+            // connectLeapmotionButton
+            // 
+            this.connectLeapmotionButton.BackColor = System.Drawing.Color.Transparent;
+            this.connectLeapmotionButton.Image = ((System.Drawing.Image)(resources.GetObject("connectLeapmotionButton.Image")));
+            this.connectLeapmotionButton.ImageActive = null;
+            this.connectLeapmotionButton.Location = new System.Drawing.Point(147, 32);
+            this.connectLeapmotionButton.Name = "connectLeapmotionButton";
+            this.connectLeapmotionButton.Size = new System.Drawing.Size(63, 61);
+            this.connectLeapmotionButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.connectLeapmotionButton.TabIndex = 29;
+            this.connectLeapmotionButton.TabStop = false;
+            this.connectLeapmotionButton.Zoom = 10;
+            this.connectLeapmotionButton.Click += new System.EventHandler(this.connectLeapmotionButton_Click);
+            // 
+            // connectLeapmotionProgressbar
+            // 
+            this.connectLeapmotionProgressbar.animated = false;
+            this.connectLeapmotionProgressbar.animationIterval = 5;
+            this.connectLeapmotionProgressbar.animationSpeed = 20;
+            this.connectLeapmotionProgressbar.BackColor = System.Drawing.Color.Transparent;
+            this.connectLeapmotionProgressbar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("connectLeapmotionProgressbar.BackgroundImage")));
+            this.connectLeapmotionProgressbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
+            this.connectLeapmotionProgressbar.ForeColor = System.Drawing.Color.SeaGreen;
+            this.connectLeapmotionProgressbar.LabelVisible = false;
+            this.connectLeapmotionProgressbar.LineProgressThickness = 5;
+            this.connectLeapmotionProgressbar.LineThickness = 5;
+            this.connectLeapmotionProgressbar.Location = new System.Drawing.Point(115, 0);
+            this.connectLeapmotionProgressbar.Margin = new System.Windows.Forms.Padding(8);
+            this.connectLeapmotionProgressbar.MaxValue = 100;
+            this.connectLeapmotionProgressbar.Name = "connectLeapmotionProgressbar";
+            this.connectLeapmotionProgressbar.ProgressBackColor = System.Drawing.Color.Gainsboro;
+            this.connectLeapmotionProgressbar.ProgressColor = System.Drawing.Color.OrangeRed;
+            this.connectLeapmotionProgressbar.Size = new System.Drawing.Size(125, 125);
+            this.connectLeapmotionProgressbar.TabIndex = 2;
+            this.connectLeapmotionProgressbar.Value = 0;
             // 
             // panel5
             // 
@@ -130,6 +166,50 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(350, 72);
             this.panel2.TabIndex = 2;
+            // 
+            // bunifuCircleProgressbar3
+            // 
+            this.bunifuCircleProgressbar3.animated = false;
+            this.bunifuCircleProgressbar3.animationIterval = 5;
+            this.bunifuCircleProgressbar3.animationSpeed = 3;
+            this.bunifuCircleProgressbar3.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuCircleProgressbar3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuCircleProgressbar3.BackgroundImage")));
+            this.bunifuCircleProgressbar3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
+            this.bunifuCircleProgressbar3.ForeColor = System.Drawing.Color.SeaGreen;
+            this.bunifuCircleProgressbar3.LabelVisible = false;
+            this.bunifuCircleProgressbar3.LineProgressThickness = 2;
+            this.bunifuCircleProgressbar3.LineThickness = 2;
+            this.bunifuCircleProgressbar3.Location = new System.Drawing.Point(89, 26);
+            this.bunifuCircleProgressbar3.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.bunifuCircleProgressbar3.MaxValue = 100;
+            this.bunifuCircleProgressbar3.Name = "bunifuCircleProgressbar3";
+            this.bunifuCircleProgressbar3.ProgressBackColor = System.Drawing.Color.Silver;
+            this.bunifuCircleProgressbar3.ProgressColor = System.Drawing.Color.Salmon;
+            this.bunifuCircleProgressbar3.Size = new System.Drawing.Size(29, 29);
+            this.bunifuCircleProgressbar3.TabIndex = 6;
+            this.bunifuCircleProgressbar3.Value = 0;
+            // 
+            // bunifuCircleProgressbar2
+            // 
+            this.bunifuCircleProgressbar2.animated = false;
+            this.bunifuCircleProgressbar2.animationIterval = 5;
+            this.bunifuCircleProgressbar2.animationSpeed = 3;
+            this.bunifuCircleProgressbar2.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuCircleProgressbar2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuCircleProgressbar2.BackgroundImage")));
+            this.bunifuCircleProgressbar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
+            this.bunifuCircleProgressbar2.ForeColor = System.Drawing.Color.SeaGreen;
+            this.bunifuCircleProgressbar2.LabelVisible = false;
+            this.bunifuCircleProgressbar2.LineProgressThickness = 2;
+            this.bunifuCircleProgressbar2.LineThickness = 2;
+            this.bunifuCircleProgressbar2.Location = new System.Drawing.Point(89, 0);
+            this.bunifuCircleProgressbar2.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.bunifuCircleProgressbar2.MaxValue = 100;
+            this.bunifuCircleProgressbar2.Name = "bunifuCircleProgressbar2";
+            this.bunifuCircleProgressbar2.ProgressBackColor = System.Drawing.Color.Silver;
+            this.bunifuCircleProgressbar2.ProgressColor = System.Drawing.Color.Salmon;
+            this.bunifuCircleProgressbar2.Size = new System.Drawing.Size(29, 29);
+            this.bunifuCircleProgressbar2.TabIndex = 6;
+            this.bunifuCircleProgressbar2.Value = 0;
             // 
             // bunifuCustomLabel6
             // 
@@ -199,93 +279,13 @@
             // bunifuCustomLabel3
             // 
             this.bunifuCustomLabel3.AutoSize = true;
-            this.bunifuCustomLabel3.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel3.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.Salmon;
             this.bunifuCustomLabel3.Location = new System.Drawing.Point(24, 5);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
-            this.bunifuCustomLabel3.Size = new System.Drawing.Size(34, 16);
+            this.bunifuCustomLabel3.Size = new System.Drawing.Size(33, 16);
             this.bunifuCustomLabel3.TabIndex = 0;
             this.bunifuCustomLabel3.Text = "상태";
-            // 
-            // bunifuCircleProgressbar3
-            // 
-            this.bunifuCircleProgressbar3.animated = false;
-            this.bunifuCircleProgressbar3.animationIterval = 5;
-            this.bunifuCircleProgressbar3.animationSpeed = 3;
-            this.bunifuCircleProgressbar3.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuCircleProgressbar3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuCircleProgressbar3.BackgroundImage")));
-            this.bunifuCircleProgressbar3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.bunifuCircleProgressbar3.ForeColor = System.Drawing.Color.SeaGreen;
-            this.bunifuCircleProgressbar3.LabelVisible = false;
-            this.bunifuCircleProgressbar3.LineProgressThickness = 2;
-            this.bunifuCircleProgressbar3.LineThickness = 2;
-            this.bunifuCircleProgressbar3.Location = new System.Drawing.Point(89, 26);
-            this.bunifuCircleProgressbar3.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.bunifuCircleProgressbar3.MaxValue = 100;
-            this.bunifuCircleProgressbar3.Name = "bunifuCircleProgressbar3";
-            this.bunifuCircleProgressbar3.ProgressBackColor = System.Drawing.Color.Silver;
-            this.bunifuCircleProgressbar3.ProgressColor = System.Drawing.Color.Salmon;
-            this.bunifuCircleProgressbar3.Size = new System.Drawing.Size(29, 29);
-            this.bunifuCircleProgressbar3.TabIndex = 6;
-            this.bunifuCircleProgressbar3.Value = 0;
-            // 
-            // bunifuCircleProgressbar2
-            // 
-            this.bunifuCircleProgressbar2.animated = false;
-            this.bunifuCircleProgressbar2.animationIterval = 5;
-            this.bunifuCircleProgressbar2.animationSpeed = 3;
-            this.bunifuCircleProgressbar2.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuCircleProgressbar2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuCircleProgressbar2.BackgroundImage")));
-            this.bunifuCircleProgressbar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.bunifuCircleProgressbar2.ForeColor = System.Drawing.Color.SeaGreen;
-            this.bunifuCircleProgressbar2.LabelVisible = false;
-            this.bunifuCircleProgressbar2.LineProgressThickness = 2;
-            this.bunifuCircleProgressbar2.LineThickness = 2;
-            this.bunifuCircleProgressbar2.Location = new System.Drawing.Point(89, 0);
-            this.bunifuCircleProgressbar2.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.bunifuCircleProgressbar2.MaxValue = 100;
-            this.bunifuCircleProgressbar2.Name = "bunifuCircleProgressbar2";
-            this.bunifuCircleProgressbar2.ProgressBackColor = System.Drawing.Color.Silver;
-            this.bunifuCircleProgressbar2.ProgressColor = System.Drawing.Color.Salmon;
-            this.bunifuCircleProgressbar2.Size = new System.Drawing.Size(29, 29);
-            this.bunifuCircleProgressbar2.TabIndex = 6;
-            this.bunifuCircleProgressbar2.Value = 0;
-            // 
-            // connectLeapmotionButton
-            // 
-            this.connectLeapmotionButton.BackColor = System.Drawing.Color.Transparent;
-            this.connectLeapmotionButton.Image = ((System.Drawing.Image)(resources.GetObject("connectLeapmotionButton.Image")));
-            this.connectLeapmotionButton.ImageActive = null;
-            this.connectLeapmotionButton.Location = new System.Drawing.Point(147, 32);
-            this.connectLeapmotionButton.Name = "connectLeapmotionButton";
-            this.connectLeapmotionButton.Size = new System.Drawing.Size(63, 61);
-            this.connectLeapmotionButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.connectLeapmotionButton.TabIndex = 29;
-            this.connectLeapmotionButton.TabStop = false;
-            this.connectLeapmotionButton.Zoom = 10;
-            this.connectLeapmotionButton.Click += new System.EventHandler(this.connectLeapmotionButton_Click);
-            // 
-            // connectLeapmotionProgressbar
-            // 
-            this.connectLeapmotionProgressbar.animated = false;
-            this.connectLeapmotionProgressbar.animationIterval = 5;
-            this.connectLeapmotionProgressbar.animationSpeed = 20;
-            this.connectLeapmotionProgressbar.BackColor = System.Drawing.Color.Transparent;
-            this.connectLeapmotionProgressbar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("connectLeapmotionProgressbar.BackgroundImage")));
-            this.connectLeapmotionProgressbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.connectLeapmotionProgressbar.ForeColor = System.Drawing.Color.SeaGreen;
-            this.connectLeapmotionProgressbar.LabelVisible = false;
-            this.connectLeapmotionProgressbar.LineProgressThickness = 5;
-            this.connectLeapmotionProgressbar.LineThickness = 5;
-            this.connectLeapmotionProgressbar.Location = new System.Drawing.Point(115, 0);
-            this.connectLeapmotionProgressbar.Margin = new System.Windows.Forms.Padding(8);
-            this.connectLeapmotionProgressbar.MaxValue = 100;
-            this.connectLeapmotionProgressbar.Name = "connectLeapmotionProgressbar";
-            this.connectLeapmotionProgressbar.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            this.connectLeapmotionProgressbar.ProgressColor = System.Drawing.Color.OrangeRed;
-            this.connectLeapmotionProgressbar.Size = new System.Drawing.Size(125, 125);
-            this.connectLeapmotionProgressbar.TabIndex = 2;
-            this.connectLeapmotionProgressbar.Value = 0;
             // 
             // buttonCollapse
             // 
@@ -339,13 +339,13 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.connectLeapmotionButton)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.connectLeapmotionButton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
