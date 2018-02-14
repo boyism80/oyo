@@ -78,9 +78,9 @@
             this.connectionLabel.ForeColor = System.Drawing.Color.DarkOrange;
             this.connectionLabel.Location = new System.Drawing.Point(102, 10);
             this.connectionLabel.Name = "connectionLabel";
-            this.connectionLabel.Size = new System.Drawing.Size(235, 30);
+            this.connectionLabel.Size = new System.Drawing.Size(284, 30);
             this.connectionLabel.TabIndex = 1;
-            this.connectionLabel.Text = "서버와 연결되었습니다.";
+            this.connectionLabel.Text = "서버와 연결되지 않았습니다.";
             // 
             // bunifuCustomLabel1
             // 
@@ -94,7 +94,7 @@
             // 
             // connectionCameraProgressbar
             // 
-            this.connectionCameraProgressbar.animated = true;
+            this.connectionCameraProgressbar.animated = false;
             this.connectionCameraProgressbar.animationIterval = 5;
             this.connectionCameraProgressbar.animationSpeed = 30;
             this.connectionCameraProgressbar.BackColor = System.Drawing.Color.Transparent;
@@ -112,7 +112,7 @@
             this.connectionCameraProgressbar.ProgressColor = System.Drawing.Color.SeaGreen;
             this.connectionCameraProgressbar.Size = new System.Drawing.Size(100, 100);
             this.connectionCameraProgressbar.TabIndex = 0;
-            this.connectionCameraProgressbar.Value = 60;
+            this.connectionCameraProgressbar.Value = 0;
             this.connectionCameraProgressbar.Click += new System.EventHandler(this.connectCameraProgressbar_Click);
             // 
             // panel1

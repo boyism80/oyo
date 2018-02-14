@@ -30,7 +30,7 @@
         {
             this.droneTab = new Fire_Detector.Control.DroneTab();
             this.leapmotionTab = new Fire_Detector.Control.LeapmotionTab();
-            this.visualizeTab = new Fire_Detector.Control.VisualizeTab();
+            this.visualizeTab = new VisualizeTab();
             this.SuspendLayout();
             // 
             // droneTab
