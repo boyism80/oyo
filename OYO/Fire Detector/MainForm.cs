@@ -112,6 +112,7 @@ namespace Fire_Detector
             this._listener = new List<IStateChangedListener>();
             this._listener.Add(this.mainView);
             this._listener.Add(this.defaultView);
+            this._listener.Add(this.defaultView.sideExpandedBar.visualizeTab);
         }
 
         private void exitButton_Click(object sender, EventArgs e)

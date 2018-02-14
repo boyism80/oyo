@@ -30,10 +30,12 @@
         {
             this.droneTab = new Fire_Detector.Control.DroneTab();
             this.leapmotionTab = new Fire_Detector.Control.LeapmotionTab();
+            this.visualizeTab = new Fire_Detector.Control.VisualizeTab();
             this.SuspendLayout();
             // 
             // droneTab
             // 
+            this.droneTab.BackColor = System.Drawing.Color.Transparent;
             this.droneTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.droneTab.Location = new System.Drawing.Point(0, 0);
             this.droneTab.Name = "droneTab";
@@ -48,11 +50,20 @@
             this.leapmotionTab.Size = new System.Drawing.Size(350, 738);
             this.leapmotionTab.TabIndex = 1;
             // 
+            // visualizeTab
+            // 
+            this.visualizeTab.BackColor = System.Drawing.Color.Transparent;
+            this.visualizeTab.Location = new System.Drawing.Point(0, 0);
+            this.visualizeTab.Name = "visualizeTab";
+            this.visualizeTab.Size = new System.Drawing.Size(350, 738);
+            this.visualizeTab.TabIndex = 2;
+            // 
             // SideExpandedBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.visualizeTab);
             this.Controls.Add(this.leapmotionTab);
             this.Controls.Add(this.droneTab);
             this.Name = "SideExpandedBar";
@@ -65,5 +76,6 @@
 
         public DroneTab droneTab;
         public LeapmotionTab leapmotionTab;
+        public VisualizeTab visualizeTab;
     }
 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DroneTab));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.connectionPanel = new System.Windows.Forms.Panel();
             this.defaultPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -47,7 +48,6 @@
             this.landButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.takeoffButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.buttonCollapse = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -72,6 +72,14 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(350, 738);
             this.panel2.TabIndex = 17;
+            // 
+            // panel7
+            // 
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel7.Location = new System.Drawing.Point(0, 660);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(350, 28);
+            this.panel7.TabIndex = 38;
             // 
             // connectionPanel
             // 
@@ -359,14 +367,6 @@
             this.buttonCollapse.Textcolor = System.Drawing.Color.White;
             this.buttonCollapse.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCollapse.Click += new System.EventHandler(this.buttonCollapse_Click);
-            // 
-            // panel7
-            // 
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 660);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(350, 28);
-            this.panel7.TabIndex = 38;
             // 
             // DroneTab
             // 
