@@ -38,9 +38,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.bunifuTileButton3 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton1 = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton2 = new Bunifu.Framework.UI.BunifuTileButton();
+            this.blendingViewButton = new Bunifu.Framework.UI.BunifuTileButton();
+            this.infraredViewButton = new Bunifu.Framework.UI.BunifuTileButton();
+            this.visualViewButton = new Bunifu.Framework.UI.BunifuTileButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -48,7 +48,7 @@
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuDropdown1 = new Bunifu.Framework.UI.BunifuDropdown();
+            this.palettesDropDown = new Bunifu.Framework.UI.BunifuDropdown();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -176,9 +176,9 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
-            this.tableLayoutPanel1.Controls.Add(this.bunifuTileButton3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.bunifuTileButton1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.bunifuTileButton2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.blendingViewButton, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.infraredViewButton, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.visualViewButton, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -187,65 +187,67 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(340, 100);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // bunifuTileButton3
+            // blendingViewButton
             // 
-            this.bunifuTileButton3.BackColor = System.Drawing.Color.DarkOrange;
-            this.bunifuTileButton3.color = System.Drawing.Color.DarkOrange;
-            this.bunifuTileButton3.colorActive = System.Drawing.Color.MediumSeaGreen;
-            this.bunifuTileButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bunifuTileButton3.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuTileButton3.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton3.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton3.Image")));
-            this.bunifuTileButton3.ImagePosition = 14;
-            this.bunifuTileButton3.ImageZoom = 50;
-            this.bunifuTileButton3.LabelPosition = 25;
-            this.bunifuTileButton3.LabelText = "블렌딩";
-            this.bunifuTileButton3.Location = new System.Drawing.Point(230, 4);
-            this.bunifuTileButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.bunifuTileButton3.Name = "bunifuTileButton3";
-            this.bunifuTileButton3.Size = new System.Drawing.Size(106, 92);
-            this.bunifuTileButton3.TabIndex = 2;
+            this.blendingViewButton.BackColor = System.Drawing.Color.DarkOrange;
+            this.blendingViewButton.color = System.Drawing.Color.DarkOrange;
+            this.blendingViewButton.colorActive = System.Drawing.Color.MediumSeaGreen;
+            this.blendingViewButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.blendingViewButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.blendingViewButton.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.blendingViewButton.ForeColor = System.Drawing.Color.White;
+            this.blendingViewButton.Image = ((System.Drawing.Image)(resources.GetObject("blendingViewButton.Image")));
+            this.blendingViewButton.ImagePosition = 14;
+            this.blendingViewButton.ImageZoom = 50;
+            this.blendingViewButton.LabelPosition = 25;
+            this.blendingViewButton.LabelText = "블렌딩";
+            this.blendingViewButton.Location = new System.Drawing.Point(230, 4);
+            this.blendingViewButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.blendingViewButton.Name = "blendingViewButton";
+            this.blendingViewButton.Size = new System.Drawing.Size(106, 92);
+            this.blendingViewButton.TabIndex = 2;
             // 
-            // bunifuTileButton1
+            // infraredViewButton
             // 
-            this.bunifuTileButton1.BackColor = System.Drawing.Color.DarkOrange;
-            this.bunifuTileButton1.color = System.Drawing.Color.DarkOrange;
-            this.bunifuTileButton1.colorActive = System.Drawing.Color.MediumSeaGreen;
-            this.bunifuTileButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bunifuTileButton1.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuTileButton1.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton1.Image")));
-            this.bunifuTileButton1.ImagePosition = 14;
-            this.bunifuTileButton1.ImageZoom = 50;
-            this.bunifuTileButton1.LabelPosition = 25;
-            this.bunifuTileButton1.LabelText = "열화상";
-            this.bunifuTileButton1.Location = new System.Drawing.Point(4, 4);
-            this.bunifuTileButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.bunifuTileButton1.Name = "bunifuTileButton1";
-            this.bunifuTileButton1.Size = new System.Drawing.Size(105, 92);
-            this.bunifuTileButton1.TabIndex = 0;
+            this.infraredViewButton.BackColor = System.Drawing.Color.DarkOrange;
+            this.infraredViewButton.color = System.Drawing.Color.DarkOrange;
+            this.infraredViewButton.colorActive = System.Drawing.Color.MediumSeaGreen;
+            this.infraredViewButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.infraredViewButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.infraredViewButton.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.infraredViewButton.ForeColor = System.Drawing.Color.White;
+            this.infraredViewButton.Image = ((System.Drawing.Image)(resources.GetObject("infraredViewButton.Image")));
+            this.infraredViewButton.ImagePosition = 14;
+            this.infraredViewButton.ImageZoom = 50;
+            this.infraredViewButton.LabelPosition = 25;
+            this.infraredViewButton.LabelText = "열화상";
+            this.infraredViewButton.Location = new System.Drawing.Point(4, 4);
+            this.infraredViewButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.infraredViewButton.Name = "infraredViewButton";
+            this.infraredViewButton.Size = new System.Drawing.Size(105, 92);
+            this.infraredViewButton.TabIndex = 0;
+            this.infraredViewButton.Click += new System.EventHandler(this.infraredViewButton_Click);
             // 
-            // bunifuTileButton2
+            // visualViewButton
             // 
-            this.bunifuTileButton2.BackColor = System.Drawing.Color.DarkOrange;
-            this.bunifuTileButton2.color = System.Drawing.Color.DarkOrange;
-            this.bunifuTileButton2.colorActive = System.Drawing.Color.MediumSeaGreen;
-            this.bunifuTileButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bunifuTileButton2.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuTileButton2.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton2.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton2.Image")));
-            this.bunifuTileButton2.ImagePosition = 14;
-            this.bunifuTileButton2.ImageZoom = 50;
-            this.bunifuTileButton2.LabelPosition = 25;
-            this.bunifuTileButton2.LabelText = "실화상";
-            this.bunifuTileButton2.Location = new System.Drawing.Point(117, 4);
-            this.bunifuTileButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.bunifuTileButton2.Name = "bunifuTileButton2";
-            this.bunifuTileButton2.Size = new System.Drawing.Size(105, 92);
-            this.bunifuTileButton2.TabIndex = 1;
+            this.visualViewButton.BackColor = System.Drawing.Color.DarkOrange;
+            this.visualViewButton.color = System.Drawing.Color.DarkOrange;
+            this.visualViewButton.colorActive = System.Drawing.Color.MediumSeaGreen;
+            this.visualViewButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.visualViewButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.visualViewButton.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.visualViewButton.ForeColor = System.Drawing.Color.White;
+            this.visualViewButton.Image = ((System.Drawing.Image)(resources.GetObject("visualViewButton.Image")));
+            this.visualViewButton.ImagePosition = 14;
+            this.visualViewButton.ImageZoom = 50;
+            this.visualViewButton.LabelPosition = 25;
+            this.visualViewButton.LabelText = "실화상";
+            this.visualViewButton.Location = new System.Drawing.Point(117, 4);
+            this.visualViewButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.visualViewButton.Name = "visualViewButton";
+            this.visualViewButton.Size = new System.Drawing.Size(105, 92);
+            this.visualViewButton.TabIndex = 1;
+            this.visualViewButton.Click += new System.EventHandler(this.visualViewButton_Click);
             // 
             // panel5
             // 
@@ -274,7 +276,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel2.Controls.Add(this.panel9, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.panel8, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.bunifuDropdown1, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.palettesDropDown, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel10, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(5, 0);
@@ -329,20 +331,23 @@
             this.bunifuCustomLabel4.TabIndex = 0;
             this.bunifuCustomLabel4.Text = "팔레트";
             // 
-            // bunifuDropdown1
+            // palettesDropDown
             // 
-            this.bunifuDropdown1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuDropdown1.BorderRadius = 3;
-            this.bunifuDropdown1.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuDropdown1.ForeColor = System.Drawing.Color.White;
-            this.bunifuDropdown1.Items = new string[0];
-            this.bunifuDropdown1.Location = new System.Drawing.Point(105, 3);
-            this.bunifuDropdown1.Name = "bunifuDropdown1";
-            this.bunifuDropdown1.NomalColor = System.Drawing.Color.DarkOrange;
-            this.bunifuDropdown1.onHoverColor = System.Drawing.Color.DarkOrange;
-            this.bunifuDropdown1.selectedIndex = -1;
-            this.bunifuDropdown1.Size = new System.Drawing.Size(232, 24);
-            this.bunifuDropdown1.TabIndex = 2;
+            this.palettesDropDown.BackColor = System.Drawing.Color.Transparent;
+            this.palettesDropDown.BorderRadius = 3;
+            this.palettesDropDown.DisabledColor = System.Drawing.Color.Gray;
+            this.palettesDropDown.ForeColor = System.Drawing.Color.White;
+            this.palettesDropDown.Items = new string[] {
+        "Grayscale",
+        "IronBlack"};
+            this.palettesDropDown.Location = new System.Drawing.Point(105, 3);
+            this.palettesDropDown.Name = "palettesDropDown";
+            this.palettesDropDown.NomalColor = System.Drawing.Color.DarkOrange;
+            this.palettesDropDown.onHoverColor = System.Drawing.Color.DarkOrange;
+            this.palettesDropDown.selectedIndex = 0;
+            this.palettesDropDown.Size = new System.Drawing.Size(232, 24);
+            this.palettesDropDown.TabIndex = 2;
+            this.palettesDropDown.onItemSelected += new System.EventHandler(this.palettesDropDown_onItemSelected);
             // 
             // panel10
             // 
@@ -473,9 +478,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton3;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton1;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton2;
+        private Bunifu.Framework.UI.BunifuTileButton blendingViewButton;
+        private Bunifu.Framework.UI.BunifuTileButton infraredViewButton;
+        private Bunifu.Framework.UI.BunifuTileButton visualViewButton;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -483,7 +488,6 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
         private System.Windows.Forms.Panel panel8;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
-        private Bunifu.Framework.UI.BunifuDropdown bunifuDropdown1;
         private System.Windows.Forms.Panel panel10;
         private Bunifu.Framework.UI.BunifuRange bunifuRange1;
         private System.Windows.Forms.Panel panel7;
@@ -491,5 +495,6 @@
         private System.Windows.Forms.Panel panel11;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel6;
         private Bunifu.Framework.UI.BunifuCheckbox bunifuCheckbox1;
+        public Bunifu.Framework.UI.BunifuDropdown palettesDropDown;
     }
 }

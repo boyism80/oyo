@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using static Fire_Detector.MainForm;
 
 namespace Fire_Detector.Control
@@ -12,11 +13,16 @@ namespace Fire_Detector.Control
 
         public void OnStateChanged(bool connected)
         {
-            this.streamingFrameBox.Invoke(new MethodInvoker(delegate ()
+            try
             {
-                this.streamingFrameBox.SizeMode = PictureBoxSizeMode.CenterImage;
-                this.streamingFrameBox.Image = Properties.Resources.no_image_available;
-            }));
+                this.streamingFrameBox.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.streamingFrameBox.SizeMode = PictureBoxSizeMode.CenterImage;
+                    this.streamingFrameBox.Image = Properties.Resources.no_image_available;
+                }));
+            }
+            catch (Exception)
+            { }
         }
 
         private void streamingFrameBox_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -45,6 +51,15 @@ namespace Fire_Detector.Control
                     this.streamingFrameBox.SizeMode = PictureBoxSizeMode.CenterImage;
                     break;
             }
+        }
+
+        private void streamingFrameBox_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            var mainform = this.FindForm() as MainForm;
+            if(mainform == null)
+                return;
+
+            mainform.Scaled += (e.Delta / 120);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenCvSharp;
+using System;
 using System.Windows.Forms;
 using static Fire_Detector.MainForm;
 
@@ -9,6 +10,9 @@ namespace Fire_Detector.Control
         public VisualizeTab()
         {
             InitializeComponent();
+
+            foreach (var cname in Enum.GetNames(typeof(ColormapTypes)))
+                this.palettesDropDown.AddItem(cname);
         }
 
         public void OnStateChanged(bool connected)
@@ -40,6 +44,33 @@ namespace Fire_Detector.Control
                 mainform.DisconnectToCamera();
             else
                 mainform.ConnectToCamera();
+        }
+
+        private void infraredViewButton_Click(object sender, EventArgs e)
+        {
+            var mainform = this.FindForm() as MainForm;
+            if(mainform == null)
+                return;
+
+            mainform.StreamingType = oyo.StreamingType.Infrared;
+        }
+
+        private void visualViewButton_Click(object sender, EventArgs e)
+        {
+            var mainform = this.FindForm() as MainForm;
+            if(mainform == null)
+                return;
+
+            mainform.StreamingType = oyo.StreamingType.Visual;
+        }
+
+        private void palettesDropDown_onItemSelected(object sender, EventArgs e)
+        {
+            var mainform = this.FindForm() as MainForm;
+            if(mainform == null)
+                return;
+
+            mainform.Palette = this.palettesDropDown.selectedValue;
         }
     }
 }

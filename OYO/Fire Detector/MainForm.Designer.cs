@@ -32,19 +32,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.bunifuElipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.caption = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.maximizeButton = new Bunifu.Framework.UI.BunifuImageButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.exitButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuDragControl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.maximizeButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.mainView = new Fire_Detector.Control.MainView();
             this.defaultView = new Fire_Detector.Control.DefaultView();
             this.caption.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exitButton)).BeginInit();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizeButton)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exitButton)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse
@@ -65,6 +65,41 @@
             this.caption.Size = new System.Drawing.Size(1024, 30);
             this.caption.TabIndex = 0;
             this.caption.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.caption_MouseDoubleClick);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.maximizeButton);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(971, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(4);
+            this.panel2.Size = new System.Drawing.Size(24, 30);
+            this.panel2.TabIndex = 4;
+            // 
+            // maximizeButton
+            // 
+            this.maximizeButton.BackColor = System.Drawing.Color.Transparent;
+            this.maximizeButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.maximizeButton.Image = ((System.Drawing.Image)(resources.GetObject("maximizeButton.Image")));
+            this.maximizeButton.ImageActive = null;
+            this.maximizeButton.Location = new System.Drawing.Point(4, 4);
+            this.maximizeButton.Name = "maximizeButton";
+            this.maximizeButton.Size = new System.Drawing.Size(16, 22);
+            this.maximizeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.maximizeButton.TabIndex = 1;
+            this.maximizeButton.TabStop = false;
+            this.maximizeButton.Zoom = 10;
+            this.maximizeButton.Click += new System.EventHandler(this.maximizeButton_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.exitButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(995, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(4);
+            this.panel1.Size = new System.Drawing.Size(24, 30);
+            this.panel1.TabIndex = 3;
             // 
             // exitButton
             // 
@@ -99,41 +134,6 @@
             this.bunifuDragControl.TargetControl = this.caption;
             this.bunifuDragControl.Vertical = true;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.exitButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(995, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(4);
-            this.panel1.Size = new System.Drawing.Size(24, 30);
-            this.panel1.TabIndex = 3;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.maximizeButton);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(971, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(4);
-            this.panel2.Size = new System.Drawing.Size(24, 30);
-            this.panel2.TabIndex = 4;
-            // 
-            // maximizeButton
-            // 
-            this.maximizeButton.BackColor = System.Drawing.Color.Transparent;
-            this.maximizeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.maximizeButton.Image = ((System.Drawing.Image)(resources.GetObject("maximizeButton.Image")));
-            this.maximizeButton.ImageActive = null;
-            this.maximizeButton.Location = new System.Drawing.Point(4, 4);
-            this.maximizeButton.Name = "maximizeButton";
-            this.maximizeButton.Size = new System.Drawing.Size(16, 22);
-            this.maximizeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.maximizeButton.TabIndex = 1;
-            this.maximizeButton.TabStop = false;
-            this.maximizeButton.Zoom = 10;
-            this.maximizeButton.Click += new System.EventHandler(this.maximizeButton_Click);
-            // 
             // mainView
             // 
             this.mainView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -163,12 +163,13 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.caption.ResumeLayout(false);
             this.caption.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exitButton)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.maximizeButton)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.exitButton)).EndInit();
             this.ResumeLayout(false);
 
         }

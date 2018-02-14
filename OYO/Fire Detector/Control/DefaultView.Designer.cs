@@ -138,6 +138,7 @@
             this.streamingFrameBox.TabIndex = 6;
             this.streamingFrameBox.TabStop = false;
             this.streamingFrameBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.streamingFrameBox_MouseDoubleClick);
+            this.streamingFrameBox.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.streamingFrameBox_MouseWheel);
             // 
             // pictureBox1
             // 
