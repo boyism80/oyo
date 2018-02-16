@@ -74,8 +74,13 @@ private void takeoffSwitch_OnValueChange(object sender, EventArgs e)
             {
                 //대화상자 생성 (녹화모드에서는 사용할 수 없습니다.)
                 patrolModeSwitch.Value = false;
+                
                 return; //프로그램 종료됨. 어떻게해야하죠?ㅇㅅㅇ..112줄도요
 
+            }
+            else
+            {
+                patrolFileBrowseButton.Enabled = false;
             }
             if (patrolModeSwitch.Value == true)
             {
@@ -108,33 +113,34 @@ private void takeoffSwitch_OnValueChange(object sender, EventArgs e)
             if (patrolModeSwitch.Value == true)
             {
                 //대화상자 생성 (순찰모드에서는 사용할 수 없습니다.)
+                
                 recordModeSwitch.Value = false;
                 return;//프로그램 종료됨. 어떻게해야하죠?ㅇㅅㅇ.. 77줄도요
 
+            }
+            else
+            {
+                recordStartEndButton.Enabled = false;
             }
 
             //visible등 속성 변경내용 추가하기
             if (recordModeSwitch.Value == true)
             {
                 recordModeLabel.Text = "On";
-                recordFileBrowseButton.Enabled = true;
+                
                 recordFileTextbox.BackColor = System.Drawing.Color.White;
                 recordFileTextbox.Enabled = true;
-                recordFileTextbox.Text = "순찰 파일을 찾아주세요.";
-                recordFileBrowseButton.IdleLineColor = System.Drawing.Color.Salmon;
-                recordFileBrowseButton.IdleForecolor = System.Drawing.Color.Salmon;
-                recordFileBrowseButton.Enabled = true;
+                recordFileTextbox.Text = "파일 이름을 입력해주세요.";
+                
             }
             else
             {
                 recordModeLabel.Text = "Off";
-                recordFileBrowseButton.Enabled = false;
+                
                 recordFileTextbox.BackColor = System.Drawing.Color.Gainsboro;
                 recordFileTextbox.Enabled = false;
                 recordFileTextbox.Text = "순찰 모드를 On 해주세요.";
-                recordFileBrowseButton.IdleLineColor = System.Drawing.SystemColors.ControlDarkDark;
-                recordFileBrowseButton.IdleForecolor = System.Drawing.SystemColors.ControlDarkDark;
-                recordFileBrowseButton.Enabled = false;
+                
             }
 
 
@@ -175,13 +181,11 @@ private void takeoffSwitch_OnValueChange(object sender, EventArgs e)
 
         private void patrolFileBrowseButton_Click(object sender, EventArgs e)
         {
-
+            Form patrolform = new Fire_Detector.Dialog.PatrolDialog();
+            patrolform.ShowDialog();
         }
 
-        private void recordFileBrowseButton_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         
     }

@@ -63,6 +63,7 @@ namespace Fire_Detector.Control
                 this.activatedConnectionIconPanel.BackColor = Color.Tomato;
                 this.activatedConnectionIconPanel.Visible = true;
                 this.connectionIconsPanel.Visible = false;
+                this.droneTabShow.Visible = true;
             }
             catch(Exception)
             { }
@@ -132,6 +133,11 @@ namespace Fire_Detector.Control
                 this.activatedConnectionIconPanel.Visible = false;
                 this.connectionIconsPanel.Visible = true;
                 //this.bunifuTransition.ShowSync(this.connectionIconsPanel);
+
+                if (this.droneTabShow.Visible == true) {
+                    this.droneTabShow.Visible = false;
+                }
+                
 
                 if (this.bunifuTransition.IsCompleted)
                 {

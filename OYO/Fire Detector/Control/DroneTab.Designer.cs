@@ -33,7 +33,6 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.recordFileTextbox = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.recordStateLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.recordFileBrowseButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.recordStartEndButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel14 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -126,7 +125,6 @@
             // 
             this.panel11.Controls.Add(this.recordFileTextbox);
             this.panel11.Controls.Add(this.recordStateLabel);
-            this.panel11.Controls.Add(this.recordFileBrowseButton);
             this.panel11.Controls.Add(this.recordStartEndButton);
             this.panel11.Controls.Add(this.bunifuCustomLabel8);
             this.panel11.Controls.Add(this.bunifuCustomLabel14);
@@ -147,7 +145,7 @@
             this.recordFileTextbox.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.recordFileTextbox.Location = new System.Drawing.Point(110, 50);
             this.recordFileTextbox.Name = "recordFileTextbox";
-            this.recordFileTextbox.Size = new System.Drawing.Size(172, 21);
+            this.recordFileTextbox.Size = new System.Drawing.Size(217, 21);
             this.recordFileTextbox.TabIndex = 3;
             this.recordFileTextbox.Text = "녹화 모드를 On 해주세요.";
             // 
@@ -163,32 +161,6 @@
             this.recordStateLabel.Text = "녹화중";
             this.recordStateLabel.Visible = false;
             // 
-            // recordFileBrowseButton
-            // 
-            this.recordFileBrowseButton.ActiveBorderThickness = 1;
-            this.recordFileBrowseButton.ActiveCornerRadius = 20;
-            this.recordFileBrowseButton.ActiveFillColor = System.Drawing.Color.LightSalmon;
-            this.recordFileBrowseButton.ActiveForecolor = System.Drawing.Color.White;
-            this.recordFileBrowseButton.ActiveLineColor = System.Drawing.Color.Salmon;
-            this.recordFileBrowseButton.BackColor = System.Drawing.Color.Transparent;
-            this.recordFileBrowseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("recordFileBrowseButton.BackgroundImage")));
-            this.recordFileBrowseButton.ButtonText = "찾기";
-            this.recordFileBrowseButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.recordFileBrowseButton.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.recordFileBrowseButton.ForeColor = System.Drawing.Color.Salmon;
-            this.recordFileBrowseButton.IdleBorderThickness = 1;
-            this.recordFileBrowseButton.IdleCornerRadius = 20;
-            this.recordFileBrowseButton.IdleFillColor = System.Drawing.Color.Transparent;
-            this.recordFileBrowseButton.IdleForecolor = System.Drawing.SystemColors.ControlDarkDark;
-            this.recordFileBrowseButton.IdleLineColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.recordFileBrowseButton.Location = new System.Drawing.Point(288, 44);
-            this.recordFileBrowseButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.recordFileBrowseButton.Name = "recordFileBrowseButton";
-            this.recordFileBrowseButton.Size = new System.Drawing.Size(39, 30);
-            this.recordFileBrowseButton.TabIndex = 2;
-            this.recordFileBrowseButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.recordFileBrowseButton.Click += new System.EventHandler(this.recordFileBrowseButton_Click);
-            // 
             // recordStartEndButton
             // 
             this.recordStartEndButton.ActiveBorderThickness = 1;
@@ -200,6 +172,7 @@
             this.recordStartEndButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("recordStartEndButton.BackgroundImage")));
             this.recordStartEndButton.ButtonText = "녹화 시작";
             this.recordStartEndButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.recordStartEndButton.Enabled = false;
             this.recordStartEndButton.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recordStartEndButton.ForeColor = System.Drawing.Color.Salmon;
             this.recordStartEndButton.IdleBorderThickness = 1;
@@ -233,9 +206,9 @@
             this.bunifuCustomLabel14.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel14.Location = new System.Drawing.Point(40, 53);
             this.bunifuCustomLabel14.Name = "bunifuCustomLabel14";
-            this.bunifuCustomLabel14.Size = new System.Drawing.Size(53, 15);
+            this.bunifuCustomLabel14.Size = new System.Drawing.Size(52, 15);
             this.bunifuCustomLabel14.TabIndex = 0;
-            this.bunifuCustomLabel14.Text = "저장 경로";
+            this.bunifuCustomLabel14.Text = "파일 이름";
             // 
             // recordStateProgressbar
             // 
@@ -372,6 +345,7 @@
             this.patrolStartEndButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("patrolStartEndButton.BackgroundImage")));
             this.patrolStartEndButton.ButtonText = "순찰 시작";
             this.patrolStartEndButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.patrolStartEndButton.Enabled = false;
             this.patrolStartEndButton.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patrolStartEndButton.ForeColor = System.Drawing.Color.Salmon;
             this.patrolStartEndButton.IdleBorderThickness = 1;
@@ -398,6 +372,7 @@
             this.patrolFileBrowseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("patrolFileBrowseButton.BackgroundImage")));
             this.patrolFileBrowseButton.ButtonText = "찾기";
             this.patrolFileBrowseButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.patrolFileBrowseButton.Enabled = false;
             this.patrolFileBrowseButton.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patrolFileBrowseButton.ForeColor = System.Drawing.Color.Salmon;
             this.patrolFileBrowseButton.IdleBorderThickness = 1;
@@ -1018,7 +993,6 @@
         private System.Windows.Forms.Panel panel11;
         private WindowsFormsControlLibrary1.BunifuCustomTextbox recordFileTextbox;
         private Bunifu.Framework.UI.BunifuCustomLabel recordStateLabel;
-        private Bunifu.Framework.UI.BunifuThinButton2 recordFileBrowseButton;
         private Bunifu.Framework.UI.BunifuThinButton2 recordStartEndButton;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel8;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel14;
