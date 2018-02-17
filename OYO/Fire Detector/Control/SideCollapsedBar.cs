@@ -26,7 +26,7 @@ namespace Fire_Detector.Control
             var mainform = this.FindForm() as MainForm;
             if(mainform == null)
                 return;
-
+            
             mainform.defaultView.Visible = false;
             mainform.mainView.Visible = true;
         }

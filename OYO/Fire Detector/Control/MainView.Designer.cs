@@ -67,6 +67,9 @@
             this.bunifuTransition = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuTransition1 = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuTransition2 = new BunifuAnimatorNS.BunifuTransition(this.components);
+            this.detectFireTabShow = new Fire_Detector.Control.DetectFireTabShow();
+            this.leapmotionTabShow = new Fire_Detector.Control.LeapmotionTabShow();
+            this.visualizeTabShow = new Fire_Detector.Control.VisualizeTabShow();
             this.droneTabShow = new Fire_Detector.Control.DroneTabShow();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
@@ -202,6 +205,9 @@
             // 
             // connectionPanel
             // 
+            this.connectionPanel.Controls.Add(this.detectFireTabShow);
+            this.connectionPanel.Controls.Add(this.leapmotionTabShow);
+            this.connectionPanel.Controls.Add(this.visualizeTabShow);
             this.connectionPanel.Controls.Add(this.droneTabShow);
             this.connectionPanel.Controls.Add(this.tableLayoutPanel2);
             this.connectionPanel.Controls.Add(this.activatedConnectionIconPanel);
@@ -405,7 +411,7 @@
             this.cameraLabel.Name = "cameraLabel";
             this.cameraLabel.Size = new System.Drawing.Size(204, 46);
             this.cameraLabel.TabIndex = 21;
-            this.cameraLabel.Text = "Camera";
+            this.cameraLabel.Text = "Visualize";
             this.cameraLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cameraLabel.Click += new System.EventHandler(this.cameraTab_Click);
             this.cameraLabel.MouseEnter += new System.EventHandler(this.cameraTab_MouseEnter);
@@ -680,6 +686,40 @@
             this.bunifuTransition2.DefaultAnimation = animation3;
             this.bunifuTransition2.Interval = 20;
             // 
+            // detectFireTabShow
+            // 
+            this.bunifuTransition2.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.detectFireTabShow.Location = new System.Drawing.Point(0, 0);
+            this.detectFireTabShow.Name = "detectFireTabShow";
+            this.detectFireTabShow.Size = new System.Drawing.Size(1024, 510);
+            this.detectFireTabShow.TabIndex = 27;
+            this.detectFireTabShow.Visible = false;
+            // 
+            // leapmotionTabShow
+            // 
+            this.leapmotionTabShow.BackColor = System.Drawing.SystemColors.Control;
+            this.bunifuTransition2.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.leapmotionTabShow.Location = new System.Drawing.Point(0, 0);
+            this.leapmotionTabShow.Name = "leapmotionTabShow";
+            this.leapmotionTabShow.Size = new System.Drawing.Size(1024, 510);
+            this.leapmotionTabShow.TabIndex = 26;
+            this.leapmotionTabShow.Visible = false;
+            // 
+            // visualizeTabShow
+            // 
+            this.bunifuTransition2.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.visualizeTabShow.Location = new System.Drawing.Point(0, 0);
+            this.visualizeTabShow.Name = "visualizeTabShow";
+            this.visualizeTabShow.Size = new System.Drawing.Size(1024, 510);
+            this.visualizeTabShow.TabIndex = 25;
+            this.visualizeTabShow.Visible = false;
+            // 
             // droneTabShow
             // 
             this.droneTabShow.BackColor = System.Drawing.Color.Transparent;
@@ -690,6 +730,7 @@
             this.droneTabShow.Name = "droneTabShow";
             this.droneTabShow.Size = new System.Drawing.Size(1024, 510);
             this.droneTabShow.TabIndex = 24;
+            this.droneTabShow.Visible = false;
             // 
             // MainView
             // 
@@ -756,6 +797,9 @@
         private Bunifu.Framework.UI.BunifuCircleProgressbar raspCamProgressbar;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel8;
         private Bunifu.Framework.UI.BunifuCircleProgressbar droneProgressbar;
-        private DroneTabShow droneTabShow;
+        public DetectFireTabShow detectFireTabShow;
+        public LeapmotionTabShow leapmotionTabShow;
+        public VisualizeTabShow visualizeTabShow;
+        public DroneTabShow droneTabShow;
     }
 }

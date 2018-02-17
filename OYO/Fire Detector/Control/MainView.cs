@@ -10,6 +10,10 @@ namespace Fire_Detector.Control
         public MainView()
         {
             InitializeComponent();
+            droneTabShow.Visible = false;
+            leapmotionTabShow.Visible = false;
+            visualizeTabShow.Visible = false;
+            detectFireTabShow.Visible = false;
         }
 
         private void DroneImageButton_Click(object sender, EventArgs e)
@@ -88,6 +92,7 @@ namespace Fire_Detector.Control
                 this.activatedConnectionIconPanel.BackColor = Color.Coral;
                 this.activatedConnectionIconPanel.Visible = true;
                 this.connectionIconsPanel.Visible = false;
+                this.visualizeTabShow.Visible = true;
             }
             catch (Exception)
             { }
@@ -121,6 +126,7 @@ namespace Fire_Detector.Control
                 this.activatedConnectionIconPanel.BackColor = Color.Salmon;
                 this.activatedConnectionIconPanel.Visible = true;
                 this.connectionIconsPanel.Visible = false;
+                this.leapmotionTabShow.Visible = true;
             }
             catch (Exception)
             { }
@@ -137,6 +143,19 @@ namespace Fire_Detector.Control
                 if (this.droneTabShow.Visible == true) {
                     this.droneTabShow.Visible = false;
                 }
+                if(this.visualizeTabShow.Visible == true)
+                {
+                    this.visualizeTabShow.Visible = false;
+                }
+                if (this.leapmotionTabShow.Visible == true)
+                {
+                    this.leapmotionTabShow.Visible = false;
+                }
+                if(this.detectFireTabShow.Visible == true)
+                {
+                    this.detectFireTabShow.Visible = false;
+                }
+
                 
 
                 if (this.bunifuTransition.IsCompleted)
@@ -168,6 +187,7 @@ namespace Fire_Detector.Control
                 this.activatedConnectionIconPanel.BackColor = Color.LightCoral;
                 this.activatedConnectionIconPanel.Visible = true;
                 this.connectionIconsPanel.Visible = false;
+                this.detectFireTabShow.Visible = true;
             }
             catch (Exception)
             { }
