@@ -146,7 +146,6 @@ namespace Fire_Detector
             {
                 this._beforePosition = new System.Drawing.Point(this.Left, this.Top);
                 this._beforeSize = this.Size;
-
                 this.Left = this.Top = 0;
                 this.Size = new System.Drawing.Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
                 this.bunifuDragControl.Vertical = false;
@@ -231,78 +230,73 @@ namespace Fire_Detector
         {
             try
             {
-                lock (this.defaultView.streamingFrameBox)
+                var updatedFrame        = null as Mat;
+
+                //
+                // 일단 녹화를 한다.
+                //
+                if (streamingType == StreamingType.Infrared)
                 {
-                    var updatedFrame        = null as Mat;
+                    updatedFrame            = this.mappingPalette(receiver.Infrared(this.Scaled));
+                    this._currentInfraredFrame  = updatedFrame.Clone();
+                }
+                else
+                {
+                    updatedFrame            = receiver.Visual();
+                    this._currentVisualFrame    = updatedFrame.Clone();
+                }
 
-                    //
-                    // 일단 녹화를 한다.
-                    //
-                    if (streamingType == StreamingType.Infrared)
-                    {
-                        updatedFrame            = this.mappingPalette(receiver.Infrared(this.Scaled));
-                        this._currentInfraredFrame  = updatedFrame.Clone();
-                    }
-                    else
-                    {
-                        updatedFrame            = receiver.Visual();
-                        this._currentVisualFrame    = updatedFrame.Clone();
-                    }
-
-                    this.Recorder.Write(streamingType == StreamingType.Infrared ? OYORecorder.RecordingStateType.Infrared : OYORecorder.RecordingStateType.Visual, updatedFrame);
+                this.Recorder.Write(streamingType == StreamingType.Infrared ? OYORecorder.RecordingStateType.Infrared : OYORecorder.RecordingStateType.Visual, updatedFrame);
 
 
-                    //
-                    // 적외선 영상을 받아오는 경우에는 온도값과 마스크를 얻는다.
-                    //
-                    if (streamingType == StreamingType.Infrared)
-                    {
-                        if (this.Blending)
-                            this._temperature     = receiver.Temperature(this.Blender.Size);
-                        else if(this.StreamingType == StreamingType.Visual)
-                            this._temperature     = receiver.Temperature(this.DisplaySize);
-                        else
-                            this._temperature     = receiver.Temperature(this.Scaled);
-
-                        this._mask                = this._temperature.Threshold(this.TemperatureThreshold, 255, ThresholdTypes.Binary);
-                    }
-
-
-                    //
-                    // 블렌딩을 하고 있는 경우에는 블렌딩된 결과를 얻는다.
-                    //
+                //
+                // 적외선 영상을 받아오는 경우에는 온도값과 마스크를 얻는다.
+                //
+                if (streamingType == StreamingType.Infrared)
+                {
                     if (this.Blending)
-                    {
-                        lock (this.Blender)
-                        {
-                            if (streamingType == StreamingType.Infrared)
-                            {
-                                this.Blender.Update(updatedFrame, this._mask);
-                            }
-                            else
-                            {
-                                this.Blender.Update(updatedFrame);
-                            }
+                        this._temperature     = receiver.Temperature(this.Blender.Size);
+                    else if(this.StreamingType == StreamingType.Visual)
+                        this._temperature     = receiver.Temperature(this.DisplaySize);
+                    else
+                        this._temperature     = receiver.Temperature(this.Scaled);
 
-                            if (this.Blender.Blendable)
-                                updatedFrame        = this.Blender.Blending();
+                    this._mask                = this._temperature.Threshold(this.TemperatureThreshold, 255, ThresholdTypes.Binary);
+                }
+
+
+                //
+                // 블렌딩을 하고 있는 경우에는 블렌딩된 결과를 얻는다.
+                //
+                if (this.Blending)
+                {
+                    lock (this.Blender)
+                    {
+                        if (streamingType == StreamingType.Infrared)
+                        {
+                            this.Blender.Update(updatedFrame, this._mask);
                         }
-                    }
-
-                    //
-                    // 화면에 표시한다.
-                    //
-                    if (this.Blending || this.StreamingType == streamingType)
-                    {
-                        this._currentDisplayFrame = updatedFrame.Clone();
-
-                        this.defaultView.streamingFrameBox.Invoke(new MethodInvoker(delegate ()
+                        else
                         {
-this.defaultView.StreamingFrameBoxLock.WaitOne();
-                            this.defaultView.streamingFrameBox.Image = Image.FromStream(new MemoryStream(updatedFrame.ToBytes()));
-this.defaultView.StreamingFrameBoxLock.ReleaseMutex();
-                        }));
+                            this.Blender.Update(updatedFrame);
+                        }
+
+                        if (this.Blender.Blendable)
+                            updatedFrame        = this.Blender.Blending();
                     }
+                }
+
+                //
+                // 화면에 표시한다.
+                //
+                if (this.Blending || this.StreamingType == streamingType)
+                {
+                    this._currentDisplayFrame = updatedFrame.Clone();
+
+                    this.defaultView.streamingFrameBox.Invoke(new MethodInvoker(delegate ()
+                    {
+                        this.defaultView.streamingFrameBox.Image = Image.FromStream(new MemoryStream(updatedFrame.ToBytes()));
+                    }));
                 }
             }
             catch (Exception e)

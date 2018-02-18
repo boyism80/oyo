@@ -37,9 +37,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.exitButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuDragControl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.mainView = new Fire_Detector.Control.MainView();
             this.defaultView = new Fire_Detector.Control.DefaultView();
+            this.bunifuDragControl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.caption.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizeButton)).BeginInit();
@@ -127,13 +127,6 @@
             this.bunifuCustomLabel1.TabIndex = 0;
             this.bunifuCustomLabel1.Text = "Fire Detector";
             // 
-            // bunifuDragControl
-            // 
-            this.bunifuDragControl.Fixed = true;
-            this.bunifuDragControl.Horizontal = true;
-            this.bunifuDragControl.TargetControl = this.caption;
-            this.bunifuDragControl.Vertical = true;
-            // 
             // mainView
             // 
             this.mainView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -151,6 +144,13 @@
             this.defaultView.Size = new System.Drawing.Size(1024, 738);
             this.defaultView.TabIndex = 1;
             this.defaultView.Visible = false;
+            // 
+            // bunifuDragControl
+            // 
+            this.bunifuDragControl.Fixed = true;
+            this.bunifuDragControl.Horizontal = true;
+            this.bunifuDragControl.TargetControl = this.caption;
+            this.bunifuDragControl.Vertical = true;
             // 
             // MainForm
             // 
@@ -178,7 +178,6 @@
 
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse;
         private System.Windows.Forms.Panel caption;
-        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl;
         public Control.DefaultView defaultView;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         public Control.MainView mainView;
@@ -186,6 +185,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private Bunifu.Framework.UI.BunifuImageButton maximizeButton;
+        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl;
     }
 }
 

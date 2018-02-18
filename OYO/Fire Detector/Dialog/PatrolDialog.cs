@@ -19,12 +19,14 @@ namespace Fire_Detector.Dialog
 
         private void scrollBar_Scroll(object sender, ScrollEventArgs e)
         {
-            
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

@@ -118,6 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bunifuThinButton21.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEQAAAAeCAYAAACVBrgjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF5SURBVGhD7ZitU8NAEMUjkUgkEolEIpGVuFTly8Qicf0z
+        kJWRyEhkZWRlZf+E8N72lUyHEGIYJnf7m9lJ9vIx2Te7m7tLHMdxHOd/SNP0qiiK57Ist7AWtof1CzR+
+        d4tYmjzP13VdXyvE+VRV9aQXbSkKXvQIu9XlRcHv5vcjlhXsjXFRGF2ehurxIYjwDlFuNBwUs2Pkjbhp
+        N1u9haMq+Pgx86laLGKcUSm1cgeoFlNIblRAkA1if5F7+ptgcB9qz/gN/U13WZbd2QDLhOViTqQwQ5gp
+        5uCkg63MiRRUxz2rxByc9F/pEilqG705SJcjm6o5kcKEoA7mXNRPpFz0UU5M4HRMGxuIECRFAw2GPgrn
+        lSY3KiCGLWDlnlBT4YrwQUNRwLkX4u5GV8BqLMMEJXAkRsvpu4a+wwyhKLBhKhsgEIJbAd2kGGdUPhup
+        tw5lSq/VvPULHJvRMpmC6uFh7hsccBzbiVqUIY4jjrbhpRAdx3GcvyNJPgHtoY49P8iHowAAAABJRU5E
+        rkJggg==
+</value>
+  </data>
   <data name="recordStartEndButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEQAAAAeCAYAAACVBrgjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -131,18 +144,32 @@
         rkJggg==
 </value>
   </data>
+  <data name="bunifuCircleProgressbar1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVFhH7ZU9TAJBEIUpLe20tDKWlpSWltpTkBAIDQkU
+        BCtCYmFpoKEi0BEosJSCxJKKHw2R4+dyFTmt6KQwivPIO3MxiKe3WO2XTEje7cy9nZ1bAhqNRqP5BWar
+        tXefzycRZqNxSPn/sCxr56FQaHZjsbdOKLR0x6BSeZlMJlVZs8/l2+OxVjvvp1ILt4F+Oj1HdCKRd6PZ
+        XE6n06UYmkucMk09MNJLJFYGutHoaz+bveSjTwzDOBIzbRhihPlIHTiaQan0vOpEJvOEWeGjtUhXcuzQ
+        QnIPKKvBNM0iig/q9VmvXN6lvBFZf8vutCmpATOAwuPxOEjpRzDE6AzylHUHhVBQCtuUPCN5q+5I7hkl
+        f6AQCqIwJc9IzhXN5Cj5Q4qFaeaGkmfkWC+QKzN3Tckfo9HomGaGlDyDDTBXzSeOz9o1iJ5vVuRJjoU8
+        bIiyf6TgHYpKeD4qzAly5NeGMcr+wc3qdEfmIE75W3AFOOvlV82X5AYm2B0MZFl2u/byw9A6RrCOsnqc
+        r4M7tiWq0CSSeLHoQ+c5Das7nnXIi4Pul34NMYh/bPVHswmYkojjDpEoojti4mTr3dBoNJo/EQh8AEBf
+        v2DCZP4JAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="recordStateProgressbar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG/SURBVFhH7ZUxSAJRGMcdG9tqbGxsbGxsrN0hMCQENwXH
-        AwdxShA9ECKaRAocA5dGJy01O089JAgcG4Ooru9//C8kzji5l9P7wUP9v/d97+/3vnsX02g0Gs0KzGaz
-        zclkcoAh37cprw/ZdGM6nRbEwFw+3cUh2quM+lqMjcfjfdnU+mXiDkNMvPkaTR0yTD004huw8JtTP4xG
-        o12Zay+sO+GUOng0fkWa6BVOBSJVMbAW1ZK1O5TV4DiOSSMWjFH+E1l7y5g2JTWgB5A46GiWgSZGZRCn
-        rDpIhISSeE4pNBLnVUdijyhFA4mQEIkphUZiCjRjUIqGJDuhmSal0Mix5hArPXdOKRq2be/RjEUpNP1y
-        efhYqbh2q5WhFA08PQuNGPpmRVw3mfzoxONur1g8pRwdMYJbdqWj6tdqNzAihj5hjHJ0cLP61ZE+OKO8
-        lKdG47iTSHx5VTGMC8rqgAlWBw15Kf828BaWPrn2jTzkcs+U1eM/HRhSqbmMOjR7MMj0C4VhN5V6hwnP
-        SDb74pRKWwz9H2TzoDe3e59OeyZQlV4+b3L5eoApHB3uELy7+tXq1cA0U0qbVaPRaJQRi30DN1LADtr8
-        wiQAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVFhH7ZU9TAJBEIUpLe20tDKWlpSWltpTkBAIDQkU
+        BCtCYmFpoKEi0BEosJSCxJKKHw2R4+dyFTmt6KQwivPIO3MxiKe3WO2XTEje7cy9nZ1bAhqNRqP5BWar
+        tXefzycRZqNxSPn/sCxr56FQaHZjsbdOKLR0x6BSeZlMJlVZs8/l2+OxVjvvp1ILt4F+Oj1HdCKRd6PZ
+        XE6n06UYmkucMk09MNJLJFYGutHoaz+bveSjTwzDOBIzbRhihPlIHTiaQan0vOpEJvOEWeGjtUhXcuzQ
+        QnIPKKvBNM0iig/q9VmvXN6lvBFZf8vutCmpATOAwuPxOEjpRzDE6AzylHUHhVBQCtuUPCN5q+5I7hkl
+        f6AQCqIwJc9IzhXN5Cj5Q4qFaeaGkmfkWC+QKzN3Tckfo9HomGaGlDyDDTBXzSeOz9o1iJ5vVuRJjoU8
+        bIiyf6TgHYpKeD4qzAly5NeGMcr+wc3qdEfmIE75W3AFOOvlV82X5AYm2B0MZFl2u/byw9A6RrCOsnqc
+        r4M7tiWq0CSSeLHoQ+c5Das7nnXIi4Pul34NMYh/bPVHswmYkojjDpEoojti4mTr3dBoNJo/EQh8AEBf
+        v2DCZP4JAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="recordModeSwitch.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -186,15 +213,15 @@
   <data name="patrolStateProgressbar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG/SURBVFhH7ZUxSAJRGMcdG9tqbGxsbGxsrN0hMCQENwXH
-        AwdxShA9ECKaRAocA5dGJy01O089JAgcG4Ooru9//C8kzji5l9P7wUP9v/d97+/3vnsX02g0Gs0KzGaz
-        zclkcoAh37cprw/ZdGM6nRbEwFw+3cUh2quM+lqMjcfjfdnU+mXiDkNMvPkaTR0yTD004huw8JtTP4xG
-        o12Zay+sO+GUOng0fkWa6BVOBSJVMbAW1ZK1O5TV4DiOSSMWjFH+E1l7y5g2JTWgB5A46GiWgSZGZRCn
-        rDpIhISSeE4pNBLnVUdijyhFA4mQEIkphUZiCjRjUIqGJDuhmSal0Mix5hArPXdOKRq2be/RjEUpNP1y
-        efhYqbh2q5WhFA08PQuNGPpmRVw3mfzoxONur1g8pRwdMYJbdqWj6tdqNzAihj5hjHJ0cLP61ZE+OKO8
-        lKdG47iTSHx5VTGMC8rqgAlWBw15Kf828BaWPrn2jTzkcs+U1eM/HRhSqbmMOjR7MMj0C4VhN5V6hwnP
-        SDb74pRKWwz9H2TzoDe3e59OeyZQlV4+b3L5eoApHB3uELy7+tXq1cA0U0qbVaPRaJQRi30DN1LADtr8
-        wiQAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHKSURBVFhH7ZY/SEJRFMYdHd1qbGxsdGhobLTdIEREnHQQ
+        c3PTJYS3xEPFUZwcAxGawknL1Pz7eFsWFI1SIPYdOTdeYvrq3ZzuDw5Pvvt893vnnnPUpVAoFIpfYJqm
+        ZzQaHVHg8y7L2wObusfjcRoGJrjOrQHtDVHairGHcvmkrWkvSyauKWBiKjQ2dcxfk09b10+bweC84ffP
+        O4XC83A49PLSF/1+fx9m6sIU4oyX5HFbLHqakcgHGblLJh+NWm2Hl1aCrKQ4Q1Mc2R7LcrjXtJuFkViM
+        Hu5meS0wc8XZqbMkh2YoNCMzrUwmytJGqIhFHUnLTkfXD8lIIxCYsWQbkR2Y8rHkjFY2m14cUTz+ypJt
+        YCTNZlIsOaOby10szCQSTyzZBh13TmYMw8iy5IxuPu8TxcuSbWCkQmYQclqc2rpXrb6POh0qRNuTlboO
+        JkwyMxgMDlh2Dh5IU5besMLSRiyzZmJ3HNiCJqtoU9RBmOUfoeks7sdVTidZIROcHSrIIt7Ww0vfoKIV
+        Rug+luUjuoPfeIIokYaI0sbQe2KdDcs7nlVgY6910+WAQfrFln806yBTiDDNEMQlZQcm6E/W/2ZDoVAo
+        /oTL9Qnzur8w0M7McgAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="patrolModeSwitch.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

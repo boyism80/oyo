@@ -31,18 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.patrolFileListView = new System.Windows.Forms.ListView();
-            this.fileNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fileCapacity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel1 = new System.Windows.Forms.Panel();
             this.confirmButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.cancelButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.deleteButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.caption = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.panel1.SuspendLayout();
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.patrolFileListView1 = new Fire_Detector.Control.PatrolFileListView();
             this.caption.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
@@ -56,44 +52,6 @@
             // 
             this.bunifuElipse2.ElipseRadius = 5;
             this.bunifuElipse2.TargetControl = this;
-            // 
-            // patrolFileListView
-            // 
-            this.patrolFileListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.fileNumber,
-            this.fileName,
-            this.fileCapacity});
-            this.patrolFileListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.patrolFileListView.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.patrolFileListView.Location = new System.Drawing.Point(0, 0);
-            this.patrolFileListView.Name = "patrolFileListView";
-            this.patrolFileListView.Size = new System.Drawing.Size(696, 385);
-            this.patrolFileListView.TabIndex = 0;
-            this.patrolFileListView.UseCompatibleStateImageBehavior = false;
-            this.patrolFileListView.View = System.Windows.Forms.View.Details;
-            // 
-            // fileNumber
-            // 
-            this.fileNumber.Text = "번호";
-            this.fileNumber.Width = 40;
-            // 
-            // fileName
-            // 
-            this.fileName.Text = "이름";
-            this.fileName.Width = 500;
-            // 
-            // fileCapacity
-            // 
-            this.fileCapacity.Text = "용량";
-            this.fileCapacity.Width = 204;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.patrolFileListView);
-            this.panel1.Location = new System.Drawing.Point(12, 52);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(696, 385);
-            this.panel1.TabIndex = 2;
             // 
             // confirmButton
             // 
@@ -127,7 +85,7 @@
             this.confirmButton.Text = "확인";
             this.confirmButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.confirmButton.Textcolor = System.Drawing.Color.White;
-            this.confirmButton.TextFont = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmButton.TextFont = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // cancelButton
             // 
@@ -161,7 +119,7 @@
             this.cancelButton.Text = "취소";
             this.cancelButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cancelButton.Textcolor = System.Drawing.Color.White;
-            this.cancelButton.TextFont = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.TextFont = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // deleteButton
@@ -196,14 +154,14 @@
             this.deleteButton.Text = "삭제";
             this.deleteButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.deleteButton.Textcolor = System.Drawing.Color.White;
-            this.deleteButton.TextFont = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.TextFont = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // caption
             // 
             this.caption.BackColor = System.Drawing.Color.Salmon;
             this.caption.Controls.Add(this.bunifuCustomLabel1);
             this.caption.Dock = System.Windows.Forms.DockStyle.Top;
-            this.caption.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.caption.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.caption.ForeColor = System.Drawing.Color.White;
             this.caption.Location = new System.Drawing.Point(0, 0);
             this.caption.Name = "caption";
@@ -213,7 +171,7 @@
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(10, 5);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(89, 16);
@@ -225,20 +183,34 @@
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this.caption;
+            this.bunifuDragControl1.Vertical = true;
+            // 
+            // patrolFileListView1
+            // 
+            this.patrolFileListView1.AutoScroll = true;
+            this.patrolFileListView1.Location = new System.Drawing.Point(12, 52);
+            this.patrolFileListView1.Name = "patrolFileListView1";
+            this.patrolFileListView1.Size = new System.Drawing.Size(696, 385);
+            this.patrolFileListView1.TabIndex = 5;
+            // 
             // PatrolDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 480);
+            this.Controls.Add(this.patrolFileListView1);
             this.Controls.Add(this.caption);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.confirmButton);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PatrolDialog";
             this.Text = "PatrolDialog";
-            this.panel1.ResumeLayout(false);
             this.caption.ResumeLayout(false);
             this.caption.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
@@ -249,17 +221,14 @@
         #endregion
 
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private System.Windows.Forms.ColumnHeader fileNumber;
-        private System.Windows.Forms.ColumnHeader fileName;
-        private System.Windows.Forms.ColumnHeader fileCapacity;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
         private Bunifu.Framework.UI.BunifuFlatButton cancelButton;
         private Bunifu.Framework.UI.BunifuFlatButton confirmButton;
-        private System.Windows.Forms.Panel panel1;
         private Bunifu.Framework.UI.BunifuFlatButton deleteButton;
         private System.Windows.Forms.Panel caption;
-        public System.Windows.Forms.ListView patrolFileListView;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
+        private Control.PatrolFileListView patrolFileListView1;
     }
 }
