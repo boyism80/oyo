@@ -28,5 +28,10 @@ namespace Fire_Detector.Dialog
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void confirmButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

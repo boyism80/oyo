@@ -126,8 +126,10 @@ private void takeoffSwitch_OnValueChange(object sender, EventArgs e)
             patrolform.ShowDialog();
         }
 
-        
-
-        
+        private void recordFileSettingButton_Click(object sender, EventArgs e)
+        {
+            Form patrolform = new Fire_Detector.Dialog.RecordDialog();
+            patrolform.ShowDialog();
+        }
     }
 }

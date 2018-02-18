@@ -117,17 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="patrolFileBrowseButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACcAAAAeCAYAAACv1gdQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFuSURBVFhH7ZYvc4NAEMWRkZWVlZWVkZWVkXVE8c9gK+vy
-        MSIjkZXIykhkZGQ+Anlv81ImU0KZtMBN534zO7AH3L3bvTs28Hg8/4EwDGdJkrymabqBlbAdrP6lsY8S
-        /RZxHC/zPL/TcP3JsuxFHW0oEB09wx70+GbYB/tCvwvYmmNQpB53w5nwIwj6gMB7NQ9G7/H4Il7a9p7J
-        H6JMfV7NDmcwhbAzSncpt4HKGVq5kwFxK+h4k3valWjcjbHGfkInxDaKokdrYCqZUnMcgJFjBM3BTQVb
-        mOMAyOATM2kObuqvMDqAllltDsJ44IYwxwEYKGoy5yLHDnCxB3jwwakYTmuYGASrgJ5mD8B5p8mdDAiz
-        QkPuCS1CVgtzNY0Oz1loqForFS3E5gAcEQkr+QtT03cYOQqENb+QgYEolk9Vp7AzSvFKM1kO8VtTBWTr
-        C9eiNZVdcCb4mLXWHte2qvZmQ58HXK2Q1XAej+c6QXAEg/sNGZudiW4AAAAASUVORK5CYII=
-</value>
-  </data>
+  <metadata name="bunifuElipse1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="bunifuDragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>143, 17</value>
+  </metadata>
 </root>

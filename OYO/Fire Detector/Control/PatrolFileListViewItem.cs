@@ -27,7 +27,7 @@ namespace Fire_Detector.Control
 
         private void UpdateUI()
         {
-            var backColor = this.Checked ? Color.Coral : Color.FromArgb(192, 192, 255);
+            var backColor = this.Checked ? Color.FromArgb(255, 200, 190) : SystemColors.ControlLight;
             this.BackColor = backColor;
         }
 
@@ -35,5 +35,7 @@ namespace Fire_Detector.Control
         {
             this.Checked = !this.Checked;
         }
+
+        
     }
 }

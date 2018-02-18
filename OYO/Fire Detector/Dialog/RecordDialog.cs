@@ -17,14 +17,12 @@ namespace Fire_Detector.Dialog
             InitializeComponent();
         }
 
-        private void confirmButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void cancelButton_Click(object sender, EventArgs e)
         {
-
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
+
+        
     }
 }

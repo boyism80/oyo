@@ -85,7 +85,8 @@
             this.confirmButton.Text = "확인";
             this.confirmButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.confirmButton.Textcolor = System.Drawing.Color.White;
-            this.confirmButton.TextFont = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmButton.TextFont = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
             // 
             // cancelButton
             // 
@@ -119,7 +120,7 @@
             this.cancelButton.Text = "취소";
             this.cancelButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cancelButton.Textcolor = System.Drawing.Color.White;
-            this.cancelButton.TextFont = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.TextFont = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // deleteButton
@@ -154,14 +155,14 @@
             this.deleteButton.Text = "삭제";
             this.deleteButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.deleteButton.Textcolor = System.Drawing.Color.White;
-            this.deleteButton.TextFont = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.TextFont = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // caption
             // 
             this.caption.BackColor = System.Drawing.Color.Salmon;
             this.caption.Controls.Add(this.bunifuCustomLabel1);
             this.caption.Dock = System.Windows.Forms.DockStyle.Top;
-            this.caption.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.caption.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.caption.ForeColor = System.Drawing.Color.White;
             this.caption.Location = new System.Drawing.Point(0, 0);
             this.caption.Name = "caption";
@@ -171,7 +172,7 @@
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(10, 5);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(89, 16);
@@ -193,9 +194,9 @@
             // patrolFileListView1
             // 
             this.patrolFileListView1.AutoScroll = true;
-            this.patrolFileListView1.Location = new System.Drawing.Point(12, 52);
+            this.patrolFileListView1.Location = new System.Drawing.Point(12, 41);
             this.patrolFileListView1.Name = "patrolFileListView1";
-            this.patrolFileListView1.Size = new System.Drawing.Size(696, 385);
+            this.patrolFileListView1.Size = new System.Drawing.Size(696, 384);
             this.patrolFileListView1.TabIndex = 5;
             // 
             // PatrolDialog
