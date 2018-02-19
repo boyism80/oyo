@@ -61,6 +61,18 @@
             this.levelTemperatureRange = new Bunifu.Framework.UI.BunifuRange();
             this.panel7 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.thresholdSlider = new Bunifu.Framework.UI.BunifuSlider();
+            this.thresholdLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.transparencySlider = new Bunifu.Framework.UI.BunifuSlider();
+            this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.transparencyLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectVisualizeButton)).BeginInit();
@@ -76,6 +88,10 @@
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel18.SuspendLayout();
+            this.panel19.SuspendLayout();
+            this.panel17.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel12
@@ -349,7 +365,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 28);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.panel6.Size = new System.Drawing.Size(350, 145);
+            this.panel6.Size = new System.Drawing.Size(350, 199);
             this.panel6.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -357,17 +373,23 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel2.Controls.Add(this.panel17, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.panel4, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.panel9, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.panel8, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.palettesDropDown, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel10, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.panel18, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.panel19, 1, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(5, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.8062F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.1938F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(340, 122);
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(340, 196);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel9
@@ -375,7 +397,7 @@
             this.panel9.AutoSize = true;
             this.panel9.Controls.Add(this.bunifuCustomLabel4);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(3, 33);
+            this.panel9.Location = new System.Drawing.Point(3, 38);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(5);
             this.panel9.Size = new System.Drawing.Size(96, 26);
@@ -400,7 +422,7 @@
             this.panel8.Location = new System.Drawing.Point(3, 3);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(5);
-            this.panel8.Size = new System.Drawing.Size(96, 24);
+            this.panel8.Size = new System.Drawing.Size(96, 25);
             this.panel8.TabIndex = 1;
             // 
             // bunifuCustomLabel15
@@ -439,9 +461,9 @@
             this.panel10.Controls.Add(this.panel11);
             this.panel10.Controls.Add(this.levelTemperatureRange);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(105, 33);
+            this.panel10.Location = new System.Drawing.Point(105, 38);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(232, 86);
+            this.panel10.Size = new System.Drawing.Size(232, 64);
             this.panel10.TabIndex = 4;
             // 
             // panel11
@@ -517,6 +539,146 @@
             this.bunifuCustomLabel3.TabIndex = 1;
             this.bunifuCustomLabel3.Text = "적외선 옵션";
             // 
+            // panel4
+            // 
+            this.panel4.AutoSize = true;
+            this.panel4.Controls.Add(this.bunifuCustomLabel1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(3, 143);
+            this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(5);
+            this.panel4.Size = new System.Drawing.Size(96, 26);
+            this.panel4.TabIndex = 5;
+            // 
+            // bunifuCustomLabel1
+            // 
+            this.bunifuCustomLabel1.AutoSize = true;
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(34, 6);
+            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(39, 15);
+            this.bunifuCustomLabel1.TabIndex = 2;
+            this.bunifuCustomLabel1.Text = "투명도";
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.bunifuCustomLabel6);
+            this.panel18.Controls.Add(this.thresholdSlider);
+            this.panel18.Controls.Add(this.thresholdLabel);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel18.Location = new System.Drawing.Point(105, 108);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(232, 29);
+            this.panel18.TabIndex = 6;
+            // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.transparencySlider);
+            this.panel19.Controls.Add(this.bunifuCustomLabel7);
+            this.panel19.Controls.Add(this.transparencyLabel);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel19.Location = new System.Drawing.Point(105, 143);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(232, 50);
+            this.panel19.TabIndex = 6;
+            // 
+            // panel17
+            // 
+            this.panel17.AutoSize = true;
+            this.panel17.Controls.Add(this.bunifuCustomLabel5);
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel17.Location = new System.Drawing.Point(3, 108);
+            this.panel17.Name = "panel17";
+            this.panel17.Padding = new System.Windows.Forms.Padding(5);
+            this.panel17.Size = new System.Drawing.Size(96, 26);
+            this.panel17.TabIndex = 7;
+            // 
+            // bunifuCustomLabel5
+            // 
+            this.bunifuCustomLabel5.AutoSize = true;
+            this.bunifuCustomLabel5.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(34, 6);
+            this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
+            this.bunifuCustomLabel5.Size = new System.Drawing.Size(39, 15);
+            this.bunifuCustomLabel5.TabIndex = 2;
+            this.bunifuCustomLabel5.Text = "임계값";
+            // 
+            // thresholdSlider
+            // 
+            this.thresholdSlider.BackColor = System.Drawing.Color.Transparent;
+            this.thresholdSlider.BackgroudColor = System.Drawing.Color.DarkGray;
+            this.thresholdSlider.BorderRadius = 5;
+            this.thresholdSlider.IndicatorColor = System.Drawing.Color.Salmon;
+            this.thresholdSlider.Location = new System.Drawing.Point(2, 0);
+            this.thresholdSlider.MaximumValue = 110;
+            this.thresholdSlider.Name = "thresholdSlider";
+            this.thresholdSlider.Size = new System.Drawing.Size(160, 28);
+            this.thresholdSlider.TabIndex = 15;
+            this.thresholdSlider.Value = 55;
+            this.thresholdSlider.ValueChanged += new System.EventHandler(this.thresholdSlider_ValueChanged);
+            // 
+            // thresholdLabel
+            // 
+            this.thresholdLabel.AutoSize = true;
+            this.thresholdLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.thresholdLabel.ForeColor = System.Drawing.Color.Salmon;
+            this.thresholdLabel.Location = new System.Drawing.Point(173, 6);
+            this.thresholdLabel.Name = "thresholdLabel";
+            this.thresholdLabel.Size = new System.Drawing.Size(14, 13);
+            this.thresholdLabel.TabIndex = 17;
+            this.thresholdLabel.Text = "0";
+            this.thresholdLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // transparencySlider
+            // 
+            this.transparencySlider.BackColor = System.Drawing.Color.Transparent;
+            this.transparencySlider.BackgroudColor = System.Drawing.Color.DarkGray;
+            this.transparencySlider.BorderRadius = 5;
+            this.transparencySlider.IndicatorColor = System.Drawing.Color.Salmon;
+            this.transparencySlider.Location = new System.Drawing.Point(2, 3);
+            this.transparencySlider.MaximumValue = 100;
+            this.transparencySlider.Name = "transparencySlider";
+            this.transparencySlider.Size = new System.Drawing.Size(160, 28);
+            this.transparencySlider.TabIndex = 15;
+            this.transparencySlider.Value = 50;
+            this.transparencySlider.ValueChanged += new System.EventHandler(this.transparencySlider_ValueChanged);
+            // 
+            // bunifuCustomLabel7
+            // 
+            this.bunifuCustomLabel7.AutoSize = true;
+            this.bunifuCustomLabel7.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bunifuCustomLabel7.Location = new System.Drawing.Point(206, 9);
+            this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
+            this.bunifuCustomLabel7.Size = new System.Drawing.Size(18, 13);
+            this.bunifuCustomLabel7.TabIndex = 16;
+            this.bunifuCustomLabel7.Text = "%";
+            // 
+            // transparencyLabel
+            // 
+            this.transparencyLabel.AutoSize = true;
+            this.transparencyLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.transparencyLabel.ForeColor = System.Drawing.Color.Salmon;
+            this.transparencyLabel.Location = new System.Drawing.Point(173, 9);
+            this.transparencyLabel.Name = "transparencyLabel";
+            this.transparencyLabel.Size = new System.Drawing.Size(14, 13);
+            this.transparencyLabel.TabIndex = 17;
+            this.transparencyLabel.Text = "0";
+            this.transparencyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // bunifuCustomLabel6
+            // 
+            this.bunifuCustomLabel6.AutoSize = true;
+            this.bunifuCustomLabel6.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(206, 5);
+            this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
+            this.bunifuCustomLabel6.Size = new System.Drawing.Size(21, 15);
+            this.bunifuCustomLabel6.TabIndex = 18;
+            this.bunifuCustomLabel6.Text = "ºC";
+            // 
             // VisualizeTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -554,6 +716,14 @@
             this.panel11.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -593,5 +763,17 @@
         private System.Windows.Forms.Panel panel7;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
         private Bunifu.Framework.UI.BunifuCustomLabel connectionLabel;
+        private System.Windows.Forms.Panel panel17;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
+        private System.Windows.Forms.Panel panel4;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Panel panel19;
+        private Bunifu.Framework.UI.BunifuSlider thresholdSlider;
+        private Bunifu.Framework.UI.BunifuCustomLabel thresholdLabel;
+        private Bunifu.Framework.UI.BunifuSlider transparencySlider;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel7;
+        private Bunifu.Framework.UI.BunifuCustomLabel transparencyLabel;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel6;
     }
 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DefaultView));
             this.currentStateBar = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.bunifuProgressBar1 = new Bunifu.Framework.UI.BunifuProgressBar();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bunifuCircleProgressbar2 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
@@ -41,11 +42,14 @@
             this.streamingFrameBox = new System.Windows.Forms.PictureBox();
             this.sideCollapsedBar = new Fire_Detector.Control.SideCollapsedBar();
             this.sideExpandedBar = new Fire_Detector.Control.SideExpandedBar();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.currentStateBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.streamingFrameBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // currentStateBar
@@ -56,6 +60,10 @@
             this.currentStateBar.Controls.Add(this.pictureBox1);
             this.currentStateBar.Controls.Add(this.bunifuCircleProgressbar2);
             this.currentStateBar.Controls.Add(this.bunifuCustomLabel4);
+            this.currentStateBar.Controls.Add(this.bunifuCustomLabel7);
+            this.currentStateBar.Controls.Add(this.bunifuCustomLabel6);
+            this.currentStateBar.Controls.Add(this.bunifuCustomLabel5);
+            this.currentStateBar.Controls.Add(this.bunifuCustomLabel1);
             this.currentStateBar.Controls.Add(this.bunifuCustomLabel3);
             this.currentStateBar.Controls.Add(this.bunifuCustomLabel9);
             this.currentStateBar.Controls.Add(this.bunifuCustomLabel8);
@@ -66,6 +74,18 @@
             this.currentStateBar.Name = "currentStateBar";
             this.currentStateBar.Size = new System.Drawing.Size(604, 50);
             this.currentStateBar.TabIndex = 5;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(66, 13);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(29, 22);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
             // 
             // bunifuProgressBar1
             // 
@@ -103,7 +123,7 @@
             this.bunifuCircleProgressbar2.LabelVisible = false;
             this.bunifuCircleProgressbar2.LineProgressThickness = 2;
             this.bunifuCircleProgressbar2.LineThickness = 2;
-            this.bunifuCircleProgressbar2.Location = new System.Drawing.Point(431, 10);
+            this.bunifuCircleProgressbar2.Location = new System.Drawing.Point(574, 10);
             this.bunifuCircleProgressbar2.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.bunifuCircleProgressbar2.MaxValue = 100;
             this.bunifuCircleProgressbar2.Name = "bunifuCircleProgressbar2";
@@ -118,11 +138,11 @@
             this.bunifuCustomLabel4.AutoSize = true;
             this.bunifuCustomLabel4.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.bunifuCustomLabel4.Location = new System.Drawing.Point(314, 17);
+            this.bunifuCustomLabel4.Location = new System.Drawing.Point(508, 16);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
-            this.bunifuCustomLabel4.Size = new System.Drawing.Size(124, 16);
+            this.bunifuCustomLabel4.Size = new System.Drawing.Size(70, 16);
             this.bunifuCustomLabel4.TabIndex = 4;
-            this.bunifuCustomLabel4.Text = "No Fire Detection";
+            this.bunifuCustomLabel4.Text = "산불감지중";
             // 
             // bunifuCustomLabel3
             // 
@@ -131,9 +151,9 @@
             this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.Lime;
             this.bunifuCustomLabel3.Location = new System.Drawing.Point(207, 16);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
-            this.bunifuCustomLabel3.Size = new System.Drawing.Size(45, 16);
+            this.bunifuCustomLabel3.Size = new System.Drawing.Size(39, 16);
             this.bunifuCustomLabel3.TabIndex = 4;
-            this.bunifuCustomLabel3.Text = "LAT : ";
+            this.bunifuCustomLabel3.Text = "경도 :";
             // 
             // bunifuCustomLabel9
             // 
@@ -164,9 +184,9 @@
             this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.Lime;
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(104, 16);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(46, 16);
+            this.bunifuCustomLabel2.Size = new System.Drawing.Size(39, 16);
             this.bunifuCustomLabel2.TabIndex = 4;
-            this.bunifuCustomLabel2.Text = "LON : ";
+            this.bunifuCustomLabel2.Text = "위도 :";
             // 
             // streamingFrameBox
             // 
@@ -200,17 +220,49 @@
             this.sideExpandedBar.TabIndex = 1;
             this.sideExpandedBar.Visible = false;
             // 
-            // pictureBox2
+            // bunifuCustomLabel1
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(66, 13);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(29, 22);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 8;
-            this.pictureBox2.TabStop = false;
+            this.bunifuCustomLabel1.AutoSize = true;
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.Lime;
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(343, 16);
+            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(43, 16);
+            this.bunifuCustomLabel1.TabIndex = 4;
+            this.bunifuCustomLabel1.Text = "0.0 m";
+            // 
+            // bunifuCustomLabel5
+            // 
+            this.bunifuCustomLabel5.AutoSize = true;
+            this.bunifuCustomLabel5.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel5.ForeColor = System.Drawing.Color.Lime;
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(302, 16);
+            this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
+            this.bunifuCustomLabel5.Size = new System.Drawing.Size(39, 16);
+            this.bunifuCustomLabel5.TabIndex = 4;
+            this.bunifuCustomLabel5.Text = "고도 :";
+            // 
+            // bunifuCustomLabel6
+            // 
+            this.bunifuCustomLabel6.AutoSize = true;
+            this.bunifuCustomLabel6.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel6.ForeColor = System.Drawing.Color.Lime;
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(442, 16);
+            this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
+            this.bunifuCustomLabel6.Size = new System.Drawing.Size(57, 16);
+            this.bunifuCustomLabel6.TabIndex = 4;
+            this.bunifuCustomLabel6.Text = "0.0 m/s";
+            // 
+            // bunifuCustomLabel7
+            // 
+            this.bunifuCustomLabel7.AutoSize = true;
+            this.bunifuCustomLabel7.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel7.ForeColor = System.Drawing.Color.Lime;
+            this.bunifuCustomLabel7.Location = new System.Drawing.Point(401, 16);
+            this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
+            this.bunifuCustomLabel7.Size = new System.Drawing.Size(39, 16);
+            this.bunifuCustomLabel7.TabIndex = 4;
+            this.bunifuCustomLabel7.Text = "속도 :";
             // 
             // DefaultView
             // 
@@ -225,9 +277,9 @@
             this.Size = new System.Drawing.Size(1024, 738);
             this.currentStateBar.ResumeLayout(false);
             this.currentStateBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.streamingFrameBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -246,5 +298,9 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
         public System.Windows.Forms.PictureBox streamingFrameBox;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel7;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel6;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
     }
 }

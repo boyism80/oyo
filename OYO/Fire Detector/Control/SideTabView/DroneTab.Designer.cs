@@ -833,7 +833,7 @@
             // 
             this.droneSpeedSlider.BackColor = System.Drawing.Color.Transparent;
             this.droneSpeedSlider.BackgroudColor = System.Drawing.Color.DarkGray;
-            this.droneSpeedSlider.BorderRadius = 0;
+            this.droneSpeedSlider.BorderRadius = 5;
             this.droneSpeedSlider.IndicatorColor = System.Drawing.Color.Salmon;
             this.droneSpeedSlider.Location = new System.Drawing.Point(115, 46);
             this.droneSpeedSlider.MaximumValue = 20;

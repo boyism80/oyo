@@ -123,5 +123,15 @@ namespace Fire_Detector.Control.SideTabView
         public void OnUpdated(UpdateData updateDataSet)
         {
         }
+
+        private void thresholdSlider_ValueChanged(object sender, EventArgs e)
+        {
+            this.thresholdLabel.Text = this.thresholdSlider.Value.ToString();
+        }
+
+        private void transparencySlider_ValueChanged(object sender, EventArgs e)
+        {
+            this.transparencyLabel.Text = this.transparencySlider.Value.ToString();
+        }
     }
 }
