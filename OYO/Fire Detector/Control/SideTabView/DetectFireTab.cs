@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace Fire_Detector.Control
+namespace Fire_Detector.Control.SideTabView
 {
-    public partial class DetectFireTab : UserControl
+    public partial class DetectFireTab : BaseTabView
     {
         public DetectFireTab()
         {
@@ -20,8 +12,6 @@ namespace Fire_Detector.Control
         private void desiredTemperatureSlider_ValueChanged(object sender, EventArgs e)
         {
             desiredTemperatureLabel.Text = desiredTemperatureSlider.Value.ToString();
-
-
         }
 
         private void detectionStateSwitch_OnValueChange(object sender, EventArgs e)

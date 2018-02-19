@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Fire_Detector.Control
+namespace Fire_Detector.Control.SideTabView
 {
-    public partial class DroneTab : UserControl
+    public partial class DroneTab : BaseTabView
     {
         public DroneTab()
         {
@@ -15,44 +15,36 @@ namespace Fire_Detector.Control
 
         private void buttonCollapse_Click(object sender, EventArgs e)
         {
-            var mainform = this.FindForm() as MainForm;
-            if (mainform == null)
-                return;
-
-            mainform.defaultView.sideExpandedBar.Visible = false;
-            //mainform.defaultView.sideCollapsedBar.Visible = true;
+            this.Root.defaultView.sideExpandedBar.Visible = false;
+            //this.Root.defaultView.sideCollapsedBar.Visible = true;
         }
 
-        
+
 
         private void connectDroneButton_Click(object sender, EventArgs e)
         {
-            if(connectDroneProgressbar.animated == true)
+            if (connectDroneProgressbar.animated == true)
             {
                 connectDroneProgressbar.animated = false;
                 connectDroneProgressbar.Value = 0;
-
-
             }
             else
             {
                 connectDroneProgressbar.animated = true;
                 connectDroneProgressbar.Value = 15;
-
-
             }
         }
 
-        
-private void takeoffSwitch_OnValueChange(object sender, EventArgs e)
+
+        private void takeoffSwitch_OnValueChange(object sender, EventArgs e)
         {
-            if(takeoffSwitch.Value == true)
+            if (takeoffSwitch.Value == true)
             {
                 detectionStateLabel.Text = "비행중";
                 droneFlightProgressbar.Value = 30;
                 droneFlightProgressbar.animated = true;
                 droneFlightProgressbar.Visible = true;
-                
+
             }
             else
             {
@@ -75,7 +67,7 @@ private void takeoffSwitch_OnValueChange(object sender, EventArgs e)
         {
             this.recordPanel.Enabled = !this.patrolModeSwitch.Value;
             this.patrolControlPanel.Enabled = this.patrolModeSwitch.Value;
-            if(this.patrolModeSwitch.Value)
+            if (this.patrolModeSwitch.Value)
                 MessageBox.Show("녹화모드랑 같이 사용할 수 없습니다.");
         }
 
@@ -83,13 +75,13 @@ private void takeoffSwitch_OnValueChange(object sender, EventArgs e)
         {
             this.patrolPanel.Enabled = !this.recordModeSwitch.Value;
             this.recordControlPanel.Enabled = this.recordModeSwitch.Value;
-            if(this.recordModeSwitch.Value)
+            if (this.recordModeSwitch.Value)
                 MessageBox.Show("순찰모드랑 같이 사용할 수 없습니다.");
         }
 
         private void patrolStartEndButton_Click(object sender, EventArgs e)
         {
-            if(patrolStartEndButton.ButtonText.Equals("순찰 시작"))
+            if (patrolStartEndButton.ButtonText.Equals("순찰 시작"))
             {
                 patrolStateLabel.Visible = true;
                 patrolStateProgressbar.Visible = true;
@@ -106,7 +98,7 @@ private void takeoffSwitch_OnValueChange(object sender, EventArgs e)
 
         private void recordStartEndButton_Click(object sender, EventArgs e)
         {
-            if(recordStartEndButton.ButtonText.Equals("녹화 시작"))
+            if (recordStartEndButton.ButtonText.Equals("녹화 시작"))
             {
                 recordStateLabel.Visible = true;
                 recordStateProgressbar.Visible = true;

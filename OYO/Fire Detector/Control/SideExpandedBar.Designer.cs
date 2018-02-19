@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.visualizeTab = new Fire_Detector.Control.VisualizeTab();
-            this.leapmotionTab = new Fire_Detector.Control.LeapmotionTab();
-            this.droneTab = new Fire_Detector.Control.DroneTab();
-            this.detectFireTab = new Fire_Detector.Control.DetectFireTab();
+            this.visualizeTab = new Fire_Detector.Control.SideTabView.VisualizeTab();
+            this.leapmotionTab = new Fire_Detector.Control.SideTabView.LeapmotionTab();
+            this.droneTab = new Fire_Detector.Control.SideTabView.DroneTab();
+            this.detectFireTab = new Fire_Detector.Control.SideTabView.DetectFireTab();
             this.SuspendLayout();
             // 
             // visualizeTab
@@ -85,9 +85,9 @@
 
         #endregion
 
-        public DroneTab droneTab;
-        public LeapmotionTab leapmotionTab;
-        public VisualizeTab visualizeTab;
-        public DetectFireTab detectFireTab;
+        public Fire_Detector.Control.SideTabView.DroneTab droneTab;
+        public Fire_Detector.Control.SideTabView.LeapmotionTab leapmotionTab;
+        public Fire_Detector.Control.SideTabView.VisualizeTab visualizeTab;
+        public Fire_Detector.Control.SideTabView.DetectFireTab detectFireTab;
     }
 }

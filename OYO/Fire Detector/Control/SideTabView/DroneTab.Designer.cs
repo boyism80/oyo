@@ -1,4 +1,4 @@
-﻿namespace Fire_Detector.Control
+﻿namespace Fire_Detector.Control.SideTabView
 {
     partial class DroneTab
     {

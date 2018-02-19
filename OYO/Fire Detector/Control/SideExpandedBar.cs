@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Fire_Detector.Control.SideTabView;
 using System.Windows.Forms;
 
 namespace Fire_Detector.Control
@@ -10,18 +10,16 @@ namespace Fire_Detector.Control
             InitializeComponent();
         }
 
-        public void SetActiveTab(UserControl customTab)
+        public void SetActiveTab(BaseTabView customTab)
         {
             foreach(var control in this.Controls)
             {
-                var tab = control as UserControl;
+                var tab = control as BaseTabView;
                 if(tab == null)
                     continue;
 
                 tab.Visible = tab == customTab;
             }
         }
-
-       
     }
 }

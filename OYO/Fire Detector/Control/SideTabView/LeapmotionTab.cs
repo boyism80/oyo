@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Fire_Detector.Control
+namespace Fire_Detector.Control.SideTabView
 {
-    public partial class LeapmotionTab : UserControl
+    public partial class LeapmotionTab : BaseTabView
     {
         public LeapmotionTab()
         {
@@ -12,12 +12,8 @@ namespace Fire_Detector.Control
 
         private void leapmotionButton_Click(object sender, EventArgs e)
         {
-            var mainform = this.FindForm() as MainForm;
-            if(mainform == null)
-                return;
-
-            mainform.defaultView.sideExpandedBar.Visible = false;
-            mainform.defaultView.sideCollapsedBar.Visible = true;
+            this.Root.defaultView.sideExpandedBar.Visible = false;
+            this.Root.defaultView.sideCollapsedBar.Visible = true;
         }
 
         private void connectLeapmotionButton_Click(object sender, EventArgs e)
@@ -26,8 +22,6 @@ namespace Fire_Detector.Control
             {
                 connectLeapmotionProgressbar.animated = false;
                 connectLeapmotionProgressbar.Value = 0;
-
-
             }
             else
             {
@@ -35,6 +29,5 @@ namespace Fire_Detector.Control
                 connectLeapmotionProgressbar.Value = 15;
             }
         }
-       
     }
 }
