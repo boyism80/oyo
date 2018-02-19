@@ -388,6 +388,13 @@ namespace Fire_Detector
                 }
 
                 //
+                // 산불 감지
+                //
+                var detectionMask = this.UpdatedData.Temperature.Threshold(this.TemperatureThreshold, 255, ThresholdTypes.Binary);
+                this.Detector.Update(detectionMask);
+                this.UpdatedData.SetUpdatedFrame(this.Detector.DrawDetectedRects(this.UpdatedData.UpdatedFrame));
+
+                //
                 // 화면에 표시한다.
                 //
                 if (this.UpdatedData.SetInvalidateState(this.Blending, this.StreamingType))
