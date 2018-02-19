@@ -15,6 +15,11 @@ namespace Fire_Detector.Control
             InitializeComponent();
         }
 
+        public void OnSizeChanged(Size size, bool isMaximize)
+        {
+            //throw new NotImplementedException();
+        }
+
         public void OnStateChanged(bool connected)
         {
             try

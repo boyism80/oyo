@@ -1,6 +1,7 @@
 ﻿using Fire_Detector.Source;
 using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Fire_Detector.Control.SideTabView
 {
@@ -9,6 +10,11 @@ namespace Fire_Detector.Control.SideTabView
         public DetectFireTab()
         {
             InitializeComponent();
+        }
+
+        public void OnSizeChanged(Size size, bool isMaximize)
+        {
+            //throw new NotImplementedException();
         }
 
         public void OnStateChanged(bool connected)

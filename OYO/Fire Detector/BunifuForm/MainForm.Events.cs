@@ -40,6 +40,9 @@ namespace Fire_Detector.BunifuForm
                 this.bunifuDragControl.Vertical = false;
                 this.bunifuDragControl.Horizontal = false;
             }
+
+            foreach(var listener in this._listener)
+                listener.OnSizeChanged(this.Size, !isMaximized);
         }
 
         public void OnUpdate(StreamingType streamingType, OYOReceiver receiver)

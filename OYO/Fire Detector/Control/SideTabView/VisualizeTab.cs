@@ -2,6 +2,7 @@
 using OpenCvSharp;
 using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Fire_Detector.Control.SideTabView
 {
@@ -132,6 +133,11 @@ namespace Fire_Detector.Control.SideTabView
         private void transparencySlider_ValueChanged(object sender, EventArgs e)
         {
             this.transparencyLabel.Text = this.transparencySlider.Value.ToString();
+        }
+
+        public void OnSizeChanged(System.Drawing.Size size, bool isMaximize)
+        {
+            //throw new NotImplementedException();
         }
     }
 }

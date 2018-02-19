@@ -4,6 +4,7 @@ using oyo;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Fire_Detector.BunifuForm
 {
@@ -13,6 +14,7 @@ namespace Fire_Detector.BunifuForm
         {
             void OnStateChanged(bool connected);
             void OnUpdated(UpdateData updateDataSet);
+            void OnSizeChanged(System.Drawing.Size size, bool isMaximize);
         }
 
         private string HOST_NAME                = "luxir01.iptime.org"; // 192.168.0.80
@@ -38,7 +40,7 @@ namespace Fire_Detector.BunifuForm
 
         public Config Config { get; private set; }
 
-        public Size DisplaySize
+        public OpenCvSharp.Size DisplaySize
         {
             get
             {
@@ -91,6 +93,7 @@ namespace Fire_Detector.BunifuForm
             this._listener.Add(this.defaultView);
             this._listener.Add(this.defaultView.sideExpandedBar.visualizeTab);
             this._listener.Add(this.defaultView.sideExpandedBar.detectFireTab);
+            this._listener.Add(this.mainView.mainConnectionView);
 
             this.Config.Visualize.Palette = this.defaultView.sideExpandedBar.visualizeTab.palettesDropDown.selectedValue;
         }

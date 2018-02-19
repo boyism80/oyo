@@ -42,10 +42,6 @@
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.colorPanel = new System.Windows.Forms.Panel();
             this.connectionPanel = new System.Windows.Forms.Panel();
-            this.detectFireTabShow = new Fire_Detector.Control.DetectFireTabShow();
-            this.leapmotionTabShow = new Fire_Detector.Control.LeapmotionTabShow();
-            this.visualizeTabShow = new Fire_Detector.Control.VisualizeTabShow();
-            this.droneTabShow = new Fire_Detector.Control.DroneTabShow();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.detectFirePanel = new System.Windows.Forms.Panel();
             this.detectFireLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -57,20 +53,15 @@
             this.droneControlLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.cameraPanel = new System.Windows.Forms.Panel();
             this.cameraLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.activatedConnectionIconPanel = new System.Windows.Forms.Panel();
-            this.connectionIconsPanel = new System.Windows.Forms.Panel();
-            this.droneImageButton = new Bunifu.Framework.UI.BunifuImageButton();
-            this.raspCamImageButton = new Bunifu.Framework.UI.BunifuImageButton();
-            this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.leapMotionImageButton = new Bunifu.Framework.UI.BunifuImageButton();
-            this.leapmotionProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
-            this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.raspCamProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
-            this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.droneProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.bunifuTransition = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuTransition1 = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuTransition2 = new BunifuAnimatorNS.BunifuTransition(this.components);
+            this.activatedConnectionIconPanel = new System.Windows.Forms.Panel();
+            this.mainConnectionView = new Fire_Detector.Control.MainConnectionView();
+            this.droneTabShow = new Fire_Detector.Control.DroneTabShow();
+            this.visualizeTabShow = new Fire_Detector.Control.VisualizeTabShow();
+            this.leapmotionTabShow = new Fire_Detector.Control.LeapmotionTabShow();
+            this.detectFireTabShow = new Fire_Detector.Control.DetectFireTabShow();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.colorPanel.SuspendLayout();
@@ -81,10 +72,7 @@
             this.leapmotionPanel.SuspendLayout();
             this.droneControlPanel.SuspendLayout();
             this.cameraPanel.SuspendLayout();
-            this.connectionIconsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.droneImageButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.raspCamImageButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.leapMotionImageButton)).BeginInit();
+            this.activatedConnectionIconPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -205,13 +193,9 @@
             // 
             // connectionPanel
             // 
-            this.connectionPanel.Controls.Add(this.detectFireTabShow);
-            this.connectionPanel.Controls.Add(this.leapmotionTabShow);
-            this.connectionPanel.Controls.Add(this.visualizeTabShow);
-            this.connectionPanel.Controls.Add(this.droneTabShow);
-            this.connectionPanel.Controls.Add(this.tableLayoutPanel2);
+            this.connectionPanel.Controls.Add(this.mainConnectionView);
             this.connectionPanel.Controls.Add(this.activatedConnectionIconPanel);
-            this.connectionPanel.Controls.Add(this.connectionIconsPanel);
+            this.connectionPanel.Controls.Add(this.tableLayoutPanel2);
             this.bunifuTransition.SetDecoration(this.connectionPanel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.connectionPanel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.connectionPanel, BunifuAnimatorNS.DecorationType.None);
@@ -220,52 +204,6 @@
             this.connectionPanel.Name = "connectionPanel";
             this.connectionPanel.Size = new System.Drawing.Size(1024, 556);
             this.connectionPanel.TabIndex = 3;
-            // 
-            // detectFireTabShow
-            // 
-            this.bunifuTransition2.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.detectFireTabShow.Location = new System.Drawing.Point(0, 0);
-            this.detectFireTabShow.Name = "detectFireTabShow";
-            this.detectFireTabShow.Size = new System.Drawing.Size(1024, 510);
-            this.detectFireTabShow.TabIndex = 27;
-            this.detectFireTabShow.Visible = false;
-            // 
-            // leapmotionTabShow
-            // 
-            this.leapmotionTabShow.BackColor = System.Drawing.SystemColors.Control;
-            this.bunifuTransition2.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.leapmotionTabShow.Location = new System.Drawing.Point(0, 0);
-            this.leapmotionTabShow.Name = "leapmotionTabShow";
-            this.leapmotionTabShow.Size = new System.Drawing.Size(1024, 510);
-            this.leapmotionTabShow.TabIndex = 26;
-            this.leapmotionTabShow.Visible = false;
-            // 
-            // visualizeTabShow
-            // 
-            this.bunifuTransition2.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.visualizeTabShow.Location = new System.Drawing.Point(0, 0);
-            this.visualizeTabShow.Name = "visualizeTabShow";
-            this.visualizeTabShow.Size = new System.Drawing.Size(1024, 510);
-            this.visualizeTabShow.TabIndex = 25;
-            this.visualizeTabShow.Visible = false;
-            // 
-            // droneTabShow
-            // 
-            this.droneTabShow.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTransition2.SetDecoration(this.droneTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.droneTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition.SetDecoration(this.droneTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.droneTabShow.Location = new System.Drawing.Point(0, 0);
-            this.droneTabShow.Name = "droneTabShow";
-            this.droneTabShow.Size = new System.Drawing.Size(1024, 510);
-            this.droneTabShow.TabIndex = 24;
-            this.droneTabShow.Visible = false;
             // 
             // tableLayoutPanel2
             // 
@@ -463,209 +401,6 @@
             this.cameraLabel.MouseEnter += new System.EventHandler(this.cameraTab_MouseEnter);
             this.cameraLabel.MouseLeave += new System.EventHandler(this.tab_MouseLeave);
             // 
-            // activatedConnectionIconPanel
-            // 
-            this.bunifuTransition.SetDecoration(this.activatedConnectionIconPanel, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.activatedConnectionIconPanel, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition2.SetDecoration(this.activatedConnectionIconPanel, BunifuAnimatorNS.DecorationType.None);
-            this.activatedConnectionIconPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.activatedConnectionIconPanel.Location = new System.Drawing.Point(0, 310);
-            this.activatedConnectionIconPanel.Name = "activatedConnectionIconPanel";
-            this.activatedConnectionIconPanel.Size = new System.Drawing.Size(1024, 246);
-            this.activatedConnectionIconPanel.TabIndex = 22;
-            this.activatedConnectionIconPanel.Visible = false;
-            // 
-            // connectionIconsPanel
-            // 
-            this.connectionIconsPanel.Controls.Add(this.droneImageButton);
-            this.connectionIconsPanel.Controls.Add(this.raspCamImageButton);
-            this.connectionIconsPanel.Controls.Add(this.bunifuCustomLabel7);
-            this.connectionIconsPanel.Controls.Add(this.leapMotionImageButton);
-            this.connectionIconsPanel.Controls.Add(this.leapmotionProgressbar);
-            this.connectionIconsPanel.Controls.Add(this.bunifuCustomLabel6);
-            this.connectionIconsPanel.Controls.Add(this.raspCamProgressbar);
-            this.connectionIconsPanel.Controls.Add(this.bunifuCustomLabel8);
-            this.connectionIconsPanel.Controls.Add(this.droneProgressbar);
-            this.bunifuTransition.SetDecoration(this.connectionIconsPanel, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.connectionIconsPanel, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition2.SetDecoration(this.connectionIconsPanel, BunifuAnimatorNS.DecorationType.None);
-            this.connectionIconsPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.connectionIconsPanel.Location = new System.Drawing.Point(0, 0);
-            this.connectionIconsPanel.Name = "connectionIconsPanel";
-            this.connectionIconsPanel.Size = new System.Drawing.Size(1024, 310);
-            this.connectionIconsPanel.TabIndex = 21;
-            // 
-            // droneImageButton
-            // 
-            this.droneImageButton.BackColor = System.Drawing.Color.Transparent;
-            this.droneImageButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition.SetDecoration(this.droneImageButton, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.droneImageButton, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition2.SetDecoration(this.droneImageButton, BunifuAnimatorNS.DecorationType.None);
-            this.droneImageButton.Image = ((System.Drawing.Image)(resources.GetObject("droneImageButton.Image")));
-            this.droneImageButton.ImageActive = null;
-            this.droneImageButton.Location = new System.Drawing.Point(129, 78);
-            this.droneImageButton.Name = "droneImageButton";
-            this.droneImageButton.Size = new System.Drawing.Size(110, 110);
-            this.droneImageButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.droneImageButton.TabIndex = 14;
-            this.droneImageButton.TabStop = false;
-            this.droneImageButton.Zoom = 10;
-            this.droneImageButton.Click += new System.EventHandler(this.DroneImageButton_Click);
-            // 
-            // raspCamImageButton
-            // 
-            this.raspCamImageButton.BackColor = System.Drawing.Color.Transparent;
-            this.raspCamImageButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition.SetDecoration(this.raspCamImageButton, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.raspCamImageButton, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition2.SetDecoration(this.raspCamImageButton, BunifuAnimatorNS.DecorationType.None);
-            this.raspCamImageButton.Image = ((System.Drawing.Image)(resources.GetObject("raspCamImageButton.Image")));
-            this.raspCamImageButton.ImageActive = null;
-            this.raspCamImageButton.Location = new System.Drawing.Point(471, 78);
-            this.raspCamImageButton.Name = "raspCamImageButton";
-            this.raspCamImageButton.Size = new System.Drawing.Size(110, 110);
-            this.raspCamImageButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.raspCamImageButton.TabIndex = 17;
-            this.raspCamImageButton.TabStop = false;
-            this.raspCamImageButton.Zoom = 10;
-            this.raspCamImageButton.Click += new System.EventHandler(this.RaspCamImageButton_Click);
-            // 
-            // bunifuCustomLabel7
-            // 
-            this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel7, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel7, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition.SetDecoration(this.bunifuCustomLabel7, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel7.Font = new System.Drawing.Font("NEXON Football Gothic B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel7.ForeColor = System.Drawing.Color.Coral;
-            this.bunifuCustomLabel7.Location = new System.Drawing.Point(426, 233);
-            this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
-            this.bunifuCustomLabel7.Size = new System.Drawing.Size(200, 31);
-            this.bunifuCustomLabel7.TabIndex = 16;
-            this.bunifuCustomLabel7.Text = "RaspPiCam";
-            this.bunifuCustomLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // leapMotionImageButton
-            // 
-            this.leapMotionImageButton.BackColor = System.Drawing.Color.Transparent;
-            this.leapMotionImageButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition.SetDecoration(this.leapMotionImageButton, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.leapMotionImageButton, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition2.SetDecoration(this.leapMotionImageButton, BunifuAnimatorNS.DecorationType.None);
-            this.leapMotionImageButton.Image = ((System.Drawing.Image)(resources.GetObject("leapMotionImageButton.Image")));
-            this.leapMotionImageButton.ImageActive = null;
-            this.leapMotionImageButton.Location = new System.Drawing.Point(810, 88);
-            this.leapMotionImageButton.Name = "leapMotionImageButton";
-            this.leapMotionImageButton.Size = new System.Drawing.Size(90, 90);
-            this.leapMotionImageButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.leapMotionImageButton.TabIndex = 20;
-            this.leapMotionImageButton.TabStop = false;
-            this.leapMotionImageButton.Zoom = 10;
-            this.leapMotionImageButton.Click += new System.EventHandler(this.LeapmotionImageButton_Click);
-            // 
-            // leapmotionProgressbar
-            // 
-            this.leapmotionProgressbar.animated = false;
-            this.leapmotionProgressbar.animationIterval = 5;
-            this.leapmotionProgressbar.animationSpeed = 3;
-            this.leapmotionProgressbar.BackColor = System.Drawing.Color.Transparent;
-            this.leapmotionProgressbar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("leapmotionProgressbar.BackgroundImage")));
-            this.bunifuTransition.SetDecoration(this.leapmotionProgressbar, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.leapmotionProgressbar, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition2.SetDecoration(this.leapmotionProgressbar, BunifuAnimatorNS.DecorationType.None);
-            this.leapmotionProgressbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.leapmotionProgressbar.ForeColor = System.Drawing.Color.Tomato;
-            this.leapmotionProgressbar.LabelVisible = false;
-            this.leapmotionProgressbar.LineProgressThickness = 5;
-            this.leapmotionProgressbar.LineThickness = 5;
-            this.leapmotionProgressbar.Location = new System.Drawing.Point(752, 31);
-            this.leapmotionProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.leapmotionProgressbar.MaxValue = 100;
-            this.leapmotionProgressbar.Name = "leapmotionProgressbar";
-            this.leapmotionProgressbar.ProgressBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(150)))));
-            this.leapmotionProgressbar.ProgressColor = System.Drawing.Color.Tomato;
-            this.leapmotionProgressbar.Size = new System.Drawing.Size(200, 200);
-            this.leapmotionProgressbar.TabIndex = 18;
-            this.leapmotionProgressbar.Value = 0;
-            // 
-            // bunifuCustomLabel6
-            // 
-            this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel6.Font = new System.Drawing.Font("NEXON Football Gothic B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel6.ForeColor = System.Drawing.Color.Coral;
-            this.bunifuCustomLabel6.Location = new System.Drawing.Point(84, 233);
-            this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
-            this.bunifuCustomLabel6.Size = new System.Drawing.Size(200, 31);
-            this.bunifuCustomLabel6.TabIndex = 13;
-            this.bunifuCustomLabel6.Text = "Drone";
-            this.bunifuCustomLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // raspCamProgressbar
-            // 
-            this.raspCamProgressbar.animated = false;
-            this.raspCamProgressbar.animationIterval = 5;
-            this.raspCamProgressbar.animationSpeed = 3;
-            this.raspCamProgressbar.BackColor = System.Drawing.Color.Transparent;
-            this.raspCamProgressbar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("raspCamProgressbar.BackgroundImage")));
-            this.bunifuTransition.SetDecoration(this.raspCamProgressbar, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.raspCamProgressbar, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition2.SetDecoration(this.raspCamProgressbar, BunifuAnimatorNS.DecorationType.None);
-            this.raspCamProgressbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.raspCamProgressbar.ForeColor = System.Drawing.Color.Tomato;
-            this.raspCamProgressbar.LabelVisible = false;
-            this.raspCamProgressbar.LineProgressThickness = 5;
-            this.raspCamProgressbar.LineThickness = 5;
-            this.raspCamProgressbar.Location = new System.Drawing.Point(426, 31);
-            this.raspCamProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.raspCamProgressbar.MaxValue = 100;
-            this.raspCamProgressbar.Name = "raspCamProgressbar";
-            this.raspCamProgressbar.ProgressBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(150)))));
-            this.raspCamProgressbar.ProgressColor = System.Drawing.Color.Tomato;
-            this.raspCamProgressbar.Size = new System.Drawing.Size(200, 200);
-            this.raspCamProgressbar.TabIndex = 15;
-            this.raspCamProgressbar.Value = 0;
-            // 
-            // bunifuCustomLabel8
-            // 
-            this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel8.Font = new System.Drawing.Font("NEXON Football Gothic B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel8.ForeColor = System.Drawing.Color.Coral;
-            this.bunifuCustomLabel8.Location = new System.Drawing.Point(752, 233);
-            this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
-            this.bunifuCustomLabel8.Size = new System.Drawing.Size(200, 31);
-            this.bunifuCustomLabel8.TabIndex = 19;
-            this.bunifuCustomLabel8.Text = "Leapmotion";
-            this.bunifuCustomLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // droneProgressbar
-            // 
-            this.droneProgressbar.animated = false;
-            this.droneProgressbar.animationIterval = 5;
-            this.droneProgressbar.animationSpeed = 3;
-            this.droneProgressbar.BackColor = System.Drawing.Color.Transparent;
-            this.droneProgressbar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("droneProgressbar.BackgroundImage")));
-            this.bunifuTransition.SetDecoration(this.droneProgressbar, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.droneProgressbar, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition2.SetDecoration(this.droneProgressbar, BunifuAnimatorNS.DecorationType.None);
-            this.droneProgressbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.droneProgressbar.ForeColor = System.Drawing.Color.Tomato;
-            this.droneProgressbar.LabelVisible = false;
-            this.droneProgressbar.LineProgressThickness = 5;
-            this.droneProgressbar.LineThickness = 5;
-            this.droneProgressbar.Location = new System.Drawing.Point(84, 31);
-            this.droneProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.droneProgressbar.MaxValue = 100;
-            this.droneProgressbar.Name = "droneProgressbar";
-            this.droneProgressbar.ProgressBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(150)))));
-            this.droneProgressbar.ProgressColor = System.Drawing.Color.Tomato;
-            this.droneProgressbar.Size = new System.Drawing.Size(200, 200);
-            this.droneProgressbar.TabIndex = 12;
-            this.droneProgressbar.Value = 0;
-            // 
             // bunifuTransition
             // 
             this.bunifuTransition.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
@@ -732,6 +467,79 @@
             this.bunifuTransition2.DefaultAnimation = animation3;
             this.bunifuTransition2.Interval = 20;
             // 
+            // activatedConnectionIconPanel
+            // 
+            this.activatedConnectionIconPanel.Controls.Add(this.detectFireTabShow);
+            this.activatedConnectionIconPanel.Controls.Add(this.leapmotionTabShow);
+            this.activatedConnectionIconPanel.Controls.Add(this.visualizeTabShow);
+            this.activatedConnectionIconPanel.Controls.Add(this.droneTabShow);
+            this.bunifuTransition.SetDecoration(this.activatedConnectionIconPanel, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.activatedConnectionIconPanel, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition2.SetDecoration(this.activatedConnectionIconPanel, BunifuAnimatorNS.DecorationType.None);
+            this.activatedConnectionIconPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.activatedConnectionIconPanel.Location = new System.Drawing.Point(0, 264);
+            this.activatedConnectionIconPanel.Name = "activatedConnectionIconPanel";
+            this.activatedConnectionIconPanel.Size = new System.Drawing.Size(1024, 246);
+            this.activatedConnectionIconPanel.TabIndex = 24;
+            this.activatedConnectionIconPanel.Visible = false;
+            // 
+            // mainConnectionView
+            // 
+            this.bunifuTransition.SetDecoration(this.mainConnectionView, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.mainConnectionView, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition2.SetDecoration(this.mainConnectionView, BunifuAnimatorNS.DecorationType.None);
+            this.mainConnectionView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainConnectionView.Location = new System.Drawing.Point(0, 0);
+            this.mainConnectionView.Name = "mainConnectionView";
+            this.mainConnectionView.Size = new System.Drawing.Size(1024, 264);
+            this.mainConnectionView.TabIndex = 25;
+            // 
+            // droneTabShow
+            // 
+            this.droneTabShow.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuTransition2.SetDecoration(this.droneTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.droneTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition.SetDecoration(this.droneTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.droneTabShow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.droneTabShow.Location = new System.Drawing.Point(0, 0);
+            this.droneTabShow.Name = "droneTabShow";
+            this.droneTabShow.Size = new System.Drawing.Size(1024, 246);
+            this.droneTabShow.TabIndex = 0;
+            // 
+            // visualizeTabShow
+            // 
+            this.bunifuTransition2.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.visualizeTabShow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.visualizeTabShow.Location = new System.Drawing.Point(0, 0);
+            this.visualizeTabShow.Name = "visualizeTabShow";
+            this.visualizeTabShow.Size = new System.Drawing.Size(1024, 246);
+            this.visualizeTabShow.TabIndex = 1;
+            // 
+            // leapmotionTabShow
+            // 
+            this.leapmotionTabShow.BackColor = System.Drawing.SystemColors.Control;
+            this.bunifuTransition2.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.leapmotionTabShow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.leapmotionTabShow.Location = new System.Drawing.Point(0, 0);
+            this.leapmotionTabShow.Name = "leapmotionTabShow";
+            this.leapmotionTabShow.Size = new System.Drawing.Size(1024, 246);
+            this.leapmotionTabShow.TabIndex = 2;
+            // 
+            // detectFireTabShow
+            // 
+            this.bunifuTransition2.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.detectFireTabShow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.detectFireTabShow.Location = new System.Drawing.Point(0, 0);
+            this.detectFireTabShow.Name = "detectFireTabShow";
+            this.detectFireTabShow.Size = new System.Drawing.Size(1024, 246);
+            this.detectFireTabShow.TabIndex = 3;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -754,10 +562,7 @@
             this.leapmotionPanel.ResumeLayout(false);
             this.droneControlPanel.ResumeLayout(false);
             this.cameraPanel.ResumeLayout(false);
-            this.connectionIconsPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.droneImageButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.raspCamImageButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.leapMotionImageButton)).EndInit();
+            this.activatedConnectionIconPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -787,16 +592,7 @@
         private System.Windows.Forms.Panel cameraPanel;
         private Bunifu.Framework.UI.BunifuCustomLabel cameraLabel;
         private System.Windows.Forms.Panel activatedConnectionIconPanel;
-        private System.Windows.Forms.Panel connectionIconsPanel;
-        private Bunifu.Framework.UI.BunifuImageButton droneImageButton;
-        private Bunifu.Framework.UI.BunifuImageButton raspCamImageButton;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel7;
-        private Bunifu.Framework.UI.BunifuImageButton leapMotionImageButton;
-        private Bunifu.Framework.UI.BunifuCircleProgressbar leapmotionProgressbar;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel6;
-        private Bunifu.Framework.UI.BunifuCircleProgressbar raspCamProgressbar;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel8;
-        private Bunifu.Framework.UI.BunifuCircleProgressbar droneProgressbar;
+        public MainConnectionView mainConnectionView;
         public DetectFireTabShow detectFireTabShow;
         public LeapmotionTabShow leapmotionTabShow;
         public VisualizeTabShow visualizeTabShow;
