@@ -67,8 +67,12 @@ namespace Fire_Detector.Control.SideTabView
         {
             this.recordPanel.Enabled = !this.patrolModeSwitch.Value;
             this.patrolControlPanel.Enabled = this.patrolModeSwitch.Value;
-            if (this.patrolModeSwitch.Value)
-                MessageBox.Show("녹화모드랑 같이 사용할 수 없습니다.");
+            if (this.patrolModeSwitch.Value) {
+                string message = "녹화모드와 같이 사용할 수 없습니다.";
+                Form messageform = new Fire_Detector.Dialog.MessageDialog(message);
+                messageform.ShowDialog();
+
+            }
         }
 
         private void recordModeSwitch_OnValueChange(object sender, EventArgs e)
@@ -76,7 +80,11 @@ namespace Fire_Detector.Control.SideTabView
             this.patrolPanel.Enabled = !this.recordModeSwitch.Value;
             this.recordControlPanel.Enabled = this.recordModeSwitch.Value;
             if (this.recordModeSwitch.Value)
-                MessageBox.Show("순찰모드랑 같이 사용할 수 없습니다.");
+            {
+                string message = "순찰모드와 같이 사용할 수 없습니다.";
+                Form messageform = new Fire_Detector.Dialog.MessageDialog(message);
+                messageform.ShowDialog();
+            }
         }
 
         private void patrolStartEndButton_Click(object sender, EventArgs e)

@@ -286,8 +286,12 @@ namespace Fire_Detector
             foreach(var control in this._listener)
                 control.OnStateChanged(this.Receiver.Connected);
 
-            if(result == false)
-                MessageBox.Show("서버와 연결할 수 없습니다.");
+            if (result == false) {
+                string message = "서버와 연결할 수 없습니다.";
+                Form messageform = new Fire_Detector.Dialog.MessageDialog(message);
+                messageform.ShowDialog();
+            }
+                
             return result;
         }
 

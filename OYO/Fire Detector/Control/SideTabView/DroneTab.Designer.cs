@@ -35,6 +35,7 @@
             this.bunifuCustomTextbox1 = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.bunifuCustomLabel12 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.recordFileTextbox = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
+            this.recordFileSettingButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuThinButton21 = new Bunifu.Framework.UI.BunifuThinButton2();
             this.recordStateLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.recordStartEndButton = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -92,7 +93,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonCollapse = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.recordFileSettingButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.panel2.SuspendLayout();
             this.recordPanel.SuspendLayout();
             this.recordControlPanel.SuspendLayout();
@@ -198,6 +198,32 @@
             this.recordFileTextbox.Size = new System.Drawing.Size(172, 21);
             this.recordFileTextbox.TabIndex = 24;
             this.recordFileTextbox.Text = "녹화 모드를 On 해주세요.";
+            // 
+            // recordFileSettingButton
+            // 
+            this.recordFileSettingButton.ActiveBorderThickness = 1;
+            this.recordFileSettingButton.ActiveCornerRadius = 20;
+            this.recordFileSettingButton.ActiveFillColor = System.Drawing.Color.LightSalmon;
+            this.recordFileSettingButton.ActiveForecolor = System.Drawing.Color.White;
+            this.recordFileSettingButton.ActiveLineColor = System.Drawing.Color.Salmon;
+            this.recordFileSettingButton.BackColor = System.Drawing.Color.Transparent;
+            this.recordFileSettingButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("recordFileSettingButton.BackgroundImage")));
+            this.recordFileSettingButton.ButtonText = "설정";
+            this.recordFileSettingButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.recordFileSettingButton.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recordFileSettingButton.ForeColor = System.Drawing.Color.Salmon;
+            this.recordFileSettingButton.IdleBorderThickness = 1;
+            this.recordFileSettingButton.IdleCornerRadius = 20;
+            this.recordFileSettingButton.IdleFillColor = System.Drawing.Color.Transparent;
+            this.recordFileSettingButton.IdleForecolor = System.Drawing.SystemColors.ControlDarkDark;
+            this.recordFileSettingButton.IdleLineColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.recordFileSettingButton.Location = new System.Drawing.Point(288, 4);
+            this.recordFileSettingButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.recordFileSettingButton.Name = "recordFileSettingButton";
+            this.recordFileSettingButton.Size = new System.Drawing.Size(39, 30);
+            this.recordFileSettingButton.TabIndex = 21;
+            this.recordFileSettingButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.recordFileSettingButton.Click += new System.EventHandler(this.recordFileSettingButton_Click);
             // 
             // bunifuThinButton21
             // 
@@ -1041,32 +1067,6 @@
             this.buttonCollapse.Textcolor = System.Drawing.Color.White;
             this.buttonCollapse.TextFont = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCollapse.Click += new System.EventHandler(this.buttonCollapse_Click);
-            // 
-            // recordFileSettingButton
-            // 
-            this.recordFileSettingButton.ActiveBorderThickness = 1;
-            this.recordFileSettingButton.ActiveCornerRadius = 20;
-            this.recordFileSettingButton.ActiveFillColor = System.Drawing.Color.LightSalmon;
-            this.recordFileSettingButton.ActiveForecolor = System.Drawing.Color.White;
-            this.recordFileSettingButton.ActiveLineColor = System.Drawing.Color.Salmon;
-            this.recordFileSettingButton.BackColor = System.Drawing.Color.Transparent;
-            this.recordFileSettingButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("recordFileSettingButton.BackgroundImage")));
-            this.recordFileSettingButton.ButtonText = "설정";
-            this.recordFileSettingButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.recordFileSettingButton.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.recordFileSettingButton.ForeColor = System.Drawing.Color.Salmon;
-            this.recordFileSettingButton.IdleBorderThickness = 1;
-            this.recordFileSettingButton.IdleCornerRadius = 20;
-            this.recordFileSettingButton.IdleFillColor = System.Drawing.Color.Transparent;
-            this.recordFileSettingButton.IdleForecolor = System.Drawing.SystemColors.ControlDarkDark;
-            this.recordFileSettingButton.IdleLineColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.recordFileSettingButton.Location = new System.Drawing.Point(288, 4);
-            this.recordFileSettingButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.recordFileSettingButton.Name = "recordFileSettingButton";
-            this.recordFileSettingButton.Size = new System.Drawing.Size(39, 30);
-            this.recordFileSettingButton.TabIndex = 21;
-            this.recordFileSettingButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.recordFileSettingButton.Click += new System.EventHandler(this.recordFileSettingButton_Click);
             // 
             // DroneTab
             // 
