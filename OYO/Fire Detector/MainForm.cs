@@ -2,8 +2,6 @@
 using oyo;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 using static oyo.OYOReceiver;
 
@@ -14,6 +12,99 @@ namespace Fire_Detector
         public interface IStateChangedListener
         {
             void OnStateChanged(bool connected);
+            void OnUpdated(UpdateDataSet updateDataSet);
+        }
+
+        public sealed class UpdateDataSet
+        {
+            public StreamingType StreamingType { get; private set; }
+            public bool Invalidated { get; private set; }
+            public Mat Radioactive { get; private set; }
+
+            public Mat Temperature { get; private set; }
+            public Mat Infrared { get; private set; }
+            public Mat Mask { get; private set; }
+            public Mat Visual { get; private set; }
+            public Mat UpdatedFrame { get; private set; }
+
+            private Point _minloc;
+            public Point MinimumTemperatureLocation
+            {
+                get
+                {
+                    return this._minloc;
+                }
+            }
+
+            private Point _maxloc;
+            public Point MaximumTemperatureLocation
+            {
+                get
+                {
+                    return this._maxloc;
+                }
+            }
+
+            private double _minval;
+            public double MinimumTemperature
+            {
+                get
+                {
+                    return this._minval;
+                }
+            }
+
+            private double _maxval;
+            public double MaximumTemperature
+            {
+                get
+                {
+                    return this._maxval;
+                }
+            }
+
+            private double _meanval;
+            public double MeanTemperature
+            {
+                get
+                {
+                    return this._meanval;
+                }
+            }
+
+            public UpdateDataSet()
+            {
+                this._minloc = new Point();
+                this._maxloc = new Point();
+            }
+
+            public void Update(Mat infrared, Mat temperature, double temperatureThreshold)
+            {
+                this.StreamingType = StreamingType.Infrared;
+                this.Infrared = infrared;
+                this.Temperature = temperature;
+                this.Mask = this.Temperature.Threshold(temperatureThreshold, 255, ThresholdTypes.Binary);
+
+                this.Temperature.MinMaxLoc(out this._minval, out this._maxval, out this._minloc, out this._maxloc);
+                this._meanval = this.Temperature.Mean().Val0;
+            }
+
+            public void Update(Mat visual)
+            {
+                this.StreamingType = StreamingType.Visual;
+                this.Visual = visual;
+            }
+
+            public void SetUpdatedFrame(Mat frame)
+            {
+                this.UpdatedFrame = frame;
+            }
+
+            public bool SetInvalidateState(bool blending, StreamingType currentStreamingType)
+            {
+                this.Invalidated = blending || (this.StreamingType == currentStreamingType);
+                return this.Invalidated;
+            }
         }
 
         private string HOST_NAME                = "luxir01.iptime.org"; // 192.168.0.80
@@ -21,8 +112,6 @@ namespace Fire_Detector
         private static float MAX_SCALED_SIZE    = 15.0f;
 
         private List<IStateChangedListener> _listener;
-        private Mat                         _temperature;
-        private Mat                         _mask;
 
 
         //
@@ -36,6 +125,7 @@ namespace Fire_Detector
         public OYOBlender Blender { get; private set; }
         public OYODetector Detector { get; private set; }
         public OYORecorder Recorder { get; private set; }
+        public UpdateDataSet UpdatedData { get; private set; }
 
         public StreamingType StreamingType { get; set; }
 
@@ -71,6 +161,9 @@ namespace Fire_Detector
         {
             get
             {
+                if(this.Blending)
+                    return this.Blender.Size;
+
                 if (this._currentDisplayFrame == null)
                     return this.StreamingType == StreamingType.Infrared ? this._currentInfraredFrame.Size() : this._currentVisualFrame.Size();
 
@@ -109,11 +202,13 @@ namespace Fire_Detector
             this.Blender = new OYOBlender(new OpenCvSharp.Size(720, 480));
             this.Detector = new OYODetector();
             this.Recorder = new OYORecorder();
+            this.UpdatedData = new UpdateDataSet();
 
             this._listener = new List<IStateChangedListener>();
             this._listener.Add(this.mainView);
             this._listener.Add(this.defaultView);
             this._listener.Add(this.defaultView.sideExpandedBar.visualizeTab);
+            this._listener.Add(this.defaultView.sideExpandedBar.detectFireTab);
 
             this.Palette = this.defaultView.sideExpandedBar.visualizeTab.palettesDropDown.selectedValue;
         }
@@ -230,39 +325,33 @@ namespace Fire_Detector
         {
             try
             {
-                var updatedFrame        = null as Mat;
-
                 //
                 // 일단 녹화를 한다.
                 //
                 if (streamingType == StreamingType.Infrared)
                 {
-                    updatedFrame            = this.mappingPalette(receiver.Infrared(this.Scaled));
-                    this._currentInfraredFrame  = updatedFrame.Clone();
+                    var temperature = new Mat();
+                    if(this.StreamingType == StreamingType.Infrared)
+                        temperature     = receiver.Temperature(this.Scaled);
+                    else
+                        temperature     = receiver.Temperature(this.DisplaySize);
+
+                    this.UpdatedData.Update(this.mappingPalette(receiver.Infrared(this.Scaled)), temperature, this.TemperatureThreshold);
+
+                    //updatedFrame            = this.mappingPalette(receiver.Infrared(this.Scaled));
+                    this._currentInfraredFrame  = this.UpdatedData.Infrared.Clone();
+                    this.Recorder.Write(OYORecorder.RecordingStateType.Infrared, this.UpdatedData.Infrared);
                 }
                 else
                 {
-                    updatedFrame            = receiver.Visual();
-                    this._currentVisualFrame    = updatedFrame.Clone();
+                    this.UpdatedData.Update(receiver.Visual());
+                    //updatedFrame            = receiver.Visual();
+                    this._currentVisualFrame    = this.UpdatedData.Visual.Clone();
+                    this.Recorder.Write(OYORecorder.RecordingStateType.Visual, this.UpdatedData.Visual);
                 }
 
-                this.Recorder.Write(streamingType == StreamingType.Infrared ? OYORecorder.RecordingStateType.Infrared : OYORecorder.RecordingStateType.Visual, updatedFrame);
+                //this.Recorder.Write(streamingType == StreamingType.Infrared ? OYORecorder.RecordingStateType.Infrared : OYORecorder.RecordingStateType.Visual, updatedFrame);
 
-
-                //
-                // 적외선 영상을 받아오는 경우에는 온도값과 마스크를 얻는다.
-                //
-                if (streamingType == StreamingType.Infrared)
-                {
-                    if (this.Blending)
-                        this._temperature     = receiver.Temperature(this.Blender.Size);
-                    else if(this.StreamingType == StreamingType.Visual)
-                        this._temperature     = receiver.Temperature(this.DisplaySize);
-                    else
-                        this._temperature     = receiver.Temperature(this.Scaled);
-
-                    this._mask                = this._temperature.Threshold(this.TemperatureThreshold, 255, ThresholdTypes.Binary);
-                }
 
 
                 //
@@ -274,30 +363,34 @@ namespace Fire_Detector
                     {
                         if (streamingType == StreamingType.Infrared)
                         {
-                            this.Blender.Update(updatedFrame, this._mask);
+                            this.Blender.Update(this.UpdatedData.Infrared, this.UpdatedData.Mask);
                         }
                         else
                         {
-                            this.Blender.Update(updatedFrame);
+                            this.Blender.Update(this.UpdatedData.Visual);
                         }
 
                         if (this.Blender.Blendable)
-                            updatedFrame        = this.Blender.Blending();
+                            this.UpdatedData.SetUpdatedFrame(this.Blender.Blending());
                     }
+                }
+                else if (this.UpdatedData.StreamingType == StreamingType.Infrared)
+                {
+                    this.UpdatedData.SetUpdatedFrame(this.UpdatedData.Infrared.Clone());
+                }
+                else
+                {
+                    this.UpdatedData.SetUpdatedFrame(this.UpdatedData.Visual.Clone());
                 }
 
                 //
                 // 화면에 표시한다.
                 //
-                if (this.Blending || this.StreamingType == streamingType)
-                {
-                    this._currentDisplayFrame = updatedFrame.Clone();
+                if (this.UpdatedData.SetInvalidateState(this.Blending, this.StreamingType))
+                    this._currentDisplayFrame = this.UpdatedData.UpdatedFrame.Clone();
 
-                    this.defaultView.streamingFrameBox.Invoke(new MethodInvoker(delegate ()
-                    {
-                        this.defaultView.streamingFrameBox.Image = Image.FromStream(new MemoryStream(updatedFrame.ToBytes()));
-                    }));
-                }
+                foreach(var listener in this._listener)
+                    listener.OnUpdated(this.UpdatedData);
             }
             catch (Exception e)
             {

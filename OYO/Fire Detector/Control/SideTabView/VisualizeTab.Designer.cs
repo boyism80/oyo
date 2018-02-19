@@ -489,8 +489,8 @@
             this.levelTemperatureRange.Location = new System.Drawing.Point(0, 0);
             this.levelTemperatureRange.MaximumRange = 110;
             this.levelTemperatureRange.Name = "levelTemperatureRange";
-            this.levelTemperatureRange.RangeMax = 100;
             this.levelTemperatureRange.RangeMin = 0;
+            this.levelTemperatureRange.RangeMax = 50;
             this.levelTemperatureRange.Size = new System.Drawing.Size(232, 28);
             this.levelTemperatureRange.TabIndex = 0;
             this.levelTemperatureRange.RangeChanged += new System.EventHandler(this.levelTemperatureRange_RangeChanged);

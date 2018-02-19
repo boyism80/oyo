@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using static Fire_Detector.MainForm;
+using oyo;
 
 namespace Fire_Detector.Control.SideTabView
 {
@@ -17,23 +18,31 @@ namespace Fire_Detector.Control.SideTabView
 
         private void UpdateUI()
         {
-            var backgroundActiveColor = System.Drawing.Color.LightCoral;
-            var backgroundInactiveColor = System.Drawing.Color.DarkGray;
-
-            this.infraredViewButton.Invoke(new MethodInvoker(delegate ()
+            try
             {
-                this.infraredViewButton.color   = (this.Root.Receiver.Connected && !this.Root.Blending && this.Root.StreamingType == oyo.StreamingType.Infrared) ? backgroundActiveColor : backgroundInactiveColor;
-            }));
+                if(this.Root == null)
+                    return;
 
-            this.visualViewButton.Invoke(new MethodInvoker(delegate ()
-            {
-                this.visualViewButton.color     = (this.Root.Receiver.Connected && !this.Root.Blending && this.Root.StreamingType == oyo.StreamingType.Visual  ) ? backgroundActiveColor : backgroundInactiveColor;
-            }));
+                var backgroundActiveColor = System.Drawing.Color.LightCoral;
+                var backgroundInactiveColor = System.Drawing.Color.DarkGray;
 
-            this.blendingViewButton.Invoke(new MethodInvoker(delegate ()
-            {
-                this.blendingViewButton.color   = (this.Root.Receiver.Connected && this.Root.Blending) ? backgroundActiveColor : backgroundInactiveColor;
-            }));
+                this.infraredViewButton.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.infraredViewButton.color = (this.Root.Receiver.Connected && !this.Root.Blending && this.Root.StreamingType == oyo.StreamingType.Infrared) ? backgroundActiveColor : backgroundInactiveColor;
+                }));
+
+                this.visualViewButton.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.visualViewButton.color = (this.Root.Receiver.Connected && !this.Root.Blending && this.Root.StreamingType == oyo.StreamingType.Visual) ? backgroundActiveColor : backgroundInactiveColor;
+                }));
+
+                this.blendingViewButton.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.blendingViewButton.color = (this.Root.Receiver.Connected && this.Root.Blending) ? backgroundActiveColor : backgroundInactiveColor;
+                }));
+            }
+            catch (Exception)
+            { }
         }
         
         public void OnStateChanged(bool connected)
@@ -110,6 +119,10 @@ namespace Fire_Detector.Control.SideTabView
         {
             this.Root.Receiver.FixLevel = this.fixLevelCheckBox.Checked;
             this.Root.Receiver.LevelTemperatureRange = new Rangef(this.levelTemperatureRange.RangeMin, this.levelTemperatureRange.RangeMax);
+        }
+
+        public void OnUpdated(UpdateDataSet updateDataSet)
+        {
         }
     }
 }

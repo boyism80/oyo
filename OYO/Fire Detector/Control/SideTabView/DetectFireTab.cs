@@ -1,12 +1,38 @@
-﻿using System;
+﻿using OpenCvSharp;
+using System;
+using System.Windows.Forms;
+using static Fire_Detector.MainForm;
 
 namespace Fire_Detector.Control.SideTabView
 {
-    public partial class DetectFireTab : BaseTabView
+    public partial class DetectFireTab : BaseTabView, IStateChangedListener
     {
         public DetectFireTab()
         {
             InitializeComponent();
+        }
+
+        public void OnStateChanged(bool connected)
+        {
+            
+        }
+
+        public void OnUpdated(UpdateDataSet updateDataSet)
+        {
+            this.maxTemperature.Invoke(new MethodInvoker(delegate ()
+            {
+                this.maxTemperature.Text = updateDataSet.MaximumTemperature.ToString("0.00");
+            }));
+
+            this.minTemperature.Invoke(new MethodInvoker(delegate ()
+            {
+                this.minTemperature.Text = updateDataSet.MinimumTemperature.ToString("0.00");
+            }));
+
+            this.meanTemperature.Invoke(new MethodInvoker(delegate ()
+            {
+                this.meanTemperature.Text = updateDataSet.MeanTemperature.ToString("0.00");
+            }));
         }
 
         private void desiredTemperatureSlider_ValueChanged(object sender, EventArgs e)

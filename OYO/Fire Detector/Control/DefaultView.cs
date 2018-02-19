@@ -1,11 +1,13 @@
-﻿using System;
-using System.Threading;
+﻿using Fire_Detector.Control.SideTabView;
+using System;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using static Fire_Detector.MainForm;
 
 namespace Fire_Detector.Control
 {
-    public partial class DefaultView : UserControl, IStateChangedListener
+    public partial class DefaultView : BaseTabView, IStateChangedListener
     {
         public DefaultView()
         {
@@ -24,6 +26,20 @@ namespace Fire_Detector.Control
             }
             catch (Exception)
             { }
+        }
+
+        public void OnUpdated(UpdateDataSet updateDataSet)
+        {
+            if(this.Root == null)
+                return;
+
+            if(updateDataSet.Invalidated == false)
+                return;
+
+            this.Root.defaultView.streamingFrameBox.Invoke(new MethodInvoker(delegate ()
+            {
+                this.Root.defaultView.streamingFrameBox.Image = Image.FromStream(new MemoryStream(updateDataSet.UpdatedFrame.ToBytes()));
+            }));
         }
 
         private void streamingFrameBox_MouseDoubleClick(object sender, MouseEventArgs e)

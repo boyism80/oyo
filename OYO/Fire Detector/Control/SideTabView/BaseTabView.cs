@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Fire_Detector.Control.SideTabView
 {
-    public abstract class BaseTabView : UserControl
+    public class BaseTabView : UserControl
     {
         private MainForm _mainform;
         public MainForm Root
