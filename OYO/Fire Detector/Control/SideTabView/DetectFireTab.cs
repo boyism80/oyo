@@ -38,6 +38,11 @@ namespace Fire_Detector.Control.SideTabView
         private void desiredTemperatureSlider_ValueChanged(object sender, EventArgs e)
         {
             desiredTemperatureLabel.Text = desiredTemperatureSlider.Value.ToString();
+
+            if(this.Root == null)
+                return;
+
+            this.Root.TemperatureThreshold = desiredTemperatureSlider.Value;
         }
 
         private void detectionStateSwitch_OnValueChange(object sender, EventArgs e)
@@ -52,8 +57,6 @@ namespace Fire_Detector.Control.SideTabView
                 detectionStateLabel.Text = "감지 안함";
                 fireDetectionTemperatruePanel.Visible = false;
             }
-            
-
         }
 
         private void notificationSwitch_OnValueChange(object sender, EventArgs e)

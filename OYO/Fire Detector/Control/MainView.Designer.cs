@@ -42,6 +42,10 @@
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.colorPanel = new System.Windows.Forms.Panel();
             this.connectionPanel = new System.Windows.Forms.Panel();
+            this.detectFireTabShow = new Fire_Detector.Control.DetectFireTabShow();
+            this.leapmotionTabShow = new Fire_Detector.Control.LeapmotionTabShow();
+            this.visualizeTabShow = new Fire_Detector.Control.VisualizeTabShow();
+            this.droneTabShow = new Fire_Detector.Control.DroneTabShow();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.detectFirePanel = new System.Windows.Forms.Panel();
             this.detectFireLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -67,10 +71,6 @@
             this.bunifuTransition = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuTransition1 = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuTransition2 = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.detectFireTabShow = new Fire_Detector.Control.DetectFireTabShow();
-            this.leapmotionTabShow = new Fire_Detector.Control.LeapmotionTabShow();
-            this.visualizeTabShow = new Fire_Detector.Control.VisualizeTabShow();
-            this.droneTabShow = new Fire_Detector.Control.DroneTabShow();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.colorPanel.SuspendLayout();
@@ -127,7 +127,7 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel5, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel5, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel5, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel5.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel5.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel5.ForeColor = System.Drawing.Color.DarkSalmon;
             this.bunifuCustomLabel5.Location = new System.Drawing.Point(218, 111);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
@@ -141,7 +141,7 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel4, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel4, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel4, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel4.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel4.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel4.ForeColor = System.Drawing.Color.LightCoral;
             this.bunifuCustomLabel4.Location = new System.Drawing.Point(168, 111);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
@@ -155,7 +155,7 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel3.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel3.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.OrangeRed;
             this.bunifuCustomLabel3.Location = new System.Drawing.Point(109, 111);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
@@ -169,7 +169,7 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel2, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel2, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel2, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel2.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel2.Font = new System.Drawing.Font("NEXON Football Gothic B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.Tomato;
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(109, 86);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
@@ -183,7 +183,7 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("NEXON Football Gothic B", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.Coral;
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(107, 57);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
@@ -220,6 +220,52 @@
             this.connectionPanel.Name = "connectionPanel";
             this.connectionPanel.Size = new System.Drawing.Size(1024, 556);
             this.connectionPanel.TabIndex = 3;
+            // 
+            // detectFireTabShow
+            // 
+            this.bunifuTransition2.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.detectFireTabShow.Location = new System.Drawing.Point(0, 0);
+            this.detectFireTabShow.Name = "detectFireTabShow";
+            this.detectFireTabShow.Size = new System.Drawing.Size(1024, 510);
+            this.detectFireTabShow.TabIndex = 27;
+            this.detectFireTabShow.Visible = false;
+            // 
+            // leapmotionTabShow
+            // 
+            this.leapmotionTabShow.BackColor = System.Drawing.SystemColors.Control;
+            this.bunifuTransition2.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.leapmotionTabShow.Location = new System.Drawing.Point(0, 0);
+            this.leapmotionTabShow.Name = "leapmotionTabShow";
+            this.leapmotionTabShow.Size = new System.Drawing.Size(1024, 510);
+            this.leapmotionTabShow.TabIndex = 26;
+            this.leapmotionTabShow.Visible = false;
+            // 
+            // visualizeTabShow
+            // 
+            this.bunifuTransition2.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.visualizeTabShow.Location = new System.Drawing.Point(0, 0);
+            this.visualizeTabShow.Name = "visualizeTabShow";
+            this.visualizeTabShow.Size = new System.Drawing.Size(1024, 510);
+            this.visualizeTabShow.TabIndex = 25;
+            this.visualizeTabShow.Visible = false;
+            // 
+            // droneTabShow
+            // 
+            this.droneTabShow.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuTransition2.SetDecoration(this.droneTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.droneTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition.SetDecoration(this.droneTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.droneTabShow.Location = new System.Drawing.Point(0, 0);
+            this.droneTabShow.Name = "droneTabShow";
+            this.droneTabShow.Size = new System.Drawing.Size(1024, 510);
+            this.droneTabShow.TabIndex = 24;
+            this.droneTabShow.Visible = false;
             // 
             // tableLayoutPanel2
             // 
@@ -269,7 +315,7 @@
             this.bunifuTransition1.SetDecoration(this.detectFireLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.detectFireLabel, BunifuAnimatorNS.DecorationType.None);
             this.detectFireLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.detectFireLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detectFireLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.detectFireLabel.Location = new System.Drawing.Point(0, 0);
             this.detectFireLabel.Name = "detectFireLabel";
             this.detectFireLabel.Size = new System.Drawing.Size(204, 46);
@@ -304,7 +350,7 @@
             this.bunifuTransition1.SetDecoration(this.etcLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.etcLabel, BunifuAnimatorNS.DecorationType.None);
             this.etcLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.etcLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.etcLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.etcLabel.Location = new System.Drawing.Point(0, 0);
             this.etcLabel.Name = "etcLabel";
             this.etcLabel.Size = new System.Drawing.Size(208, 46);
@@ -338,7 +384,7 @@
             this.bunifuTransition1.SetDecoration(this.leapmotionLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.leapmotionLabel, BunifuAnimatorNS.DecorationType.None);
             this.leapmotionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.leapmotionLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leapmotionLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.leapmotionLabel.Location = new System.Drawing.Point(0, 0);
             this.leapmotionLabel.Name = "leapmotionLabel";
             this.leapmotionLabel.Size = new System.Drawing.Size(204, 46);
@@ -372,7 +418,7 @@
             this.bunifuTransition1.SetDecoration(this.droneControlLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.droneControlLabel, BunifuAnimatorNS.DecorationType.None);
             this.droneControlLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.droneControlLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.droneControlLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.droneControlLabel.Location = new System.Drawing.Point(0, 0);
             this.droneControlLabel.Name = "droneControlLabel";
             this.droneControlLabel.Size = new System.Drawing.Size(204, 46);
@@ -406,7 +452,7 @@
             this.bunifuTransition1.SetDecoration(this.cameraLabel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.cameraLabel, BunifuAnimatorNS.DecorationType.None);
             this.cameraLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cameraLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cameraLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cameraLabel.Location = new System.Drawing.Point(0, 0);
             this.cameraLabel.Name = "cameraLabel";
             this.cameraLabel.Size = new System.Drawing.Size(204, 46);
@@ -490,7 +536,7 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel7, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel7, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel7, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel7.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel7.Font = new System.Drawing.Font("NEXON Football Gothic B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel7.ForeColor = System.Drawing.Color.Coral;
             this.bunifuCustomLabel7.Location = new System.Drawing.Point(426, 233);
             this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
@@ -547,7 +593,7 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel6, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel6.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel6.Font = new System.Drawing.Font("NEXON Football Gothic B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel6.ForeColor = System.Drawing.Color.Coral;
             this.bunifuCustomLabel6.Location = new System.Drawing.Point(84, 233);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
@@ -586,7 +632,7 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel8, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuCustomLabel8.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel8.Font = new System.Drawing.Font("NEXON Football Gothic B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel8.ForeColor = System.Drawing.Color.Coral;
             this.bunifuCustomLabel8.Location = new System.Drawing.Point(752, 233);
             this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
@@ -685,52 +731,6 @@
             animation3.TransparencyCoeff = 1F;
             this.bunifuTransition2.DefaultAnimation = animation3;
             this.bunifuTransition2.Interval = 20;
-            // 
-            // detectFireTabShow
-            // 
-            this.bunifuTransition2.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition.SetDecoration(this.detectFireTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.detectFireTabShow.Location = new System.Drawing.Point(0, 0);
-            this.detectFireTabShow.Name = "detectFireTabShow";
-            this.detectFireTabShow.Size = new System.Drawing.Size(1024, 510);
-            this.detectFireTabShow.TabIndex = 27;
-            this.detectFireTabShow.Visible = false;
-            // 
-            // leapmotionTabShow
-            // 
-            this.leapmotionTabShow.BackColor = System.Drawing.SystemColors.Control;
-            this.bunifuTransition2.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition.SetDecoration(this.leapmotionTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.leapmotionTabShow.Location = new System.Drawing.Point(0, 0);
-            this.leapmotionTabShow.Name = "leapmotionTabShow";
-            this.leapmotionTabShow.Size = new System.Drawing.Size(1024, 510);
-            this.leapmotionTabShow.TabIndex = 26;
-            this.leapmotionTabShow.Visible = false;
-            // 
-            // visualizeTabShow
-            // 
-            this.bunifuTransition2.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition.SetDecoration(this.visualizeTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.visualizeTabShow.Location = new System.Drawing.Point(0, 0);
-            this.visualizeTabShow.Name = "visualizeTabShow";
-            this.visualizeTabShow.Size = new System.Drawing.Size(1024, 510);
-            this.visualizeTabShow.TabIndex = 25;
-            this.visualizeTabShow.Visible = false;
-            // 
-            // droneTabShow
-            // 
-            this.droneTabShow.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTransition2.SetDecoration(this.droneTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.droneTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition.SetDecoration(this.droneTabShow, BunifuAnimatorNS.DecorationType.None);
-            this.droneTabShow.Location = new System.Drawing.Point(0, 0);
-            this.droneTabShow.Name = "droneTabShow";
-            this.droneTabShow.Size = new System.Drawing.Size(1024, 510);
-            this.droneTabShow.TabIndex = 24;
-            this.droneTabShow.Visible = false;
             // 
             // MainView
             // 

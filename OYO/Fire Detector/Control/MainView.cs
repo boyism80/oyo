@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using OpenCvSharp;
-using oyo;
 using static Fire_Detector.MainForm;
 
 namespace Fire_Detector.Control
