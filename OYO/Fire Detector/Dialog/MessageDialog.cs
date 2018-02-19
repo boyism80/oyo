@@ -20,5 +20,11 @@ namespace Fire_Detector.Dialog
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void MessageDialog_Load(object sender, EventArgs e)
+        {
+            this.Location = new System.Drawing.Point(this.Owner.Location.X + (this.Owner.Size.Width - this.Size.Width) / 2,
+                                                     this.Owner.Location.Y + (this.Owner.Size.Height - this.Size.Height) / 2);
+        }
     }
 }
