@@ -1,13 +1,14 @@
-﻿using Fire_Detector.Control.SideTabView;
+﻿using Fire_Detector.BunifuForm;
+using Fire_Detector.Control.SideTabView;
+using Fire_Detector.Source;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using static Fire_Detector.MainForm;
 
 namespace Fire_Detector.Control
 {
-    public partial class DefaultView : BaseTabView, IStateChangedListener
+    public partial class DefaultView : BaseTabView, BunifuForm.MainForm.IStateChangedListener
     {
         public DefaultView()
         {
@@ -28,7 +29,7 @@ namespace Fire_Detector.Control
             { }
         }
 
-        public void OnUpdated(UpdateDataSet updateDataSet)
+        public void OnUpdated(UpdateData updateDataSet)
         {
             if(this.Root == null)
                 return;
@@ -72,11 +73,7 @@ namespace Fire_Detector.Control
 
         private void streamingFrameBox_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            var mainform = this.FindForm() as MainForm;
-            if(mainform == null)
-                return;
-
-            mainform.Scaled += (e.Delta / 120);
+            this.Root.Config.Visualize.Scaled += (e.Delta / 120);
         }
     }
 }

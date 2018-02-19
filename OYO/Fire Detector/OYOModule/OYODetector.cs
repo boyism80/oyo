@@ -10,7 +10,7 @@ namespace oyo
         // Threshold
         //  엣지 검출에 사용될 임계값입니다.
         //
-        public Range _threshold;
+        private Range _threshold;
         public Range Threshold
         {
             get

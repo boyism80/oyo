@@ -1,4 +1,4 @@
-﻿namespace Fire_Detector
+﻿namespace Fire_Detector.BunifuForm
 {
     partial class MainForm
     {

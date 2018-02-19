@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fire_Detector.BunifuForm;
+using System;
 using System.Windows.Forms;
 
 namespace Fire_Detector.Control.SideTabView

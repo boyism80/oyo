@@ -1,12 +1,11 @@
-﻿using OpenCvSharp;
+﻿using Fire_Detector.Source;
+using OpenCvSharp;
 using System;
 using System.Windows.Forms;
-using static Fire_Detector.MainForm;
-using oyo;
 
 namespace Fire_Detector.Control.SideTabView
 {
-    public partial class VisualizeTab : BaseTabView , IStateChangedListener
+    public partial class VisualizeTab : BaseTabView , BunifuForm.MainForm.IStateChangedListener
     {
         public VisualizeTab()
         {
@@ -28,17 +27,17 @@ namespace Fire_Detector.Control.SideTabView
 
                 this.infraredViewButton.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.infraredViewButton.color = (this.Root.Receiver.Connected && !this.Root.Blending && this.Root.StreamingType == oyo.StreamingType.Infrared) ? backgroundActiveColor : backgroundInactiveColor;
+                    this.infraredViewButton.color = (this.Root.Receiver.Connected && !this.Root.Config.Blending.Enabled && this.Root.StreamingType == oyo.StreamingType.Infrared) ? backgroundActiveColor : backgroundInactiveColor;
                 }));
 
                 this.visualViewButton.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.visualViewButton.color = (this.Root.Receiver.Connected && !this.Root.Blending && this.Root.StreamingType == oyo.StreamingType.Visual) ? backgroundActiveColor : backgroundInactiveColor;
+                    this.visualViewButton.color = (this.Root.Receiver.Connected && !this.Root.Config.Blending.Enabled && this.Root.StreamingType == oyo.StreamingType.Visual) ? backgroundActiveColor : backgroundInactiveColor;
                 }));
 
                 this.blendingViewButton.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.blendingViewButton.color = (this.Root.Receiver.Connected && this.Root.Blending) ? backgroundActiveColor : backgroundInactiveColor;
+                    this.blendingViewButton.color = (this.Root.Receiver.Connected && this.Root.Config.Blending.Enabled) ? backgroundActiveColor : backgroundInactiveColor;
                 }));
             }
             catch (Exception)
@@ -77,20 +76,20 @@ namespace Fire_Detector.Control.SideTabView
         private void infraredViewButton_Click(object sender, EventArgs e)
         {
             this.Root.StreamingType = oyo.StreamingType.Infrared;
-            this.Root.Blending = false;
+            this.Root.Config.Blending.Enabled = false;
             this.UpdateUI();
         }
 
         private void visualViewButton_Click(object sender, EventArgs e)
         {
             this.Root.StreamingType = oyo.StreamingType.Visual;
-            this.Root.Blending = false;
+            this.Root.Config.Blending.Enabled = false;
             this.UpdateUI();
         }
 
         private void palettesDropDown_onItemSelected(object sender, EventArgs e)
         {
-            this.Root.Palette = this.palettesDropDown.selectedValue;
+            this.Root.Config.Visualize.Palette = this.palettesDropDown.selectedValue;
         }
 
         private void VisualizeTab_Load(object sender, EventArgs e)
@@ -100,7 +99,7 @@ namespace Fire_Detector.Control.SideTabView
 
         private void blendingViewButton_Click(object sender, EventArgs e)
         {
-            this.Root.Blending = true;
+            this.Root.Config.Blending.Enabled = true;
             this.UpdateUI();
         }
 
@@ -121,7 +120,7 @@ namespace Fire_Detector.Control.SideTabView
             this.Root.Receiver.LevelTemperatureRange = new Rangef(this.levelTemperatureRange.RangeMin, this.levelTemperatureRange.RangeMax);
         }
 
-        public void OnUpdated(UpdateDataSet updateDataSet)
+        public void OnUpdated(UpdateData updateDataSet)
         {
         }
     }

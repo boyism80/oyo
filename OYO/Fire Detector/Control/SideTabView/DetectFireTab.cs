@@ -1,11 +1,10 @@
-﻿using OpenCvSharp;
+﻿using Fire_Detector.Source;
 using System;
 using System.Windows.Forms;
-using static Fire_Detector.MainForm;
 
 namespace Fire_Detector.Control.SideTabView
 {
-    public partial class DetectFireTab : BaseTabView, IStateChangedListener
+    public partial class DetectFireTab : BaseTabView, BunifuForm.MainForm.IStateChangedListener
     {
         public DetectFireTab()
         {
@@ -17,7 +16,7 @@ namespace Fire_Detector.Control.SideTabView
             
         }
 
-        public void OnUpdated(UpdateDataSet updateDataSet)
+        public void OnUpdated(UpdateData updateDataSet)
         {
             this.maxTemperature.Invoke(new MethodInvoker(delegate ()
             {
@@ -42,7 +41,7 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            this.Root.TemperatureThreshold = desiredTemperatureSlider.Value;
+            this.Root.Config.Detecting.Threshold = desiredTemperatureSlider.Value;
         }
 
         private void detectionStateSwitch_OnValueChange(object sender, EventArgs e)
@@ -57,6 +56,8 @@ namespace Fire_Detector.Control.SideTabView
                 detectionStateLabel.Text = "감지 안함";
                 fireDetectionTemperatruePanel.Visible = false;
             }
+
+            this.Root.Config.Detecting.Enabled = detectionStateSwitch.Value;
         }
 
         private void notificationSwitch_OnValueChange(object sender, EventArgs e)

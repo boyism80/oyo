@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Fire_Detector.BunifuForm;
+using Fire_Detector.Source;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using static Fire_Detector.MainForm;
 
 namespace Fire_Detector.Control
 {
-    public partial class MainView : UserControl, IStateChangedListener
+    public partial class MainView : UserControl, BunifuForm.MainForm.IStateChangedListener
     {
         public MainView()
         {
@@ -242,7 +243,7 @@ namespace Fire_Detector.Control
             }
         }
 
-        public void OnUpdated(UpdateDataSet updateDataSet)
+        public void OnUpdated(UpdateData updateDataSet)
         {
         }
     }
