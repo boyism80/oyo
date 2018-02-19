@@ -61,8 +61,6 @@ namespace oyo
             }
         }
 
-        private Mat _temp;
-
         public OYODetector()
         {
             this.Threshold = new Range(50, 100);
@@ -100,8 +98,6 @@ namespace oyo
 
                 this._detectedRects.Add(Cv2.MinAreaRect(c));
             }
-
-            this._temp = edged;
         }
 
         //
@@ -124,7 +120,6 @@ namespace oyo
             Cv2.DrawContours(ret, vertices, -1, Scalar.Lime, 2);
 
             return ret;
-            //return this._temp;
         }
     }
 }

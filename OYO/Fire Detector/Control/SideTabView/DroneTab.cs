@@ -69,7 +69,7 @@ namespace Fire_Detector.Control.SideTabView
             this.patrolControlPanel.Enabled = this.patrolModeSwitch.Value;
             if (this.patrolModeSwitch.Value) {
                 string message = "녹화모드와 같이 사용할 수 없습니다.";
-                Form messageform = new Fire_Detector.Dialog.MessageDialog(message);
+                var messageform = new Fire_Detector.Dialog.MessageDialog(message);
                 messageform.ShowDialog();
 
             }
@@ -82,7 +82,7 @@ namespace Fire_Detector.Control.SideTabView
             if (this.recordModeSwitch.Value)
             {
                 string message = "순찰모드와 같이 사용할 수 없습니다.";
-                Form messageform = new Fire_Detector.Dialog.MessageDialog(message);
+                var messageform = new Fire_Detector.Dialog.MessageDialog(message);
                 messageform.ShowDialog();
             }
         }
@@ -122,13 +122,13 @@ namespace Fire_Detector.Control.SideTabView
 
         private void patrolFileBrowseButton_Click(object sender, EventArgs e)
         {
-            Form patrolform = new Fire_Detector.Dialog.PatrolDialog();
+            var patrolform = new Fire_Detector.Dialog.PatrolDialog();
             patrolform.ShowDialog();
         }
 
         private void recordFileSettingButton_Click(object sender, EventArgs e)
         {
-            Form patrolform = new Fire_Detector.Dialog.RecordDialog();
+            var patrolform = new Fire_Detector.Dialog.RecordDialog();
             patrolform.ShowDialog();
         }
     }
