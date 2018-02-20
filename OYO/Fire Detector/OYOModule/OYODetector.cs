@@ -6,6 +6,8 @@ namespace oyo
 {
     public class OYODetector
     {
+        public delegate bool isDetectedDelegate(RotatedRect detectedRect);
+
         //
         // Threshold
         //  엣지 검출에 사용될 임계값입니다.
@@ -79,7 +81,7 @@ namespace oyo
         //  source              영역 검출을 위한 행렬입니다.
         //                      이 변수의 엣지를 검출한 뒤에 영역을 구하기 때문에 잡음이 없는 마스크 형식이 가장 이상적입니다.
         //
-        public void Update(Mat source)
+        public void Update(Mat source, isDetectedDelegate callback)
         {
             if (source.Type() != MatType.CV_8UC1)
 				source.ConvertTo(source, MatType.CV_8UC1);
@@ -96,7 +98,11 @@ namespace oyo
                 if (Cv2.ContourArea(c) < 100)
                     continue;
 
-                this._detectedRects.Add(Cv2.MinAreaRect(c));
+                var detectedRect = Cv2.MinAreaRect(c);
+                if(callback(detectedRect) == false)
+                    continue;
+
+                this._detectedRects.Add(detectedRect);
             }
         }
 

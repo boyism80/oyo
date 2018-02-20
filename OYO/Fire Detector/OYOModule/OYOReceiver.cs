@@ -23,6 +23,15 @@ namespace oyo
         //
         public interface IReceiveListener
         {
+            void                OnConnected();
+
+            //
+            // OnDisconnected
+            //  클라이언트가 접속을 종료했을 때나 서버로부터 접속이 끊어졌을 때 호출되는 메소드입니다.
+            //
+            void                OnDisconnected();
+
+
             //
             // OnUpdate
             //  서버로부터 데이터를 얻을때마다 호출되는 메소드입니다. 
@@ -35,12 +44,6 @@ namespace oyo
             //  서버로부터 데이터를 받는 경우 생기는 에러가 있다면 이 메소드가 호출됩니다.
             //  
             void                OnError(string message);
-
-            //
-            // OnDisconnected
-            //  클라이언트가 접속을 종료했을 때나 서버로부터 접속이 끊어졌을 때 호출되는 메소드입니다.
-            //
-            void                OnDisconnected();
         }
 
         //
@@ -195,6 +198,17 @@ namespace oyo
             {
                 this._socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 this._socket.Connect(this._host, this._port);
+
+                if (this.Connected)
+                {
+                    this._listener.OnConnected();
+                    this.Execute();
+                }
+                else
+                {
+                    this._listener.OnError("서버와 연결할 수 없습니다.");
+                }
+
                 return this._socket.Connected;
             }
             catch (Exception)
@@ -463,7 +477,7 @@ namespace oyo
         // Return
         //  성공시 true, 실패시 false를 리턴
         //
-        public bool Execute()
+        private bool Execute()
         {
             if (this.Running)
                 return false;

@@ -5,6 +5,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using OpenCvSharp;
 
 namespace Fire_Detector.Control
 {
@@ -15,7 +16,7 @@ namespace Fire_Detector.Control
             InitializeComponent();
         }
 
-        public void OnSizeChanged(Size size, bool isMaximize)
+        public void OnSizeChanged(System.Drawing.Size size, bool isMaximize)
         {
             //throw new NotImplementedException();
         }
@@ -34,17 +35,17 @@ namespace Fire_Detector.Control
             { }
         }
 
-        public void OnUpdated(UpdateData updateDataSet)
+        public void OnUpdated(UpdatedDataBuffer buffer, Mat updatedFrame, bool invalidated)
         {
             if(this.Root == null)
                 return;
 
-            if(updateDataSet.Invalidated == false)
+            if(invalidated == false)
                 return;
 
-            this.Root.defaultView.streamingFrameBox.Invoke(new MethodInvoker(delegate ()
+            this.streamingFrameBox.Invoke(new MethodInvoker(delegate ()
             {
-                this.Root.defaultView.streamingFrameBox.Image = Image.FromStream(new MemoryStream(updateDataSet.UpdatedFrame.ToBytes()));
+                this.streamingFrameBox.Image = Image.FromStream(new MemoryStream(updatedFrame.ToBytes(".jpg")));
             }));
         }
 

@@ -1,7 +1,7 @@
 ﻿using Fire_Detector.Source;
+using OpenCvSharp;
 using System;
 using System.Windows.Forms;
-using System.Drawing;
 
 namespace Fire_Detector.Control.SideTabView
 {
@@ -12,32 +12,9 @@ namespace Fire_Detector.Control.SideTabView
             InitializeComponent();
         }
 
-        public void OnSizeChanged(Size size, bool isMaximize)
-        {
-            //throw new NotImplementedException();
-        }
-
         public void OnStateChanged(bool connected)
         {
             
-        }
-
-        public void OnUpdated(UpdateData updateDataSet)
-        {
-            this.maxTemperature.Invoke(new MethodInvoker(delegate ()
-            {
-                this.maxTemperature.Text = updateDataSet.MaximumTemperature.ToString("0.00");
-            }));
-
-            this.minTemperature.Invoke(new MethodInvoker(delegate ()
-            {
-                this.minTemperature.Text = updateDataSet.MinimumTemperature.ToString("0.00");
-            }));
-
-            this.meanTemperature.Invoke(new MethodInvoker(delegate ()
-            {
-                this.meanTemperature.Text = updateDataSet.MeanTemperature.ToString("0.00");
-            }));
         }
 
         private void desiredTemperatureSlider_ValueChanged(object sender, EventArgs e)
@@ -46,8 +23,6 @@ namespace Fire_Detector.Control.SideTabView
 
             if(this.Root == null)
                 return;
-
-            this.Root.Config.Detecting.Threshold = desiredTemperatureSlider.Value;
         }
 
         private void detectionStateSwitch_OnValueChange(object sender, EventArgs e)
@@ -71,6 +46,34 @@ namespace Fire_Detector.Control.SideTabView
             if (notificationSwitch.Value == true)
                 notificationLabel.Text = "On";
             else notificationLabel.Text = "Off";
+        }
+
+        private void DetectFireTab_Load(object sender, EventArgs e)
+        {
+            this.detectionStateSwitch_OnValueChange(this.detectionStateSwitch, EventArgs.Empty);
+            this.desiredTemperatureSlider_ValueChanged(this.desiredTemperatureSlider, EventArgs.Empty);
+        }
+
+        public void OnUpdated(UpdatedDataBuffer buffer, Mat updatedFrame, bool invalidated)
+        {
+            this.maxTemperature.Invoke(new MethodInvoker(delegate ()
+            {
+                this.maxTemperature.Text = buffer.MaximumTemperature.ToString("0.00");
+            }));
+
+            this.minTemperature.Invoke(new MethodInvoker(delegate ()
+            {
+                this.minTemperature.Text = buffer.MinimumTemperature.ToString("0.00");
+            }));
+
+            this.meanTemperature.Invoke(new MethodInvoker(delegate ()
+            {
+                this.meanTemperature.Text = buffer.MeanTemperature.ToString("0.00");
+            }));
+        }
+
+        public void OnSizeChanged(System.Drawing.Size size, bool isMaximize)
+        {
         }
     }
 }

@@ -49,90 +49,77 @@ namespace Fire_Detector.BunifuForm
         {
             try
             {
+                //
+                // Get scaled
+                //
                 var scaled = this.Config.Visualize.Scaled;
-
                 if (this.Config.Blending.Enabled || this.defaultView.streamingFrameBox.SizeMode != PictureBoxSizeMode.CenterImage)
                     scaled = Source.Config.VisualizeConfig.MAX_SCALED_SIZE;
 
                 else if (this.StreamingType == StreamingType.Visual)
                     scaled = Source.Config.VisualizeConfig.MAX_SCALED_SIZE / 2.0f;
 
+
                 //
-                // 일단 녹화를 한다.
+                // Get updated frame and store buffer
                 //
+                var updatedFrame = new Mat();
                 if (streamingType == StreamingType.Infrared)
                 {
-                    var temperature = new Mat();
-                    if(this.StreamingType == StreamingType.Infrared)
-                        temperature     = receiver.Temperature(scaled);
-                    else
-                        temperature     = receiver.Temperature(this.DisplaySize);
-
-                    this.UpdatedData.Update(this.MappingPalette(receiver.Infrared(scaled)), temperature, this.Config.Blending.Threshold);
-
-                    //updatedFrame            = this.mappingPalette(receiver.Infrared(scaled));
-                    this._currentInfraredFrame  = this.UpdatedData.Infrared.Clone();
-                    this.Recorder.Write(OYORecorder.RecordingStateType.Infrared, this.UpdatedData.Infrared);
+                    updatedFrame = receiver.Infrared(scaled);
+                    this.UpdatedDataBuffer.SetInfrared(this.MappingPalette(updatedFrame), receiver.Temperature(scaled));
                 }
                 else
                 {
-                    this.UpdatedData.Update(receiver.Visual());
-                    //updatedFrame            = receiver.Visual();
-                    this._currentVisualFrame    = this.UpdatedData.Visual.Clone();
-                    this.Recorder.Write(OYORecorder.RecordingStateType.Visual, this.UpdatedData.Visual);
+                    updatedFrame = receiver.Visual();
+                    this.UpdatedDataBuffer.SetVisual(updatedFrame);
                 }
 
-                //this.Recorder.Write(streamingType == StreamingType.Infrared ? OYORecorder.RecordingStateType.Infrared : OYORecorder.RecordingStateType.Visual, updatedFrame);
 
+                //
+                // Set current frame box size to fix frame and temperature table size
+                //
+                updatedFrame = this.UpdatedDataBuffer.SetDisplay(this.GetDisplaySize(streamingType, updatedFrame));
 
 
                 //
-                // 블렌딩을 하고 있는 경우에는 블렌딩된 결과를 얻는다.
+                // Blend if user checked
                 //
+                var temperature = this.UpdatedDataBuffer.Temperature;
                 if (this.Config.Blending.Enabled)
                 {
-                    lock (this.Blender)
-                    {
-                        if (streamingType == StreamingType.Infrared)
-                        {
-                            this.Blender.Update(this.UpdatedData.Infrared, this.UpdatedData.Mask);
-                        }
-                        else
-                        {
-                            this.Blender.Update(this.UpdatedData.Visual);
-                        }
+                    var mask = temperature.Threshold(this.defaultView.sideExpandedBar.visualizeTab.thresholdSlider.Value, 255, ThresholdTypes.Binary);
+                    this.Blender.Update(this.UpdatedDataBuffer.Visual);
+                    this.Blender.Update(this.UpdatedDataBuffer.Infrared, mask);
 
-                        if (this.Blender.Blendable)
-                            this.UpdatedData.SetUpdatedFrame(this.Blender.Blending());
-                    }
+                    if(this.Blender.Blendable)
+                        updatedFrame = this.Blender.Blending();
                 }
-                else if (this.UpdatedData.StreamingType == StreamingType.Infrared)
-                {
-                    this.UpdatedData.SetUpdatedFrame(this.UpdatedData.Infrared.Clone());
-                }
-                else
-                {
-                    this.UpdatedData.SetUpdatedFrame(this.UpdatedData.Visual.Clone());
-                }
-
+                
                 //
-                // 산불 감지
+                // Detect if user checked
                 //
                 if (this.Config.Detecting.Enabled)
                 {
-                    var detectionMask = this.UpdatedData.Temperature.Threshold(this.Config.Detecting.Threshold, 255, ThresholdTypes.Binary);
-                    this.Detector.Update(detectionMask);
-                    this.UpdatedData.SetUpdatedFrame(this.Detector.DrawDetectedRects(this.UpdatedData.UpdatedFrame));
+                    var mask = temperature.Threshold(this.defaultView.sideExpandedBar.detectFireTab.desiredTemperatureSlider.Value, 255, ThresholdTypes.Binary);
+                    var betweenMin = this.UpdatedDataBuffer.MeanTemperature - this.UpdatedDataBuffer.MinimumTemperature;
+                    var betweenMax = this.UpdatedDataBuffer.MaximumTemperature - this.UpdatedDataBuffer.MeanTemperature;
+
+                    this.Detector.Update(mask, delegate (RotatedRect detectedRect)
+                    {
+                        var center = temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
+                        if(center - this.UpdatedDataBuffer.MeanTemperature > betweenMin * DETECTION_ALPHA)
+                            return true;
+
+                        return false;
+                    });
+
+                    updatedFrame = this.Detector.DrawDetectedRects(updatedFrame);
                 }
 
-                //
-                // 화면에 표시한다.
-                //
-                if (this.UpdatedData.SetInvalidateState(this.Config.Blending.Enabled, this.StreamingType))
-                    this._currentDisplayFrame = this.UpdatedData.UpdatedFrame.Clone();
-
-                foreach(var listener in this._listener)
-                    listener.OnUpdated(this.UpdatedData);
+                var invalidated = (this.Config.Blending.Enabled || (this.StreamingType == streamingType));
+                foreach (var listener in this._listener)
+                    listener.OnUpdated(this.UpdatedDataBuffer, updatedFrame, invalidated);
             }
             catch (Exception e)
             {
@@ -153,6 +140,12 @@ namespace Fire_Detector.BunifuForm
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Receiver.Exit();
+        }
+
+        public void OnConnected()
+        {
+            foreach(var control in this._listener)
+                control.OnStateChanged(true);
         }
     }
 }

@@ -2,7 +2,6 @@
 using OpenCvSharp;
 using System;
 using System.Windows.Forms;
-using System.Drawing;
 
 namespace Fire_Detector.Control.SideTabView
 {
@@ -69,9 +68,9 @@ namespace Fire_Detector.Control.SideTabView
         private void connectCameraButton_Click(object sender, EventArgs e)
         {
             if(this.Root.Receiver.Connected)
-                this.Root.DisconnectToCamera();
+                this.Root.Receiver.Exit();
             else
-                this.Root.ConnectToCamera();
+                this.Root.Receiver.Connect();
         }
 
         private void infraredViewButton_Click(object sender, EventArgs e)
@@ -95,6 +94,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void VisualizeTab_Load(object sender, EventArgs e)
         {
+            this.thresholdSlider_ValueChanged(this.thresholdSlider, EventArgs.Empty);
+            this.transparencySlider_ValueChanged(this.transparencySlider, EventArgs.Empty);
+
             this.UpdateUI();
         }
 
@@ -121,7 +123,7 @@ namespace Fire_Detector.Control.SideTabView
             this.Root.Receiver.LevelTemperatureRange = new Rangef(this.levelTemperatureRange.RangeMin, this.levelTemperatureRange.RangeMax);
         }
 
-        public void OnUpdated(UpdateData updateDataSet)
+        public void OnUpdated(UpdatedDataBuffer updateDataSet)
         {
         }
 
@@ -133,11 +135,15 @@ namespace Fire_Detector.Control.SideTabView
         private void transparencySlider_ValueChanged(object sender, EventArgs e)
         {
             this.transparencyLabel.Text = this.transparencySlider.Value.ToString();
+            this.Root.Blender.Transparency = this.transparencySlider.Value / 100.0f;
         }
 
         public void OnSizeChanged(System.Drawing.Size size, bool isMaximize)
         {
-            //throw new NotImplementedException();
+        }
+
+        public void OnUpdated(UpdatedDataBuffer buffer, Mat updatedFrame, bool invalidated)
+        {
         }
     }
 }

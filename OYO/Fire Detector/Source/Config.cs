@@ -7,13 +7,11 @@ namespace Fire_Detector.Source
         public class BlendingConfig
         {
             public bool Enabled { get; set; }
-            public float Threshold { get; set;}
         }
 
         public class DetectingConfig
         {
             public bool Enabled { get; set;}
-            public float Threshold { get; set;}
         }
 
         public class VisualizeConfig

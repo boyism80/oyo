@@ -1,254 +1,76 @@
-﻿using Fire_Detector.BunifuForm;
-using Fire_Detector.Source;
+﻿using Fire_Detector.Control.SideTabView;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Fire_Detector.Control
 {
-    public partial class MainView : UserControl, BunifuForm.MainForm.IStateChangedListener
+    public partial class MainView : BaseTabView
     {
         public MainView()
         {
             InitializeComponent();
-            //droneTabShow.Visible = false;
-            //leapmotionTabShow.Visible = false;
-            //visualizeTabShow.Visible = false;
-            //detectFireTabShow.Visible = false;
         }
 
-        private void DroneImageButton_Click(object sender, EventArgs e)
+        private void bottomLabel_MouseEnter(object sender, EventArgs e)
         {
-            //if (this.droneProgressbar.animated == true) {
-            //    this.droneProgressbar.Value = 0;
-            //    this.droneProgressbar.animated = false;
-            //    this.droneProgressbar.ProgressBackColor = System.Drawing.Color.FromArgb(255,200,150);//System.Drawing.Color.Coral;
-            //}
-            //else
-            //{
-            //    this.droneProgressbar.Value = 15;
-            //    this.droneProgressbar.animated = true;
-            //    this.droneProgressbar.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            //}
-            
-        }
-
-        private void RaspCamImageButton_Click(object sender, EventArgs e)
-        {
-            //var mainform = this.FindForm() as MainForm;
-            //if(mainform == null)
-            //    return;
-
-            //if(mainform.Receiver.Connected)
-            //    mainform.DisconnectToCamera();
-            //else
-            //    mainform.ConnectToCamera();
-        }
-
-        private void LeapmotionImageButton_Click(object sender, EventArgs e)
-        {
-            //if (this.leapmotionProgressbar.animated == true)
-            //{
-            //    this.leapmotionProgressbar.Value = 0;
-            //    this.leapmotionProgressbar.animated = false;
-            //    this.leapmotionProgressbar.ProgressBackColor = System.Drawing.Color.FromArgb(255, 200, 150);
-            //} 
-            //else
-            //{ 
-            //    this.leapmotionProgressbar.Value = 15;
-            //    this.leapmotionProgressbar.animated = true;
-            //    this.leapmotionProgressbar.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            //}
-        }
-
-        private void droneControlTab_MouseEnter(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    this.activatedConnectionIconPanel.BackColor = Color.Tomato;
-            //    this.activatedConnectionIconPanel.Visible = true;
-            //    this.connectionIconsPanel.Visible = false;
-            //    this.droneTabShow.Visible = true;
-            //}
-            //catch(Exception)
-            //{ }
-        }
-
-        
-
-        private void droneControlTab_Click(object sender, EventArgs e)
-        {
-            //var mainform = this.FindForm() as MainForm;
-            //if(mainform == null)
-            //    return;
-
-            //this.Visible = false;
-            //mainform.defaultView.Visible = true;
-        }
-
-        private void cameraTab_MouseEnter(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    this.activatedConnectionIconPanel.BackColor = Color.Coral;
-            //    this.activatedConnectionIconPanel.Visible = true;
-            //    this.connectionIconsPanel.Visible = false;
-            //    this.visualizeTabShow.Visible = true;
-            //}
-            //catch (Exception)
-            //{ }
-        }
-
-        
-        private void cameraTab_Click(object sender, EventArgs e)
-        {
-            //var mainform = this.FindForm() as MainForm;
-            //if (mainform == null)
-            //    return;
-
-            //this.Visible = false;
-            //mainform.defaultView.Visible = true;
-        }
-
-        private void leapmotionTab_Click(object sender, EventArgs e)
-        {
-            //var mainform = this.FindForm() as MainForm;
-            //if (mainform == null)
-            //    return;
-
-            //this.Visible = false;
-            //mainform.defaultView.Visible = true;
-        }
-
-        private void leapmotionTab_MouseEnter(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    this.activatedConnectionIconPanel.BackColor = Color.Salmon;
-            //    this.activatedConnectionIconPanel.Visible = true;
-            //    this.connectionIconsPanel.Visible = false;
-            //    this.leapmotionTabShow.Visible = true;
-            //}
-            //catch (Exception)
-            //{ }
-        }
-
-        private void tab_MouseLeave(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    this.activatedConnectionIconPanel.Visible = false;
-            //    this.connectionIconsPanel.Visible = true;
-            //    //this.bunifuTransition.ShowSync(this.connectionIconsPanel);
-
-            //    if (this.droneTabShow.Visible == true) {
-            //        this.droneTabShow.Visible = false;
-            //    }
-            //    if(this.visualizeTabShow.Visible == true)
-            //    {
-            //        this.visualizeTabShow.Visible = false;
-            //    }
-            //    if (this.leapmotionTabShow.Visible == true)
-            //    {
-            //        this.leapmotionTabShow.Visible = false;
-            //    }
-            //    if(this.detectFireTabShow.Visible == true)
-            //    {
-            //        this.detectFireTabShow.Visible = false;
-            //    }
-
-                
-
-            //    if (this.bunifuTransition.IsCompleted)
-            //    {
-            //        this.droneImageButton.Visible = false;
-            //        this.bunifuTransition.Show(this.droneImageButton);
-            //    }
-
-            //    if (this.bunifuTransition1.IsCompleted)
-            //    {
-            //        this.raspCamImageButton.Visible = false;
-            //        this.bunifuTransition1.Show(this.raspCamImageButton);
-            //    }
-
-            //    if (this.bunifuTransition2.IsCompleted)
-            //    {
-            //        this.leapMotionImageButton.Visible = false;
-            //        this.bunifuTransition2.Show(this.leapMotionImageButton);
-            //    }
-            //}
-            //catch (Exception)
-            //{ }
-        }
-
-        private void detectFireTab_MouseEnter(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    this.activatedConnectionIconPanel.BackColor = Color.LightCoral;
-            //    this.activatedConnectionIconPanel.Visible = true;
-            //    this.connectionIconsPanel.Visible = false;
-            //    this.detectFireTabShow.Visible = true;
-            //}
-            //catch (Exception)
-            //{ }
-        }
-
-        private void detectFireTab_Click(object sender, EventArgs e)
-        {
-            var mainform = this.FindForm() as MainForm;
-            if (mainform == null)
+            var label = sender as Bunifu.Framework.UI.BunifuCustomLabel;
+            if(label == null)
                 return;
 
-            this.Visible = false;
-            mainform.defaultView.Visible = true;
-        }
-
-        private void etcTab_Click(object sender, EventArgs e)
-        {
-            var mainform = this.FindForm() as MainForm;
-            if (mainform == null)
+            var tab = label.Tag as UserControl;     // 이 부분 UserControl을 상속받는 부모 클래스 작성해야함
+            if(tab == null)
                 return;
 
-            this.Visible = false;
-            mainform.defaultView.Visible = true;
+            this.mainConnectionView.Visible = false;
+            this.activatedConnectionIconPanel.Visible = true;
+            tab.Visible = true;
         }
 
-        private void etcTab_MouseEnter(object sender, EventArgs e)
+        private void bottomLabel_MouseLeave(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    this.activatedConnectionIconPanel.BackColor = Color.DarkSalmon;
-            //    this.activatedConnectionIconPanel.Visible = true;
-            //    this.connectionIconsPanel.Visible = false;
-            //}
-            //catch (Exception)
-            //{ }
+            var label = sender as Bunifu.Framework.UI.BunifuCustomLabel;
+            if(label == null)
+                return;
+
+            this.mainConnectionView.Visible = true;
+            this.activatedConnectionIconPanel.Visible = false;
+
+            var tab = label.Tag as UserControl;     // 이 부분 UserControl을 상속받는 부모 클래스 작성해야함
+            if(tab == null)
+                return;
+
+            tab.Visible = false;
         }
 
-        public void OnStateChanged(bool connected)
+        private void bottomLabel_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    this.raspCamProgressbar.Invoke(new MethodInvoker(delegate ()
-            //    {
-            //        this.raspCamProgressbar.Value = connected ? 15 : 0;
-            //        this.raspCamProgressbar.animated = connected;
-            //        this.raspCamProgressbar.ProgressBackColor = connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
-            //    }));
-            //}
-            //catch (Exception)
-            //{
+            var label = sender as Bunifu.Framework.UI.BunifuCustomLabel;
+            if(label == null)
+                return;
 
-            //}
+            this.Root.mainView.Visible = false;
+            this.Root.defaultView.Visible = true;
+            var tab = label.Tag as UserControl;     // 이 부분 UserControl을 상속받는 부모 클래스 작성해야함
+            if (tab != null)
+            {
+                this.Root.defaultView.sideExpandedBar.Visible = true;
+                this.Root.defaultView.sideExpandedBar.SetActiveTab(tab.Tag as BaseTabView);
+            }
         }
 
-        public void OnUpdated(UpdateData updateDataSet)
+        private void MainView_Load(object sender, EventArgs e)
         {
-        }
+            this.droneTabShow.Tag = this.Root.defaultView.sideExpandedBar.droneTab;
+            this.droneControlLabel.Tag = this.droneTabShow;
 
-        public void OnSizeChanged(Size size, bool isMaximize)
-        {
+            this.visualizeTabShow.Tag = this.Root.defaultView.sideExpandedBar.visualizeTab;
+            this.visualizeLabel.Tag = this.visualizeTabShow;
+
+            this.leapmotionTabShow.Tag = this.Root.defaultView.sideExpandedBar.leapmotionTab;
+            this.leapmotionLabel.Tag = this.leapmotionTabShow;
+
+            this.detectFireTabShow.Tag = this.Root.defaultView.sideExpandedBar.detectFireTab;
+            this.detectFireLabel.Tag = this.detectFireTabShow;
         }
     }
 }
