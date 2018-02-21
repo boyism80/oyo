@@ -115,6 +115,14 @@ namespace Fire_Detector.BunifuForm
                     });
 
                     updatedFrame = this.Detector.DrawDetectedRects(updatedFrame);
+
+
+                    // Draw temperature label
+                    foreach (var detectedRect in this.Detector.DetectedRects)
+                    {
+                        var center = temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
+                        this.markTemperature(updatedFrame, new Point(detectedRect.Center.X, detectedRect.Center.Y), center, Scalar.Red, scaled);
+                    }
                 }
 
                 var invalidated = (this.Config.Blending.Enabled || (this.StreamingType == streamingType));

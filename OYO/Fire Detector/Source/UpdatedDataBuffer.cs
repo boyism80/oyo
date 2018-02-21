@@ -1,5 +1,4 @@
 ﻿using OpenCvSharp;
-using oyo;
 
 namespace Fire_Detector.Source
 {

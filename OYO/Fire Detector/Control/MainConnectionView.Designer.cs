@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainConnectionView));
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.connectionIconsTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.leapmotionPanel = new System.Windows.Forms.Panel();
             this.leapmotionRightPanel = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel25 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.leapmotionLeftPanel = new System.Windows.Forms.Panel();
             this.leapmotionNameLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.leapMotionImageButton = new Bunifu.Framework.UI.BunifuImageButton();
@@ -41,6 +42,13 @@
             this.raspCamPanel = new System.Windows.Forms.Panel();
             this.raspCamRightPanel = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel12 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel13 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel14 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel15 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel16 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel17 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel18 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.raspCamLeftPanel = new System.Windows.Forms.Panel();
             this.raspCamNameLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.raspCamImageButton = new Bunifu.Framework.UI.BunifuImageButton();
@@ -48,6 +56,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dronePanel = new System.Windows.Forms.Panel();
             this.droneRightPanel = new System.Windows.Forms.Panel();
+            this.bunifuCustomLabel11 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel10 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel9 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.droneLeftPanel = new System.Windows.Forms.Panel();
             this.droneNameLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -55,7 +70,7 @@
             this.droneProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.connectionIconsTablePanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.leapmotionPanel.SuspendLayout();
             this.leapmotionRightPanel.SuspendLayout();
@@ -73,22 +88,22 @@
             this.bottomPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // connectionIconsTablePanel
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tableLayoutPanel1.Controls.Add(this.panel3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.raspCamPanel, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1024, 297);
-            this.tableLayoutPanel1.TabIndex = 30;
+            this.connectionIconsTablePanel.ColumnCount = 3;
+            this.connectionIconsTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.connectionIconsTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
+            this.connectionIconsTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.connectionIconsTablePanel.Controls.Add(this.panel3, 2, 0);
+            this.connectionIconsTablePanel.Controls.Add(this.raspCamPanel, 1, 0);
+            this.connectionIconsTablePanel.Controls.Add(this.panel1, 0, 0);
+            this.connectionIconsTablePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.connectionIconsTablePanel.Location = new System.Drawing.Point(0, 0);
+            this.connectionIconsTablePanel.Name = "connectionIconsTablePanel";
+            this.connectionIconsTablePanel.RowCount = 1;
+            this.connectionIconsTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.connectionIconsTablePanel.Size = new System.Drawing.Size(1024, 297);
+            this.connectionIconsTablePanel.TabIndex = 30;
             // 
             // panel3
             // 
@@ -117,20 +132,35 @@
             // 
             this.leapmotionRightPanel.BackColor = System.Drawing.Color.Transparent;
             this.leapmotionRightPanel.Controls.Add(this.bunifuCustomLabel3);
+            this.leapmotionRightPanel.Controls.Add(this.bunifuCustomLabel25);
             this.leapmotionRightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.leapmotionRightPanel.Location = new System.Drawing.Point(0, 0);
             this.leapmotionRightPanel.Name = "leapmotionRightPanel";
+            this.leapmotionRightPanel.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
             this.leapmotionRightPanel.Size = new System.Drawing.Size(336, 291);
             this.leapmotionRightPanel.TabIndex = 37;
             // 
             // bunifuCustomLabel3
             // 
             this.bunifuCustomLabel3.AutoSize = true;
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(40, 49);
+            this.bunifuCustomLabel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(0, 167);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
-            this.bunifuCustomLabel3.Size = new System.Drawing.Size(65, 12);
-            this.bunifuCustomLabel3.TabIndex = 0;
-            this.bunifuCustomLabel3.Text = "ㅎㅎㅎㅎㅎ";
+            this.bunifuCustomLabel3.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel3.Size = new System.Drawing.Size(157, 152);
+            this.bunifuCustomLabel3.TabIndex = 9;
+            this.bunifuCustomLabel3.Text = resources.GetString("bunifuCustomLabel3.Text");
+            // 
+            // bunifuCustomLabel25
+            // 
+            this.bunifuCustomLabel25.AutoSize = true;
+            this.bunifuCustomLabel25.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel25.Location = new System.Drawing.Point(0, 15);
+            this.bunifuCustomLabel25.Name = "bunifuCustomLabel25";
+            this.bunifuCustomLabel25.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel25.Size = new System.Drawing.Size(157, 152);
+            this.bunifuCustomLabel25.TabIndex = 8;
+            this.bunifuCustomLabel25.Text = resources.GetString("bunifuCustomLabel25.Text");
             // 
             // leapmotionLeftPanel
             // 
@@ -164,7 +194,7 @@
             this.leapMotionImageButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.leapMotionImageButton.Image = ((System.Drawing.Image)(resources.GetObject("leapMotionImageButton.Image")));
             this.leapMotionImageButton.ImageActive = null;
-            this.leapMotionImageButton.Location = new System.Drawing.Point(126, 86);
+            this.leapMotionImageButton.Location = new System.Drawing.Point(81, 80);
             this.leapMotionImageButton.Name = "leapMotionImageButton";
             this.leapMotionImageButton.Size = new System.Drawing.Size(90, 90);
             this.leapMotionImageButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -186,7 +216,7 @@
             this.leapmotionProgressbar.LabelVisible = false;
             this.leapmotionProgressbar.LineProgressThickness = 5;
             this.leapmotionProgressbar.LineThickness = 5;
-            this.leapmotionProgressbar.Location = new System.Drawing.Point(64, 38);
+            this.leapmotionProgressbar.Location = new System.Drawing.Point(19, 32);
             this.leapmotionProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.leapmotionProgressbar.MaxValue = 100;
             this.leapmotionProgressbar.Name = "leapmotionProgressbar";
@@ -215,20 +245,107 @@
             // 
             this.raspCamRightPanel.BackColor = System.Drawing.Color.Transparent;
             this.raspCamRightPanel.Controls.Add(this.bunifuCustomLabel2);
+            this.raspCamRightPanel.Controls.Add(this.bunifuCustomLabel12);
+            this.raspCamRightPanel.Controls.Add(this.bunifuCustomLabel13);
+            this.raspCamRightPanel.Controls.Add(this.bunifuCustomLabel14);
+            this.raspCamRightPanel.Controls.Add(this.bunifuCustomLabel15);
+            this.raspCamRightPanel.Controls.Add(this.bunifuCustomLabel16);
+            this.raspCamRightPanel.Controls.Add(this.bunifuCustomLabel17);
+            this.raspCamRightPanel.Controls.Add(this.bunifuCustomLabel18);
             this.raspCamRightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.raspCamRightPanel.Location = new System.Drawing.Point(0, 0);
             this.raspCamRightPanel.Name = "raspCamRightPanel";
+            this.raspCamRightPanel.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
             this.raspCamRightPanel.Size = new System.Drawing.Size(335, 291);
             this.raspCamRightPanel.TabIndex = 36;
             // 
             // bunifuCustomLabel2
             // 
             this.bunifuCustomLabel2.AutoSize = true;
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(40, 49);
+            this.bunifuCustomLabel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(0, 239);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(65, 12);
-            this.bunifuCustomLabel2.TabIndex = 0;
-            this.bunifuCustomLabel2.Text = "ㅎㅎㅎㅎㅎ";
+            this.bunifuCustomLabel2.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel2.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel2.TabIndex = 15;
+            this.bunifuCustomLabel2.Text = "여기에 설명을 적으세요. - 1";
+            // 
+            // bunifuCustomLabel12
+            // 
+            this.bunifuCustomLabel12.AutoSize = true;
+            this.bunifuCustomLabel12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel12.Location = new System.Drawing.Point(0, 207);
+            this.bunifuCustomLabel12.Name = "bunifuCustomLabel12";
+            this.bunifuCustomLabel12.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel12.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel12.TabIndex = 14;
+            this.bunifuCustomLabel12.Text = "여기에 설명을 적으세요. - 1";
+            // 
+            // bunifuCustomLabel13
+            // 
+            this.bunifuCustomLabel13.AutoSize = true;
+            this.bunifuCustomLabel13.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel13.Location = new System.Drawing.Point(0, 175);
+            this.bunifuCustomLabel13.Name = "bunifuCustomLabel13";
+            this.bunifuCustomLabel13.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel13.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel13.TabIndex = 13;
+            this.bunifuCustomLabel13.Text = "여기에 설명을 적으세요. - 1";
+            // 
+            // bunifuCustomLabel14
+            // 
+            this.bunifuCustomLabel14.AutoSize = true;
+            this.bunifuCustomLabel14.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel14.Location = new System.Drawing.Point(0, 143);
+            this.bunifuCustomLabel14.Name = "bunifuCustomLabel14";
+            this.bunifuCustomLabel14.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel14.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel14.TabIndex = 12;
+            this.bunifuCustomLabel14.Text = "여기에 설명을 적으세요. - 1";
+            // 
+            // bunifuCustomLabel15
+            // 
+            this.bunifuCustomLabel15.AutoSize = true;
+            this.bunifuCustomLabel15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel15.Location = new System.Drawing.Point(0, 111);
+            this.bunifuCustomLabel15.Name = "bunifuCustomLabel15";
+            this.bunifuCustomLabel15.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel15.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel15.TabIndex = 11;
+            this.bunifuCustomLabel15.Text = "여기에 설명을 적으세요. - 1";
+            // 
+            // bunifuCustomLabel16
+            // 
+            this.bunifuCustomLabel16.AutoSize = true;
+            this.bunifuCustomLabel16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel16.Location = new System.Drawing.Point(0, 79);
+            this.bunifuCustomLabel16.Name = "bunifuCustomLabel16";
+            this.bunifuCustomLabel16.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel16.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel16.TabIndex = 10;
+            this.bunifuCustomLabel16.Text = "여기에 설명을 적으세요. - 1";
+            // 
+            // bunifuCustomLabel17
+            // 
+            this.bunifuCustomLabel17.AutoSize = true;
+            this.bunifuCustomLabel17.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel17.Location = new System.Drawing.Point(0, 47);
+            this.bunifuCustomLabel17.Name = "bunifuCustomLabel17";
+            this.bunifuCustomLabel17.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel17.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel17.TabIndex = 9;
+            this.bunifuCustomLabel17.Text = "여기에 설명을 적으세요. - 1";
+            // 
+            // bunifuCustomLabel18
+            // 
+            this.bunifuCustomLabel18.AutoSize = true;
+            this.bunifuCustomLabel18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel18.Location = new System.Drawing.Point(0, 15);
+            this.bunifuCustomLabel18.Name = "bunifuCustomLabel18";
+            this.bunifuCustomLabel18.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel18.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel18.TabIndex = 8;
+            this.bunifuCustomLabel18.Text = "여기에 설명을 적으세요. - 1";
             // 
             // raspCamLeftPanel
             // 
@@ -262,7 +379,7 @@
             this.raspCamImageButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.raspCamImageButton.Image = ((System.Drawing.Image)(resources.GetObject("raspCamImageButton.Image")));
             this.raspCamImageButton.ImageActive = null;
-            this.raspCamImageButton.Location = new System.Drawing.Point(114, 82);
+            this.raspCamImageButton.Location = new System.Drawing.Point(57, 79);
             this.raspCamImageButton.Name = "raspCamImageButton";
             this.raspCamImageButton.Size = new System.Drawing.Size(110, 110);
             this.raspCamImageButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -284,7 +401,7 @@
             this.raspCamProgressbar.LabelVisible = false;
             this.raspCamProgressbar.LineProgressThickness = 5;
             this.raspCamProgressbar.LineThickness = 5;
-            this.raspCamProgressbar.Location = new System.Drawing.Point(73, 38);
+            this.raspCamProgressbar.Location = new System.Drawing.Point(16, 35);
             this.raspCamProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.raspCamProgressbar.MaxValue = 100;
             this.raspCamProgressbar.Name = "raspCamProgressbar";
@@ -321,21 +438,109 @@
             // droneRightPanel
             // 
             this.droneRightPanel.BackColor = System.Drawing.Color.Transparent;
+            this.droneRightPanel.Controls.Add(this.bunifuCustomLabel11);
+            this.droneRightPanel.Controls.Add(this.bunifuCustomLabel10);
+            this.droneRightPanel.Controls.Add(this.bunifuCustomLabel9);
+            this.droneRightPanel.Controls.Add(this.bunifuCustomLabel8);
+            this.droneRightPanel.Controls.Add(this.bunifuCustomLabel7);
+            this.droneRightPanel.Controls.Add(this.bunifuCustomLabel6);
+            this.droneRightPanel.Controls.Add(this.bunifuCustomLabel5);
             this.droneRightPanel.Controls.Add(this.bunifuCustomLabel1);
             this.droneRightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.droneRightPanel.Location = new System.Drawing.Point(0, 0);
             this.droneRightPanel.Name = "droneRightPanel";
+            this.droneRightPanel.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
             this.droneRightPanel.Size = new System.Drawing.Size(335, 291);
             this.droneRightPanel.TabIndex = 35;
+            // 
+            // bunifuCustomLabel11
+            // 
+            this.bunifuCustomLabel11.AutoSize = true;
+            this.bunifuCustomLabel11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel11.Location = new System.Drawing.Point(0, 239);
+            this.bunifuCustomLabel11.Name = "bunifuCustomLabel11";
+            this.bunifuCustomLabel11.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel11.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel11.TabIndex = 7;
+            this.bunifuCustomLabel11.Text = "여기에 설명을 적으세요. - 1";
+            // 
+            // bunifuCustomLabel10
+            // 
+            this.bunifuCustomLabel10.AutoSize = true;
+            this.bunifuCustomLabel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel10.Location = new System.Drawing.Point(0, 207);
+            this.bunifuCustomLabel10.Name = "bunifuCustomLabel10";
+            this.bunifuCustomLabel10.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel10.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel10.TabIndex = 6;
+            this.bunifuCustomLabel10.Text = "여기에 설명을 적으세요. - 1";
+            // 
+            // bunifuCustomLabel9
+            // 
+            this.bunifuCustomLabel9.AutoSize = true;
+            this.bunifuCustomLabel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel9.Location = new System.Drawing.Point(0, 175);
+            this.bunifuCustomLabel9.Name = "bunifuCustomLabel9";
+            this.bunifuCustomLabel9.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel9.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel9.TabIndex = 5;
+            this.bunifuCustomLabel9.Text = "여기에 설명을 적으세요. - 1";
+            this.bunifuCustomLabel9.Click += new System.EventHandler(this.bunifuCustomLabel9_Click);
+            // 
+            // bunifuCustomLabel8
+            // 
+            this.bunifuCustomLabel8.AutoSize = true;
+            this.bunifuCustomLabel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel8.Location = new System.Drawing.Point(0, 143);
+            this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
+            this.bunifuCustomLabel8.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel8.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel8.TabIndex = 4;
+            this.bunifuCustomLabel8.Text = "여기에 설명을 적으세요. - 1";
+            // 
+            // bunifuCustomLabel7
+            // 
+            this.bunifuCustomLabel7.AutoSize = true;
+            this.bunifuCustomLabel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel7.Location = new System.Drawing.Point(0, 111);
+            this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
+            this.bunifuCustomLabel7.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel7.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel7.TabIndex = 3;
+            this.bunifuCustomLabel7.Text = "여기에 설명을 적으세요. - 1";
+            // 
+            // bunifuCustomLabel6
+            // 
+            this.bunifuCustomLabel6.AutoSize = true;
+            this.bunifuCustomLabel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(0, 79);
+            this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
+            this.bunifuCustomLabel6.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel6.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel6.TabIndex = 2;
+            this.bunifuCustomLabel6.Text = "여기에 설명을 적으세요. - 1";
+            // 
+            // bunifuCustomLabel5
+            // 
+            this.bunifuCustomLabel5.AutoSize = true;
+            this.bunifuCustomLabel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(0, 47);
+            this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
+            this.bunifuCustomLabel5.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel5.Size = new System.Drawing.Size(157, 32);
+            this.bunifuCustomLabel5.TabIndex = 1;
+            this.bunifuCustomLabel5.Text = "여기에 설명을 적으세요. - 1";
             // 
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(40, 49);
+            this.bunifuCustomLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(0, 15);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(65, 12);
+            this.bunifuCustomLabel1.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(157, 32);
             this.bunifuCustomLabel1.TabIndex = 0;
-            this.bunifuCustomLabel1.Text = "ㅎㅎㅎㅎㅎ";
+            this.bunifuCustomLabel1.Text = "여기에 설명을 적으세요. - 1";
             // 
             // droneLeftPanel
             // 
@@ -370,7 +575,7 @@
             this.droneImageButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.droneImageButton.Image = ((System.Drawing.Image)(resources.GetObject("droneImageButton.Image")));
             this.droneImageButton.ImageActive = null;
-            this.droneImageButton.Location = new System.Drawing.Point(124, 82);
+            this.droneImageButton.Location = new System.Drawing.Point(63, 76);
             this.droneImageButton.Name = "droneImageButton";
             this.droneImageButton.Size = new System.Drawing.Size(110, 110);
             this.droneImageButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -392,7 +597,7 @@
             this.droneProgressbar.LabelVisible = false;
             this.droneProgressbar.LineProgressThickness = 5;
             this.droneProgressbar.LineThickness = 5;
-            this.droneProgressbar.Location = new System.Drawing.Point(80, 38);
+            this.droneProgressbar.Location = new System.Drawing.Point(19, 32);
             this.droneProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.droneProgressbar.MaxValue = 100;
             this.droneProgressbar.Name = "droneProgressbar";
@@ -414,7 +619,7 @@
             // 
             // bunifuCustomLabel4
             // 
-            this.bunifuCustomLabel4.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.bunifuCustomLabel4.BackColor = System.Drawing.Color.Transparent;
             this.bunifuCustomLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuCustomLabel4.Font = new System.Drawing.Font("NEXON Football Gothic B", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel4.Location = new System.Drawing.Point(0, 0);
@@ -429,11 +634,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.bottomPanel);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.connectionIconsTablePanel);
             this.Name = "MainConnectionView";
             this.Size = new System.Drawing.Size(1024, 510);
             this.Load += new System.EventHandler(this.MainConnectionView_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.connectionIconsTablePanel.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.leapmotionPanel.ResumeLayout(false);
             this.leapmotionRightPanel.ResumeLayout(false);
@@ -458,7 +663,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel connectionIconsTablePanel;
         private System.Windows.Forms.Panel raspCamPanel;
         private System.Windows.Forms.Panel panel1;
         private Bunifu.Framework.UI.BunifuImageButton droneImageButton;
@@ -477,12 +682,27 @@
         private System.Windows.Forms.Panel dronePanel;
         private System.Windows.Forms.Panel leapmotionPanel;
         private System.Windows.Forms.Panel leapmotionRightPanel;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
         private System.Windows.Forms.Panel raspCamRightPanel;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
         private System.Windows.Forms.Panel droneRightPanel;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         private System.Windows.Forms.Panel bottomPanel;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel25;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel12;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel13;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel14;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel15;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel16;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel17;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel18;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel11;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel10;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel9;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel8;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel7;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel6;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
     }
 }

@@ -106,7 +106,7 @@ namespace Fire_Detector.Control.SideTabView
             this.UpdateUI();
         }
 
-        private void bunifuCheckbox1_OnChange(object sender, EventArgs e)
+        private void fixLevelCheckBox_OnChange(object sender, EventArgs e)
         {
             this.Root.Receiver.FixLevel = this.fixLevelCheckBox.Checked;
             this.Root.Receiver.LevelTemperatureRange = new Rangef(this.levelTemperatureRange.RangeMin, this.levelTemperatureRange.RangeMax);

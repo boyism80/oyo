@@ -543,7 +543,7 @@
             this.fixLevelCheckBox.Name = "fixLevelCheckBox";
             this.fixLevelCheckBox.Size = new System.Drawing.Size(20, 20);
             this.fixLevelCheckBox.TabIndex = 2;
-            this.fixLevelCheckBox.OnChange += new System.EventHandler(this.bunifuCheckbox1_OnChange);
+            this.fixLevelCheckBox.OnChange += new System.EventHandler(this.fixLevelCheckBox_OnChange);
             // 
             // levelTemperatureRange
             // 
