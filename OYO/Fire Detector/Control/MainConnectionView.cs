@@ -9,7 +9,7 @@ namespace Fire_Detector.Control
 {
     public partial class MainConnectionView : BaseTabView, BunifuForm.MainForm.IStateChangedListener
     {
-        private Panel[] iconPanels = new Panel[3];
+        private Panel[] iconPanels;
 
         public MainConnectionView()
         {
@@ -22,17 +22,25 @@ namespace Fire_Detector.Control
         {
             foreach(var panel in this.iconPanels)
             {
-                var progressbar = panel.Tag as Bunifu.Framework.UI.BunifuCircleProgressbar;
-                progressbar.Size = new System.Drawing.Size((int)(panel.Width * 0.6f), (int)(panel.Width * 0.6f));
-                progressbar.Location = new System.Drawing.Point((panel.Width - progressbar.Width) / 2, progressbar.Location.Y);
+                var left = (panel.Tag as Panel[])[0];
+                var right = (panel.Tag as Panel[])[1];
+
+                left.Dock = isMaximize ? DockStyle.Left : DockStyle.Fill;
+
+                var progressbar = left.Tag as Bunifu.Framework.UI.BunifuCircleProgressbar;
+                progressbar.Size = new System.Drawing.Size((int)(left.Width * 0.6f), (int)(left.Width * 0.6f));
+                progressbar.Location = new System.Drawing.Point((left.Width - progressbar.Width) / 2, progressbar.Location.Y);
 
                 var icon = progressbar.Tag as Bunifu.Framework.UI.BunifuImageButton;
-                icon.Width = icon.Height = (int)(panel.Width * 0.32f);
+                icon.Width = icon.Height = (int)(left.Width * 0.32f);
                 icon.Location = new System.Drawing.Point(progressbar.Location.X + (progressbar.Width - icon.Width) / 2,
                                                          progressbar.Location.Y + (progressbar.Height - icon.Height) / 2);
 
                 var label = icon.Tag as Bunifu.Framework.UI.BunifuCustomLabel;
-                label.Font = new Font(label.Font.FontFamily, (18.0f / 335.0f) * panel.Width, label.Font.Style);
+                label.Font = new Font(label.Font.FontFamily, (18.0f / 335.0f) * left.Width, label.Font.Style);
+
+                right.Visible = isMaximize;
+                this.bottomPanel.Visible = isMaximize;
             }
         }
 
