@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -17,6 +18,19 @@ namespace Fire_Detector.Control
             {
                 this._selected = value;
                 this.UpdateUI();
+            }
+        }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new DockStyle Dock
+        {
+            get
+            {
+                return base.Dock;
+            }
+            set
+            {
+                base.Dock = value;
             }
         }
 
