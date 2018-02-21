@@ -6,16 +6,16 @@ namespace Fire_Detector.Control
 {
     public partial class PatrolFileListViewItem : UserControl
     {
-        private bool _checked = false;
-        public bool Checked
+        private bool _selected = false;
+        public bool Selected
         {
             get
             {
-                return this._checked;
+                return this._selected;
             }
             set
             {
-                this._checked = value;
+                this._selected = value;
                 this.UpdateUI();
             }
         }
@@ -27,13 +27,13 @@ namespace Fire_Detector.Control
 
         private void UpdateUI()
         {
-            var backColor = this.Checked ? Color.FromArgb(255, 200, 190) : SystemColors.ControlLight;
+            var backColor = this.Selected ? Color.FromArgb(255, 200, 190) : SystemColors.ControlLight;
             this.BackColor = backColor;
         }
 
         private void PatrolFileListViewItem_Click(object sender, EventArgs e)
         {
-            this.Checked = !this.Checked;
+            this.Selected = !this.Selected;
         }
 
         

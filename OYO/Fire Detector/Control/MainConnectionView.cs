@@ -20,15 +20,15 @@ namespace Fire_Detector.Control
 
         public void OnSizeChanged(System.Drawing.Size size, bool isMaximize)
         {
-            this.bottomPanel.Visible = isMaximize;
-            this.connectionIconsTablePanel.Padding = isMaximize ? new Padding((int)(size.Width * 0.1f), 0, (int)(size.Width * 0.1f), 0) : new Padding(0, 0, 0, 0);
+            this.bottomPanel.Visible                = isMaximize;
+            this.connectionIconsTablePanel.Padding  = isMaximize ? new Padding((int)(size.Width * 0.1f), 0, (int)(size.Width * 0.1f), 0) : new Padding(0, 0, 0, 0);
 
             foreach(var panel in this.iconPanels)
             {
                 var left                    = (panel.Tag as Panel[])[0];
                 var right                   = (panel.Tag as Panel[])[1];
 
-                left.Dock = isMaximize ? DockStyle.Left : DockStyle.Fill;
+                left.Dock                   = isMaximize ? DockStyle.Left : DockStyle.Fill;
 
                 var progressbar             = left.Tag as Bunifu.Framework.UI.BunifuCircleProgressbar;
                 progressbar.Size            = new System.Drawing.Size((int)(left.Width * 0.6f), (int)(left.Width * 0.6f));

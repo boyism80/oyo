@@ -24,7 +24,15 @@ namespace Fire_Detector.Dialog
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
 
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            var selectedItems = this.patrolFileListView.SelectedItems;
+            for (var i = selectedItems.Count - 1; i >= 0; i--)
+                this.patrolFileListView.Items.Remove(selectedItems[i]);
         }
     }
 }
