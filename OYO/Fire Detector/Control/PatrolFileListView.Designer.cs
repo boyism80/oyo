@@ -37,7 +37,6 @@
             this.AutoScroll = true;
             this.Name = "PatrolFileListView";
             this.Size = new System.Drawing.Size(679, 500);
-            this.Load += new System.EventHandler(this.PatrolFileListView_Load);
             this.ResumeLayout(false);
 
         }

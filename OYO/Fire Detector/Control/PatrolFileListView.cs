@@ -6,9 +6,6 @@ namespace Fire_Detector.Control
 {
     public partial class PatrolFileListView : UserControl
     {
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public PatrolFileListViewCollection Items { get; private set; }
-
         public class PatrolFileListViewCollection : Collection<PatrolFileListViewItem>
         {
             public PatrolFileListView Owner { get; private set; }
@@ -41,12 +38,11 @@ namespace Fire_Detector.Control
             }
         }
 
-        public PatrolFileListView()
-        {
-            this.Items = new PatrolFileListViewCollection(this);
-            InitializeComponent();
-        }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public PatrolFileListViewCollection Items { get; private set; }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public Collection<PatrolFileListViewItem> SelectedItems
         {
             get
@@ -62,13 +58,10 @@ namespace Fire_Detector.Control
             }
         }
 
-        private void PatrolFileListView_Load(object sender, System.EventArgs e)
+        public PatrolFileListView()
         {
-            foreach (var item in this.Items)
-            {
-                this.Controls.Add(item);
-                item.Dock = DockStyle.Top;
-            }
+            this.Items = new PatrolFileListViewCollection(this);
+            InitializeComponent();
         }
     }
 }
