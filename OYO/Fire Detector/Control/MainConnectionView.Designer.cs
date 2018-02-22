@@ -573,6 +573,7 @@
             this.Name = "MainConnectionView";
             this.Size = new System.Drawing.Size(1024, 510);
             this.Load += new System.EventHandler(this.MainConnectionView_Load);
+            this.VisibleChanged += new System.EventHandler(this.MainConnectionView_VisibleChanged);
             this.connectionIconsTablePanel.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.leapmotionPanel.ResumeLayout(false);

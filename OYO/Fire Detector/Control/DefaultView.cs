@@ -1,11 +1,10 @@
-﻿using Fire_Detector.BunifuForm;
-using Fire_Detector.Control.SideTabView;
+﻿using Fire_Detector.Control.SideTabView;
 using Fire_Detector.Source;
+using OpenCvSharp;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using OpenCvSharp;
 
 namespace Fire_Detector.Control
 {
@@ -54,11 +53,10 @@ namespace Fire_Detector.Control
             if(e.Button != MouseButtons.Left)
                 return;
 
-            var mainform = this.FindForm() as MainForm;
-            if(mainform == null)
+            if(this.Root == null)
                 return;
 
-            if(mainform.Receiver.Connected == false)
+            if(this.Root.Receiver.Connected == false)
                 return;
 
             switch (this.streamingFrameBox.SizeMode)
@@ -79,6 +77,9 @@ namespace Fire_Detector.Control
 
         private void streamingFrameBox_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.Root.Config.Visualize.Scaled += (e.Delta / 120);
         }
     }

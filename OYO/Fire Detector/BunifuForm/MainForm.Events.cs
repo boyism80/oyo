@@ -148,6 +148,7 @@ namespace Fire_Detector.BunifuForm
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Receiver.Exit();
+            this.Bebop.Disconnect();
         }
 
         public void OnConnected()

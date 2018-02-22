@@ -18,6 +18,26 @@ namespace Fire_Detector.Control
             this.iconPanels                 = new Panel[] { this.dronePanel, this.raspCamPanel, this.leapmotionPanel };
         }
 
+        private void UpdateUI()
+        {
+            if(this.Root == null)
+                return;
+
+            this.raspCamProgressbar.Invoke(new MethodInvoker(delegate ()
+            {
+                this.raspCamProgressbar.Value               = this.Root.Receiver.Connected ? 15 : 0;
+                this.raspCamProgressbar.animated            = this.Root.Receiver.Connected;
+                this.raspCamProgressbar.ProgressBackColor   = this.Root.Receiver.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
+            }));
+
+            this.droneProgressbar.Invoke(new MethodInvoker(delegate ()
+            {
+                this.droneProgressbar.Value               = this.Root.Bebop.Connected ? 15 : 0;
+                this.droneProgressbar.animated            = this.Root.Bebop.Connected;
+                this.droneProgressbar.ProgressBackColor   = this.Root.Bebop.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
+            }));
+        }
+
         public void OnSizeChanged(System.Drawing.Size size, bool isMaximize)
         {
             this.bottomPanel.Visible                = isMaximize;
@@ -48,19 +68,7 @@ namespace Fire_Detector.Control
 
         public void OnStateChanged(bool connected)
         {
-            try
-            {
-                this.raspCamProgressbar.Invoke(new MethodInvoker(delegate ()
-                {
-                    this.raspCamProgressbar.Value               = connected ? 15 : 0;
-                    this.raspCamProgressbar.animated            = connected;
-                    this.raspCamProgressbar.ProgressBackColor   = connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
-                }));
-            }
-            catch (Exception)
-            {
-
-            }
+            this.UpdateUI();
         }
 
         public void OnUpdated(UpdatedDataBuffer buffer, Mat updatedFrame, bool invalidated)
@@ -83,6 +91,15 @@ namespace Fire_Detector.Control
         private void droneImageButton_Click(object sender, System.EventArgs e)
         {
             // 드론 서버랑 연결
+            if(this.Root == null)
+                return;
+
+            if(this.Root.Bebop.Connected)
+                this.Root.Bebop.Disconnect();
+            else
+                this.Root.Bebop.Connect();
+
+            this.UpdateUI();
         }
 
         private void leapMotionImageButton_Click(object sender, System.EventArgs e)
@@ -93,6 +110,12 @@ namespace Fire_Detector.Control
         private void bunifuCustomLabel9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void MainConnectionView_VisibleChanged(object sender, EventArgs e)
+        {
+            if(this.Visible)
+                this.UpdateUI();
         }
     }
 }

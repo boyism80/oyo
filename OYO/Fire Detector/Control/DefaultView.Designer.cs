@@ -35,17 +35,17 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bunifuCircleProgressbar2 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.droneAltitudeLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel9 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.droneLonLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.droneLatLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.streamingFrameBox = new System.Windows.Forms.PictureBox();
             this.sideCollapsedBar = new Fire_Detector.Control.SideCollapsedBar();
             this.sideExpandedBar = new Fire_Detector.Control.SideExpandedBar();
-            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.currentStateBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -63,10 +63,10 @@
             this.currentStateBar.Controls.Add(this.bunifuCustomLabel7);
             this.currentStateBar.Controls.Add(this.bunifuCustomLabel6);
             this.currentStateBar.Controls.Add(this.bunifuCustomLabel5);
-            this.currentStateBar.Controls.Add(this.bunifuCustomLabel1);
+            this.currentStateBar.Controls.Add(this.droneAltitudeLabel);
             this.currentStateBar.Controls.Add(this.bunifuCustomLabel3);
-            this.currentStateBar.Controls.Add(this.bunifuCustomLabel9);
-            this.currentStateBar.Controls.Add(this.bunifuCustomLabel8);
+            this.currentStateBar.Controls.Add(this.droneLonLabel);
+            this.currentStateBar.Controls.Add(this.droneLatLabel);
             this.currentStateBar.Controls.Add(this.bunifuCustomLabel2);
             this.currentStateBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.currentStateBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -136,7 +136,7 @@
             // bunifuCustomLabel4
             // 
             this.bunifuCustomLabel4.AutoSize = true;
-            this.bunifuCustomLabel4.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel4.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.bunifuCustomLabel4.Location = new System.Drawing.Point(508, 16);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
@@ -144,10 +144,54 @@
             this.bunifuCustomLabel4.TabIndex = 4;
             this.bunifuCustomLabel4.Text = "산불감지중";
             // 
+            // bunifuCustomLabel7
+            // 
+            this.bunifuCustomLabel7.AutoSize = true;
+            this.bunifuCustomLabel7.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel7.ForeColor = System.Drawing.Color.Lime;
+            this.bunifuCustomLabel7.Location = new System.Drawing.Point(401, 16);
+            this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
+            this.bunifuCustomLabel7.Size = new System.Drawing.Size(39, 16);
+            this.bunifuCustomLabel7.TabIndex = 4;
+            this.bunifuCustomLabel7.Text = "속도 :";
+            // 
+            // bunifuCustomLabel6
+            // 
+            this.bunifuCustomLabel6.AutoSize = true;
+            this.bunifuCustomLabel6.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel6.ForeColor = System.Drawing.Color.Lime;
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(442, 16);
+            this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
+            this.bunifuCustomLabel6.Size = new System.Drawing.Size(57, 16);
+            this.bunifuCustomLabel6.TabIndex = 4;
+            this.bunifuCustomLabel6.Text = "0.0 m/s";
+            // 
+            // bunifuCustomLabel5
+            // 
+            this.bunifuCustomLabel5.AutoSize = true;
+            this.bunifuCustomLabel5.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel5.ForeColor = System.Drawing.Color.Lime;
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(302, 16);
+            this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
+            this.bunifuCustomLabel5.Size = new System.Drawing.Size(39, 16);
+            this.bunifuCustomLabel5.TabIndex = 4;
+            this.bunifuCustomLabel5.Text = "고도 :";
+            // 
+            // droneAltitudeLabel
+            // 
+            this.droneAltitudeLabel.AutoSize = true;
+            this.droneAltitudeLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.droneAltitudeLabel.ForeColor = System.Drawing.Color.Lime;
+            this.droneAltitudeLabel.Location = new System.Drawing.Point(343, 16);
+            this.droneAltitudeLabel.Name = "droneAltitudeLabel";
+            this.droneAltitudeLabel.Size = new System.Drawing.Size(43, 16);
+            this.droneAltitudeLabel.TabIndex = 4;
+            this.droneAltitudeLabel.Text = "0.0 m";
+            // 
             // bunifuCustomLabel3
             // 
             this.bunifuCustomLabel3.AutoSize = true;
-            this.bunifuCustomLabel3.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel3.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.Lime;
             this.bunifuCustomLabel3.Location = new System.Drawing.Point(207, 16);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
@@ -155,32 +199,32 @@
             this.bunifuCustomLabel3.TabIndex = 4;
             this.bunifuCustomLabel3.Text = "경도 :";
             // 
-            // bunifuCustomLabel9
+            // droneLonLabel
             // 
-            this.bunifuCustomLabel9.AutoSize = true;
-            this.bunifuCustomLabel9.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel9.ForeColor = System.Drawing.Color.Lime;
-            this.bunifuCustomLabel9.Location = new System.Drawing.Point(248, 16);
-            this.bunifuCustomLabel9.Name = "bunifuCustomLabel9";
-            this.bunifuCustomLabel9.Size = new System.Drawing.Size(28, 16);
-            this.bunifuCustomLabel9.TabIndex = 4;
-            this.bunifuCustomLabel9.Text = "0.0";
+            this.droneLonLabel.AutoSize = true;
+            this.droneLonLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.droneLonLabel.ForeColor = System.Drawing.Color.Lime;
+            this.droneLonLabel.Location = new System.Drawing.Point(248, 16);
+            this.droneLonLabel.Name = "droneLonLabel";
+            this.droneLonLabel.Size = new System.Drawing.Size(28, 16);
+            this.droneLonLabel.TabIndex = 4;
+            this.droneLonLabel.Text = "0.0";
             // 
-            // bunifuCustomLabel8
+            // droneLatLabel
             // 
-            this.bunifuCustomLabel8.AutoSize = true;
-            this.bunifuCustomLabel8.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel8.ForeColor = System.Drawing.Color.Lime;
-            this.bunifuCustomLabel8.Location = new System.Drawing.Point(146, 16);
-            this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
-            this.bunifuCustomLabel8.Size = new System.Drawing.Size(28, 16);
-            this.bunifuCustomLabel8.TabIndex = 4;
-            this.bunifuCustomLabel8.Text = "0.0";
+            this.droneLatLabel.AutoSize = true;
+            this.droneLatLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.droneLatLabel.ForeColor = System.Drawing.Color.Lime;
+            this.droneLatLabel.Location = new System.Drawing.Point(146, 16);
+            this.droneLatLabel.Name = "droneLatLabel";
+            this.droneLatLabel.Size = new System.Drawing.Size(28, 16);
+            this.droneLatLabel.TabIndex = 4;
+            this.droneLatLabel.Text = "0.0";
             // 
             // bunifuCustomLabel2
             // 
             this.bunifuCustomLabel2.AutoSize = true;
-            this.bunifuCustomLabel2.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel2.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.Lime;
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(104, 16);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
@@ -220,50 +264,6 @@
             this.sideExpandedBar.TabIndex = 1;
             this.sideExpandedBar.Visible = false;
             // 
-            // bunifuCustomLabel1
-            // 
-            this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.Lime;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(343, 16);
-            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(43, 16);
-            this.bunifuCustomLabel1.TabIndex = 4;
-            this.bunifuCustomLabel1.Text = "0.0 m";
-            // 
-            // bunifuCustomLabel5
-            // 
-            this.bunifuCustomLabel5.AutoSize = true;
-            this.bunifuCustomLabel5.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel5.ForeColor = System.Drawing.Color.Lime;
-            this.bunifuCustomLabel5.Location = new System.Drawing.Point(302, 16);
-            this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
-            this.bunifuCustomLabel5.Size = new System.Drawing.Size(39, 16);
-            this.bunifuCustomLabel5.TabIndex = 4;
-            this.bunifuCustomLabel5.Text = "고도 :";
-            // 
-            // bunifuCustomLabel6
-            // 
-            this.bunifuCustomLabel6.AutoSize = true;
-            this.bunifuCustomLabel6.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel6.ForeColor = System.Drawing.Color.Lime;
-            this.bunifuCustomLabel6.Location = new System.Drawing.Point(442, 16);
-            this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
-            this.bunifuCustomLabel6.Size = new System.Drawing.Size(57, 16);
-            this.bunifuCustomLabel6.TabIndex = 4;
-            this.bunifuCustomLabel6.Text = "0.0 m/s";
-            // 
-            // bunifuCustomLabel7
-            // 
-            this.bunifuCustomLabel7.AutoSize = true;
-            this.bunifuCustomLabel7.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel7.ForeColor = System.Drawing.Color.Lime;
-            this.bunifuCustomLabel7.Location = new System.Drawing.Point(401, 16);
-            this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
-            this.bunifuCustomLabel7.Size = new System.Drawing.Size(39, 16);
-            this.bunifuCustomLabel7.TabIndex = 4;
-            this.bunifuCustomLabel7.Text = "속도 :";
-            // 
             // DefaultView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -293,14 +293,14 @@
         private Bunifu.Framework.UI.BunifuCircleProgressbar bunifuCircleProgressbar2;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel9;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel8;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
         public System.Windows.Forms.PictureBox streamingFrameBox;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel7;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel6;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
+        public Bunifu.Framework.UI.BunifuCustomLabel droneLonLabel;
+        public Bunifu.Framework.UI.BunifuCustomLabel droneLatLabel;
+        public Bunifu.Framework.UI.BunifuCustomLabel droneAltitudeLabel;
     }
 }

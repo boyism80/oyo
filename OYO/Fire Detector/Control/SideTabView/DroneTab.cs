@@ -21,20 +21,17 @@ namespace Fire_Detector.Control.SideTabView
             //this.Root.defaultView.sideCollapsedBar.Visible = true;
         }
 
-
-
         private void connectDroneButton_Click(object sender, EventArgs e)
         {
-            if (connectDroneProgressbar.animated == true)
-            {
-                connectDroneProgressbar.animated = false;
-                connectDroneProgressbar.Value = 0;
-            }
+            if(this.Root == null)
+                return;
+
+            if(this.Root.Bebop.Connected)
+                this.Root.Bebop.Disconnect();
             else
-            {
-                connectDroneProgressbar.animated = true;
-                connectDroneProgressbar.Value = 15;
-            }
+                this.Root.Bebop.Connect();
+
+            this.UpdateUI();
         }
 
 
@@ -119,6 +116,12 @@ namespace Fire_Detector.Control.SideTabView
                     this.beginRecordButton.ActiveFillColor = isRecordActive ? Color.LightSalmon : Color.Transparent;
                     this.beginRecordButton.ActiveForecolor = isRecordActive ? Color.White : SystemColors.ControlDarkDark;
                     this.beginRecordButton.ActiveLineColor = isRecordActive ? Color.Salmon : SystemColors.ControlDarkDark;
+                }));
+
+                this.connectDroneProgressbar.Invoke(new MethodInvoker(delegate ()
+                {
+                    connectDroneProgressbar.animated = this.Root.Bebop.Connected;
+                    connectDroneProgressbar.Value = this.Root.Bebop.Connected ? 15 : 0;
                 }));
             }
             catch(Exception)
@@ -208,6 +211,12 @@ namespace Fire_Detector.Control.SideTabView
         {
             this.patrolModeSwitch_OnValueChange(this.patrolModeSwitch, EventArgs.Empty);
             this.recordModeSwitch_OnValueChange(this.recordModeSwitch, EventArgs.Empty);
+        }
+
+        private void DroneTab_VisibleChanged(object sender, EventArgs e)
+        {
+            if(this.Visible)
+                this.UpdateUI();
         }
     }
 }

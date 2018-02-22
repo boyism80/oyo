@@ -1,13 +1,15 @@
 ﻿using Fire_Detector.Source;
 using OpenCvSharp;
 using oyo;
+using ParrotBebop2;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using BebopCommandSet;
 
 namespace Fire_Detector.BunifuForm
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form, Bebop.IBebopListener
     {
         public interface IStateChangedListener
         {
@@ -58,6 +60,7 @@ namespace Fire_Detector.BunifuForm
         public OYORecorder                      Recorder { get; private set; }
         public StreamingType                    StreamingType { get; set; }
         public Config                           Config { get; private set; }
+        public Bebop                            Bebop { get; private set; }
 
         public MainForm()
         {
@@ -68,6 +71,7 @@ namespace Fire_Detector.BunifuForm
             this.Blender                        = new OYOBlender(new OpenCvSharp.Size(720, 480));
             this.Detector                       = new OYODetector();
             this.Recorder                       = new OYORecorder();
+            this.Bebop                          = new Bebop(this);
 
             this.Config                         = new Config();
             this.Config.Visualize.Palette       = this.defaultView.sideExpandedBar.visualizeTab.palettesDropDown.selectedValue;
@@ -153,6 +157,22 @@ namespace Fire_Detector.BunifuForm
         {
             this.Blender.Smooth                 = true;
             this.Blender.Transparency           = this.defaultView.sideExpandedBar.visualizeTab.transparencySlider.Value / 100.0f;
+        }
+
+        public void OnStreaming(Mat frame)
+        {
+        }
+
+        public PCMD OnRequestPCMD()
+        {
+            return new PCMD();
+        }
+
+        public void OnStateChanged(Bebop bebop)
+        {
+            this.defaultView.droneLatLabel.Text = bebop._lat.ToString();
+            this.defaultView.droneLonLabel.Text = bebop._lon.ToString();
+            this.defaultView.droneAltitudeLabel.Text = bebop._alt.ToString();
         }
     }
 }
