@@ -67,6 +67,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void connectCameraButton_Click(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             if(this.Root.Receiver.Connected)
                 this.Root.Receiver.Exit();
             else
@@ -75,6 +78,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void infraredViewButton_Click(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.Root.StreamingType = oyo.StreamingType.Infrared;
             this.Root.Config.Blending.Enabled = false;
             this.UpdateUI();
@@ -82,6 +88,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void visualViewButton_Click(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.Root.StreamingType = oyo.StreamingType.Visual;
             this.Root.Config.Blending.Enabled = false;
             this.UpdateUI();
@@ -89,11 +98,17 @@ namespace Fire_Detector.Control.SideTabView
 
         private void palettesDropDown_onItemSelected(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.Root.Config.Visualize.Palette = this.palettesDropDown.selectedValue;
         }
 
         private void VisualizeTab_Load(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.thresholdSlider_ValueChanged(this.thresholdSlider, EventArgs.Empty);
             this.transparencySlider_ValueChanged(this.transparencySlider, EventArgs.Empty);
 
@@ -102,12 +117,18 @@ namespace Fire_Detector.Control.SideTabView
 
         private void blendingViewButton_Click(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.Root.Config.Blending.Enabled = true;
             this.UpdateUI();
         }
 
         private void fixLevelCheckBox_OnChange(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.Root.Receiver.FixLevel = this.fixLevelCheckBox.Checked;
             this.Root.Receiver.LevelTemperatureRange = new Rangef(this.levelTemperatureRange.RangeMin, this.levelTemperatureRange.RangeMax);
 
@@ -119,6 +140,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void levelTemperatureRange_RangeChanged(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.Root.Receiver.FixLevel = this.fixLevelCheckBox.Checked;
             this.Root.Receiver.LevelTemperatureRange = new Rangef(this.levelTemperatureRange.RangeMin, this.levelTemperatureRange.RangeMax);
         }
@@ -134,6 +158,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void transparencySlider_ValueChanged(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.transparencyLabel.Text = this.transparencySlider.Value.ToString();
             this.Root.Blender.Transparency = this.transparencySlider.Value / 100.0f;
         }

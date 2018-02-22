@@ -301,36 +301,36 @@
             // 
             // meanTemperature
             // 
-            this.meanTemperature.AutoSize = true;
             this.meanTemperature.Font = new System.Drawing.Font("NEXON Football Gothic L", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.meanTemperature.ForeColor = System.Drawing.Color.MediumPurple;
             this.meanTemperature.Location = new System.Drawing.Point(96, 78);
             this.meanTemperature.Name = "meanTemperature";
-            this.meanTemperature.Size = new System.Drawing.Size(14, 13);
+            this.meanTemperature.Size = new System.Drawing.Size(55, 13);
             this.meanTemperature.TabIndex = 8;
             this.meanTemperature.Text = "0";
+            this.meanTemperature.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // minTemperature
             // 
-            this.minTemperature.AutoSize = true;
             this.minTemperature.Font = new System.Drawing.Font("NEXON Football Gothic L", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.minTemperature.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.minTemperature.Location = new System.Drawing.Point(96, 44);
             this.minTemperature.Name = "minTemperature";
-            this.minTemperature.Size = new System.Drawing.Size(14, 13);
+            this.minTemperature.Size = new System.Drawing.Size(55, 13);
             this.minTemperature.TabIndex = 8;
             this.minTemperature.Text = "0";
+            this.minTemperature.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // maxTemperature
             // 
-            this.maxTemperature.AutoSize = true;
             this.maxTemperature.Font = new System.Drawing.Font("NEXON Football Gothic L", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.maxTemperature.ForeColor = System.Drawing.Color.LightCoral;
             this.maxTemperature.Location = new System.Drawing.Point(96, 10);
             this.maxTemperature.Name = "maxTemperature";
-            this.maxTemperature.Size = new System.Drawing.Size(14, 13);
+            this.maxTemperature.Size = new System.Drawing.Size(55, 13);
             this.maxTemperature.TabIndex = 8;
             this.maxTemperature.Text = "0";
+            this.maxTemperature.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // desiredTemperatureSlider
             // 

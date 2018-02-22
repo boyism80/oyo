@@ -27,6 +27,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void detectionStateSwitch_OnValueChange(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             if (detectionStateSwitch.Value == true)
             {
                 detectionStateLabel.Text = "감지중";

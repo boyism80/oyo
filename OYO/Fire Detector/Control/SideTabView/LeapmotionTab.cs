@@ -12,6 +12,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void leapmotionButton_Click(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.Root.defaultView.sideExpandedBar.Visible = false;
             this.Root.defaultView.sideCollapsedBar.Visible = true;
         }
