@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using BebopCommandSet;
+using System.Drawing;
+using System.IO;
 
 namespace Fire_Detector.BunifuForm
 {
@@ -170,9 +172,28 @@ namespace Fire_Detector.BunifuForm
 
         public void OnStateChanged(Bebop bebop)
         {
-            this.defaultView.droneLatLabel.Text = bebop._lat.ToString();
-            this.defaultView.droneLonLabel.Text = bebop._lon.ToString();
-            this.defaultView.droneAltitudeLabel.Text = bebop._alt.ToString();
+            this.defaultView.droneLatLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.defaultView.droneLatLabel.Text = bebop._lat.ToString();
+            }));
+
+            this.defaultView.droneLonLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.defaultView.droneLonLabel.Text = bebop._lon.ToString();
+            }));
+
+            this.defaultView.droneAltitudeLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.defaultView.droneAltitudeLabel.Text = bebop._alt.ToString();
+            }));
+        }
+
+        public void OnUpdateGMap(Mat gmap)
+        {
+            this.defaultView.streamingFrameBox.Invoke(new MethodInvoker(delegate ()
+            {
+                this.defaultView.streamingFrameBox.Image = Image.FromStream(new MemoryStream(gmap.ToBytes()));
+            }));
         }
     }
 }

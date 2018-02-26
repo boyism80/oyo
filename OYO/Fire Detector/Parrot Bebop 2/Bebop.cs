@@ -28,6 +28,7 @@ namespace ParrotBebop2
             void                OnStreaming(Mat frame);
             PCMD                OnRequestPCMD();
             void                OnStateChanged(Bebop bebop);
+            void                OnUpdateGMap(Mat gmap);
         }
 
         private int[] seq = new int[256];
@@ -44,7 +45,8 @@ namespace ParrotBebop2
 
         private D2CSocket _d2c;
         private C2DSocket _c2d;
-        private Thread _commandThread, _streamingThread;
+        private Thread _commandThread, _streamingThread, _gmapThread;
+        private Mutex _gmapMutex;
         private IBebopListener _listener;
 
         private short _rssi;
@@ -69,6 +71,7 @@ namespace ParrotBebop2
 
         public bool Connected { get; private set; }
         public byte Battery { get; private set; }
+        public Mat GMap { get; private set; }
 
 
         public Bebop(IBebopListener listener)
@@ -116,12 +119,17 @@ namespace ParrotBebop2
             if(this._d2c.Connect() == false)
                 return false;
 
+            this._gmapMutex                 = new Mutex();
+
             this.Connected                  = true;
             this._commandThread             = new Thread(this.commandThreadRoutine);
             this._commandThread.Start();
 
             this._streamingThread           = new Thread(this.streamingThreadRoutine);
             this._streamingThread.Start();
+
+            this._gmapThread                = new Thread(this.gmapThreadRoutine);
+            this._gmapThread.Start();
             return true;
         }
 
@@ -134,6 +142,9 @@ namespace ParrotBebop2
             this._d2c.Disconnect();
             this._commandThread.Join();
             this._streamingThread.Join();
+            this._gmapThread.Join();
+
+            this._gmapMutex.Close();
         }
 
         public void takeoff()
@@ -224,6 +235,37 @@ namespace ParrotBebop2
                 catch(Exception)
                 {
 
+                }
+            }
+        }
+
+        private void gmapThreadRoutine()
+        {
+            while(this.Connected)
+            {
+this._gmapMutex.WaitOne();
+                var currentLat = this._lat;
+                var currentLon = this._lon;
+this._gmapMutex.ReleaseMutex();
+                try
+                {
+                    var uri = new Uri(string.Format("http://maps.googleapis.com/maps/api/staticmap?center={0},{1}&markers=color:blue%7Clabel:OYO%7C{2},{3}&size=600x600&sensor=true&format=png&maptype=roadmap&zoom=18&language=ko&key=AIzaSyDO1LpjNHsEWBWLFdBPc6acJgyujd8ur2s", currentLat, currentLon, currentLat, currentLon));
+                    var httpRequest = (HttpWebRequest)HttpWebRequest.Create(uri);
+                    var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+                    var imageStream = httpResponse.GetResponseStream();
+
+                    var mstream = new MemoryStream();
+                    imageStream.CopyTo(mstream);
+                    this.GMap = Cv2.ImDecode(mstream.ToArray(), ImreadModes.AnyColor);
+                    this._listener.OnUpdateGMap(this.GMap);
+                }
+                catch(Exception e)
+                {
+                    
+                }
+                finally
+                {
+                    Thread.Sleep(1000);
                 }
             }
         }
@@ -341,9 +383,11 @@ namespace ParrotBebop2
                         {
                             if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_POSITIONCHANGED)
                             {
+this._gmapMutex.WaitOne();
                                 this._lat = reader.ReadDouble();
                                 this._lon = reader.ReadDouble();
                                 this._alt = reader.ReadDouble();
+this._gmapMutex.ReleaseMutex();
                             }
                             else if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_SPEEDCHANGED)
                             {

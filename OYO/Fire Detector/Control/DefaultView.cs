@@ -56,7 +56,7 @@ namespace Fire_Detector.Control
             if(this.Root == null)
                 return;
 
-            if(this.Root.Receiver.Connected == false)
+            if (this.Root.Receiver.Connected == false && this.Root.Bebop.Connected == false)
                 return;
 
             switch (this.streamingFrameBox.SizeMode)
