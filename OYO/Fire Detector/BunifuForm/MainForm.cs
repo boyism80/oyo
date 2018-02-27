@@ -82,6 +82,7 @@ namespace Fire_Detector.BunifuForm
             this._listener.Add(this.defaultView);
             this._listener.Add(this.defaultView.sideExpandedBar.visualizeTab);
             this._listener.Add(this.defaultView.sideExpandedBar.detectFireTab);
+            this._listener.Add(this.mainView);
             this._listener.Add(this.mainView.mainConnectionView);
         }
 

@@ -48,6 +48,8 @@ namespace Fire_Detector.Control
                         this.streamingFrameBox.SizeMode = PictureBoxSizeMode.CenterImage;
                         this.streamingFrameBox.Image = Properties.Resources.no_image_available;
                     }));
+
+                    this.Cursor = Cursors.Default;
                 }
             }
             catch (Exception)
@@ -110,6 +112,12 @@ namespace Fire_Detector.Control
             if(e.Button != MouseButtons.Left)
                 return;
 
+            if(this.Root == null)
+                return;
+
+            if(this.Root.Receiver.Connected == false)
+                return;
+
             var area = this._overlayer.ActiveArea();
             if (area.IsEmpty == false && area.Contains(e.X, e.Y))
             {
@@ -128,6 +136,12 @@ namespace Fire_Detector.Control
 
         private void streamingFrameBox_MouseMove(object sender, MouseEventArgs e)
         {
+            if(this.Root == null)
+                return;
+
+            if(this.Root.Receiver.Connected == false)
+                return;
+
             var area = this._overlayer.ActiveArea();
             if (area.IsEmpty == false && area.Contains(e.X, e.Y))
                 this.Cursor = Cursors.Hand;

@@ -33,8 +33,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
             BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.OYOPanel = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -62,8 +65,11 @@
             this.bunifuTransition = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuTransition1 = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuTransition2 = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.panel2.SuspendLayout();
+            this.OYOPanel.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.colorPanel.SuspendLayout();
             this.connectionPanel.SuspendLayout();
             this.activatedConnectionIconPanel.SuspendLayout();
@@ -75,23 +81,37 @@
             this.cameraPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel2
+            // OYOPanel
             // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.bunifuImageButton1);
-            this.panel2.Controls.Add(this.bunifuCustomLabel5);
-            this.panel2.Controls.Add(this.bunifuCustomLabel4);
-            this.panel2.Controls.Add(this.bunifuCustomLabel3);
-            this.panel2.Controls.Add(this.bunifuCustomLabel2);
-            this.panel2.Controls.Add(this.bunifuCustomLabel1);
-            this.bunifuTransition.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition2.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1024, 182);
-            this.panel2.TabIndex = 1;
+            this.OYOPanel.BackColor = System.Drawing.Color.Transparent;
+            this.OYOPanel.Controls.Add(this.tableLayoutPanel1);
+            this.bunifuTransition.SetDecoration(this.OYOPanel, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.OYOPanel, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition2.SetDecoration(this.OYOPanel, BunifuAnimatorNS.DecorationType.None);
+            this.OYOPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.OYOPanel.Location = new System.Drawing.Point(0, 0);
+            this.OYOPanel.Name = "OYOPanel";
+            this.OYOPanel.Padding = new System.Windows.Forms.Padding(40);
+            this.OYOPanel.Size = new System.Drawing.Size(1024, 182);
+            this.OYOPanel.TabIndex = 1;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.16949F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 89.83051F));
+            this.tableLayoutPanel1.Controls.Add(this.bunifuImageButton1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
+            this.bunifuTransition.SetDecoration(this.tableLayoutPanel1, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.tableLayoutPanel1, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition2.SetDecoration(this.tableLayoutPanel1, BunifuAnimatorNS.DecorationType.None);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(40, 40);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(944, 102);
+            this.tableLayoutPanel1.TabIndex = 3;
             // 
             // bunifuImageButton1
             // 
@@ -99,15 +119,45 @@
             this.bunifuTransition.SetDecoration(this.bunifuImageButton1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuImageButton1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.bunifuImageButton1, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuImageButton1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
             this.bunifuImageButton1.ImageActive = null;
-            this.bunifuImageButton1.Location = new System.Drawing.Point(31, 56);
+            this.bunifuImageButton1.Location = new System.Drawing.Point(3, 3);
             this.bunifuImageButton1.Name = "bunifuImageButton1";
-            this.bunifuImageButton1.Size = new System.Drawing.Size(70, 70);
+            this.bunifuImageButton1.Size = new System.Drawing.Size(89, 96);
             this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bunifuImageButton1.TabIndex = 2;
             this.bunifuImageButton1.TabStop = false;
             this.bunifuImageButton1.Zoom = 10;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.bunifuCustomLabel2);
+            this.panel1.Controls.Add(this.bunifuCustomLabel1);
+            this.bunifuTransition.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition2.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(98, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 15, 0, 0);
+            this.panel1.Size = new System.Drawing.Size(843, 96);
+            this.panel1.TabIndex = 3;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.bunifuCustomLabel5);
+            this.panel2.Controls.Add(this.bunifuCustomLabel4);
+            this.panel2.Controls.Add(this.bunifuCustomLabel3);
+            this.bunifuTransition.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition2.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 60);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(843, 36);
+            this.panel2.TabIndex = 4;
             // 
             // bunifuCustomLabel5
             // 
@@ -115,12 +165,13 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel5, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel5, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel5, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel5.Dock = System.Windows.Forms.DockStyle.Left;
             this.bunifuCustomLabel5.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel5.ForeColor = System.Drawing.Color.DarkSalmon;
-            this.bunifuCustomLabel5.Location = new System.Drawing.Point(218, 111);
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(97, 0);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
             this.bunifuCustomLabel5.Size = new System.Drawing.Size(49, 15);
-            this.bunifuCustomLabel5.TabIndex = 0;
+            this.bunifuCustomLabel5.TabIndex = 2;
             this.bunifuCustomLabel5.Text = "JE Park";
             // 
             // bunifuCustomLabel4
@@ -129,12 +180,13 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel4, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel4, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel4, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.bunifuCustomLabel4.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel4.ForeColor = System.Drawing.Color.LightCoral;
-            this.bunifuCustomLabel4.Location = new System.Drawing.Point(168, 111);
+            this.bunifuCustomLabel4.Location = new System.Drawing.Point(53, 0);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
             this.bunifuCustomLabel4.Size = new System.Drawing.Size(44, 15);
-            this.bunifuCustomLabel4.TabIndex = 0;
+            this.bunifuCustomLabel4.TabIndex = 1;
             this.bunifuCustomLabel4.Text = "JS Kim";
             // 
             // bunifuCustomLabel3
@@ -143,9 +195,10 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel3, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.bunifuCustomLabel3.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.OrangeRed;
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(109, 111);
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(0, 0);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
             this.bunifuCustomLabel3.Size = new System.Drawing.Size(53, 15);
             this.bunifuCustomLabel3.TabIndex = 0;
@@ -157,12 +210,13 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel2, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel2, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel2, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuCustomLabel2.Font = new System.Drawing.Font("NEXON Football Gothic B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.Tomato;
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(109, 86);
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(0, 42);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(159, 18);
-            this.bunifuCustomLabel2.TabIndex = 0;
+            this.bunifuCustomLabel2.TabIndex = 1;
             this.bunifuCustomLabel2.Text = "Old Young Old in KPU";
             // 
             // bunifuCustomLabel1
@@ -171,9 +225,10 @@
             this.bunifuTransition2.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuCustomLabel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuCustomLabel1.Font = new System.Drawing.Font("NEXON Football Gothic B", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.Coral;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(107, 57);
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(0, 15);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(291, 27);
             this.bunifuCustomLabel1.TabIndex = 0;
@@ -549,16 +604,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.colorPanel);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.OYOPanel);
             this.bunifuTransition1.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.Name = "MainView";
             this.Size = new System.Drawing.Size(1024, 738);
             this.Load += new System.EventHandler(this.MainView_Load);
+            this.OYOPanel.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.colorPanel.ResumeLayout(false);
             this.connectionPanel.ResumeLayout(false);
             this.activatedConnectionIconPanel.ResumeLayout(false);
@@ -573,12 +632,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel OYOPanel;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
         private System.Windows.Forms.Panel colorPanel;
         private BunifuAnimatorNS.BunifuTransition bunifuTransition;
@@ -602,5 +658,11 @@
         public LeapmotionTabShow leapmotionTabShow;
         public VisualizeTabShow visualizeTabShow;
         public DroneTabShow droneTabShow;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
     }
 }
