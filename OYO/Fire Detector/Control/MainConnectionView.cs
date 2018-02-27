@@ -46,7 +46,7 @@ namespace Fire_Detector.Control
         public void OnSizeChanged(System.Drawing.Size size, bool isMaximize)
         {
             this.bottomPanel.Visible                = isMaximize;
-            this.connectionIconsTablePanel.Padding  = isMaximize ? new Padding((int)(size.Width * 0.1f), 0, (int)(size.Width * 0.1f), 0) : new Padding(0, 0, 0, 0);
+            this.connectionIconsTablePanel.Padding  = isMaximize ? new Padding((int)(size.Width * 0.003f), 0, (int)(size.Width * 0.003f), 0) : new Padding(0, 0, 0, 0);
 
             foreach(var panel in this.iconPanels)
             {
