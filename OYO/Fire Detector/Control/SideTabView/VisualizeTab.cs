@@ -11,6 +11,9 @@ namespace Fire_Detector.Control.SideTabView
         {
             InitializeComponent();
 
+            this.levelTemperatureRange.RangeMin = 0;
+            this.levelTemperatureRange.RangeMax = 107;
+
             foreach (var cname in Enum.GetNames(typeof(ColormapTypes)))
                 this.palettesDropDown.AddItem(cname);
         }

@@ -118,6 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bunifuCircleProgressbar2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEjSURBVEhLYxgFo2AUjAKqAXt7ew4gdoBiAagwbQDIAgcH
+        h/lA/B8NHwfKaUCVUQ8ADZUAGn4f2SIg3o/E/w5UYwBVTh0ANHQ51PDzyL6C+n49VO44VJhyAPUlzDcK
+        UGE4AIpxAOWeg9QA2Q5QYcoA0KAAqKX7oUIYACjXD7W0ASpEGQAalAC1dD1UCAOALIOq6YcKUQaABhpA
+        DXwPZHNAhVGAv6vVYZAaoHwAVIhyADTwOtTi6VAhOFibLLXscw3L/zQfozdAS6mXb4GGWUAtBWFQCm6Y
+        l6C46FYJz9v/DQz/QXhrmsQcqHLqAaBFHkAL4Xl1VpwS2DIQPpApvAyqjPoAaDGoCASl5v5oD9OF+7NE
+        5yyIk9aDSo+CUTAKhgVgYAAAyvKCwjCNTYcAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAACH
@@ -400,17 +411,6 @@
         lCUsAgCAsoRFAABQlrAIAADKEhYBAEBZwiIAAChLWAQAAGUJiwAAoCxhEQAAlCUsAgCAsoRFAABQlrAI
         AADKEhYBAEBZwiIAAChLWAQAAGUJiwAAoCxhEQAAlCUsAgCAsoRFAABQlrAIAADKEhYBAEBJ/qf/B5f6
         NscqHzzcAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="bunifuCircleProgressbar2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEpSURBVEhLYxgFo2AUjAKqAXt7ew4gdoBiAagwbQDIAgcH
-        h/lA/B8NHwfKaUCVUQ8ADZUAGn4f2SIg3o/E/w5UYwBVTh0ANHQ51PDzyL6C+n49VO44VJhyAPUlzDcK
-        UGE4AIpxAOWeg9QA2Q5QYcoA0KAAqKX7oUIYACjXD7W0ASpEGQAalAC1dD1UCAOALIOq6YcKUQaABhpA
-        DXwPZHNAhVEAUA6cqIDyAVAhygHQwOtQi6dDheBgQbzc3DgvM5Dcc6Cl1Mu3QMMsoJaC8PkEL5Oeg9ki
-        e47kCD/538Dw/2EZ138/F6tUqHLqAaDFHkALwXk1y8/oP8gyEP5Zx/RvV4bYQqgy6gNQnILiLcTdctqO
-        DPHTJ3OFlm9KlTCFSo+CUTAKhgVgYAAAW7SCvfjl7jUAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="pictureBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
