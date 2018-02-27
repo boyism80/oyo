@@ -134,5 +134,7 @@ namespace Fire_Detector.Control
             else
                 this.Cursor = Cursors.Default;
         }
+
+        
     }
 }

@@ -172,6 +172,7 @@ namespace Fire_Detector.BunifuForm
 
         public void OnStateChanged(Bebop bebop)
         {
+            /* 없앰
             this.defaultView.droneLatLabel.Invoke(new MethodInvoker(delegate ()
             {
                 this.defaultView.droneLatLabel.Text = bebop._lat.ToString();
@@ -181,6 +182,7 @@ namespace Fire_Detector.BunifuForm
             {
                 this.defaultView.droneLonLabel.Text = bebop._lon.ToString();
             }));
+            */
 
             this.defaultView.droneAltitudeLabel.Invoke(new MethodInvoker(delegate ()
             {
