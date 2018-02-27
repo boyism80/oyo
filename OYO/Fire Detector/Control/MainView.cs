@@ -44,6 +44,9 @@ namespace Fire_Detector.Control
 
         private void bottomLabel_Click(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             var label = sender as Bunifu.Framework.UI.BunifuCustomLabel;
             if(label == null)
                 return;
@@ -60,6 +63,9 @@ namespace Fire_Detector.Control
 
         private void MainView_Load(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.droneTabShow.Tag = this.Root.defaultView.sideExpandedBar.droneTab;
             this.droneControlLabel.Tag = this.droneTabShow;
 

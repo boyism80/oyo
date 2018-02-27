@@ -23,19 +23,24 @@ namespace Fire_Detector.Control
             if(this.Root == null)
                 return;
 
-            this.raspCamProgressbar.Invoke(new MethodInvoker(delegate ()
+            try
             {
-                this.raspCamProgressbar.Value               = this.Root.Receiver.Connected ? 15 : 0;
-                this.raspCamProgressbar.animated            = this.Root.Receiver.Connected;
-                this.raspCamProgressbar.ProgressBackColor   = this.Root.Receiver.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
-            }));
+                this.raspCamProgressbar.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.raspCamProgressbar.Value               = this.Root.Receiver.Connected ? 15 : 0;
+                    this.raspCamProgressbar.animated            = this.Root.Receiver.Connected;
+                    this.raspCamProgressbar.ProgressBackColor   = this.Root.Receiver.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
+                }));
 
-            this.droneProgressbar.Invoke(new MethodInvoker(delegate ()
-            {
-                this.droneProgressbar.Value               = this.Root.Bebop.Connected ? 15 : 0;
-                this.droneProgressbar.animated            = this.Root.Bebop.Connected;
-                this.droneProgressbar.ProgressBackColor   = this.Root.Bebop.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
-            }));
+                this.droneProgressbar.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.droneProgressbar.Value               = this.Root.Bebop.Connected ? 15 : 0;
+                    this.droneProgressbar.animated            = this.Root.Bebop.Connected;
+                    this.droneProgressbar.ProgressBackColor   = this.Root.Bebop.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
+                }));
+            }
+            catch(Exception)
+            {}
         }
 
         public void OnSizeChanged(System.Drawing.Size size, bool isMaximize)
@@ -77,11 +82,17 @@ namespace Fire_Detector.Control
 
         private void MainConnectionView_Load(object sender, System.EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.OnSizeChanged(this.Root.Size, false);
         }
 
         private void raspCamImageButton_Click(object sender, System.EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             if (this.Root.Receiver.Connected)
                 this.Root.Receiver.Exit();
             else

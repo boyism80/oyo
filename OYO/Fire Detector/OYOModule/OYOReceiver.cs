@@ -84,7 +84,7 @@ namespace oyo
         // _listener
         //  상태에 변화가 생기는 경우 전달할 인터페이스 객체입니다.
         //
-        private IReceiveListener                    _listener;
+        private IReceiveListener                _listener;
 
         //
         // _updateFrameThread
@@ -301,6 +301,11 @@ namespace oyo
                 {
                     for (var col = 0; col < LeptonWidth; col++)
                     {
+                        //var bytes = reader.ReadBytes(sizeof(ushort));
+                        //Array.Reverse(bytes);
+                        //BitConverter.ToInt16(bytes, 0);
+                        //this._radioactiveTable[row, col] = BitConverter.ToUInt16(bytes, 0);
+
                         this._radioactiveTable[row, col] = reader.ReadUInt16();
                         this._temperatureTable[row, col] = Radioactive2Temperature(this._radioactiveTable[row, col]);
                     }

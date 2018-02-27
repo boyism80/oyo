@@ -147,6 +147,7 @@ namespace Fire_Detector.BunifuForm
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.defaultView._overlayer.Running = false;
             this.Receiver.Exit();
             this.Bebop.Disconnect();
         }

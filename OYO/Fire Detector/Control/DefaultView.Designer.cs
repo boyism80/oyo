@@ -242,7 +242,9 @@
             this.streamingFrameBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.streamingFrameBox.TabIndex = 6;
             this.streamingFrameBox.TabStop = false;
+            this.streamingFrameBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.streamingFrameBox_MouseClick);
             this.streamingFrameBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.streamingFrameBox_MouseDoubleClick);
+            this.streamingFrameBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.streamingFrameBox_MouseMove);
             this.streamingFrameBox.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.streamingFrameBox_MouseWheel);
             // 
             // sideCollapsedBar

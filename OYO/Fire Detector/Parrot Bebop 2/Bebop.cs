@@ -31,6 +31,11 @@ namespace ParrotBebop2
             void                OnUpdateGMap(Mat gmap);
         }
 
+        public struct Position
+        {
+            public double lon, lat, alt;
+        }
+
         private int[] seq = new int[256];
         public PCMD pcmd;
 
@@ -243,13 +248,11 @@ namespace ParrotBebop2
         {
             while(this.Connected)
             {
-this._gmapMutex.WaitOne();
-                var currentLat = this._lat;
-                var currentLon = this._lon;
-this._gmapMutex.ReleaseMutex();
                 try
                 {
-                    var uri = new Uri(string.Format("http://maps.googleapis.com/maps/api/staticmap?center={0},{1}&markers=color:blue%7Clabel:OYO%7C{2},{3}&size=600x600&sensor=true&format=png&maptype=roadmap&zoom=18&language=ko&key=AIzaSyDO1LpjNHsEWBWLFdBPc6acJgyujd8ur2s", currentLat, currentLon, currentLat, currentLon));
+this._gmapMutex.WaitOne();
+                    var uri = new Uri(string.Format("http://maps.googleapis.com/maps/api/staticmap?center={0},{1}&markers=color:blue%7Clabel:OYO%7C{2},{3}&size=600x600&sensor=true&format=png&maptype=roadmap&zoom=18&language=ko&key=AIzaSyDO1LpjNHsEWBWLFdBPc6acJgyujd8ur2s", this._lat, this._lon, this._lat, this._lon));
+this._gmapMutex.ReleaseMutex();
                     var httpRequest = (HttpWebRequest)HttpWebRequest.Create(uri);
                     var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
                     var imageStream = httpResponse.GetResponseStream();
@@ -261,7 +264,6 @@ this._gmapMutex.ReleaseMutex();
                 }
                 catch(Exception e)
                 {
-                    
                 }
                 finally
                 {
