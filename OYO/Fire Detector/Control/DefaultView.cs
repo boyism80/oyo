@@ -9,35 +9,14 @@ using System.Windows.Forms;
 
 namespace Fire_Detector.Control
 {
-    public partial class DefaultView : BaseTabView, BunifuForm.MainForm.IStateChangedListener
+    public partial class DefaultView : BaseTabView
     {
-        public enum GoogleMapState
-        {
-            Collapsed, Expanded, Full,
-        }
-
-
-        // 구글맵 표시를 위한 변수입니다.
-        public OYOGMapOverlayer                _overlayer;
-
-
-        public GoogleMapState GmapState { get; private set; }
-
-        public Mat Gmap { get; set; }
-
         public DefaultView()
         {
             InitializeComponent();
-
-            this._overlayer = new OYOGMapOverlayer(this.streamingFrameBox);
         }
 
-        public void OnSizeChanged(System.Drawing.Size size, bool isMaximize)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public void OnStateChanged(bool connected)
+        public void OnConnectionChanged(bool connected)
         {
             try
             {
@@ -56,7 +35,7 @@ namespace Fire_Detector.Control
             { }
         }
 
-        public void OnUpdated(UpdatedDataBuffer buffer, Mat updatedFrame, bool invalidated)
+        public void OnFrameUpdated(UpdatedDataBuffer buffer, Mat updatedFrame, bool invalidated)
         {
             if(this.Root == null)
                 return;
@@ -65,7 +44,7 @@ namespace Fire_Detector.Control
                 return;
 
             
-            updatedFrame = this._overlayer.Overlay(updatedFrame, new OpenCvSharp.Point(50, 50));
+            //updatedFrame = this._overlayer.Overlay(updatedFrame, new OpenCvSharp.Point(50, 50));
             this.streamingFrameBox.Invoke(new MethodInvoker(delegate ()
             {
                 this.streamingFrameBox.Image = Image.FromStream(new MemoryStream(updatedFrame.ToBytes(".jpg")));
@@ -97,6 +76,8 @@ namespace Fire_Detector.Control
                     this.streamingFrameBox.SizeMode = PictureBoxSizeMode.CenterImage;
                     break;
             }
+
+            this.Root.Overlayer.Update();
         }
 
         private void streamingFrameBox_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -105,6 +86,7 @@ namespace Fire_Detector.Control
                 return;
 
             this.Root.Config.Visualize.Scaled += (e.Delta / 120);
+            this.Root.Overlayer.Update();
         }
 
         private void streamingFrameBox_MouseClick(object sender, MouseEventArgs e)
@@ -118,17 +100,17 @@ namespace Fire_Detector.Control
             if(this.Root.Receiver.Connected == false)
                 return;
 
-            var area = this._overlayer.ActiveArea();
+            var area = this.Root.Overlayer.ActiveArea();
             if (area.IsEmpty == false && area.Contains(e.X, e.Y))
             {
-                if(this._overlayer.State == oyo.GmapState.Collapsed)
-                    this._overlayer.State = oyo.GmapState.Expanded;
-                else if(this._overlayer.State == oyo.GmapState.Expanded)
-                    this._overlayer.State = oyo.GmapState.Full;
+                if(this.Root.Overlayer.State == oyo.GmapState.Collapsed)
+                    this.Root.Overlayer.State = oyo.GmapState.Expanded;
+                else if(this.Root.Overlayer.State == oyo.GmapState.Expanded)
+                    this.Root.Overlayer.State = oyo.GmapState.Full;
                 else
-                    this._overlayer.State = oyo.GmapState.Collapsed;
+                    this.Root.Overlayer.State = oyo.GmapState.Collapsed;
 
-                this._overlayer.Update();
+                this.Root.Overlayer.Update();
 
                 return;
             }
@@ -142,13 +124,16 @@ namespace Fire_Detector.Control
             if(this.Root.Receiver.Connected == false)
                 return;
 
-            var area = this._overlayer.ActiveArea();
+            var area = this.Root.Overlayer.ActiveArea();
             if (area.IsEmpty == false && area.Contains(e.X, e.Y))
                 this.Cursor = Cursors.Hand;
             else
                 this.Cursor = Cursors.Default;
         }
 
-        
+        public void Overlayer_OnReceiveAddressEvent(string address)
+        {
+            this.bunifuCustomLabel2.Text = address;
+        }
     }
 }

@@ -1,5 +1,7 @@
-﻿using OpenCvSharp;
+﻿using BebopCommandSet;
+using OpenCvSharp;
 using oyo;
+using ParrotBebop2;
 using System;
 using System.Windows.Forms;
 
@@ -41,8 +43,7 @@ namespace Fire_Detector.BunifuForm
                 this.bunifuDragControl.Horizontal = false;
             }
 
-            foreach(var listener in this._listener)
-                listener.OnSizeChanged(this.Size, !isMaximized);
+            this.OnScreenStateChanged.Invoke(this.Size, !isMaximized);
         }
 
         public void OnUpdate(StreamingType streamingType, OYOReceiver receiver)
@@ -125,11 +126,13 @@ namespace Fire_Detector.BunifuForm
                     }
                 }
 
+                updatedFrame = this.Overlayer.Overlay(updatedFrame);
+
                 var invalidated = (this.Config.Blending.Enabled || (this.StreamingType == streamingType));
-                foreach (var listener in this._listener)
-                    listener.OnUpdated(this.UpdatedDataBuffer, updatedFrame, invalidated);
+
+                this.OnFrameUpdated.Invoke(this.UpdatedDataBuffer, updatedFrame, invalidated);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return;
             }
@@ -141,21 +144,44 @@ namespace Fire_Detector.BunifuForm
 
         public void OnDisconnected()
         {
-            foreach(var control in this._listener)
-                control.OnStateChanged(false);
+            this.OnConnectionChanged.Invoke(false);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            this.Blender.Smooth                 = true;
+            this.Blender.Transparency           = this.defaultView.sideExpandedBar.visualizeTab.transparencySlider.Value / 100.0f;
+
+            this.OnScreenStateChanged.Invoke(this.Size, false);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.defaultView._overlayer.Running = false;
+            this.Overlayer.Running = false;
             this.Receiver.Exit();
             this.Bebop.Disconnect();
         }
 
         public void OnConnected()
         {
-            foreach(var control in this._listener)
-                control.OnStateChanged(true);
+            this.OnConnectionChanged.Invoke(true);
+        }
+
+        public void Bebop2_OnStreaming(Bebop2 bebop, Mat frame)
+        {
+        }
+
+        public Pcmd Bebop2_OnRequestPcmd(Bebop2 bebop)
+        {
+            return new Pcmd();
+        }
+
+        public void Bebop2_OnStateChanged(Bebop2 bebop)
+        {
+            this.defaultView.droneAltitudeLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.defaultView.droneAltitudeLabel.Text = bebop.Altitude.ToString();
+            }));
         }
     }
 }

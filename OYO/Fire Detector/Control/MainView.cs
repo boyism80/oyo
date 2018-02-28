@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Fire_Detector.Control
 {
-    public partial class MainView : BaseTabView, BunifuForm.MainForm.IStateChangedListener
+    public partial class MainView : BaseTabView
     {
         private int _basedHeight;
 
@@ -86,17 +86,7 @@ namespace Fire_Detector.Control
             this.detectFireLabel.Tag = this.detectFireTabShow;
         }
 
-        public void OnStateChanged(bool connected)
-        {
-            
-        }
-
-        public void OnUpdated(UpdatedDataBuffer buffer, Mat updatedFrame, bool invalidated)
-        {
-            
-        }
-
-        public void OnSizeChanged(System.Drawing.Size size, bool isMaximize)
+        public void OnScreenStateChanged(System.Drawing.Size size, bool isMaximize)
         {
             this.OYOPanel.Invoke(new MethodInvoker(delegate ()
             {

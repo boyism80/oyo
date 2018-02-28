@@ -50,7 +50,7 @@ namespace BebopCommandSet
         }
     }
 
-    public struct PCMD
+    public struct Pcmd
     {
         public int flag;
         public int roll;

@@ -7,7 +7,7 @@ using System;
 
 namespace Fire_Detector.Control
 {
-    public partial class MainConnectionView : BaseTabView, BunifuForm.MainForm.IStateChangedListener
+    public partial class MainConnectionView : BaseTabView
     {
         private Panel[]         iconPanels;
 
@@ -50,7 +50,7 @@ namespace Fire_Detector.Control
             {}
         }
 
-        public void OnSizeChanged(System.Drawing.Size size, bool isMaximize)
+        public void OnScreenStateChanged(System.Drawing.Size size, bool isMaximize)
         {
             this.bottomPanel.Visible                = isMaximize;
             this.connectionIconsTablePanel.Padding  = isMaximize ? new Padding((int)(size.Width * 0.003f), 0, (int)(size.Width * 0.003f), 0) : new Padding(0, 0, 0, 0);
@@ -78,7 +78,7 @@ namespace Fire_Detector.Control
             }
         }
 
-        public void OnStateChanged(bool connected)
+        public void OnConnectionChanged(bool connected)
         {
             this.UpdateUI();
         }
@@ -91,8 +91,6 @@ namespace Fire_Detector.Control
         {
             if(this.Root == null)
                 return;
-
-            this.OnSizeChanged(this.Root.Size, false);
         }
 
         private void raspCamImageButton_Click(object sender, System.EventArgs e)

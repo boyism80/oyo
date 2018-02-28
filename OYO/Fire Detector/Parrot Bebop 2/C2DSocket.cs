@@ -55,7 +55,7 @@ namespace ParrotBebop2
                 this._socket.SendTo(encodedCommand, this._endpoint);
                 return true;
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 return false;
             }
@@ -69,7 +69,7 @@ namespace ParrotBebop2
                 this._socket.SendTo(encodedCommand, this._endpoint);
                 return true;
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 return false;
             }

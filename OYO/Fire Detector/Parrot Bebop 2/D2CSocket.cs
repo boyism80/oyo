@@ -9,24 +9,19 @@ namespace ParrotBebop2
 {
     public class D2CSocket
     {
-        public interface OnReceiveListener
-        {
-            void OnReceiveFrame(int type, int id, int seq, Command cmd);
-        }
-
         public static readonly int          BUFFER_SIZE = 80960;
 
-
+        public delegate void                ReceiveFrameEvent(int type, int id, int seq, Command cmd);
 
         private Socket                      _socket;
         private Thread                      _commandThread;
-        private OnReceiveListener           _listener;
+
+        public event ReceiveFrameEvent      OnReceiveFrame;
 
         public bool Connected { get; private set; }
 
-        public D2CSocket(OnReceiveListener listener)
+        public D2CSocket()
         {
-            this._listener = listener;
         }
 
         ~D2CSocket()
@@ -50,7 +45,7 @@ namespace ParrotBebop2
                         var frameSize = reader.ReadInt32();
 
                         var cmd = new Command(reader.ReadBytes(frameSize), 0, frameSize - 7);
-                        this._listener.OnReceiveFrame(frameType, frameId, frameSeq, cmd);
+                        this.OnReceiveFrame.Invoke(frameType, frameId, frameSeq, cmd);
                     }
                 }
                 catch(SocketException e)
@@ -58,7 +53,7 @@ namespace ParrotBebop2
                     if(e.ErrorCode == 10004)
                         break;
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
                     break;
                 }
@@ -78,7 +73,7 @@ namespace ParrotBebop2
                 this._commandThread.Start();
                 return true;
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 return false;
             }

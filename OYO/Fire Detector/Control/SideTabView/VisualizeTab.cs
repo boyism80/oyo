@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Fire_Detector.Control.SideTabView
 {
-    public partial class VisualizeTab : BaseTabView , BunifuForm.MainForm.IStateChangedListener
+    public partial class VisualizeTab : BaseTabView
     {
         public VisualizeTab()
         {
@@ -47,7 +47,7 @@ namespace Fire_Detector.Control.SideTabView
             { }
         }
         
-        public void OnStateChanged(bool connected)
+        public void OnConnectionChanged(bool connected)
         {
             try
             {
@@ -166,14 +166,6 @@ namespace Fire_Detector.Control.SideTabView
 
             this.transparencyLabel.Text = this.transparencySlider.Value.ToString();
             this.Root.Blender.Transparency = this.transparencySlider.Value / 100.0f;
-        }
-
-        public void OnSizeChanged(System.Drawing.Size size, bool isMaximize)
-        {
-        }
-
-        public void OnUpdated(UpdatedDataBuffer buffer, Mat updatedFrame, bool invalidated)
-        {
         }
     }
 }

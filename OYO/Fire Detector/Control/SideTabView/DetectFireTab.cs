@@ -5,16 +5,11 @@ using System.Windows.Forms;
 
 namespace Fire_Detector.Control.SideTabView
 {
-    public partial class DetectFireTab : BaseTabView, BunifuForm.MainForm.IStateChangedListener
+    public partial class DetectFireTab : BaseTabView
     {
         public DetectFireTab()
         {
             InitializeComponent();
-        }
-
-        public void OnStateChanged(bool connected)
-        {
-            
         }
 
         private void desiredTemperatureSlider_ValueChanged(object sender, EventArgs e)
@@ -57,7 +52,7 @@ namespace Fire_Detector.Control.SideTabView
             this.desiredTemperatureSlider_ValueChanged(this.desiredTemperatureSlider, EventArgs.Empty);
         }
 
-        public void OnUpdated(UpdatedDataBuffer buffer, Mat updatedFrame, bool invalidated)
+        public void OnFrameUpdated(UpdatedDataBuffer buffer, Mat updatedFrame, bool invalidated)
         {
             this.maxTemperature.Invoke(new MethodInvoker(delegate ()
             {
@@ -73,10 +68,6 @@ namespace Fire_Detector.Control.SideTabView
             {
                 this.meanTemperature.Text = buffer.MeanTemperature.ToString("0.00");
             }));
-        }
-
-        public void OnSizeChanged(System.Drawing.Size size, bool isMaximize)
-        {
         }
     }
 }

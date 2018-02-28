@@ -336,7 +336,7 @@ namespace oyo
                     if (this._listener != null)
                         this._listener.OnUpdate(streamingType, this);
                 }
-                catch (SocketException e)
+                catch (SocketException)
                 {
                     this.Exit();
                     break;

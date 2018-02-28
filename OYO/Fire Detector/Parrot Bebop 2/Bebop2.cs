@@ -10,102 +10,88 @@ using System.Threading;
 namespace ParrotBebop2
 {
 
-    public class Bebop : D2CSocket.OnReceiveListener
+    public class Bebop2
     {
-        public enum BebopState
+        public enum Bebop2State
         {
-            Landed = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_LANDED,
-            TakingOff = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_TAKINGOFF,
-            Hovering = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_HOVERING,
-            Flying = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_FLYING,
-            Landing = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_LANDING,
-            Emergency = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_EMERGENCY,
-            Max = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_MAX,
+            Landed                              = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_LANDED,
+            TakingOff                           = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_TAKINGOFF,
+            Hovering                            = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_HOVERING,
+            Flying                              = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_FLYING,
+            Landing                             = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_LANDING,
+            Emergency                           = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_EMERGENCY,
+            Max                                 = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_MAX,
         }
 
-        public interface IBebopListener
-        {
-            void                OnStreaming(Mat frame);
-            PCMD                OnRequestPCMD();
-            void                OnStateChanged(Bebop bebop);
-            void                OnUpdateGMap(Mat gmap);
-        }
+        public delegate void                    StreamingEvent(Bebop2 bebop, Mat frame);
+        public delegate Pcmd                    RequestPcmdEvent(Bebop2 bebop);
+        public delegate void                    StateChangedEvent(Bebop2 bebop);
 
-        public struct Position
-        {
-            public double lon, lat, alt;
-        }
+        private int[]                           seq = new int[256];
+        public Pcmd                             pcmd;
 
-        private int[] seq = new int[256];
-        public PCMD pcmd;
+        private UdpClient                       clientArStream;
+        private IPEndPoint                      endpoint;
 
-        private Mutex pcmdMtx = new Mutex();
+        private static object                   _thisLock = new object();
 
-        private UdpClient arstreamClient;
-        private IPEndPoint remoteIpEndPoint;
+        private D2CSocket                       _d2c;
+        private C2DSocket                       _c2d;
+        private Thread                          _commandThread, _streamingThread;
 
-        //private UdpClient c2d_client;
+        public event StreamingEvent             OnStreaming;
+        public event RequestPcmdEvent           OnRequestPcmd;
+        public event StateChangedEvent          OnStateChanged;
 
-        private static object _thisLock = new object();
+        public short RSSI { get; private set; }
 
-        private D2CSocket _d2c;
-        private C2DSocket _c2d;
-        private Thread _commandThread, _streamingThread, _gmapThread;
-        private Mutex _gmapMutex;
-        private IBebopListener _listener;
-
-        private short _rssi;
         private uint _state;
-        public BebopState State
-        {
-            get
-            {
-                return (BebopState)this._state;
-            }
-            private set
-            {
-                this._state = (uint)value;
-            }
-        }
-        public double _lat, _lon, _alt;
-        public float _speed_x, _speed_y, _speed_z;
-        public float _pitch, _yaw, _roll;
-        public double _altitude;
-        public byte _tilt;
-        public byte _pan;
 
+        public oyo.GPS GPS { get; private set; }
+
+        public float SpeedX { get; private set; }
+        public float SpeedY { get; private set; }
+        public float SpeedZ { get; private set; }
+
+        public float Pitch { get; private set; }
+        public float Yaw { get; private set; }
+        public float Roll { get; private set; }
+
+        public double Altitude { get; private set; }
+
+        public byte Pan { get; private set; }
+        public byte Tilt { get; private set; }
+        
         public bool Connected { get; private set; }
         public byte Battery { get; private set; }
-        public Mat GMap { get; private set; }
 
 
-        public Bebop(IBebopListener listener)
+        public Bebop2()
         {
-            this._d2c = new D2CSocket(this);
-            this._c2d = new C2DSocket();
+            this._d2c                           = new D2CSocket();
+            this._d2c.OnReceiveFrame           += this.OnReceiveFrame;
 
-            this._listener = listener;
+            this._c2d = new C2DSocket();
         }
 
 
         public bool Connect()
         {
             //make handshake with TCP_client, and the port is set to be 4444
-            var clientTCP = new TcpClient(CommandSet.IP, CommandSet.DISCOVERY_PORT);
-            var stream = new NetworkStream(clientTCP.Client);
+            var client                                  = new TcpClient(CommandSet.IP, CommandSet.DISCOVERY_PORT);
+            var stream                                  = new NetworkStream(client.Client);
 
             //initialize reader and writer
-            var streamWriter = new StreamWriter(stream);
-            var streamReader = new StreamReader(stream);
+            var streamWriter                            = new StreamWriter(stream);
+            var streamReader                            = new StreamReader(stream);
 
             //when the drone receive the message bellow, it will return the confirmation
-            //string handshake_json = "{\"controller_type\":\"computer\", \"controller_name\":\"katarina\", \"d2c_port\":\"43210\", \"arstream2_client_stream_port\":\"55004\", \"arstream2_client_control_port\":\"55005\"}";
-            var handshake = new JSONClass();
-            handshake["controller_type"] = "computer";
-            handshake["controller_name"] = "oyo";
-            handshake["d2c_port"] = new JSONData(43210); // "43210"
-            handshake["arstream2_client_stream_port"] = new JSONData(55004);
-            handshake["arstream2_client_control_port"] = new JSONData(55005);
+            var handshake                               = new JSONClass();
+            handshake["controller_type"]                = "computer";
+            handshake["controller_name"]                = "oyo";
+            handshake["d2c_port"]                       = new JSONData(43210); // "43210"
+            handshake["arstream2_client_stream_port"]   = new JSONData(55004);
+            handshake["arstream2_client_control_port"]  = new JSONData(55005);
             streamWriter.WriteLine(handshake.ToString());
             streamWriter.Flush();
 
@@ -124,8 +110,6 @@ namespace ParrotBebop2
             if(this._d2c.Connect() == false)
                 return false;
 
-            this._gmapMutex                 = new Mutex();
-
             this.Connected                  = true;
             this._commandThread             = new Thread(this.commandThreadRoutine);
             this._commandThread.Start();
@@ -133,8 +117,6 @@ namespace ParrotBebop2
             this._streamingThread           = new Thread(this.streamingThreadRoutine);
             this._streamingThread.Start();
 
-            this._gmapThread                = new Thread(this.gmapThreadRoutine);
-            this._gmapThread.Start();
             return true;
         }
 
@@ -147,9 +129,6 @@ namespace ParrotBebop2
             this._d2c.Disconnect();
             this._commandThread.Join();
             this._streamingThread.Join();
-            this._gmapThread.Join();
-
-            this._gmapMutex.Close();
         }
 
         public void takeoff()
@@ -180,7 +159,7 @@ namespace ParrotBebop2
         {
             lock (_thisLock)
             {
-                var pcmd = this._listener.OnRequestPCMD();
+                var pcmd = this.OnRequestPcmd(this);
                 var cmd = new Command(13);
 
                 cmd.append((byte)CommandSet.ARCOMMANDS_ID_PROJECT_ARDRONE3);
@@ -202,7 +181,6 @@ namespace ParrotBebop2
 
 
                 this._c2d.Send(cmd);
-                //sendCommandAdpator(ref cmd);
             }
         }
 
@@ -234,40 +212,11 @@ namespace ParrotBebop2
                         break;
 
                     frame = frame.Resize(new Size(frame.Width / 2, frame.Height / 2));
-                    if (this._listener != null)
-                        this._listener.OnStreaming(frame);
+                    this.OnStreaming.Invoke(this, frame);
                 }
                 catch(Exception)
                 {
 
-                }
-            }
-        }
-
-        private void gmapThreadRoutine()
-        {
-            while(this.Connected)
-            {
-                try
-                {
-this._gmapMutex.WaitOne();
-                    var uri = new Uri(string.Format("http://maps.googleapis.com/maps/api/staticmap?center={0},{1}&markers=color:blue%7Clabel:OYO%7C{2},{3}&size=600x600&sensor=true&format=png&maptype=roadmap&zoom=18&language=ko&key=AIzaSyDO1LpjNHsEWBWLFdBPc6acJgyujd8ur2s", this._lat, this._lon, this._lat, this._lon));
-this._gmapMutex.ReleaseMutex();
-                    var httpRequest = (HttpWebRequest)HttpWebRequest.Create(uri);
-                    var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-                    var imageStream = httpResponse.GetResponseStream();
-
-                    var mstream = new MemoryStream();
-                    imageStream.CopyTo(mstream);
-                    this.GMap = Cv2.ImDecode(mstream.ToArray(), ImreadModes.AnyColor);
-                    this._listener.OnUpdateGMap(this.GMap);
-                }
-                catch(Exception e)
-                {
-                }
-                finally
-                {
-                    Thread.Sleep(1000);
                 }
             }
         }
@@ -312,8 +261,8 @@ this._gmapMutex.ReleaseMutex();
 
         public void initARStream()
         {
-            arstreamClient = new UdpClient(55004);
-            remoteIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
+            clientArStream = new UdpClient(55004);
+            endpoint = new IPEndPoint(IPAddress.Any, 0);
         }
 
         public static bool CompareCommandSet(byte _project, byte _cls, ushort _id, byte project, byte cls, ushort id)
@@ -376,7 +325,7 @@ this._gmapMutex.ReleaseMutex();
                         {
                             if(commandClass == CommandSet.ARCOMMANDS_ID_COMMON_CLASS_COMMONSTATE && commandId == 7/*CommandSet.ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_WIFISIGNALCHANGED*/)
                             {
-                                this._rssi = reader.ReadInt16();
+                                this.RSSI = reader.ReadInt16();
                             }
                             else
                             { }
@@ -385,32 +334,28 @@ this._gmapMutex.ReleaseMutex();
                         {
                             if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_POSITIONCHANGED)
                             {
-this._gmapMutex.WaitOne();
-                                this._lat = reader.ReadDouble();
-                                this._lon = reader.ReadDouble();
-                                this._alt = reader.ReadDouble();
-this._gmapMutex.ReleaseMutex();
+                                this.GPS = new oyo.GPS(reader.ReadDouble(), reader.ReadDouble(), reader.ReadDouble());
                             }
                             else if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_SPEEDCHANGED)
                             {
-                                this._speed_x = reader.ReadSingle();
-                                this._speed_y = reader.ReadSingle();
-                                this._speed_z = reader.ReadSingle();
+                                this.SpeedX = reader.ReadSingle();
+                                this.SpeedY = reader.ReadSingle();
+                                this.SpeedZ = reader.ReadSingle();
                             }
                             else if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_ATTITUDECHANGED)
                             {
-                                this._roll = reader.ReadSingle();
-                                this._pitch = reader.ReadSingle();
-                                this._yaw = reader.ReadSingle();
+                                this.Roll = reader.ReadSingle();
+                                this.Pitch = reader.ReadSingle();
+                                this.Yaw = reader.ReadSingle();
                             }
                             else if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_ALTITUDECHANGED)
                             {
-                                this._altitude = reader.ReadDouble();
+                                this.Altitude = reader.ReadDouble();
                             }
                             else if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_CAMERASTATE && commandId == 0)
                             {
-                                this._pan = reader.ReadByte();
-                                this._tilt = reader.ReadByte();
+                                this.Pan = reader.ReadByte();
+                                this.Tilt = reader.ReadByte();
                             }
                             else
                             {
@@ -493,7 +438,7 @@ this._gmapMutex.ReleaseMutex();
                         // 이것도..
                     }
 
-                    this._listener.OnStateChanged(this);
+                    this.OnStateChanged(this);
                 }
             }
             catch (Exception)
