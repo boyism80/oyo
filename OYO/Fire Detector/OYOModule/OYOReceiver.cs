@@ -548,16 +548,16 @@ namespace oyo
             var radioactive         = this.Radioactive();
             if (this.FixLevel)
             {
-                var minRadioactive  = this.Temperature2Radioactive(this.LevelTemperatureRange.Start);
-                var maxRadioactive  = this.Temperature2Radioactive(this.LevelTemperatureRange.End);
-                var elementRadio    = (maxRadioactive - minRadioactive) / 255.0f;
+                var minRadioactive  = this.Temperature2Radioactive(this.LevelTemperatureRange.Start);   // 사용자 지정 최저 방사값
+                var maxRadioactive  = this.Temperature2Radioactive(this.LevelTemperatureRange.End);     // 사용자 지정 최고 방사값
+                var x               = 255.0f / (float)(maxRadioactive - minRadioactive);                // 픽셀 변환 파라미터
 
                 var minCurrentRadio = 0.0;
                 var maxCurrentRadio = 0.0;
-                radioactive.MinMaxLoc(out minCurrentRadio, out maxCurrentRadio);
+                radioactive.MinMaxLoc(out minCurrentRadio, out maxCurrentRadio);                        // 현재 최저, 최고 방사값
 
-                var minPixel        = (minCurrentRadio - minRadioactive) / elementRadio;
-                var maxPixel        = (maxCurrentRadio - minRadioactive) / elementRadio;
+                var minPixel        = (minCurrentRadio - minRadioactive) * x;                           // 표시되는 최저 픽셀값
+                var maxPixel        = (maxCurrentRadio - minRadioactive) * x;                           // 표시되는 최고 픽셀값
 
                 return radioactive.Normalize(minPixel, maxPixel, NormTypes.MinMax, MatType.CV_8UC1).CvtColor(ColorConversionCodes.GRAY2BGR);
             }
