@@ -3,12 +3,17 @@ using OpenCvSharp;
 using oyo;
 using ParrotBebop2;
 using System;
+using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Fire_Detector.BunifuForm
 {
     partial class MainForm : OYOReceiver.IReceiveListener
     {
+        private Pcmd                _pcmd = new Pcmd();
+        private Mutex               _mutex = new Mutex();
+
         private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -152,7 +157,65 @@ namespace Fire_Detector.BunifuForm
             this.Blender.Smooth                 = true;
             this.Blender.Transparency           = this.defaultView.sideExpandedBar.visualizeTab.transparencySlider.Value / 100.0f;
 
+            OYOKeysHook.Set();
+            OYOKeysHook.OnKeyboardHook += OnKeyboardHook;
+
             this.OnScreenStateChanged.Invoke(this.Size, false);
+        }
+
+        private void OnKeyboardHook(Keys key, bool isDown)
+        {
+this._mutex.WaitOne();
+            switch (key)
+            {
+                case Keys.Up:
+                    this._pcmd.pitch = isDown ? 5 : 0;
+                    break;
+
+                case Keys.Down:
+                    this._pcmd.pitch = isDown ? -5 : 0;
+                    break;
+
+                case Keys.Left:
+                    this._pcmd.roll = isDown ? -5 : 0;
+                    break;
+
+                case Keys.Right:
+                    this._pcmd.roll = isDown ? 5 : 0;
+                    break;
+
+                case Keys.W:
+                    this._pcmd.gaz = isDown ? 25 : 0;
+                    break;
+
+                case Keys.S:
+                    this._pcmd.gaz = isDown ? -25 : 0;
+                    break;
+
+                case Keys.A:
+                    this._pcmd.yaw = isDown ? 50 : 0;
+                    break;
+
+                case Keys.D:
+                    this._pcmd.yaw = isDown ? -50 : 0;
+                    break;
+            }
+
+            if (this._pcmd.pitch == 0 && this._pcmd.roll == 0)
+            {
+                this._pcmd.flag = 0;
+                this._pcmd.pitch = 0;
+                this._pcmd.roll = 0;
+            }
+            else
+            {
+                this._pcmd.flag = 1;
+                this._pcmd.yaw = 0;
+                this._pcmd.gaz = 0;
+            }
+
+            this.defaultView.sideExpandedBar.droneTab.UpdatePcmdUI(this._pcmd);
+this._mutex.ReleaseMutex();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -160,6 +223,9 @@ namespace Fire_Detector.BunifuForm
             this.Overlayer.Running = false;
             this.Receiver.Exit();
             this.Bebop.Disconnect();
+
+            OYOKeysHook.Unset();
+            this._mutex.Close();
         }
 
         public void OnConnected()
@@ -173,7 +239,10 @@ namespace Fire_Detector.BunifuForm
 
         public Pcmd Bebop2_OnRequestPcmd(Bebop2 bebop)
         {
-            return new Pcmd();
+this._mutex.WaitOne();
+            var pcmd = new Pcmd(this._pcmd);
+this._mutex.ReleaseMutex();
+            return pcmd;
         }
 
         public void Bebop2_OnStateChanged(Bebop2 bebop)

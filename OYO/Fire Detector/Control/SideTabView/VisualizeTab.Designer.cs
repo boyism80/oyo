@@ -533,9 +533,9 @@
             // 
             // fixLevelCheckBox
             // 
-            this.fixLevelCheckBox.BackColor = System.Drawing.Color.Salmon;
+            this.fixLevelCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.fixLevelCheckBox.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.fixLevelCheckBox.Checked = true;
+            this.fixLevelCheckBox.Checked = false;
             this.fixLevelCheckBox.CheckedOnColor = System.Drawing.Color.Salmon;
             this.fixLevelCheckBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.fixLevelCheckBox.ForeColor = System.Drawing.Color.White;

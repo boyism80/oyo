@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BebopCommandSet;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -217,6 +218,50 @@ namespace Fire_Detector.Control.SideTabView
         {
             if(this.Visible)
                 this.UpdateUI();
+        }
+
+        public void UpdatePcmdUI(Pcmd pcmd)
+        {
+            this.bunifuImageButton5.Invoke(new MethodInvoker(delegate ()
+            {
+                this.bunifuImageButton5.BackColor = pcmd.pitch > 0 ? Color.Salmon : Color.DarkGray;
+            }));
+
+
+            this.bunifuImageButton6.Invoke(new MethodInvoker(delegate ()
+            {
+                this.bunifuImageButton6.BackColor = pcmd.pitch < 0 ? Color.Salmon : Color.DarkGray;
+            }));
+
+            this.bunifuImageButton7.Invoke(new MethodInvoker(delegate ()
+            {
+                this.bunifuImageButton7.BackColor = pcmd.roll < 0 ? Color.Salmon : Color.DarkGray;
+            }));
+
+            this.bunifuImageButton8.Invoke(new MethodInvoker(delegate ()
+            {
+                this.bunifuImageButton8.BackColor = pcmd.roll > 0 ? Color.Salmon : Color.DarkGray;
+            }));
+
+            this.bunifuImageButton1.Invoke(new MethodInvoker(delegate ()
+            {
+                this.bunifuImageButton1.BackColor = pcmd.gaz > 0 ? Color.Salmon : Color.DarkGray;
+            }));
+
+            this.bunifuImageButton2.Invoke(new MethodInvoker(delegate ()
+            {
+                this.bunifuImageButton2.BackColor = pcmd.gaz < 0 ? Color.Salmon : Color.DarkGray;
+            }));
+
+            this.bunifuImageButton3.Invoke(new MethodInvoker(delegate ()
+            {
+                this.bunifuImageButton3.BackColor = pcmd.yaw > 0 ? Color.Salmon : Color.DarkGray;
+            }));
+
+            this.bunifuImageButton4.Invoke(new MethodInvoker(delegate ()
+            {
+                this.bunifuImageButton4.BackColor = pcmd.yaw < 0 ? Color.Salmon : Color.DarkGray;
+            }));
         }
     }
 }

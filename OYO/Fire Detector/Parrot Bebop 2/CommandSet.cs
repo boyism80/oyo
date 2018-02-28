@@ -57,6 +57,15 @@ namespace BebopCommandSet
         public int pitch;
         public int yaw;
         public int gaz;
+
+        public Pcmd(Pcmd right)
+        {
+            this.flag = right.flag;
+            this.pitch = right.pitch;
+            this.roll = right.roll;
+            this.yaw = right.yaw;
+            this.gaz = right.gaz;
+        }
     }
 
     public class CommandSet

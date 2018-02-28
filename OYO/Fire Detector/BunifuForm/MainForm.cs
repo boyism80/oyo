@@ -3,11 +3,7 @@ using OpenCvSharp;
 using oyo;
 using ParrotBebop2;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
-using BebopCommandSet;
-using System.Drawing;
-using System.IO;
 
 namespace Fire_Detector.BunifuForm
 {
@@ -40,6 +36,15 @@ namespace Fire_Detector.BunifuForm
         // 37.5'C부터 비정상 상태로 감지하게 됩니다.
         //
         private static float                    DETECTION_ALPHA      = 1.5f;
+
+
+        //
+        // 키보드 후킹
+        //
+        private const int                       WH_KEYBOARD_LL = 13;
+        private const int                       WM_KEYDOWN = 0x0100;
+        private static IntPtr                   _hookId = IntPtr.Zero;
+
 
         private OpenCvSharp.Size                _cachedDisplaySize;
 
