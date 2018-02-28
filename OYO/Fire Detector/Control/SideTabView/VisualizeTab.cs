@@ -167,5 +167,15 @@ namespace Fire_Detector.Control.SideTabView
             this.transparencyLabel.Text = this.transparencySlider.Value.ToString();
             this.Root.Blender.Transparency = this.transparencySlider.Value / 100.0f;
         }
+
+        private void levelTemperatureRange_RangeMaxChanged(object sender, EventArgs e)
+        {
+            this.rangeMax.Text = levelTemperatureRange.RangeMax.ToString();
+        }
+
+        private void levelTemperatureRange_RangeMinChanged(object sender, EventArgs e)
+        {
+            this.rangeMin.Text = levelTemperatureRange.RangeMin.ToString();
+        }
     }
 }
