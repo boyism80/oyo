@@ -88,7 +88,8 @@ namespace Fire_Detector.BunifuForm
             this.Bebop                          = new Bebop2();
             this.Bebop.OnStreaming             += this.Bebop2_OnStreaming;
             this.Bebop.OnRequestPcmd           += this.Bebop2_OnRequestPcmd;
-            this.Bebop.OnStateChanged          += this.Bebop2_OnStateChanged;
+            this.Bebop.OnAltitudeChanged       += this.Bebop2_OnAltitudeChanged;
+            this.Bebop.OnPositionChanged       += this.Bebop_OnPositionChanged;
 
             this.Config                         = new Config();
             this.Config.Visualize.Palette       = this.defaultView.sideExpandedBar.visualizeTab.palettesDropDown.selectedValue;
@@ -103,6 +104,7 @@ namespace Fire_Detector.BunifuForm
             this.OnScreenStateChanged          += this.mainView.OnScreenStateChanged;
             this.OnScreenStateChanged          += this.mainView.mainConnectionView.OnScreenStateChanged;
         }
+
 
         private Mat MappingPalette(Mat frame)
         {

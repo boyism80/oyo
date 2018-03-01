@@ -53,14 +53,8 @@ namespace oyo
 
         private Mutex                       _mutex;
 
-        // 구글맵 테스트
-        private Thread                      _gmapUpdateThread;
-
         public event OnReceiveGmap          OnReceiveGmapEvent;
         public event OnReceiveAddress       OnReceiveAddressEvent;
-
-
-        public bool Running { get; set; }
 
         public GPS GPS { get; set; }
 
@@ -74,10 +68,6 @@ namespace oyo
             this._cachedGmap                      = new Mat();
             this._mutex                     = new Mutex();
             this.GPS                        = new GPS(51.509865, -0.118092);
-            
-            this.Running = true;
-            this._gmapUpdateThread = new Thread(this.gmapUpdateThreadRoutine);
-            this._gmapUpdateThread.Start();
         }
 
         private Rect GetDrawingSpace(Mat frame)
@@ -213,19 +203,13 @@ namespace oyo
             }
         }
 
-        private void gmapUpdateThreadRoutine()
-        {
-            while (this.Running)
-            {
-                this.Update();
-                Thread.Sleep(1000);
-            }
-        }
-
         private void RequestGmap()
         {
             try
             {
+                if(this.OnReceiveGmapEvent == null)
+                    return;
+
                 if (this.State == GmapState.Collapsed)
                     throw new Exception();
 
@@ -257,7 +241,7 @@ this._mutex.ReleaseMutex();
         {
             try
             {
-                var url = string.Format("http://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&sensor=false", this.GPS.lat, this.GPS.lon);
+                var url = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&sensor=false&key=AIzaSyDO1LpjNHsEWBWLFdBPc6acJgyujd8ur2s", this.GPS.lat, this.GPS.lon);
                 var xml = XElement.Load(url);
                 if (xml.Element("status").Value != "OK")
                     return;
@@ -276,6 +260,12 @@ this._mutex.ReleaseMutex();
 
             var requestAddressThread = new Thread(this.RequestAddress);
             requestAddressThread.Start();
+        }
+
+        public void Update(GPS gps)
+        {
+            this.GPS = gps;
+            this.Update();
         }
     }
 }

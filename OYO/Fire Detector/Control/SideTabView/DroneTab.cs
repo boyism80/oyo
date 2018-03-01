@@ -38,21 +38,29 @@ namespace Fire_Detector.Control.SideTabView
 
         private void takeoffSwitch_OnValueChange(object sender, EventArgs e)
         {
-            if (takeoffSwitch.Value == true)
-            {
-                detectionStateLabel.Text = "비행중";
-                droneFlightProgressbar.Value = 30;
-                droneFlightProgressbar.animated = true;
-                droneFlightProgressbar.Visible = true;
+            if(this.Root == null)
+                return;
 
-            }
+            if(this.takeoffSwitch.Value)
+                this.Root.Bebop.takeoff();
             else
-            {
-                detectionStateLabel.Text = "비행정지";
-                droneFlightProgressbar.Value = 0;
-                droneFlightProgressbar.animated = false;
-                droneFlightProgressbar.Visible = false;
-            }
+                this.Root.Bebop.landing();
+
+            //if (takeoffSwitch.Value == true)
+            //{
+            //    detectionStateLabel.Text = "비행중";
+            //    droneFlightProgressbar.Value = 30;
+            //    droneFlightProgressbar.animated = true;
+            //    droneFlightProgressbar.Visible = true;
+
+            //}
+            //else
+            //{
+            //    detectionStateLabel.Text = "비행정지";
+            //    droneFlightProgressbar.Value = 0;
+            //    droneFlightProgressbar.animated = false;
+            //    droneFlightProgressbar.Visible = false;
+            //}
         }
 
         private void droneSpeedSlider_ValueChanged(object sender, EventArgs e)
@@ -65,6 +73,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void UpdateUI()
         {
+            if(this.Root == null)
+                return;
+
             try
             {
                 var isPatrolActive = this.patrolModeSwitch.Value;
@@ -131,6 +142,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void patrolModeSwitch_OnValueChange(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             if(this.patrolModeSwitch.Value == false)
                 this._isPatroling = false;
 
@@ -145,6 +159,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void recordModeSwitch_OnValueChange(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.UpdateUI();
             if (this.recordModeSwitch.Value)
             {
@@ -156,6 +173,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void patrolStartEndButton_Click(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             var isActive = (bool)this.patrolStartEndButton.Tag;
             if(isActive == false)
                 return;

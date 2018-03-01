@@ -220,7 +220,6 @@ this._mutex.ReleaseMutex();
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Overlayer.Running = false;
             this.Receiver.Exit();
             this.Bebop.Disconnect();
 
@@ -245,12 +244,17 @@ this._mutex.ReleaseMutex();
             return pcmd;
         }
 
-        public void Bebop2_OnStateChanged(Bebop2 bebop)
+        public void Bebop2_OnAltitudeChanged(Bebop2 bebop, double altitude)
         {
             this.defaultView.droneAltitudeLabel.Invoke(new MethodInvoker(delegate ()
             {
-                this.defaultView.droneAltitudeLabel.Text = bebop.Altitude.ToString();
+                this.defaultView.droneAltitudeLabel.Text = altitude.ToString();
             }));
+        }
+
+        private void Bebop_OnPositionChanged(Bebop2 bebop2, double lat, double lon, double alt)
+        {
+            this.Overlayer.Update(bebop2.GPS);
         }
     }
 }

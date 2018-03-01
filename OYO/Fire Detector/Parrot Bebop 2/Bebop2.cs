@@ -25,7 +25,12 @@ namespace ParrotBebop2
 
         public delegate void                    StreamingEvent(Bebop2 bebop, Mat frame);
         public delegate Pcmd                    RequestPcmdEvent(Bebop2 bebop);
-        public delegate void                    StateChangedEvent(Bebop2 bebop);
+        public delegate void                    BatteryChangedEvent(Bebop2 bebop2, int battery);
+        public delegate void                    SpeedChangedEvent(Bebop2 bebop2, float x, float y, float z);
+        public delegate void                    RotationChangedEvent(Bebop2 bebop2, float pitch, float yaw, float roll);
+        public delegate void                    PositionChangedEvent(Bebop2 bebop2, double lat, double lon, double alt);
+        public delegate void                    PilotStateChanged(Bebop2 bebop2, Bebop2State currentState);
+        public delegate void                    AltitudeChanged(Bebop2 bebop2, double altitude);
 
         private int[]                           seq = new int[256];
         public Pcmd                             pcmd;
@@ -41,13 +46,26 @@ namespace ParrotBebop2
 
         public event StreamingEvent             OnStreaming;
         public event RequestPcmdEvent           OnRequestPcmd;
-        public event StateChangedEvent          OnStateChanged;
+        public event BatteryChangedEvent        OnBatteryChanged;
+        public event SpeedChangedEvent          OnSpeedChanged;
+        public event RotationChangedEvent       OnRotationChanged;
+        public event PositionChangedEvent       OnPositionChanged;
+        public event PilotStateChanged          OnPilotStateChanged;
+        public event AltitudeChanged            OnAltitudeChanged;
 
         public short RSSI { get; private set; }
 
         private uint _state;
 
         public oyo.GPS GPS { get; private set; }
+
+        public Bebop2State State
+        {
+            get
+            {
+                return (Bebop2State)this._state;
+            }
+        }
 
         public float SpeedX { get; private set; }
         public float SpeedY { get; private set; }
@@ -335,22 +353,34 @@ namespace ParrotBebop2
                             if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_POSITIONCHANGED)
                             {
                                 this.GPS = new oyo.GPS(reader.ReadDouble(), reader.ReadDouble(), reader.ReadDouble());
+
+                                if(this.OnPositionChanged != null)
+                                    this.OnPositionChanged.Invoke(this, this.GPS.lat, this.GPS.lon, this.GPS.alt);
                             }
                             else if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_SPEEDCHANGED)
                             {
                                 this.SpeedX = reader.ReadSingle();
                                 this.SpeedY = reader.ReadSingle();
                                 this.SpeedZ = reader.ReadSingle();
+
+                                if(this.OnSpeedChanged != null)
+                                    this.OnSpeedChanged.Invoke(this, this.SpeedX, this.SpeedY, this.SpeedZ);
                             }
                             else if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_ATTITUDECHANGED)
                             {
                                 this.Roll = reader.ReadSingle();
                                 this.Pitch = reader.ReadSingle();
                                 this.Yaw = reader.ReadSingle();
+
+                                if(this.OnRotationChanged != null)
+                                    this.OnRotationChanged.Invoke(this, this.Pitch, this.Yaw, this.Roll);
                             }
                             else if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_ALTITUDECHANGED)
                             {
                                 this.Altitude = reader.ReadDouble();
+
+                                if(this.OnAltitudeChanged != null)
+                                    this.OnAltitudeChanged.Invoke(this, this.Altitude);
                             }
                             else if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_CAMERASTATE && commandId == 0)
                             {
@@ -380,6 +410,9 @@ namespace ParrotBebop2
                         if (commandProject == CommandSet.ARCOMMANDS_ID_PROJECT_COMMON && commandClass == CommandSet.ARCOMMANDS_ID_COMMON_CLASS_COMMONSTATE && commandId == CommandSet.ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_BATTERYSTATECHANGED)
                         {
                             this.Battery = reader.ReadByte();
+
+                            if(this.OnBatteryChanged != null)
+                                this.OnBatteryChanged.Invoke(this, this.Battery);
                         }
                         else if(commandProject == CommandSet.ARCOMMANDS_ID_PROJECT_ARDRONE3 && commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE)
                         {
@@ -392,6 +425,9 @@ namespace ParrotBebop2
                             else if(commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_FLYINGSTATECHANGED)
                             {
                                 this._state = reader.ReadUInt32();
+
+                                if(this.OnPilotStateChanged != null)
+                                    this.OnPilotStateChanged.Invoke(this, (Bebop2State)this._state);
                             }
                             else if(commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_ALERTSTATECHANGED)
                             {
@@ -437,8 +473,6 @@ namespace ParrotBebop2
                     {
                         // 이것도..
                     }
-
-                    this.OnStateChanged(this);
                 }
             }
             catch (Exception)
