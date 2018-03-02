@@ -60,6 +60,14 @@ namespace oyo
 
         public GmapState State { get; set; }
 
+        public bool Enabled
+        {
+            get
+            {
+                return !this._cachedGmap.Empty();
+            }
+        }
+
         public OYOGMapOverlayer(PictureBox owner)
         {
             this._owner                     = owner;
@@ -142,6 +150,9 @@ namespace oyo
 
         public Mat Overlay(Mat frame)
         {
+            if(this.State != GmapState.Collapsed && this._cachedGmap.Empty())
+                return frame;
+
             var area = this.GetDrawingSpace(frame);
             if (this.State == GmapState.Collapsed)
             {
