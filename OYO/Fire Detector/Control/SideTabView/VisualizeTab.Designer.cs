@@ -59,6 +59,14 @@
             this.bunifuCustomLabel15 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.palettesDropDown = new Bunifu.Framework.UI.BunifuDropdown();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.rangeMax = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.rangeMin = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.fixLevelLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.fixLevelCheckBox = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.levelTemperatureRange = new Bunifu.Framework.UI.BunifuRange();
             this.panel18 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.thresholdSlider = new Bunifu.Framework.UI.BunifuSlider();
@@ -69,14 +77,6 @@
             this.transparencyLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.rangeMax = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.rangeMin = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.fixLevelLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.fixLevelCheckBox = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.levelTemperatureRange = new Bunifu.Framework.UI.BunifuRange();
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectVisualizeButton)).BeginInit();
@@ -92,11 +92,11 @@
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel20.SuspendLayout();
             this.panel18.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel20.SuspendLayout();
-            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel12
@@ -515,6 +515,104 @@
             this.panel10.Size = new System.Drawing.Size(232, 64);
             this.panel10.TabIndex = 4;
             // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.bunifuCustomLabel8);
+            this.panel11.Controls.Add(this.rangeMax);
+            this.panel11.Controls.Add(this.rangeMin);
+            this.panel11.Controls.Add(this.fixLevelLabel);
+            this.panel11.Controls.Add(this.fixLevelCheckBox);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel11.Location = new System.Drawing.Point(0, 29);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(232, 34);
+            this.panel11.TabIndex = 4;
+            // 
+            // bunifuCustomLabel8
+            // 
+            this.bunifuCustomLabel8.AutoSize = true;
+            this.bunifuCustomLabel8.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bunifuCustomLabel8.Location = new System.Drawing.Point(181, 4);
+            this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
+            this.bunifuCustomLabel8.Size = new System.Drawing.Size(16, 15);
+            this.bunifuCustomLabel8.TabIndex = 4;
+            this.bunifuCustomLabel8.Text = "~";
+            // 
+            // rangeMax
+            // 
+            this.rangeMax.AutoSize = true;
+            this.rangeMax.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.rangeMax.ForeColor = System.Drawing.Color.Salmon;
+            this.rangeMax.Location = new System.Drawing.Point(196, 4);
+            this.rangeMax.Name = "rangeMax";
+            this.rangeMax.Size = new System.Drawing.Size(21, 15);
+            this.rangeMax.TabIndex = 4;
+            this.rangeMax.Text = "50";
+            // 
+            // rangeMin
+            // 
+            this.rangeMin.AutoSize = true;
+            this.rangeMin.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.rangeMin.ForeColor = System.Drawing.Color.Salmon;
+            this.rangeMin.Location = new System.Drawing.Point(156, 4);
+            this.rangeMin.Name = "rangeMin";
+            this.rangeMin.Size = new System.Drawing.Size(14, 15);
+            this.rangeMin.TabIndex = 4;
+            this.rangeMin.Text = "0";
+            // 
+            // fixLevelLabel
+            // 
+            this.fixLevelLabel.AutoSize = true;
+            this.fixLevelLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.fixLevelLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.fixLevelLabel.Location = new System.Drawing.Point(24, 4);
+            this.fixLevelLabel.Name = "fixLevelLabel";
+            this.fixLevelLabel.Size = new System.Drawing.Size(28, 15);
+            this.fixLevelLabel.TabIndex = 3;
+            this.fixLevelLabel.Text = "고정";
+            // 
+            // fixLevelCheckBox
+            // 
+            this.fixLevelCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.fixLevelCheckBox.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.fixLevelCheckBox.Checked = false;
+            this.fixLevelCheckBox.CheckedOnColor = System.Drawing.Color.Salmon;
+            this.fixLevelCheckBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.fixLevelCheckBox.ForeColor = System.Drawing.Color.White;
+            this.fixLevelCheckBox.Location = new System.Drawing.Point(0, 0);
+            this.fixLevelCheckBox.Name = "fixLevelCheckBox";
+            this.fixLevelCheckBox.Size = new System.Drawing.Size(20, 20);
+            this.fixLevelCheckBox.TabIndex = 2;
+            this.fixLevelCheckBox.OnChange += new System.EventHandler(this.fixLevelCheckBox_OnChange);
+            // 
+            // panel20
+            // 
+            this.panel20.Controls.Add(this.levelTemperatureRange);
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel20.Location = new System.Drawing.Point(0, 0);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(232, 29);
+            this.panel20.TabIndex = 3;
+            // 
+            // levelTemperatureRange
+            // 
+            this.levelTemperatureRange.BackColor = System.Drawing.Color.Transparent;
+            this.levelTemperatureRange.BackgroudColor = System.Drawing.Color.DarkGray;
+            this.levelTemperatureRange.BorderRadius = 5;
+            this.levelTemperatureRange.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.levelTemperatureRange.IndicatorColor = System.Drawing.Color.Salmon;
+            this.levelTemperatureRange.Location = new System.Drawing.Point(0, 0);
+            this.levelTemperatureRange.MaximumRange = 110;
+            this.levelTemperatureRange.Name = "levelTemperatureRange";
+            this.levelTemperatureRange.RangeMax = 50;
+            this.levelTemperatureRange.RangeMin = 0;
+            this.levelTemperatureRange.Size = new System.Drawing.Size(232, 28);
+            this.levelTemperatureRange.TabIndex = 1;
+            this.levelTemperatureRange.RangeChanged += new System.EventHandler(this.levelTemperatureRange_RangeChanged);
+            this.levelTemperatureRange.RangeMaxChanged += new System.EventHandler(this.levelTemperatureRange_RangeMaxChanged);
+            this.levelTemperatureRange.RangeMinChanged += new System.EventHandler(this.levelTemperatureRange_RangeMinChanged);
+            // 
             // panel18
             // 
             this.panel18.Controls.Add(this.bunifuCustomLabel6);
@@ -633,104 +731,6 @@
             this.bunifuCustomLabel3.TabIndex = 1;
             this.bunifuCustomLabel3.Text = "적외선 옵션";
             // 
-            // panel20
-            // 
-            this.panel20.Controls.Add(this.levelTemperatureRange);
-            this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel20.Location = new System.Drawing.Point(0, 0);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(232, 29);
-            this.panel20.TabIndex = 3;
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.bunifuCustomLabel8);
-            this.panel11.Controls.Add(this.rangeMax);
-            this.panel11.Controls.Add(this.rangeMin);
-            this.panel11.Controls.Add(this.fixLevelLabel);
-            this.panel11.Controls.Add(this.fixLevelCheckBox);
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel11.Location = new System.Drawing.Point(0, 29);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(232, 34);
-            this.panel11.TabIndex = 4;
-            // 
-            // bunifuCustomLabel8
-            // 
-            this.bunifuCustomLabel8.AutoSize = true;
-            this.bunifuCustomLabel8.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bunifuCustomLabel8.Location = new System.Drawing.Point(181, 4);
-            this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
-            this.bunifuCustomLabel8.Size = new System.Drawing.Size(16, 15);
-            this.bunifuCustomLabel8.TabIndex = 4;
-            this.bunifuCustomLabel8.Text = "~";
-            // 
-            // rangeMax
-            // 
-            this.rangeMax.AutoSize = true;
-            this.rangeMax.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.rangeMax.ForeColor = System.Drawing.Color.Salmon;
-            this.rangeMax.Location = new System.Drawing.Point(196, 4);
-            this.rangeMax.Name = "rangeMax";
-            this.rangeMax.Size = new System.Drawing.Size(21, 15);
-            this.rangeMax.TabIndex = 4;
-            this.rangeMax.Text = "50";
-            // 
-            // rangeMin
-            // 
-            this.rangeMin.AutoSize = true;
-            this.rangeMin.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.rangeMin.ForeColor = System.Drawing.Color.Salmon;
-            this.rangeMin.Location = new System.Drawing.Point(156, 4);
-            this.rangeMin.Name = "rangeMin";
-            this.rangeMin.Size = new System.Drawing.Size(14, 15);
-            this.rangeMin.TabIndex = 4;
-            this.rangeMin.Text = "0";
-            // 
-            // fixLevelLabel
-            // 
-            this.fixLevelLabel.AutoSize = true;
-            this.fixLevelLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.fixLevelLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.fixLevelLabel.Location = new System.Drawing.Point(24, 4);
-            this.fixLevelLabel.Name = "fixLevelLabel";
-            this.fixLevelLabel.Size = new System.Drawing.Size(28, 15);
-            this.fixLevelLabel.TabIndex = 3;
-            this.fixLevelLabel.Text = "고정";
-            // 
-            // fixLevelCheckBox
-            // 
-            this.fixLevelCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.fixLevelCheckBox.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.fixLevelCheckBox.Checked = false;
-            this.fixLevelCheckBox.CheckedOnColor = System.Drawing.Color.Salmon;
-            this.fixLevelCheckBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.fixLevelCheckBox.ForeColor = System.Drawing.Color.White;
-            this.fixLevelCheckBox.Location = new System.Drawing.Point(0, 0);
-            this.fixLevelCheckBox.Name = "fixLevelCheckBox";
-            this.fixLevelCheckBox.Size = new System.Drawing.Size(20, 20);
-            this.fixLevelCheckBox.TabIndex = 2;
-            this.fixLevelCheckBox.OnChange += new System.EventHandler(this.fixLevelCheckBox_OnChange);
-            // 
-            // levelTemperatureRange
-            // 
-            this.levelTemperatureRange.BackColor = System.Drawing.Color.Transparent;
-            this.levelTemperatureRange.BackgroudColor = System.Drawing.Color.DarkGray;
-            this.levelTemperatureRange.BorderRadius = 5;
-            this.levelTemperatureRange.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.levelTemperatureRange.IndicatorColor = System.Drawing.Color.Salmon;
-            this.levelTemperatureRange.Location = new System.Drawing.Point(0, 0);
-            this.levelTemperatureRange.MaximumRange = 110;
-            this.levelTemperatureRange.Name = "levelTemperatureRange";
-            this.levelTemperatureRange.RangeMax = 50;
-            this.levelTemperatureRange.RangeMin = 0;
-            this.levelTemperatureRange.Size = new System.Drawing.Size(232, 28);
-            this.levelTemperatureRange.TabIndex = 1;
-            this.levelTemperatureRange.RangeChanged += new System.EventHandler(this.levelTemperatureRange_RangeChanged);
-            this.levelTemperatureRange.RangeMaxChanged += new System.EventHandler(this.levelTemperatureRange_RangeMaxChanged);
-            this.levelTemperatureRange.RangeMinChanged += new System.EventHandler(this.levelTemperatureRange_RangeMinChanged);
-            // 
             // VisualizeTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -768,15 +768,15 @@
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel10.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel20.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.panel20.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

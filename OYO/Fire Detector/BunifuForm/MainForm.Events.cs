@@ -161,7 +161,7 @@ namespace Fire_Detector.BunifuForm
 
             this.Invoke(new MethodInvoker(delegate ()
             {
-                var dialog = new MessageDialog(message, System.Drawing.Color.DarkGray);
+                var dialog = new MessageDialog(message, System.Drawing.Color.Gainsboro);
                 dialog.ShowDialog(mainform);
             }));
         }
@@ -271,7 +271,7 @@ this._mutex.ReleaseMutex();
             var mainform = this;
             this.Invoke(new MethodInvoker(delegate ()
             {
-                var dialog = new MessageDialog(message, System.Drawing.Color.DarkGray);
+                var dialog = new MessageDialog(message, System.Drawing.Color.Gainsboro);
                 dialog.ShowDialog(mainform);
             }));
         }
