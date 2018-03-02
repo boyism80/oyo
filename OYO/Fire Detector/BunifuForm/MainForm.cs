@@ -1,4 +1,5 @@
-﻿using Fire_Detector.Source;
+﻿using Fire_Detector.Dialog;
+using Fire_Detector.Source;
 using OpenCvSharp;
 using oyo;
 using ParrotBebop2;
@@ -77,7 +78,12 @@ namespace Fire_Detector.BunifuForm
             InitializeComponent();
 
             this.UpdatedDataBuffer              = new UpdatedDataBuffer();
-            this.Receiver                       = new OYOReceiver(HOST_NAME, 8000, this);
+            this.Receiver                       = new OYOReceiver(HOST_NAME, 8000);
+            this.Receiver.OnConnected          += Receiver_OnConnected;
+            this.Receiver.OnDisconnected       += Receiver_OnDisconnected;
+            this.Receiver.OnUpdate             += Receiver_OnUpdate;
+            this.Receiver.OnError              += Receiver_OnError;
+
             this.Blender                        = new OYOBlender(new OpenCvSharp.Size(720, 480));
             this.Detector                       = new OYODetector();
             this.Recorder                       = new OYORecorder();
@@ -86,10 +92,15 @@ namespace Fire_Detector.BunifuForm
             this.Overlayer.OnReceiveAddressEvent += this.defaultView.Overlayer_OnReceiveAddressEvent;
 
             this.Bebop                          = new Bebop2();
+            this.Bebop.OnConnected             += this.mainView.mainConnectionView.Bebop_OnConnected;
+            this.Bebop.OnConnected             += this.defaultView.sideExpandedBar.droneTab.Bebop_OnConnected;
+            this.Bebop.OnDisconnected          += this.mainView.mainConnectionView.Bebop_OnDisconnected;
+            this.Bebop.OnDisconnected          += this.defaultView.sideExpandedBar.droneTab.Bebop_OnDisconnected;
             this.Bebop.OnStreaming             += this.Bebop2_OnStreaming;
             this.Bebop.OnRequestPcmd           += this.Bebop2_OnRequestPcmd;
             this.Bebop.OnAltitudeChanged       += this.Bebop2_OnAltitudeChanged;
             this.Bebop.OnPositionChanged       += this.Bebop_OnPositionChanged;
+            this.Bebop.OnError                 += this.Bebop_OnError;
 
             this.Config                         = new Config();
             this.Config.Visualize.Palette       = this.defaultView.sideExpandedBar.visualizeTab.palettesDropDown.selectedValue;
@@ -104,7 +115,6 @@ namespace Fire_Detector.BunifuForm
             this.OnScreenStateChanged          += this.mainView.OnScreenStateChanged;
             this.OnScreenStateChanged          += this.mainView.mainConnectionView.OnScreenStateChanged;
         }
-
 
         private Mat MappingPalette(Mat frame)
         {

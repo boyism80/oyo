@@ -1,4 +1,5 @@
 ﻿using BebopCommandSet;
+using ParrotBebop2;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -134,6 +135,16 @@ namespace Fire_Detector.Control.SideTabView
                 {
                     connectDroneProgressbar.animated = this.Root.Bebop.Connected;
                     connectDroneProgressbar.Value = this.Root.Bebop.Connected ? 15 : 0;
+                }));
+
+                this.connectionLabel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.connectionLabel.Text = this.Root.Bebop.Connected ? "드론과 연결되었습니다." : "드론과 연결되지 않았습니다.";
+                }));
+
+                this.takeoffSwitch.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.takeoffSwitch.Enabled = this.Root.Bebop.Connected;
                 }));
             }
             catch(Exception)
@@ -282,6 +293,16 @@ namespace Fire_Detector.Control.SideTabView
             {
                 this.bunifuImageButton4.BackColor = pcmd.yaw < 0 ? Color.Salmon : Color.DarkGray;
             }));
+        }
+
+        public void Bebop_OnDisconnected(Bebop2 bebop)
+        {
+            this.UpdateUI();
+        }
+
+        public void Bebop_OnConnected(Bebop2 bebop)
+        {
+            this.UpdateUI();
         }
     }
 }

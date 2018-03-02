@@ -18,35 +18,6 @@ namespace oyo
     public class OYOReceiver
     {
         //
-        // ILx8Listener
-        //  Lx8Receiver 인스턴스를 생성하기 전 등록해야 할 인터페이스입니다.
-        //
-        public interface IReceiveListener
-        {
-            void                OnConnected();
-
-            //
-            // OnDisconnected
-            //  클라이언트가 접속을 종료했을 때나 서버로부터 접속이 끊어졌을 때 호출되는 메소드입니다.
-            //
-            void                OnDisconnected();
-
-
-            //
-            // OnUpdate
-            //  서버로부터 데이터를 얻을때마다 호출되는 메소드입니다. 
-            //  streamingType이 Visual인 경우에는 실화상 이미지를, Infrared인 경우에는 적외선 방사데이터와 관련된 데이터에 접근하면 됩니다.
-            //
-            void                OnUpdate(StreamingType streamingType, OYOReceiver receiver);
-
-            //
-            // OnError
-            //  서버로부터 데이터를 받는 경우 생기는 에러가 있다면 이 메소드가 호출됩니다.
-            //  
-            void                OnError(string message);
-        }
-
-        //
         // LeptonWidth, LeptonHeight
         //  Lepton 2.5가 제공하는 해상도입니다.
         //  이 해상도는 Lepton 3.0 혹은 다른 모듈로 교체하면서 변경될 수 있습니다.
@@ -71,6 +42,12 @@ namespace oyo
         private static  float[]                 CriteriaTable               = new  float[] { 96.54f, 89.18f, 89.45f, 80.72f, 91.72f, 80.81f, 89.00f, 83.27f, 89.09f, 80.00f, 88.90f, 89.81f, 89.81f };
         private static ushort[]                 RadioactiveBoundaryTable    = new ushort[] {  27165,  28227,  29208,  30192,  31080,  32089,  32978,  33957,  34873,  35851,  36811,  37789,  38777 };
 
+
+        public delegate void                    ConnectionEvent(OYOReceiver receiver);
+        public delegate void                    DisconnectionEvent(OYOReceiver receiver);
+        public delegate void                    UpdateEvent(OYOReceiver receiver, StreamingType streamingType);
+        public delegate void                    ErrorEvent(OYOReceiver receiver, string message);
+
         //
         // _socket, _host, _port
         //  카메라 서버와 연결할 소켓에 대한 멤버 필드입니다.
@@ -79,12 +56,6 @@ namespace oyo
         private Socket                          _socket;
         private string                          _host;
         private ushort                          _port;
-
-        //
-        // _listener
-        //  상태에 변화가 생기는 경우 전달할 인터페이스 객체입니다.
-        //
-        private IReceiveListener                _listener;
 
         //
         // _updateFrameThread
@@ -112,6 +83,11 @@ namespace oyo
         //  실화상 카메라로 촬영된 이미지 객체입니다.
         //
         private Mat                             _visual;
+
+        public event ConnectionEvent            OnConnected;
+        public event DisconnectionEvent         OnDisconnected;
+        public event UpdateEvent                OnUpdate;
+        public event ErrorEvent                 OnError;
 
 
         //
@@ -175,11 +151,10 @@ namespace oyo
             }
         }
 
-        public OYOReceiver(string host, ushort port, IReceiveListener listener)
+        public OYOReceiver(string host, ushort port)
         {
             this._host                      = host;
             this._port                      = port;
-            this._listener                  = listener;
         }
 
         //
@@ -201,20 +176,25 @@ namespace oyo
 
                 if (this.Connected)
                 {
-                    this._listener.OnConnected();
+                    if(this.OnConnected != null)
+                        this.OnConnected.Invoke(this);
                     this.Execute();
                 }
                 else
                 {
-                    this._listener.OnError("서버와 연결할 수 없습니다.");
+                    if(this.OnError != null)
+                        this.OnError.Invoke(this, "서버와 연결할 수 없습니다.");
                 }
 
                 return this._socket.Connected;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 this._socket.Close();
                 this._socket = null;
+
+                if(this.OnError != null)
+                    this.OnError.Invoke(this, "서버와 연결할 수 없습니다.");
                 return false;
             }
         }
@@ -333,8 +313,8 @@ namespace oyo
                 try
                 {
                     this.Update(ref streamingType);
-                    if (this._listener != null)
-                        this._listener.OnUpdate(streamingType, this);
+                    if(this.OnUpdate != null)
+                        this.OnUpdate.Invoke(this, streamingType);
                 }
                 catch (SocketException)
                 {
@@ -343,8 +323,8 @@ namespace oyo
                 }
                 catch (Exception e)
                 {
-                    if (this._listener != null)
-                        this._listener.OnError(e.Message);
+                    if(this.OnError != null)
+                        this.OnError.Invoke(this, e.Message);
                 }
             }
         }
@@ -501,8 +481,9 @@ namespace oyo
         {
             this.Disconnect();
             this.Running = false;
-            if(this._listener != null)
-                this._listener.OnDisconnected();
+
+            if(this.OnDisconnected != null)
+                this.OnDisconnected.Invoke(this);
         }
 
         //

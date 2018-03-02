@@ -23,6 +23,8 @@ namespace ParrotBebop2
             Max                                 = CommandSet.ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_MAX,
         }
 
+        public delegate void                    ConnectionEvent(Bebop2 bebop);
+        public delegate void                    DisconnectionEvent(Bebop2 bebop);
         public delegate void                    StreamingEvent(Bebop2 bebop, Mat frame);
         public delegate Pcmd                    RequestPcmdEvent(Bebop2 bebop);
         public delegate void                    BatteryChangedEvent(Bebop2 bebop2, int battery);
@@ -31,6 +33,7 @@ namespace ParrotBebop2
         public delegate void                    PositionChangedEvent(Bebop2 bebop2, double lat, double lon, double alt);
         public delegate void                    PilotStateChanged(Bebop2 bebop2, Bebop2State currentState);
         public delegate void                    AltitudeChanged(Bebop2 bebop2, double altitude);
+        public delegate void                    ErrorEvent(Bebop2 bebop, string message);
 
         private int[]                           seq = new int[256];
         public Pcmd                             pcmd;
@@ -44,6 +47,8 @@ namespace ParrotBebop2
         private C2DSocket                       _c2d;
         private Thread                          _commandThread, _streamingThread;
 
+        public event ConnectionEvent            OnConnected;
+        public event DisconnectionEvent         OnDisconnected;
         public event StreamingEvent             OnStreaming;
         public event RequestPcmdEvent           OnRequestPcmd;
         public event BatteryChangedEvent        OnBatteryChanged;
@@ -52,6 +57,7 @@ namespace ParrotBebop2
         public event PositionChangedEvent       OnPositionChanged;
         public event PilotStateChanged          OnPilotStateChanged;
         public event AltitudeChanged            OnAltitudeChanged;
+        public event ErrorEvent                 OnError;
 
         public short RSSI { get; private set; }
 
@@ -89,53 +95,68 @@ namespace ParrotBebop2
             this._d2c                           = new D2CSocket();
             this._d2c.OnReceiveFrame           += this.OnReceiveFrame;
 
-            this._c2d = new C2DSocket();
+            this._c2d                           = new C2DSocket();
+        }
+
+        public void Connect()
+        {
+            var connectionThread = new Thread(this.RequestConnection);
+            connectionThread.Start();
         }
 
 
-        public bool Connect()
+        private void RequestConnection()
         {
-            //make handshake with TCP_client, and the port is set to be 4444
-            var client                                  = new TcpClient(CommandSet.IP, CommandSet.DISCOVERY_PORT);
-            var stream                                  = new NetworkStream(client.Client);
+            try
+            {
+                //make handshake with TCP_client, and the port is set to be 4444
+                var client                                      = new TcpClient(CommandSet.IP, CommandSet.DISCOVERY_PORT);
+                var stream                                      = new NetworkStream(client.Client);
 
-            //initialize reader and writer
-            var streamWriter                            = new StreamWriter(stream);
-            var streamReader                            = new StreamReader(stream);
+                //initialize reader and writer
+                var streamWriter                                = new StreamWriter(stream);
+                var streamReader                                = new StreamReader(stream);
 
-            //when the drone receive the message bellow, it will return the confirmation
-            var handshake                               = new JSONClass();
-            handshake["controller_type"]                = "computer";
-            handshake["controller_name"]                = "oyo";
-            handshake["d2c_port"]                       = new JSONData(43210); // "43210"
-            handshake["arstream2_client_stream_port"]   = new JSONData(55004);
-            handshake["arstream2_client_control_port"]  = new JSONData(55005);
-            streamWriter.WriteLine(handshake.ToString());
-            streamWriter.Flush();
+                //when the drone receive the message bellow, it will return the confirmation
+                var handshake                                   = new JSONClass();
+                handshake["controller_type"]                    = "computer";
+                handshake["controller_name"]                    = "oyo";
+                handshake["d2c_port"]                           = new JSONData(43210); // "43210"
+                handshake["arstream2_client_stream_port"]       = new JSONData(55004);
+                handshake["arstream2_client_control_port"]      = new JSONData(55005);
+                streamWriter.WriteLine(handshake.ToString());
+                streamWriter.Flush();
 
-            var message = streamReader.ReadLine();
-            if (message == null)
-                return false;
+                var message = streamReader.ReadLine();
+                if (message == null)
+                    throw new Exception(message);
 
 
-            //initialize
-            this.GenerateAllStates();
-            this.GenerateAllSettings();
+                //initialize
+                this.GenerateAllStates();
+                this.GenerateAllSettings();
 
-            //enable video streaming
-            this.EnableVideoStream();
+                //enable video streaming
+                this.EnableVideoStream();
 
-            if(this._d2c.Connect() == false)
-                return false;
+                if (this._d2c.Connect() == false)
+                    return;
 
-            this.Connected                  = true;
-            this._commandThread             = new Thread(this.commandThreadRoutine);
-            this._commandThread.Start();
+                this.Connected                                  = true;
+                this._commandThread                             = new Thread(this.commandThreadRoutine);
+                this._commandThread.Start();
 
-            this._streamingThread           = new Thread(this.streamingThreadRoutine);
-            this._streamingThread.Start();
+                this._streamingThread                           = new Thread(this.streamingThreadRoutine);
+                this._streamingThread.Start();
 
-            return true;
+                if (this.OnConnected != null)
+                    this.OnConnected.Invoke(this);
+            }
+            catch (Exception e)
+            {
+                if(this.OnError != null)
+                    this.OnError.Invoke(this, e.Message);
+            }
         }
 
         public void Disconnect()
@@ -147,6 +168,9 @@ namespace ParrotBebop2
             this._d2c.Disconnect();
             this._commandThread.Join();
             this._streamingThread.Join();
+
+            if(this.OnDisconnected != null)
+                this.OnDisconnected.Invoke(this);
         }
 
         public void takeoff()

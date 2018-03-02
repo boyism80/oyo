@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using OpenCvSharp;
 using System;
+using ParrotBebop2;
 
 namespace Fire_Detector.Control
 {
@@ -83,10 +84,6 @@ namespace Fire_Detector.Control
             this.UpdateUI();
         }
 
-        public void OnUpdated(UpdatedDataBuffer buffer, Mat updatedFrame, bool invalidated)
-        {
-        }
-
         private void MainConnectionView_Load(object sender, System.EventArgs e)
         {
             if(this.Root == null)
@@ -114,8 +111,6 @@ namespace Fire_Detector.Control
                 this.Root.Bebop.Disconnect();
             else
                 this.Root.Bebop.Connect();
-
-            this.UpdateUI();
         }
 
         private void leapMotionImageButton_Click(object sender, System.EventArgs e)
@@ -132,6 +127,16 @@ namespace Fire_Detector.Control
         {
             if(this.Visible)
                 this.UpdateUI();
+        }
+
+        public void Bebop_OnDisconnected(Bebop2 bebop)
+        {
+            this.UpdateUI();
+        }
+
+        public void Bebop_OnConnected(Bebop2 bebop)
+        {
+            this.UpdateUI();
         }
     }
 }

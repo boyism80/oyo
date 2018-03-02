@@ -1,4 +1,5 @@
 ﻿using BebopCommandSet;
+using Fire_Detector.Dialog;
 using OpenCvSharp;
 using oyo;
 using ParrotBebop2;
@@ -9,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Fire_Detector.BunifuForm
 {
-    partial class MainForm : OYOReceiver.IReceiveListener
+    partial class MainForm
     {
         private Pcmd                _pcmd = new Pcmd();
         private Mutex               _mutex = new Mutex();
@@ -51,7 +52,18 @@ namespace Fire_Detector.BunifuForm
             this.OnScreenStateChanged.Invoke(this.Size, !isMaximized);
         }
 
-        public void OnUpdate(StreamingType streamingType, OYOReceiver receiver)
+        public void Receiver_OnConnected(OYOReceiver receiver)
+        {
+            this.OnConnectionChanged.Invoke(true);
+        }
+
+        public void Receiver_OnDisconnected(OYOReceiver receiver)
+        {
+            if(this.OnConnectionChanged != null)
+                this.OnConnectionChanged.Invoke(false);
+        }
+
+        public void Receiver_OnUpdate(OYOReceiver receiver, StreamingType streamingType)
         {
             try
             {
@@ -143,13 +155,15 @@ namespace Fire_Detector.BunifuForm
             }
         }
 
-        public void OnError(string message)
+        public void Receiver_OnError(OYOReceiver receiver, string message)
         {
-        }
+            var mainform = this;
 
-        public void OnDisconnected()
-        {
-            this.OnConnectionChanged.Invoke(false);
+            this.Invoke(new MethodInvoker(delegate ()
+            {
+                var dialog = new MessageDialog(message, System.Drawing.Color.DarkGray);
+                dialog.ShowDialog(mainform);
+            }));
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -227,11 +241,6 @@ this._mutex.ReleaseMutex();
             this._mutex.Close();
         }
 
-        public void OnConnected()
-        {
-            this.OnConnectionChanged.Invoke(true);
-        }
-
         public void Bebop2_OnStreaming(Bebop2 bebop, Mat frame)
         {
         }
@@ -255,6 +264,16 @@ this._mutex.ReleaseMutex();
         private void Bebop_OnPositionChanged(Bebop2 bebop2, double lat, double lon, double alt)
         {
             this.Overlayer.Update(bebop2.GPS);
+        }
+
+        private void Bebop_OnError(Bebop2 bebop, string message)
+        {
+            var mainform = this;
+            this.Invoke(new MethodInvoker(delegate ()
+            {
+                var dialog = new MessageDialog(message, System.Drawing.Color.DarkGray);
+                dialog.ShowDialog(mainform);
+            }));
         }
     }
 }

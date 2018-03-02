@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Fire_Detector.Dialog
 {
     public partial class MessageDialog : System.Windows.Forms.Form
     {
-        public MessageDialog()
+        private MessageDialog()
         {
             InitializeComponent();
         }
@@ -13,6 +14,11 @@ namespace Fire_Detector.Dialog
         public MessageDialog(string message) : this()
         {
             this.messageLabel.Text = message;
+        }
+
+        public MessageDialog(string message, Color backgroundColor) : this(message)
+        {
+            this.BackColor = backgroundColor;
         }
 
         private void confirmButton_Click(object sender, EventArgs e)

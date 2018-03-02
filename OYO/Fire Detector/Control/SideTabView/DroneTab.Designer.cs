@@ -958,14 +958,15 @@
             // 
             // connectionLabel
             // 
-            this.connectionLabel.AutoSize = true;
+            this.connectionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.connectionLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.connectionLabel.ForeColor = System.Drawing.Color.Tomato;
-            this.connectionLabel.Location = new System.Drawing.Point(97, 10);
+            this.connectionLabel.Location = new System.Drawing.Point(5, 5);
             this.connectionLabel.Name = "connectionLabel";
-            this.connectionLabel.Size = new System.Drawing.Size(158, 15);
+            this.connectionLabel.Size = new System.Drawing.Size(340, 25);
             this.connectionLabel.TabIndex = 1;
             this.connectionLabel.Text = "드론과 연결 되어있지 않습니다.";
+            this.connectionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
@@ -1106,7 +1107,6 @@
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.connectDroneButton)).EndInit();
             this.ResumeLayout(false);
