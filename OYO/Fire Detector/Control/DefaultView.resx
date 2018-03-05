@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bunifuCircleProgressbar2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="detectingProgressbar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEhSURBVEhLYxgFo2AUjAKqAXt7ew4gdoBiAagwbQDIAgcH
-        h/lA/B8NHwfKaUCVUQ8ADZUAGn4f2SIg3o/E/w5UYwBVTh0ANHQ51PDzyL6C+n49VO44VJhyAPUlzDcK
-        UGE4AIpxAOWeg9QA2Q5QYcoA0KCACA+L/6k+RiehQhgAaGE/1NIGqBBlYGasYsf/Bob/t0u4X0OFMADI
-        MpClIMuhQpSBCZFKXiBL31Wx/Z0fL481iwAtAycqUKhAhSgHT8o4foIsPpwjchEqBAdAiwqgvnwOZFMv
-        386IVQ7/XMPyf0qMCiwFNwBxBZC9HWohyJcJUOXUA6k+JsFAw5HzKgy/p4mFMAA0HFQEBgAtAqXW6UB2
-        BBBLQKVHwSgYBcMCMDAAADhSgjqCWPU9AAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEzSURBVEhLYxgFo2AUjAKqAXt7ew4gdoBiAagwbQDIAgcH
+        h/lA/B8Z+7tan54Tr+QMVUY9ALRQAmjBfSTLjgPxfh8Xm/+3S3j+P6/g+LcyWTYcqpw6AGjBcqhl54EO
+        0IAKM7RG6IhfK+J98b+B4f/rSrYfUGHKAdSXIAu/A9kKUGE4mB8vL/C2kvUvyOK1KdIFUGHKANCiAKil
+        +6FCGOBUvtDF8wUC/3si1RZAhSgDQEsToJauhwphAKCaBqiafqgQZQBooAHUwPdANgdUGAUA5faD1IBC
+        BSpEOQAaeB1q8XSoEBwALSqAyj0HsqmXb4GGWUANBmFQCm4A4gogeztMHMhPgCqnHgAa6gE0HDmvwjAo
+        2KlvIQwADQcVgaDU3A/E04HsCCCWgEqPglEwCoYFYGAAAL6HgyFnJm8RAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

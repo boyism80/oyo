@@ -54,12 +54,12 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.fireDetectionTemperatruePanel = new System.Windows.Forms.Panel();
+            this.fireDetectionTemperaturePanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.fireDetectionTemperatruePanel.SuspendLayout();
+            this.fireDetectionTemperaturePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -355,25 +355,25 @@
             // 
             // fireDetectionTemperatruePanel
             // 
-            this.fireDetectionTemperatruePanel.Controls.Add(this.desiredTemperatureSlider);
-            this.fireDetectionTemperatruePanel.Controls.Add(this.desiredTemperatureLabel);
-            this.fireDetectionTemperatruePanel.Controls.Add(this.notificationSwitch);
-            this.fireDetectionTemperatruePanel.Controls.Add(this.bunifuCustomLabel1);
-            this.fireDetectionTemperatruePanel.Controls.Add(this.bunifuCustomLabel2);
-            this.fireDetectionTemperatruePanel.Controls.Add(this.bunifuCustomLabel13);
-            this.fireDetectionTemperatruePanel.Controls.Add(this.notificationLabel);
-            this.fireDetectionTemperatruePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.fireDetectionTemperatruePanel.Location = new System.Drawing.Point(0, 198);
-            this.fireDetectionTemperatruePanel.Name = "fireDetectionTemperatruePanel";
-            this.fireDetectionTemperatruePanel.Size = new System.Drawing.Size(350, 72);
-            this.fireDetectionTemperatruePanel.TabIndex = 24;
+            this.fireDetectionTemperaturePanel.Controls.Add(this.desiredTemperatureSlider);
+            this.fireDetectionTemperaturePanel.Controls.Add(this.desiredTemperatureLabel);
+            this.fireDetectionTemperaturePanel.Controls.Add(this.notificationSwitch);
+            this.fireDetectionTemperaturePanel.Controls.Add(this.bunifuCustomLabel1);
+            this.fireDetectionTemperaturePanel.Controls.Add(this.bunifuCustomLabel2);
+            this.fireDetectionTemperaturePanel.Controls.Add(this.bunifuCustomLabel13);
+            this.fireDetectionTemperaturePanel.Controls.Add(this.notificationLabel);
+            this.fireDetectionTemperaturePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.fireDetectionTemperaturePanel.Location = new System.Drawing.Point(0, 198);
+            this.fireDetectionTemperaturePanel.Name = "fireDetectionTemperatruePanel";
+            this.fireDetectionTemperaturePanel.Size = new System.Drawing.Size(350, 72);
+            this.fireDetectionTemperaturePanel.TabIndex = 24;
             // 
             // DetectFireTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.fireDetectionTemperatruePanel);
+            this.Controls.Add(this.fireDetectionTemperaturePanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -389,8 +389,8 @@
             this.panel2.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.fireDetectionTemperatruePanel.ResumeLayout(false);
-            this.fireDetectionTemperatruePanel.PerformLayout();
+            this.fireDetectionTemperaturePanel.ResumeLayout(false);
+            this.fireDetectionTemperaturePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -421,7 +421,7 @@
         private Bunifu.Framework.UI.BunifuCustomLabel desiredTemperatureLabel;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel13;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
-        private System.Windows.Forms.Panel fireDetectionTemperatruePanel;
+        private System.Windows.Forms.Panel fireDetectionTemperaturePanel;
         public Bunifu.Framework.UI.BunifuSlider desiredTemperatureSlider;
     }
 }

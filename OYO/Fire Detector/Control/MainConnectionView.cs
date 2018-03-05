@@ -42,8 +42,7 @@ namespace Fire_Detector.Control
                 this.bunifuCustomLabel17.Invoke(new MethodInvoker(delegate ()
                 {
                     this.bunifuCustomLabel17.Text               = this.Root.Receiver.Connected ? "연결됨" : "연결 안됨";
-                    this.bunifuCustomLabel15.Visible            = this.Root.Receiver.Connected;
-                    this.bunifuCustomLabel16.Visible            = this.Root.Receiver.Connected;
+                    this.cameraStatePanel.Visible               = this.Root.Receiver.Connected;
                 }));
 
                 this.droneStatePanel.Invoke(new MethodInvoker(delegate ()
