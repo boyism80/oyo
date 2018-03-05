@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Fire_Detector.Control
 {
-    public partial class MainView : BaseTabView
+    public partial class MainView : BaseControl
     {
         private int _basedHeight;
 
@@ -64,7 +64,7 @@ namespace Fire_Detector.Control
             if (tab != null)
             {
                 this.Root.defaultView.sideExpandedBar.Visible = true;
-                this.Root.defaultView.sideExpandedBar.SetActiveTab(tab.Tag as BaseTabView);
+                this.Root.defaultView.sideExpandedBar.SetActiveTab(tab.Tag as BaseControl);
             }
         }
 

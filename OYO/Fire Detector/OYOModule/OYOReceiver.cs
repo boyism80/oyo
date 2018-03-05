@@ -313,7 +313,7 @@ namespace oyo
                 try
                 {
                     this.Update(ref streamingType);
-                    if(this.OnUpdate != null)
+                    if (this.OnUpdate != null)
                         this.OnUpdate.Invoke(this, streamingType);
                 }
                 catch (SocketException)
@@ -321,9 +321,14 @@ namespace oyo
                     this.Exit();
                     break;
                 }
+                catch (ObjectDisposedException)
+                {
+                    this.Exit();
+                    break;
+                }
                 catch (Exception e)
                 {
-                    if(this.OnError != null)
+                    if (this.OnError != null)
                         this.OnError.Invoke(this, e.Message);
                 }
             }

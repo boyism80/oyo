@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetectFireTab));
-            this.buttonCollapse = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.detectionStateSwitch = new Bunifu.Framework.UI.BunifuiOSSwitch();
             this.detectionStateLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -64,58 +62,13 @@
             this.fireDetectionTemperatruePanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // buttonCollapse
-            // 
-            this.buttonCollapse.Activecolor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.BackColor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonCollapse.BorderRadius = 0;
-            this.buttonCollapse.ButtonText = "Detect Fire";
-            this.buttonCollapse.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonCollapse.DisabledColor = System.Drawing.Color.Gray;
-            this.buttonCollapse.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonCollapse.Font = new System.Drawing.Font("NEXON Football Gothic B", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonCollapse.Iconcolor = System.Drawing.Color.Transparent;
-            this.buttonCollapse.Iconimage = ((System.Drawing.Image)(resources.GetObject("buttonCollapse.Iconimage")));
-            this.buttonCollapse.Iconimage_right = null;
-            this.buttonCollapse.Iconimage_right_Selected = null;
-            this.buttonCollapse.Iconimage_Selected = null;
-            this.buttonCollapse.IconMarginLeft = 0;
-            this.buttonCollapse.IconMarginRight = 0;
-            this.buttonCollapse.IconRightVisible = true;
-            this.buttonCollapse.IconRightZoom = 0D;
-            this.buttonCollapse.IconVisible = true;
-            this.buttonCollapse.IconZoom = 30D;
-            this.buttonCollapse.IsTab = false;
-            this.buttonCollapse.Location = new System.Drawing.Point(0, 0);
-            this.buttonCollapse.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.buttonCollapse.Name = "buttonCollapse";
-            this.buttonCollapse.Normalcolor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.OnHovercolor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.OnHoverTextColor = System.Drawing.Color.White;
-            this.buttonCollapse.selected = false;
-            this.buttonCollapse.Size = new System.Drawing.Size(350, 44);
-            this.buttonCollapse.TabIndex = 16;
-            this.buttonCollapse.Text = "Detect Fire";
-            this.buttonCollapse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonCollapse.Textcolor = System.Drawing.Color.White;
-            this.buttonCollapse.TextFont = new System.Drawing.Font("NEXON Football Gothic B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // panel4
-            // 
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 44);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(350, 26);
-            this.panel4.TabIndex = 19;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.detectionStateSwitch);
             this.panel1.Controls.Add(this.detectionStateLabel);
             this.panel1.Controls.Add(this.bunifuCustomLabel9);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 232);
+            this.panel1.Location = new System.Drawing.Point(0, 162);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(350, 36);
             this.panel1.TabIndex = 23;
@@ -199,7 +152,7 @@
             this.panel3.AutoSize = true;
             this.panel3.Controls.Add(this.bunifuCustomLabel10);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 206);
+            this.panel3.Location = new System.Drawing.Point(0, 136);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5);
             this.panel3.Size = new System.Drawing.Size(350, 26);
@@ -228,7 +181,7 @@
             this.panel2.Controls.Add(this.minTemperature);
             this.panel2.Controls.Add(this.maxTemperature);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 96);
+            this.panel2.Location = new System.Drawing.Point(0, 26);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(350, 110);
             this.panel2.TabIndex = 21;
@@ -372,7 +325,7 @@
             this.panel8.AutoSize = true;
             this.panel8.Controls.Add(this.bunifuCustomLabel3);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(0, 70);
+            this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(5);
             this.panel8.Size = new System.Drawing.Size(350, 26);
@@ -410,7 +363,7 @@
             this.fireDetectionTemperatruePanel.Controls.Add(this.bunifuCustomLabel13);
             this.fireDetectionTemperatruePanel.Controls.Add(this.notificationLabel);
             this.fireDetectionTemperatruePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.fireDetectionTemperatruePanel.Location = new System.Drawing.Point(0, 268);
+            this.fireDetectionTemperatruePanel.Location = new System.Drawing.Point(0, 198);
             this.fireDetectionTemperatruePanel.Name = "fireDetectionTemperatruePanel";
             this.fireDetectionTemperatruePanel.Size = new System.Drawing.Size(350, 72);
             this.fireDetectionTemperatruePanel.TabIndex = 24;
@@ -425,10 +378,8 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel8);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.buttonCollapse);
             this.Name = "DetectFireTab";
-            this.Size = new System.Drawing.Size(350, 738);
+            this.Size = new System.Drawing.Size(350, 694);
             this.Load += new System.EventHandler(this.DetectFireTab_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -446,8 +397,6 @@
         }
 
         #endregion
-        private Bunifu.Framework.UI.BunifuFlatButton buttonCollapse;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel1;
         private Bunifu.Framework.UI.BunifuiOSSwitch notificationSwitch;
         private Bunifu.Framework.UI.BunifuiOSSwitch detectionStateSwitch;

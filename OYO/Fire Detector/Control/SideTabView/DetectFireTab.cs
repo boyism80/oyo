@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Fire_Detector.Control.SideTabView
 {
-    public partial class DetectFireTab : BaseTabView
+    public partial class DetectFireTab : BaseControl
     {
         public DetectFireTab()
         {

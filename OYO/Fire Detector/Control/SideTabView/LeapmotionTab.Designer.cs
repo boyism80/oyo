@@ -47,7 +47,6 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.buttonCollapse = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel9 = new System.Windows.Forms.Panel();
             this.bunifuImageButton8 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton4 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -82,7 +81,7 @@
             // 
             this.panel1.Controls.Add(this.bunifuCustomLabel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 168);
+            this.panel1.Location = new System.Drawing.Point(0, 124);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
             this.panel1.Size = new System.Drawing.Size(350, 44);
@@ -91,7 +90,7 @@
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.Tomato;
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(90, 9);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
@@ -106,7 +105,7 @@
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 44);
+            this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(350, 124);
             this.panel3.TabIndex = 34;
@@ -170,7 +169,7 @@
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Controls.Add(this.panel8);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 212);
+            this.panel6.Location = new System.Drawing.Point(0, 168);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(350, 98);
             this.panel6.TabIndex = 37;
@@ -236,7 +235,7 @@
             // bunifuCustomLabel6
             // 
             this.bunifuCustomLabel6.AutoSize = true;
-            this.bunifuCustomLabel6.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel6.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel6.Location = new System.Drawing.Point(115, 36);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
@@ -247,7 +246,7 @@
             // bunifuCustomLabel5
             // 
             this.bunifuCustomLabel5.AutoSize = true;
-            this.bunifuCustomLabel5.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel5.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel5.Location = new System.Drawing.Point(115, 10);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
@@ -258,7 +257,7 @@
             // bunifuCustomLabel4
             // 
             this.bunifuCustomLabel4.AutoSize = true;
-            this.bunifuCustomLabel4.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel4.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel4.Location = new System.Drawing.Point(40, 10);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
@@ -269,7 +268,7 @@
             // bunifuCustomLabel2
             // 
             this.bunifuCustomLabel2.AutoSize = true;
-            this.bunifuCustomLabel2.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel2.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(40, 36);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
@@ -301,51 +300,13 @@
             // bunifuCustomLabel3
             // 
             this.bunifuCustomLabel3.AutoSize = true;
-            this.bunifuCustomLabel3.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel3.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.Salmon;
             this.bunifuCustomLabel3.Location = new System.Drawing.Point(24, 5);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
             this.bunifuCustomLabel3.Size = new System.Drawing.Size(33, 16);
             this.bunifuCustomLabel3.TabIndex = 0;
             this.bunifuCustomLabel3.Text = "상태";
-            // 
-            // buttonCollapse
-            // 
-            this.buttonCollapse.Activecolor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.BackColor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonCollapse.BorderRadius = 0;
-            this.buttonCollapse.ButtonText = "Leapmotion";
-            this.buttonCollapse.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonCollapse.DisabledColor = System.Drawing.Color.Gray;
-            this.buttonCollapse.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonCollapse.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonCollapse.Iconcolor = System.Drawing.Color.Transparent;
-            this.buttonCollapse.Iconimage = ((System.Drawing.Image)(resources.GetObject("buttonCollapse.Iconimage")));
-            this.buttonCollapse.Iconimage_right = null;
-            this.buttonCollapse.Iconimage_right_Selected = null;
-            this.buttonCollapse.Iconimage_Selected = null;
-            this.buttonCollapse.IconMarginLeft = 0;
-            this.buttonCollapse.IconMarginRight = 0;
-            this.buttonCollapse.IconRightVisible = true;
-            this.buttonCollapse.IconRightZoom = 0D;
-            this.buttonCollapse.IconVisible = true;
-            this.buttonCollapse.IconZoom = 30D;
-            this.buttonCollapse.IsTab = false;
-            this.buttonCollapse.Location = new System.Drawing.Point(0, 0);
-            this.buttonCollapse.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.buttonCollapse.Name = "buttonCollapse";
-            this.buttonCollapse.Normalcolor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.OnHovercolor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.OnHoverTextColor = System.Drawing.Color.White;
-            this.buttonCollapse.selected = false;
-            this.buttonCollapse.Size = new System.Drawing.Size(350, 44);
-            this.buttonCollapse.TabIndex = 13;
-            this.buttonCollapse.Text = "Leapmotion";
-            this.buttonCollapse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonCollapse.Textcolor = System.Drawing.Color.White;
-            this.buttonCollapse.TextFont = new System.Drawing.Font("넥슨 풋볼고딕 B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonCollapse.Click += new System.EventHandler(this.leapmotionButton_Click);
             // 
             // panel9
             // 
@@ -359,7 +320,7 @@
             this.panel9.Controls.Add(this.bunifuImageButton1);
             this.panel9.Controls.Add(this.bunifuCustomLabel8);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(0, 336);
+            this.panel9.Location = new System.Drawing.Point(0, 292);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(350, 83);
             this.panel9.TabIndex = 42;
@@ -487,7 +448,7 @@
             // bunifuCustomLabel8
             // 
             this.bunifuCustomLabel8.AutoSize = true;
-            this.bunifuCustomLabel8.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel8.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel8.Location = new System.Drawing.Point(40, 13);
             this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
@@ -500,7 +461,7 @@
             this.panel10.AutoSize = true;
             this.panel10.Controls.Add(this.bunifuCustomLabel11);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(0, 310);
+            this.panel10.Location = new System.Drawing.Point(0, 266);
             this.panel10.Name = "panel10";
             this.panel10.Padding = new System.Windows.Forms.Padding(5);
             this.panel10.Size = new System.Drawing.Size(350, 26);
@@ -509,7 +470,7 @@
             // bunifuCustomLabel11
             // 
             this.bunifuCustomLabel11.AutoSize = true;
-            this.bunifuCustomLabel11.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel11.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel11.ForeColor = System.Drawing.Color.Salmon;
             this.bunifuCustomLabel11.Location = new System.Drawing.Point(24, 5);
             this.bunifuCustomLabel11.Name = "bunifuCustomLabel11";
@@ -527,9 +488,8 @@
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.buttonCollapse);
             this.Name = "LeapmotionTab";
-            this.Size = new System.Drawing.Size(350, 738);
+            this.Size = new System.Drawing.Size(350, 694);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -558,8 +518,6 @@
         }
 
         #endregion
-
-        private Bunifu.Framework.UI.BunifuFlatButton buttonCollapse;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private Bunifu.Framework.UI.BunifuImageButton connectLeapmotionButton;

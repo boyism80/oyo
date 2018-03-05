@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Fire_Detector.Control.SideTabView
 {
-    public partial class DroneTab : BaseTabView
+    public partial class DroneTab : BaseControl
     {
         public static int WARNING_DRONE_SPEED = 15;
 
@@ -17,62 +17,7 @@ namespace Fire_Detector.Control.SideTabView
             InitializeComponent();
         }
 
-        private void buttonCollapse_Click(object sender, EventArgs e)
-        {
-            this.Root.defaultView.sideExpandedBar.Visible = false;
-            //this.Root.defaultView.sideCollapsedBar.Visible = true;
-        }
-
-        private void connectDroneButton_Click(object sender, EventArgs e)
-        {
-            if(this.Root == null)
-                return;
-
-            if(this.Root.Bebop.Connected)
-                this.Root.Bebop.Disconnect();
-            else
-                this.Root.Bebop.Connect();
-
-            this.UpdateUI();
-        }
-
-
-        private void takeoffSwitch_OnValueChange(object sender, EventArgs e)
-        {
-            if(this.Root == null)
-                return;
-
-            if(this.takeoffSwitch.Value)
-                this.Root.Bebop.takeoff();
-            else
-                this.Root.Bebop.landing();
-
-            //if (takeoffSwitch.Value == true)
-            //{
-            //    detectionStateLabel.Text = "비행중";
-            //    droneFlightProgressbar.Value = 30;
-            //    droneFlightProgressbar.animated = true;
-            //    droneFlightProgressbar.Visible = true;
-
-            //}
-            //else
-            //{
-            //    detectionStateLabel.Text = "비행정지";
-            //    droneFlightProgressbar.Value = 0;
-            //    droneFlightProgressbar.animated = false;
-            //    droneFlightProgressbar.Visible = false;
-            //}
-        }
-
-        private void droneSpeedSlider_ValueChanged(object sender, EventArgs e)
-        {
-            droneSpeedLabel.Text = droneSpeedSlider.Value.ToString();
-
-            if (droneSpeedSlider.Value > WARNING_DRONE_SPEED) warningLabel.Visible = true;
-            else warningLabel.Visible = false;
-        }
-
-        private void UpdateUI()
+        private void update()
         {
             if(this.Root == null)
                 return;
@@ -151,7 +96,55 @@ namespace Fire_Detector.Control.SideTabView
             { }
         }
 
-        private void patrolModeSwitch_OnValueChange(object sender, EventArgs e)
+        private void ConnectDroneButton_Click(object sender, EventArgs e)
+        {
+            if(this.Root == null)
+                return;
+
+            if(this.Root.Bebop.Connected)
+                this.Root.Bebop.Disconnect();
+            else
+                this.Root.Bebop.Connect();
+
+            this.update();
+        }
+
+        private void TakeoffSwitch_OnValueChange(object sender, EventArgs e)
+        {
+            if(this.Root == null)
+                return;
+
+            if(this.takeoffSwitch.Value)
+                this.Root.Bebop.takeoff();
+            else
+                this.Root.Bebop.landing();
+
+            //if (takeoffSwitch.Value == true)
+            //{
+            //    detectionStateLabel.Text = "비행중";
+            //    droneFlightProgressbar.Value = 30;
+            //    droneFlightProgressbar.animated = true;
+            //    droneFlightProgressbar.Visible = true;
+
+            //}
+            //else
+            //{
+            //    detectionStateLabel.Text = "비행정지";
+            //    droneFlightProgressbar.Value = 0;
+            //    droneFlightProgressbar.animated = false;
+            //    droneFlightProgressbar.Visible = false;
+            //}
+        }
+
+        private void DroneSpeedSlider_ValueChanged(object sender, EventArgs e)
+        {
+            droneSpeedLabel.Text = droneSpeedSlider.Value.ToString();
+
+            if (droneSpeedSlider.Value > WARNING_DRONE_SPEED) warningLabel.Visible = true;
+            else warningLabel.Visible = false;
+        }
+
+        private void PatrolModeSwitch_OnValueChange(object sender, EventArgs e)
         {
             if(this.Root == null)
                 return;
@@ -159,7 +152,7 @@ namespace Fire_Detector.Control.SideTabView
             if(this.patrolModeSwitch.Value == false)
                 this._isPatroling = false;
 
-            this.UpdateUI();
+            this.update();
 
             if (this.patrolModeSwitch.Value) {
                 var message = "녹화모드와 같이 사용할 수 없습니다.";
@@ -168,12 +161,12 @@ namespace Fire_Detector.Control.SideTabView
             }
         }
 
-        private void recordModeSwitch_OnValueChange(object sender, EventArgs e)
+        private void RecordModeSwitch_OnValueChange(object sender, EventArgs e)
         {
             if(this.Root == null)
                 return;
 
-            this.UpdateUI();
+            this.update();
             if (this.recordModeSwitch.Value)
             {
                 var message = "순찰모드와 같이 사용할 수 없습니다.";
@@ -182,7 +175,7 @@ namespace Fire_Detector.Control.SideTabView
             }
         }
 
-        private void patrolStartEndButton_Click(object sender, EventArgs e)
+        private void PatrolStartEndButton_Click(object sender, EventArgs e)
         {
             if(this.Root == null)
                 return;
@@ -192,10 +185,10 @@ namespace Fire_Detector.Control.SideTabView
                 return;
 
             this._isPatroling = !this._isPatroling;
-            this.UpdateUI();
+            this.update();
         }
 
-        private void recordStartEndButton_Click(object sender, EventArgs e)
+        private void RecordStartEndButton_Click(object sender, EventArgs e)
         {
             if (recordStartEndButton.ButtonText.Equals("녹화 시작"))
             {
@@ -211,7 +204,7 @@ namespace Fire_Detector.Control.SideTabView
             }
         }
 
-        private void patrolFileBrowseButton_Click(object sender, EventArgs e)
+        private void PatrolFileBrowseButton_Click(object sender, EventArgs e)
         {
             var isActive = (bool)this.patrolFileBrowseButton.Tag;
             if(isActive == false)
@@ -221,7 +214,7 @@ namespace Fire_Detector.Control.SideTabView
             patrolform.ShowDialog();
         }
 
-        private void recordFileSettingButton_Click(object sender, EventArgs e)
+        private void RecordFileSettingButton_Click(object sender, EventArgs e)
         {
             var isActive = (bool)this.recordFileSettingButton.Tag;
             if(isActive == false)
@@ -231,7 +224,7 @@ namespace Fire_Detector.Control.SideTabView
             patrolform.ShowDialog();
         }
 
-        private void beginRecordButton_Click(object sender, EventArgs e)
+        private void BeginRecordButton_Click(object sender, EventArgs e)
         {
             var isActive = (bool)this.beginRecordButton.Tag;
             if (isActive == false)
@@ -241,18 +234,24 @@ namespace Fire_Detector.Control.SideTabView
 
         private void DroneTab_Load(object sender, EventArgs e)
         {
-            this.patrolModeSwitch_OnValueChange(this.patrolModeSwitch, EventArgs.Empty);
-            this.recordModeSwitch_OnValueChange(this.recordModeSwitch, EventArgs.Empty);
+            this.PatrolModeSwitch_OnValueChange(this.patrolModeSwitch, EventArgs.Empty);
+            this.RecordModeSwitch_OnValueChange(this.recordModeSwitch, EventArgs.Empty);
         }
 
         private void DroneTab_VisibleChanged(object sender, EventArgs e)
         {
             if(this.Visible)
-                this.UpdateUI();
+                this.update();
         }
 
         public void UpdatePcmdUI(Pcmd pcmd)
         {
+            if(this.Root == null)
+                return;
+
+            if(this.Root.Bebop.Connected == false)
+                return;
+
             this.bunifuImageButton5.Invoke(new MethodInvoker(delegate ()
             {
                 this.bunifuImageButton5.BackColor = pcmd.pitch > 0 ? Color.Salmon : Color.DarkGray;
@@ -297,12 +296,12 @@ namespace Fire_Detector.Control.SideTabView
 
         public void Bebop_OnDisconnected(Bebop2 bebop)
         {
-            this.UpdateUI();
+            this.update();
         }
 
         public void Bebop_OnConnected(Bebop2 bebop)
         {
-            this.UpdateUI();
+            this.update();
         }
     }
 }

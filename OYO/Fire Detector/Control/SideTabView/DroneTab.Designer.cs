@@ -92,7 +92,6 @@
             this.connectDroneProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.buttonCollapse = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel2.SuspendLayout();
             this.recordPanel.SuspendLayout();
             this.recordControlPanel.SuspendLayout();
@@ -125,11 +124,10 @@
             this.panel2.Controls.Add(this.panel9);
             this.panel2.Controls.Add(this.panel6);
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.buttonCollapse);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(350, 738);
+            this.panel2.Size = new System.Drawing.Size(350, 694);
             this.panel2.TabIndex = 17;
             // 
             // recordPanel
@@ -139,7 +137,7 @@
             this.recordPanel.Controls.Add(this.recordModeLabel);
             this.recordPanel.Controls.Add(this.recordModeSwitch);
             this.recordPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.recordPanel.Location = new System.Drawing.Point(0, 569);
+            this.recordPanel.Location = new System.Drawing.Point(0, 525);
             this.recordPanel.Name = "recordPanel";
             this.recordPanel.Size = new System.Drawing.Size(350, 133);
             this.recordPanel.TabIndex = 44;
@@ -223,7 +221,7 @@
             this.recordFileSettingButton.Size = new System.Drawing.Size(39, 30);
             this.recordFileSettingButton.TabIndex = 21;
             this.recordFileSettingButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.recordFileSettingButton.Click += new System.EventHandler(this.recordFileSettingButton_Click);
+            this.recordFileSettingButton.Click += new System.EventHandler(this.RecordFileSettingButton_Click);
             // 
             // beginRecordButton
             // 
@@ -249,7 +247,7 @@
             this.beginRecordButton.Size = new System.Drawing.Size(68, 30);
             this.beginRecordButton.TabIndex = 21;
             this.beginRecordButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.beginRecordButton.Click += new System.EventHandler(this.beginRecordButton_Click);
+            this.beginRecordButton.Click += new System.EventHandler(this.BeginRecordButton_Click);
             // 
             // recordStateLabel
             // 
@@ -415,14 +413,14 @@
             this.recordModeSwitch.Size = new System.Drawing.Size(35, 20);
             this.recordModeSwitch.TabIndex = 16;
             this.recordModeSwitch.Value = false;
-            this.recordModeSwitch.OnValueChange += new System.EventHandler(this.recordModeSwitch_OnValueChange);
+            this.recordModeSwitch.OnValueChange += new System.EventHandler(this.RecordModeSwitch_OnValueChange);
             // 
             // panel10
             // 
             this.panel10.AutoSize = true;
             this.panel10.Controls.Add(this.bunifuCustomLabel10);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(0, 543);
+            this.panel10.Location = new System.Drawing.Point(0, 499);
             this.panel10.Name = "panel10";
             this.panel10.Padding = new System.Windows.Forms.Padding(5);
             this.panel10.Size = new System.Drawing.Size(350, 26);
@@ -446,7 +444,7 @@
             this.patrolPanel.Controls.Add(this.patrolModeSwitch);
             this.patrolPanel.Controls.Add(this.patrolModeLabel);
             this.patrolPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.patrolPanel.Location = new System.Drawing.Point(0, 431);
+            this.patrolPanel.Location = new System.Drawing.Point(0, 387);
             this.patrolPanel.Name = "patrolPanel";
             this.patrolPanel.Size = new System.Drawing.Size(350, 112);
             this.patrolPanel.TabIndex = 42;
@@ -513,7 +511,7 @@
             this.patrolStartEndButton.Size = new System.Drawing.Size(68, 30);
             this.patrolStartEndButton.TabIndex = 20;
             this.patrolStartEndButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.patrolStartEndButton.Click += new System.EventHandler(this.patrolStartEndButton_Click);
+            this.patrolStartEndButton.Click += new System.EventHandler(this.PatrolStartEndButton_Click);
             // 
             // patrolFileBrowseButton
             // 
@@ -539,7 +537,7 @@
             this.patrolFileBrowseButton.Size = new System.Drawing.Size(39, 30);
             this.patrolFileBrowseButton.TabIndex = 21;
             this.patrolFileBrowseButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.patrolFileBrowseButton.Click += new System.EventHandler(this.patrolFileBrowseButton_Click);
+            this.patrolFileBrowseButton.Click += new System.EventHandler(this.PatrolFileBrowseButton_Click);
             // 
             // bunifuCustomLabel13
             // 
@@ -611,7 +609,7 @@
             this.patrolModeSwitch.Size = new System.Drawing.Size(35, 20);
             this.patrolModeSwitch.TabIndex = 16;
             this.patrolModeSwitch.Value = false;
-            this.patrolModeSwitch.OnValueChange += new System.EventHandler(this.patrolModeSwitch_OnValueChange);
+            this.patrolModeSwitch.OnValueChange += new System.EventHandler(this.PatrolModeSwitch_OnValueChange);
             // 
             // patrolModeLabel
             // 
@@ -629,7 +627,7 @@
             this.panel1.AutoSize = true;
             this.panel1.Controls.Add(this.bunifuCustomLabel5);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 405);
+            this.panel1.Location = new System.Drawing.Point(0, 361);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(350, 26);
@@ -667,7 +665,7 @@
             this.panel8.Controls.Add(this.droneFlightProgressbar);
             this.panel8.Controls.Add(this.bunifuCustomLabel7);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(0, 229);
+            this.panel8.Location = new System.Drawing.Point(0, 185);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(350, 176);
             this.panel8.TabIndex = 40;
@@ -817,7 +815,7 @@
             this.takeoffSwitch.Size = new System.Drawing.Size(35, 20);
             this.takeoffSwitch.TabIndex = 16;
             this.takeoffSwitch.Value = false;
-            this.takeoffSwitch.OnValueChange += new System.EventHandler(this.takeoffSwitch_OnValueChange);
+            this.takeoffSwitch.OnValueChange += new System.EventHandler(this.TakeoffSwitch_OnValueChange);
             // 
             // detectionStateLabel
             // 
@@ -842,7 +840,7 @@
             this.droneSpeedSlider.Size = new System.Drawing.Size(160, 28);
             this.droneSpeedSlider.TabIndex = 0;
             this.droneSpeedSlider.Value = 0;
-            this.droneSpeedSlider.ValueChanged += new System.EventHandler(this.droneSpeedSlider_ValueChanged);
+            this.droneSpeedSlider.ValueChanged += new System.EventHandler(this.DroneSpeedSlider_ValueChanged);
             // 
             // bunifuCustomLabel2
             // 
@@ -928,7 +926,7 @@
             this.panel9.AutoSize = true;
             this.panel9.Controls.Add(this.bunifuCustomLabel3);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(0, 203);
+            this.panel9.Location = new System.Drawing.Point(0, 159);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(5);
             this.panel9.Size = new System.Drawing.Size(350, 26);
@@ -949,7 +947,7 @@
             // 
             this.panel6.Controls.Add(this.connectionLabel);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 168);
+            this.panel6.Location = new System.Drawing.Point(0, 124);
             this.panel6.Margin = new System.Windows.Forms.Padding(5);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(5);
@@ -975,7 +973,7 @@
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 44);
+            this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(350, 124);
             this.panel3.TabIndex = 30;
@@ -992,7 +990,7 @@
             this.connectDroneButton.TabIndex = 29;
             this.connectDroneButton.TabStop = false;
             this.connectDroneButton.Zoom = 10;
-            this.connectDroneButton.Click += new System.EventHandler(this.connectDroneButton_Click);
+            this.connectDroneButton.Click += new System.EventHandler(this.ConnectDroneButton_Click);
             // 
             // connectDroneProgressbar
             // 
@@ -1032,44 +1030,6 @@
             this.panel4.Size = new System.Drawing.Size(98, 124);
             this.panel4.TabIndex = 0;
             // 
-            // buttonCollapse
-            // 
-            this.buttonCollapse.Activecolor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.BackColor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonCollapse.BorderRadius = 0;
-            this.buttonCollapse.ButtonText = "Drone Control";
-            this.buttonCollapse.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonCollapse.DisabledColor = System.Drawing.Color.Gray;
-            this.buttonCollapse.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonCollapse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonCollapse.Iconcolor = System.Drawing.Color.Transparent;
-            this.buttonCollapse.Iconimage = ((System.Drawing.Image)(resources.GetObject("buttonCollapse.Iconimage")));
-            this.buttonCollapse.Iconimage_right = null;
-            this.buttonCollapse.Iconimage_right_Selected = null;
-            this.buttonCollapse.Iconimage_Selected = null;
-            this.buttonCollapse.IconMarginLeft = 0;
-            this.buttonCollapse.IconMarginRight = 0;
-            this.buttonCollapse.IconRightVisible = true;
-            this.buttonCollapse.IconRightZoom = 0D;
-            this.buttonCollapse.IconVisible = true;
-            this.buttonCollapse.IconZoom = 30D;
-            this.buttonCollapse.IsTab = false;
-            this.buttonCollapse.Location = new System.Drawing.Point(0, 0);
-            this.buttonCollapse.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.buttonCollapse.Name = "buttonCollapse";
-            this.buttonCollapse.Normalcolor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.OnHovercolor = System.Drawing.Color.Tomato;
-            this.buttonCollapse.OnHoverTextColor = System.Drawing.Color.White;
-            this.buttonCollapse.selected = false;
-            this.buttonCollapse.Size = new System.Drawing.Size(350, 44);
-            this.buttonCollapse.TabIndex = 13;
-            this.buttonCollapse.Text = "Drone Control";
-            this.buttonCollapse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.buttonCollapse.Textcolor = System.Drawing.Color.White;
-            this.buttonCollapse.TextFont = new System.Drawing.Font("NEXON Football Gothic B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCollapse.Click += new System.EventHandler(this.buttonCollapse_Click);
-            // 
             // DroneTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1077,7 +1037,7 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.panel2);
             this.Name = "DroneTab";
-            this.Size = new System.Drawing.Size(350, 738);
+            this.Size = new System.Drawing.Size(350, 694);
             this.Load += new System.EventHandler(this.DroneTab_Load);
             this.VisibleChanged += new System.EventHandler(this.DroneTab_VisibleChanged);
             this.panel2.ResumeLayout(false);
@@ -1122,7 +1082,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel6;
-        private Bunifu.Framework.UI.BunifuFlatButton buttonCollapse;
         private System.Windows.Forms.Panel panel8;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel7;
         private System.Windows.Forms.Panel panel9;
