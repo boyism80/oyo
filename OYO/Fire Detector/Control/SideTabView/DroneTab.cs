@@ -15,6 +15,23 @@ namespace Fire_Detector.Control.SideTabView
         public DroneTab()
         {
             InitializeComponent();
+            if (this.Root == null) return;
+
+            //0302지승추가
+            if (this.Root.Bebop.Connected)
+                enablePanel(true);
+            else
+                enablePanel(false);
+            
+            ////
+        }
+
+        private void enablePanel(bool isEnable)
+        {
+            takeoffSwitch.Enabled = isEnable;
+            droneSpeedSlider.Enabled = isEnable;
+            patrolModeSwitch.Enabled = isEnable;
+            recordModeSwitch.Enabled = isEnable;
         }
 
         private void buttonCollapse_Click(object sender, EventArgs e)
@@ -28,10 +45,18 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            if(this.Root.Bebop.Connected)
+            if (this.Root.Bebop.Connected)
+            {
                 this.Root.Bebop.Disconnect();
+                enablePanel(false);
+            }
+
             else
+            {
                 this.Root.Bebop.Connect();
+                enablePanel(true);
+            }
+                
 
             this.UpdateUI();
         }
@@ -163,7 +188,7 @@ namespace Fire_Detector.Control.SideTabView
 
             if (this.patrolModeSwitch.Value) {
                 var message = "녹화모드와 같이 사용할 수 없습니다.";
-                var messageform = new Fire_Detector.Dialog.MessageDialog(message);
+                var messageform = new Fire_Detector.Dialog.MessageDialog(message, SystemColors.Control);
                 messageform.ShowDialog(this.Root);
             }
         }
@@ -177,7 +202,7 @@ namespace Fire_Detector.Control.SideTabView
             if (this.recordModeSwitch.Value)
             {
                 var message = "순찰모드와 같이 사용할 수 없습니다.";
-                var messageform = new Fire_Detector.Dialog.MessageDialog(message);
+                var messageform = new Fire_Detector.Dialog.MessageDialog(message, SystemColors.ControlLightLight);
                 messageform.ShowDialog(this.Root);
             }
         }

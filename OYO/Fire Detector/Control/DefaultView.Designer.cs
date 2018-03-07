@@ -89,7 +89,7 @@
             // 
             this.bunifuCustomLabel2.AutoEllipsis = true;
             this.bunifuCustomLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bunifuCustomLabel2.Font = new System.Drawing.Font("NEXON Football Gothic L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel2.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.Lime;
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(0, 15);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
@@ -132,7 +132,7 @@
             // bunifuCustomLabel4
             // 
             this.bunifuCustomLabel4.AutoSize = true;
-            this.bunifuCustomLabel4.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel4.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.bunifuCustomLabel4.Location = new System.Drawing.Point(6, 17);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
@@ -153,7 +153,7 @@
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.Lime;
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(7, 17);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
@@ -164,7 +164,7 @@
             // droneSpeedLabel
             // 
             this.droneSpeedLabel.AutoSize = true;
-            this.droneSpeedLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.droneSpeedLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.droneSpeedLabel.ForeColor = System.Drawing.Color.Lime;
             this.droneSpeedLabel.Location = new System.Drawing.Point(48, 17);
             this.droneSpeedLabel.Name = "droneSpeedLabel";
@@ -185,7 +185,7 @@
             // bunifuCustomLabel5
             // 
             this.bunifuCustomLabel5.AutoSize = true;
-            this.bunifuCustomLabel5.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel5.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel5.ForeColor = System.Drawing.Color.Lime;
             this.bunifuCustomLabel5.Location = new System.Drawing.Point(7, 17);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
@@ -196,7 +196,7 @@
             // droneAltitudeLabel
             // 
             this.droneAltitudeLabel.AutoSize = true;
-            this.droneAltitudeLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.droneAltitudeLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.droneAltitudeLabel.ForeColor = System.Drawing.Color.Lime;
             this.droneAltitudeLabel.Location = new System.Drawing.Point(48, 17);
             this.droneAltitudeLabel.Name = "droneAltitudeLabel";
@@ -253,6 +253,7 @@
             // 
             // streamingFrameBox
             // 
+            this.streamingFrameBox.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.streamingFrameBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.streamingFrameBox.Image = global::Fire_Detector.Properties.Resources.no_image_available;
             this.streamingFrameBox.Location = new System.Drawing.Point(0, 0);

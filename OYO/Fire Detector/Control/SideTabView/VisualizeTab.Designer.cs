@@ -77,6 +77,13 @@
             this.transparencyLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.bunifuCustomLabel9 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.bunifuCustomLabel10 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuRange1 = new Bunifu.Framework.UI.BunifuRange();
+            this.bunifuCustomLabel11 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuRange2 = new Bunifu.Framework.UI.BunifuRange();
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectVisualizeButton)).BeginInit();
@@ -97,6 +104,8 @@
             this.panel18.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel21.SuspendLayout();
+            this.panel22.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel12
@@ -360,7 +369,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 341);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(350, 280);
+            this.panel5.Size = new System.Drawing.Size(350, 234);
             this.panel5.TabIndex = 43;
             // 
             // panel6
@@ -731,11 +740,97 @@
             this.bunifuCustomLabel3.TabIndex = 1;
             this.bunifuCustomLabel3.Text = "적외선 옵션";
             // 
+            // panel21
+            // 
+            this.panel21.AutoSize = true;
+            this.panel21.Controls.Add(this.bunifuCustomLabel9);
+            this.panel21.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel21.Location = new System.Drawing.Point(0, 575);
+            this.panel21.Name = "panel21";
+            this.panel21.Padding = new System.Windows.Forms.Padding(5);
+            this.panel21.Size = new System.Drawing.Size(350, 28);
+            this.panel21.TabIndex = 44;
+            // 
+            // bunifuCustomLabel9
+            // 
+            this.bunifuCustomLabel9.AutoSize = true;
+            this.bunifuCustomLabel9.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel9.ForeColor = System.Drawing.Color.Salmon;
+            this.bunifuCustomLabel9.Location = new System.Drawing.Point(24, 7);
+            this.bunifuCustomLabel9.Name = "bunifuCustomLabel9";
+            this.bunifuCustomLabel9.Size = new System.Drawing.Size(73, 16);
+            this.bunifuCustomLabel9.TabIndex = 1;
+            this.bunifuCustomLabel9.Text = "카메라 크롭";
+            // 
+            // panel22
+            // 
+            this.panel22.Controls.Add(this.bunifuRange2);
+            this.panel22.Controls.Add(this.bunifuRange1);
+            this.panel22.Controls.Add(this.bunifuCustomLabel11);
+            this.panel22.Controls.Add(this.bunifuCustomLabel10);
+            this.panel22.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel22.Location = new System.Drawing.Point(0, 603);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(350, 100);
+            this.panel22.TabIndex = 45;
+            // 
+            // bunifuCustomLabel10
+            // 
+            this.bunifuCustomLabel10.AutoSize = true;
+            this.bunifuCustomLabel10.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel10.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bunifuCustomLabel10.Location = new System.Drawing.Point(42, 12);
+            this.bunifuCustomLabel10.Name = "bunifuCustomLabel10";
+            this.bunifuCustomLabel10.Size = new System.Drawing.Size(28, 15);
+            this.bunifuCustomLabel10.TabIndex = 2;
+            this.bunifuCustomLabel10.Text = "수평";
+            // 
+            // bunifuRange1
+            // 
+            this.bunifuRange1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuRange1.BackgroudColor = System.Drawing.Color.DarkGray;
+            this.bunifuRange1.BorderRadius = 5;
+            this.bunifuRange1.IndicatorColor = System.Drawing.Color.Salmon;
+            this.bunifuRange1.Location = new System.Drawing.Point(110, 6);
+            this.bunifuRange1.MaximumRange = 100;
+            this.bunifuRange1.Name = "bunifuRange1";
+            this.bunifuRange1.RangeMax = 80;
+            this.bunifuRange1.RangeMin = 20;
+            this.bunifuRange1.Size = new System.Drawing.Size(224, 28);
+            this.bunifuRange1.TabIndex = 3;
+            // 
+            // bunifuCustomLabel11
+            // 
+            this.bunifuCustomLabel11.AutoSize = true;
+            this.bunifuCustomLabel11.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel11.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bunifuCustomLabel11.Location = new System.Drawing.Point(43, 47);
+            this.bunifuCustomLabel11.Name = "bunifuCustomLabel11";
+            this.bunifuCustomLabel11.Size = new System.Drawing.Size(29, 15);
+            this.bunifuCustomLabel11.TabIndex = 2;
+            this.bunifuCustomLabel11.Text = "수직";
+            // 
+            // bunifuRange2
+            // 
+            this.bunifuRange2.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuRange2.BackgroudColor = System.Drawing.Color.DarkGray;
+            this.bunifuRange2.BorderRadius = 5;
+            this.bunifuRange2.IndicatorColor = System.Drawing.Color.Salmon;
+            this.bunifuRange2.Location = new System.Drawing.Point(110, 40);
+            this.bunifuRange2.MaximumRange = 100;
+            this.bunifuRange2.Name = "bunifuRange2";
+            this.bunifuRange2.RangeMax = 80;
+            this.bunifuRange2.RangeMin = 20;
+            this.bunifuRange2.Size = new System.Drawing.Size(224, 28);
+            this.bunifuRange2.TabIndex = 3;
+            // 
             // VisualizeTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.panel22);
+            this.Controls.Add(this.panel21);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel16);
             this.Controls.Add(this.panel3);
@@ -777,6 +872,10 @@
             this.panel19.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.panel21.ResumeLayout(false);
+            this.panel21.PerformLayout();
+            this.panel22.ResumeLayout(false);
+            this.panel22.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -832,5 +931,12 @@
         private Bunifu.Framework.UI.BunifuCheckbox fixLevelCheckBox;
         private System.Windows.Forms.Panel panel20;
         private Bunifu.Framework.UI.BunifuRange levelTemperatureRange;
+        private System.Windows.Forms.Panel panel21;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel9;
+        private System.Windows.Forms.Panel panel22;
+        private Bunifu.Framework.UI.BunifuRange bunifuRange2;
+        private Bunifu.Framework.UI.BunifuRange bunifuRange1;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel11;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel10;
     }
 }
