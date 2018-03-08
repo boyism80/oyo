@@ -1,6 +1,5 @@
 ﻿using OpenCvSharp;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Net;
@@ -73,7 +72,7 @@ namespace oyo
             this._owner                     = owner;
             this._icon                      = Cv2.ImRead("resources/gmap.png", ImreadModes.Unchanged);
             this._mask                      = this._icon.ExtractChannel(3).Threshold(254, 255, ThresholdTypes.Binary);
-            this._cachedGmap                      = new Mat();
+            this._cachedGmap                = new Mat();
             this._mutex                     = new Mutex();
             this.GPS                        = new GPS(51.509865, -0.118092);
         }

@@ -32,7 +32,6 @@ namespace Fire_Detector.BunifuForm
         public delegate void                    ScreenStateChangedEvent(System.Drawing.Size size, bool isMaximize);
         #endregion
 
-
         #region 정적 공유 상수 선언부
         /// <summary>
         /// 카메라서버의 주소입니다.
@@ -84,7 +83,6 @@ namespace Fire_Detector.BunifuForm
         public event ScreenStateChangedEvent    OnScreenStateChanged;
         #endregion
 
-
         #region 프로퍼티 선언부
         /// <summary>
         /// 업데이트된 프레임에 대한 정보를 보관하는 버퍼 클래스 인스턴스입니다.
@@ -131,6 +129,11 @@ namespace Fire_Detector.BunifuForm
         /// 드론에 대한 인스턴스입니다.
         /// </summary>
         public Bebop2                           Bebop { get; private set; }
+
+        /// <summary>
+        /// 립모션 컨트롤러 인스턴스입니다.
+        /// </summary>
+        public Leap.Controller                  LeapController { get; private set; }
         #endregion
 
         public MainForm()
@@ -171,6 +174,15 @@ namespace Fire_Detector.BunifuForm
             this.Bebop.OnAltitudeChanged       += this.Bebop2_OnAltitudeChanged;
             this.Bebop.OnPositionChanged       += this.Bebop_OnPositionChanged;
             this.Bebop.OnError                 += this.Bebop_OnError;
+
+
+            this.LeapController                 = new Leap.Controller();
+            this.LeapController.SetPolicy(Leap.Controller.PolicyFlag.POLICY_ALLOW_PAUSE_RESUME);
+            this.LeapController.Connect        += this.mainView.mainConnectionView.LeapmotionController_Connect;
+            this.LeapController.Disconnect     += this.mainView.mainConnectionView.LeapmotionController_Disconnect;
+            this.LeapController.Device         += this.mainView.mainConnectionView.LeapController_Device;
+            this.LeapController.DeviceLost     += this.mainView.mainConnectionView.LeapController_DeviceLost;
+            this.LeapController.FrameReady     += this.mainView.mainConnectionView.LeapController_FrameReady;
 
             this.Config                         = new Config();
             this.Config.Visualize.Palette       = this.defaultView.sideExpandedBar.visualizeTab.palettesDropDown.selectedValue;
