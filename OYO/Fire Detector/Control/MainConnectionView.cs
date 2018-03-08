@@ -1,14 +1,13 @@
 ﻿using Fire_Detector.Control.SideTabView;
-using Fire_Detector.Source;
+using oyo;
+using ParrotBebop2;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using OpenCvSharp;
-using System;
-using ParrotBebop2;
 
 namespace Fire_Detector.Control
 {
-    public partial class MainConnectionView : BaseTabView
+    public partial class MainConnectionView : BaseControl
     {
         private Panel[]         iconPanels;
 
@@ -19,7 +18,7 @@ namespace Fire_Detector.Control
             this.iconPanels                 = new Panel[] { this.dronePanel, this.raspCamPanel, this.leapmotionPanel };
         }
 
-        private void UpdateUI()
+        private void update()
         {
             if(this.Root == null)
                 return;
@@ -35,16 +34,20 @@ namespace Fire_Detector.Control
 
                 this.droneProgressbar.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.droneProgressbar.Value               = this.Root.Bebop.Connected ? 15 : 0;
-                    this.droneProgressbar.animated            = this.Root.Bebop.Connected;
-                    this.droneProgressbar.ProgressBackColor   = this.Root.Bebop.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
+                    this.droneProgressbar.Value                 = this.Root.Bebop.Connected ? 15 : 0;
+                    this.droneProgressbar.animated              = this.Root.Bebop.Connected;
+                    this.droneProgressbar.ProgressBackColor     = this.Root.Bebop.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
                 }));
 
                 this.bunifuCustomLabel17.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.bunifuCustomLabel17.Text             = this.Root.Receiver.Connected ? "연결됨" : "연결 안됨";
-                    this.bunifuCustomLabel15.Visible          = this.Root.Receiver.Connected;
-                    this.bunifuCustomLabel16.Visible          = this.Root.Receiver.Connected;
+                    this.bunifuCustomLabel17.Text               = this.Root.Receiver.Connected ? "연결됨" : "연결 안됨";
+                    this.cameraStatePanel.Visible               = this.Root.Receiver.Connected;
+                }));
+
+                this.droneStatePanel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.droneStatePanel.Visible                = this.Root.Bebop.Connected;
                 }));
             }
             catch(Exception)
@@ -79,9 +82,9 @@ namespace Fire_Detector.Control
             }
         }
 
-        public void OnConnectionChanged(bool connected)
+        public void Receiver_OnConnectionChanged(OYOReceiver receiver)
         {
-            this.UpdateUI();
+            this.update();
         }
 
         private void MainConnectionView_Load(object sender, System.EventArgs e)
@@ -103,7 +106,6 @@ namespace Fire_Detector.Control
 
         private void droneImageButton_Click(object sender, System.EventArgs e)
         {
-            // 드론 서버랑 연결
             if(this.Root == null)
                 return;
 
@@ -118,25 +120,15 @@ namespace Fire_Detector.Control
             // 립모션이랑 연결
         }
 
-        private void bunifuCustomLabel9_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void MainConnectionView_VisibleChanged(object sender, EventArgs e)
         {
             if(this.Visible)
-                this.UpdateUI();
+                this.update();
         }
 
-        public void Bebop_OnDisconnected(Bebop2 bebop)
+        public void Bebop_OnConnectionChanged(Bebop2 bebop)
         {
-            this.UpdateUI();
-        }
-
-        public void Bebop_OnConnected(Bebop2 bebop)
-        {
-            this.UpdateUI();
+            this.update();
         }
     }
 }

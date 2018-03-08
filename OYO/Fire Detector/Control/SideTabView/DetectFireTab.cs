@@ -1,15 +1,17 @@
 ﻿using Fire_Detector.Source;
 using OpenCvSharp;
+using oyo;
 using System;
 using System.Windows.Forms;
 
 namespace Fire_Detector.Control.SideTabView
 {
-    public partial class DetectFireTab : BaseTabView
+    public partial class DetectFireTab : BaseControl
     {
         public DetectFireTab()
         {
             InitializeComponent();
+            this.detectionStateSwitch_OnValueChange(this.detectionStateSwitch, EventArgs.Empty);
         }
 
         private void desiredTemperatureSlider_ValueChanged(object sender, EventArgs e)
@@ -25,18 +27,15 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            if (detectionStateSwitch.Value == true)
-            {
-                detectionStateLabel.Text = "감지중";
-                fireDetectionTemperatruePanel.Visible = true;
-            }
-            else
-            {
-                detectionStateLabel.Text = "감지 안함";
-                fireDetectionTemperatruePanel.Visible = false;
-            }
+            var detecting                                           = detectionStateSwitch.Value;
 
-            this.Root.Config.Detecting.Enabled = detectionStateSwitch.Value;
+            this.detectionStateLabel.Text                           = detecting ? "감지중" : "감지 안함";
+            this.fireDetectionTemperaturePanel.Visible              = detecting;
+
+            this.Root.Config.Detecting.Enabled                      = detecting;
+
+            this.Root.defaultView.detectingLabel.Text               = detecting ? "산불감지중" : "산불감지안함";
+            this.Root.defaultView.detectingProgressbar.animated     = detecting;
         }
 
         private void notificationSwitch_OnValueChange(object sender, EventArgs e)
@@ -68,6 +67,11 @@ namespace Fire_Detector.Control.SideTabView
             {
                 this.meanTemperature.Text = buffer.MeanTemperature.ToString("0.00");
             }));
+        }
+
+        public void Receiver_OnDisconnected(OYOReceiver receiver)
+        {
+            this.detectionStateSwitch.Value = false;
         }
     }
 }

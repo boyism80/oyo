@@ -1,11 +1,12 @@
 ﻿using Fire_Detector.Source;
 using OpenCvSharp;
+using oyo;
 using System;
 using System.Windows.Forms;
 
 namespace Fire_Detector.Control.SideTabView
 {
-    public partial class VisualizeTab : BaseTabView
+    public partial class VisualizeTab : BaseControl
     {
         public VisualizeTab()
         {
@@ -47,19 +48,19 @@ namespace Fire_Detector.Control.SideTabView
             { }
         }
         
-        public void OnConnectionChanged(bool connected)
+        public void Receiver_OnConnectionChanged(OYOReceiver receiver)
         {
             try
             {
                 this.connectionCameraProgressbar.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.connectionCameraProgressbar.animated = connected;
-                    this.connectionCameraProgressbar.Value = connected ? 40 : 0;
+                    this.connectionCameraProgressbar.animated = receiver.Connected;
+                    this.connectionCameraProgressbar.Value = receiver.Connected ? 40 : 0;
                 }));
 
                 this.connectionLabel.Invoke(new MethodInvoker(delegate ()
                 {
-                    connectionLabel.Text = connected ? "서버와 연결되었습니다." : "서버와 연결되지 않았습니다.";
+                    connectionLabel.Text = receiver.Connected ? "서버와 연결되었습니다." : "서버와 연결되지 않았습니다.";
                 }));
 
                 this.UpdateUI();

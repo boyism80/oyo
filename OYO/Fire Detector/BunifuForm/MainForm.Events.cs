@@ -4,15 +4,26 @@ using OpenCvSharp;
 using oyo;
 using ParrotBebop2;
 using System;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 
 namespace Fire_Detector.BunifuForm
 {
+    /// <summary>
+    /// MainForm.Events.cs
+    /// 
+    /// 메인폼에서 등록한 이벤트들을 처리합니다.
+    /// </summary>
     partial class MainForm
     {
+        /// <summary>
+        /// 드론에게 보낼 컨트롤 정보입니다.
+        /// </summary>
         private Pcmd                _pcmd = new Pcmd();
+
+        /// <summary>
+        /// 드론에게 보낼 컨트롤을 조작하는데 필요한 뮤텍스 인스턴스입니다.
+        /// </summary>
         private Mutex               _mutex = new Mutex();
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -52,17 +63,6 @@ namespace Fire_Detector.BunifuForm
             this.OnScreenStateChanged.Invoke(this.Size, !isMaximized);
         }
 
-        public void Receiver_OnConnected(OYOReceiver receiver)
-        {
-            this.OnConnectionChanged.Invoke(true);
-        }
-
-        public void Receiver_OnDisconnected(OYOReceiver receiver)
-        {
-            if(this.OnConnectionChanged != null)
-                this.OnConnectionChanged.Invoke(false);
-        }
-
         public void Receiver_OnUpdate(OYOReceiver receiver, StreamingType streamingType)
         {
             try
@@ -85,7 +85,7 @@ namespace Fire_Detector.BunifuForm
                 if (streamingType == StreamingType.Infrared)
                 {
                     updatedFrame = receiver.Infrared(scaled);
-                    this.UpdatedDataBuffer.SetInfrared(this.MappingPalette(updatedFrame), receiver.Temperature(scaled));
+                    this.UpdatedDataBuffer.SetInfrared(this.mappingPalette(updatedFrame), receiver.Temperature(scaled));
                 }
                 else
                 {
@@ -168,15 +168,21 @@ namespace Fire_Detector.BunifuForm
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.Blender.Smooth                 = true;
-            this.Blender.Transparency           = this.defaultView.sideExpandedBar.visualizeTab.transparencySlider.Value / 100.0f;
-
+            //
+            // 글로벌 키보드 후킹을 연결합니다.
+            // 드론 컨트롤에 사용됩니다.
+            //
+            OYOKeysHook.OnKeyboardHook += this.OnKeyboardHook;
             OYOKeysHook.Set();
-            OYOKeysHook.OnKeyboardHook += OnKeyboardHook;
 
             this.OnScreenStateChanged.Invoke(this.Size, false);
         }
 
+        /// <summary>
+        /// 키보드 조작이 일이나면 호출되는 핸들러입니다.
+        /// </summary>
+        /// <param name="key">조작된 키</param>
+        /// <param name="isDown">키가 눌렸다면 true, 아니라면 false</param>
         private void OnKeyboardHook(Keys key, bool isDown)
         {
 this._mutex.WaitOne();

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Fire_Detector.Control.SideTabView
 {
-    public partial class LeapmotionTab : BaseTabView
+    public partial class LeapmotionTab : BaseControl
     {
         public LeapmotionTab()
         {

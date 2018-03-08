@@ -33,8 +33,8 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.bunifuCircleProgressbar2 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
-            this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.detectingProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
+            this.detectingLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.droneSpeedLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -99,46 +99,46 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.bunifuCircleProgressbar2);
-            this.panel4.Controls.Add(this.bunifuCustomLabel4);
+            this.panel4.Controls.Add(this.detectingProgressbar);
+            this.panel4.Controls.Add(this.detectingLabel);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(498, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(106, 50);
             this.panel4.TabIndex = 13;
             // 
-            // bunifuCircleProgressbar2
+            // detectingProgressbar
             // 
-            this.bunifuCircleProgressbar2.animated = true;
-            this.bunifuCircleProgressbar2.animationIterval = 5;
-            this.bunifuCircleProgressbar2.animationSpeed = 3;
-            this.bunifuCircleProgressbar2.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuCircleProgressbar2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuCircleProgressbar2.BackgroundImage")));
-            this.bunifuCircleProgressbar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.bunifuCircleProgressbar2.ForeColor = System.Drawing.Color.SeaGreen;
-            this.bunifuCircleProgressbar2.LabelVisible = false;
-            this.bunifuCircleProgressbar2.LineProgressThickness = 2;
-            this.bunifuCircleProgressbar2.LineThickness = 2;
-            this.bunifuCircleProgressbar2.Location = new System.Drawing.Point(72, 11);
-            this.bunifuCircleProgressbar2.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.bunifuCircleProgressbar2.MaxValue = 100;
-            this.bunifuCircleProgressbar2.Name = "bunifuCircleProgressbar2";
-            this.bunifuCircleProgressbar2.ProgressBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuCircleProgressbar2.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.bunifuCircleProgressbar2.Size = new System.Drawing.Size(29, 29);
-            this.bunifuCircleProgressbar2.TabIndex = 7;
-            this.bunifuCircleProgressbar2.Value = 15;
+            this.detectingProgressbar.animated = true;
+            this.detectingProgressbar.animationIterval = 5;
+            this.detectingProgressbar.animationSpeed = 3;
+            this.detectingProgressbar.BackColor = System.Drawing.Color.Transparent;
+            this.detectingProgressbar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("detectingProgressbar.BackgroundImage")));
+            this.detectingProgressbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
+            this.detectingProgressbar.ForeColor = System.Drawing.Color.SeaGreen;
+            this.detectingProgressbar.LabelVisible = false;
+            this.detectingProgressbar.LineProgressThickness = 2;
+            this.detectingProgressbar.LineThickness = 2;
+            this.detectingProgressbar.Location = new System.Drawing.Point(72, 11);
+            this.detectingProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.detectingProgressbar.MaxValue = 100;
+            this.detectingProgressbar.Name = "detectingProgressbar";
+            this.detectingProgressbar.ProgressBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.detectingProgressbar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.detectingProgressbar.Size = new System.Drawing.Size(29, 29);
+            this.detectingProgressbar.TabIndex = 7;
+            this.detectingProgressbar.Value = 15;
             // 
-            // bunifuCustomLabel4
+            // detectingLabel
             // 
-            this.bunifuCustomLabel4.AutoSize = true;
-            this.bunifuCustomLabel4.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.bunifuCustomLabel4.Location = new System.Drawing.Point(6, 17);
-            this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
-            this.bunifuCustomLabel4.Size = new System.Drawing.Size(70, 16);
-            this.bunifuCustomLabel4.TabIndex = 6;
-            this.bunifuCustomLabel4.Text = "산불감지중";
+            this.detectingLabel.AutoSize = true;
+            this.detectingLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detectingLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.detectingLabel.Location = new System.Drawing.Point(6, 17);
+            this.detectingLabel.Name = "detectingLabel";
+            this.detectingLabel.Size = new System.Drawing.Size(70, 16);
+            this.detectingLabel.TabIndex = 6;
+            this.detectingLabel.Text = "산불감지중";
             // 
             // panel3
             // 
@@ -323,8 +323,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
-        private Bunifu.Framework.UI.BunifuCircleProgressbar bunifuCircleProgressbar2;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
@@ -333,5 +331,7 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         public Bunifu.Framework.UI.BunifuCustomLabel droneSpeedLabel;
         public Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
+        public Bunifu.Framework.UI.BunifuCircleProgressbar detectingProgressbar;
+        public Bunifu.Framework.UI.BunifuCustomLabel detectingLabel;
     }
 }

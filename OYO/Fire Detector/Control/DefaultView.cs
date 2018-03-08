@@ -9,27 +9,28 @@ using System.Windows.Forms;
 
 namespace Fire_Detector.Control
 {
-    public partial class DefaultView : BaseTabView
+    /// <summary>
+    /// 디폴트 상태 뷰 클래스입니다.
+    /// 메인뷰 이외의 상태에서 나타나는 모든 UI를 관리합니다.
+    /// </summary>
+    public partial class DefaultView : BaseControl
     {
         public DefaultView()
         {
             InitializeComponent();
         }
 
-        public void OnConnectionChanged(bool connected)
+        public void Receiver_OnConnectionChanged(OYOReceiver receiver)
         {
             try
             {
-                if (connected == false)
+                this.streamingFrameBox.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.streamingFrameBox.Invoke(new MethodInvoker(delegate ()
-                    {
-                        this.streamingFrameBox.SizeMode = PictureBoxSizeMode.CenterImage;
-                        this.streamingFrameBox.Image = Properties.Resources.no_image_available;
-                    }));
+                    this.streamingFrameBox.SizeMode     = PictureBoxSizeMode.CenterImage;
+                    this.streamingFrameBox.Image        = Properties.Resources.no_image_available;
+                }));
 
-                    this.Cursor = Cursors.Default;
-                }
+                this.Cursor = Cursors.Default;
             }
             catch (Exception)
             { }
@@ -43,8 +44,6 @@ namespace Fire_Detector.Control
             if(invalidated == false)
                 return;
 
-            
-            //updatedFrame = this._overlayer.Overlay(updatedFrame, new OpenCvSharp.Point(50, 50));
             this.streamingFrameBox.Invoke(new MethodInvoker(delegate ()
             {
                 this.streamingFrameBox.Image = Image.FromStream(new MemoryStream(updatedFrame.ToBytes(".jpg")));
