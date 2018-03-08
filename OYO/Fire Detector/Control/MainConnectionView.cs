@@ -1,4 +1,5 @@
 ﻿using Fire_Detector.Control.SideTabView;
+using Fire_Detector.Source.Extension;
 using oyo;
 using ParrotBebop2;
 using System;
@@ -129,6 +130,80 @@ namespace Fire_Detector.Control
         public void Bebop_OnConnectionChanged(Bebop2 bebop)
         {
             this.update();
+        }
+
+        public void LeapController_FrameReady(object sender, Leap.FrameEventArgs e)
+        {
+            var frame = e.frame;
+            var isLeftActive = (frame.LeftHand() != null);
+            var isRightActive = (frame.RightHand() != null);
+            this.leapLeftDetectingLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.leapLeftDetectingLabel.Text = isLeftActive ? "왼손 인식중" : "왼속 인식 안됨";
+            }));
+
+            this.leapRightDetectingLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.leapRightDetectingLabel.Text = isRightActive ? "오른손 인식중" : "오른손 인식 안됨";
+            }));
+        }
+
+        public void LeapController_DeviceLost(object sender, Leap.DeviceEventArgs e)
+        {
+            if(this.Root == null)
+                return;
+
+            this.leapmotionProgressbar.Invoke(new MethodInvoker(delegate ()
+            {
+                this.leapmotionProgressbar.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.leapmotionProgressbar.Value               = 0;
+                    this.leapmotionProgressbar.animated            = false;
+                    this.leapmotionProgressbar.ProgressBackColor   = Color.FromArgb(255, 200, 150);
+                }));
+            }));
+
+            this.leapmotionStatePanel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.leapmotionStatePanel.Visible = false;
+            }));
+
+            this.bunifuCustomLabel2.Invoke(new MethodInvoker(delegate ()
+            {
+                this.bunifuCustomLabel2.Text                        = "연결 안 됨";
+            }));
+        }
+
+        public void LeapController_Device(object sender, Leap.DeviceEventArgs e)
+        {
+            if(this.Root == null)
+                return;
+
+            this.leapmotionProgressbar.Invoke(new MethodInvoker(delegate ()
+            {
+                this.leapmotionProgressbar.Value               = 15;
+                this.leapmotionProgressbar.animated            = true;
+                this.leapmotionProgressbar.ProgressBackColor   = Color.Gainsboro;
+            }));
+
+            this.leapmotionStatePanel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.leapmotionStatePanel.Visible = true;
+            }));
+
+            this.bunifuCustomLabel2.Invoke(new MethodInvoker(delegate ()
+            {
+                this.bunifuCustomLabel2.Text                        = "연결됨";
+            }));
+        }
+
+        public void LeapmotionController_Disconnect(object sender, Leap.ConnectionLostEventArgs e)
+        {
+        }
+
+        public void LeapmotionController_Connect(object sender, Leap.ConnectionEventArgs e)
+        {
+            //throw new NotImplementedException();
         }
     }
 }
