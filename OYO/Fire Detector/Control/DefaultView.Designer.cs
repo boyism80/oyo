@@ -82,7 +82,7 @@
             this.panel5.Location = new System.Drawing.Point(311, 0);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
-            this.panel5.Size = new System.Drawing.Size(187, 50);
+            this.panel5.Size = new System.Drawing.Size(173, 50);
             this.panel5.TabIndex = 14;
             // 
             // bunifuCustomLabel2
@@ -93,7 +93,7 @@
             this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.Lime;
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(0, 15);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(187, 20);
+            this.bunifuCustomLabel2.Size = new System.Drawing.Size(173, 20);
             this.bunifuCustomLabel2.TabIndex = 0;
             this.bunifuCustomLabel2.Text = "위치 정보를 얻어오지 못했습니다.";
             // 
@@ -102,9 +102,9 @@
             this.panel4.Controls.Add(this.detectingProgressbar);
             this.panel4.Controls.Add(this.detectingLabel);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(498, 0);
+            this.panel4.Location = new System.Drawing.Point(484, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(106, 50);
+            this.panel4.Size = new System.Drawing.Size(120, 50);
             this.panel4.TabIndex = 13;
             // 
             // detectingProgressbar
@@ -119,7 +119,7 @@
             this.detectingProgressbar.LabelVisible = false;
             this.detectingProgressbar.LineProgressThickness = 2;
             this.detectingProgressbar.LineThickness = 2;
-            this.detectingProgressbar.Location = new System.Drawing.Point(72, 11);
+            this.detectingProgressbar.Location = new System.Drawing.Point(4, 9);
             this.detectingProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.detectingProgressbar.MaxValue = 100;
             this.detectingProgressbar.Name = "detectingProgressbar";
@@ -132,9 +132,9 @@
             // detectingLabel
             // 
             this.detectingLabel.AutoSize = true;
-            this.detectingLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detectingLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.detectingLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.detectingLabel.Location = new System.Drawing.Point(6, 17);
+            this.detectingLabel.Location = new System.Drawing.Point(33, 17);
             this.detectingLabel.Name = "detectingLabel";
             this.detectingLabel.Size = new System.Drawing.Size(70, 16);
             this.detectingLabel.TabIndex = 6;
