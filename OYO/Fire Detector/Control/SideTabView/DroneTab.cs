@@ -167,8 +167,15 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            if(this.patrolModeSwitch.Value == false)
+            if (this.patrolModeSwitch.Value == false)
+            {
                 this._isPatroling = false;
+                this.patrolModeLabel.Text = "Off";
+            }
+            else
+                this.patrolModeLabel.Text = "On";
+
+
 
             this.update();
 
@@ -183,6 +190,14 @@ namespace Fire_Detector.Control.SideTabView
         {
             if(this.Root == null)
                 return;
+
+            if (this.recordModeSwitch.Value == false)
+            {
+                this.recordModeLabel.Text = "Off";
+            }
+            else
+                this.recordModeLabel.Text = "On";
+
 
             this.update();
             if (this.recordModeSwitch.Value)
