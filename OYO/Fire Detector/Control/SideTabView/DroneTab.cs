@@ -206,6 +206,8 @@ namespace Fire_Detector.Control.SideTabView
                 var messageform         = new Fire_Detector.Dialog.MessageDialog(message, SystemColors.ControlLightLight);
                 messageform.ShowDialog(this.Root);
 
+                recordFileSettingButton.Visible = true;
+
                 var dialog              = new SaveFileDialog();
                 dialog.Filter           = string.Format("Video File | *.{0}", oyo.OYORecorder.DEFAULT_EXTENSION);
                 if (dialog.ShowDialog() == DialogResult.OK)
@@ -213,6 +215,10 @@ namespace Fire_Detector.Control.SideTabView
             }
             else
             {
+                this.recordFileSettingButton.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.recordFileSettingButton.Visible    = false;
+                }));
                 this.recordStateLabel.Invoke(new MethodInvoker(delegate ()
                 {
                     this.recordStateLabel.Visible           = false;
