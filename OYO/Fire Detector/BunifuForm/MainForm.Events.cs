@@ -92,6 +92,7 @@ namespace Fire_Detector.BunifuForm
                 {
                     updatedFrame = receiver.Visual();
                     this.UpdatedDataBuffer.SetVisual(updatedFrame);
+                    this.Recorder.Write(OYORecorder.RecordingStateType.Visual, updatedFrame);
                 }
 
 
@@ -105,14 +106,21 @@ namespace Fire_Detector.BunifuForm
                 // Blend if user checked
                 //
                 var temperature = this.UpdatedDataBuffer.Temperature;
-                if (this.Config.Blending.Enabled)
+                var blendedFrame = new Mat();
+                if (this.Config.Blending.Enabled || this.Recorder.IsRecording(OYORecorder.RecordingStateType.Blending))
                 {
                     var mask = temperature.Threshold(this.defaultView.sideExpandedBar.visualizeTab.thresholdSlider.Value, 255, ThresholdTypes.Binary);
                     this.Blender.Update(this.UpdatedDataBuffer.Visual);
                     this.Blender.Update(this.UpdatedDataBuffer.Infrared, mask);
 
                     if(this.Blender.Blendable)
-                        updatedFrame = this.Blender.Blending();
+                        blendedFrame = this.Blender.Blending();
+
+                    if(this.Config.Blending.Enabled)
+                        updatedFrame = blendedFrame;
+
+                    if(this.Recorder.IsRecording(OYORecorder.RecordingStateType.Blending) && streamingType == StreamingType.Infrared)
+                        this.Recorder.Write(OYORecorder.RecordingStateType.Blending, blendedFrame);
                 }
                 
                 //
@@ -147,6 +155,11 @@ namespace Fire_Detector.BunifuForm
                 updatedFrame = this.Overlayer.Overlay(updatedFrame);
 
                 var invalidated = (this.Config.Blending.Enabled || (this.StreamingType == streamingType));
+                if(this.Recorder.IsRecording(OYORecorder.RecordingStateType.Display))
+                {
+                    if((this.Config.Blending.Enabled && streamingType == StreamingType.Infrared) || (this.StreamingType == streamingType))
+                        this.Recorder.Write(OYORecorder.RecordingStateType.Display, updatedFrame);
+                }
 
                 this.OnFrameUpdated.Invoke(this.UpdatedDataBuffer, updatedFrame, invalidated);
             }

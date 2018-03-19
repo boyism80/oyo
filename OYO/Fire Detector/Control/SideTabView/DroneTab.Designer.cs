@@ -53,6 +53,7 @@
             this.patrolStartEndButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.patrolFileBrowseButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuCustomLabel13 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.patrolStateProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.patrolTime = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.patrolModeSwitch = new Bunifu.Framework.UI.BunifuiOSSwitch();
@@ -87,7 +88,6 @@
             this.connectDroneProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.patrolStateProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.panel2.SuspendLayout();
             this.recordPanel.SuspendLayout();
             this.recordControlPanel.SuspendLayout();
@@ -470,6 +470,29 @@
             this.bunifuCustomLabel13.Size = new System.Drawing.Size(53, 15);
             this.bunifuCustomLabel13.TabIndex = 19;
             this.bunifuCustomLabel13.Text = "순찰 파일";
+            // 
+            // patrolStateProgressbar
+            // 
+            this.patrolStateProgressbar.animated = true;
+            this.patrolStateProgressbar.animationIterval = 5;
+            this.patrolStateProgressbar.animationSpeed = 3;
+            this.patrolStateProgressbar.BackColor = System.Drawing.Color.Transparent;
+            this.patrolStateProgressbar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("patrolStateProgressbar.BackgroundImage")));
+            this.patrolStateProgressbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
+            this.patrolStateProgressbar.ForeColor = System.Drawing.Color.SeaGreen;
+            this.patrolStateProgressbar.LabelVisible = false;
+            this.patrolStateProgressbar.LineProgressThickness = 2;
+            this.patrolStateProgressbar.LineThickness = 2;
+            this.patrolStateProgressbar.Location = new System.Drawing.Point(298, 33);
+            this.patrolStateProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.patrolStateProgressbar.MaxValue = 100;
+            this.patrolStateProgressbar.Name = "patrolStateProgressbar";
+            this.patrolStateProgressbar.ProgressBackColor = System.Drawing.Color.Gainsboro;
+            this.patrolStateProgressbar.ProgressColor = System.Drawing.Color.IndianRed;
+            this.patrolStateProgressbar.Size = new System.Drawing.Size(35, 35);
+            this.patrolStateProgressbar.TabIndex = 25;
+            this.patrolStateProgressbar.Value = 20;
+            this.patrolStateProgressbar.Visible = false;
             // 
             // patrolTime
             // 
@@ -927,29 +950,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(98, 124);
             this.panel4.TabIndex = 0;
-            // 
-            // patrolStateProgressbar
-            // 
-            this.patrolStateProgressbar.animated = true;
-            this.patrolStateProgressbar.animationIterval = 5;
-            this.patrolStateProgressbar.animationSpeed = 3;
-            this.patrolStateProgressbar.BackColor = System.Drawing.Color.Transparent;
-            this.patrolStateProgressbar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("patrolStateProgressbar.BackgroundImage")));
-            this.patrolStateProgressbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.patrolStateProgressbar.ForeColor = System.Drawing.Color.SeaGreen;
-            this.patrolStateProgressbar.LabelVisible = false;
-            this.patrolStateProgressbar.LineProgressThickness = 2;
-            this.patrolStateProgressbar.LineThickness = 2;
-            this.patrolStateProgressbar.Location = new System.Drawing.Point(298, 33);
-            this.patrolStateProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.patrolStateProgressbar.MaxValue = 100;
-            this.patrolStateProgressbar.Name = "patrolStateProgressbar";
-            this.patrolStateProgressbar.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            this.patrolStateProgressbar.ProgressColor = System.Drawing.Color.IndianRed;
-            this.patrolStateProgressbar.Size = new System.Drawing.Size(35, 35);
-            this.patrolStateProgressbar.TabIndex = 25;
-            this.patrolStateProgressbar.Value = 20;
-            this.patrolStateProgressbar.Visible = false;
             // 
             // DroneTab
             // 

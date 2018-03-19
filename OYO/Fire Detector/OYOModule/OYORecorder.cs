@@ -52,6 +52,7 @@ namespace oyo
         {
             this._videoRecordTable.Add(RecordingStateType.Infrared, new VideoWriter());
             this._videoRecordTable.Add(RecordingStateType.Visual, new VideoWriter());
+            this._videoRecordTable.Add(RecordingStateType.Blending, new VideoWriter());
             this._videoRecordTable.Add(RecordingStateType.Display, new VideoWriter());
         }
 

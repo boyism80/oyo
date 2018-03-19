@@ -44,7 +44,7 @@ namespace Fire_Detector.Control.SideTabView
             {
                 var isPatrolActive = this.patrolModeSwitch.Value;
                 this.recordModeSwitch.Invoke(new MethodInvoker(delegate () {
-                    this.recordModeSwitch.Enabled = !isPatrolActive;
+                    this.recordModeSwitch.Enabled = !isPatrolActive && this.Root.Receiver.Connected;
                 }));
 
                 this.patrolModeLabel.Invoke(new MethodInvoker(delegate ()
@@ -266,9 +266,10 @@ namespace Fire_Detector.Control.SideTabView
                     if(success == false)
                         throw new Exception("녹화를 시작할 수 없습니다. 호환성을 확인하세요.");
 
-                    this.recordStateLabel.Visible = true;
-                    this.recordStateProgressbar.Visible = true;
-                    this.beginRecordButton.ButtonText = "녹화 정지";
+                    this.recordTime.Visible                 = true;
+                    this.recordStateLabel.Visible           = true;
+                    this.recordStateProgressbar.Visible     = true;
+                    this.beginRecordButton.ButtonText       = "녹화 정지";
                 }
             }
             catch (Exception exc)
@@ -376,6 +377,8 @@ namespace Fire_Detector.Control.SideTabView
             {
                 if(receiver.Connected == false)
                     this.recordModeSwitch.Value = false;
+
+                this.recordModeSwitch.Enabled = receiver.Connected;
             }));
         }
 
