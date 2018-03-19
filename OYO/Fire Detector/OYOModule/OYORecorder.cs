@@ -14,7 +14,8 @@ namespace oyo
             None        = 0x00000000,
             Infrared    = 0x00000001,
             Visual      = 0x00000002,
-            Display     = 0x00000004,
+            Blending    = 0x00000004,
+            Display     = 0x00000008,
         }
 
         private Dictionary<RecordingStateType, VideoWriter> _videoRecordTable = new Dictionary<RecordingStateType, VideoWriter>();
@@ -91,7 +92,7 @@ namespace oyo
                 {
                     this._videoRecordTable[type].Open(path, FourCC.XVID, fps, size);
                 }
-                return true;
+                return this._videoRecordTable[type].IsOpened();
             }
             catch (Exception)
             {

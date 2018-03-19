@@ -27,15 +27,34 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            var detecting                                           = detectionStateSwitch.Value;
+            try
+            {
+                var detecting                                               = detectionStateSwitch.Value;
 
-            this.detectionStateLabel.Text                           = detecting ? "감지중" : "감지 안함";
-            this.fireDetectionTemperaturePanel.Visible              = detecting;
+                this.detectionStateLabel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.detectionStateLabel.Text                           = detecting ? "감지중" : "감지 안함";
+                }));
 
-            this.Root.Config.Detecting.Enabled                      = detecting;
+                this.fireDetectionTemperaturePanel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.fireDetectionTemperaturePanel.Visible              = detecting;
+                }));
 
-            this.Root.defaultView.detectingLabel.Text               = detecting ? "산불감지중" : "산불감지안함";
-            this.Root.defaultView.detectingProgressbar.animated     = detecting;
+                this.Root.defaultView.detectingLabel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.Root.defaultView.detectingLabel.Text               = detecting ? "산불감지중" : "산불감지안함";
+                }));
+
+                this.Root.defaultView.detectingProgressbar.Invoke(new MethodInvoker(delegate  ()
+                {
+                    this.Root.defaultView.detectingProgressbar.animated     = detecting;
+                }));
+
+                this.Root.Config.Detecting.Enabled                          = detecting;
+            }
+            catch (Exception)
+            { }
         }
 
         private void notificationSwitch_OnValueChange(object sender, EventArgs e)

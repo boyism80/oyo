@@ -33,17 +33,13 @@
             this.recordPanel = new System.Windows.Forms.Panel();
             this.recordControlPanel = new System.Windows.Forms.Panel();
             this.bunifuCustomTextbox1 = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
-            this.bunifuCustomLabel12 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.recordFileTextbox = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.recordFileSettingButton = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.beginRecordButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.recordStateLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.recordStartEndButton = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.beginRecordButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuCustomLabel11 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCircleProgressbar1 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.bunifuCustomLabel14 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.recordStateProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
-            this.bunifuCustomLabel9 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.recordTime = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.recordModeLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -57,7 +53,6 @@
             this.patrolStartEndButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.patrolFileBrowseButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuCustomLabel13 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.patrolStateProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.patrolTime = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.patrolModeSwitch = new Bunifu.Framework.UI.BunifuiOSSwitch();
@@ -92,6 +87,7 @@
             this.connectDroneProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.patrolStateProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.panel2.SuspendLayout();
             this.recordPanel.SuspendLayout();
             this.recordControlPanel.SuspendLayout();
@@ -145,17 +141,13 @@
             // recordControlPanel
             // 
             this.recordControlPanel.Controls.Add(this.bunifuCustomTextbox1);
-            this.recordControlPanel.Controls.Add(this.bunifuCustomLabel12);
             this.recordControlPanel.Controls.Add(this.recordFileTextbox);
             this.recordControlPanel.Controls.Add(this.recordFileSettingButton);
-            this.recordControlPanel.Controls.Add(this.beginRecordButton);
             this.recordControlPanel.Controls.Add(this.recordStateLabel);
-            this.recordControlPanel.Controls.Add(this.recordStartEndButton);
+            this.recordControlPanel.Controls.Add(this.beginRecordButton);
             this.recordControlPanel.Controls.Add(this.bunifuCustomLabel11);
-            this.recordControlPanel.Controls.Add(this.bunifuCircleProgressbar1);
             this.recordControlPanel.Controls.Add(this.bunifuCustomLabel14);
             this.recordControlPanel.Controls.Add(this.recordStateProgressbar);
-            this.recordControlPanel.Controls.Add(this.bunifuCustomLabel9);
             this.recordControlPanel.Controls.Add(this.recordTime);
             this.recordControlPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.recordControlPanel.Location = new System.Drawing.Point(0, 47);
@@ -170,21 +162,10 @@
             this.bunifuCustomTextbox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.bunifuCustomTextbox1.Location = new System.Drawing.Point(110, 7);
             this.bunifuCustomTextbox1.Name = "bunifuCustomTextbox1";
+            this.bunifuCustomTextbox1.ReadOnly = true;
             this.bunifuCustomTextbox1.Size = new System.Drawing.Size(172, 21);
             this.bunifuCustomTextbox1.TabIndex = 23;
             this.bunifuCustomTextbox1.Text = "녹화 모드를 On 해주세요.";
-            // 
-            // bunifuCustomLabel12
-            // 
-            this.bunifuCustomLabel12.AutoSize = true;
-            this.bunifuCustomLabel12.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel12.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bunifuCustomLabel12.Location = new System.Drawing.Point(254, 41);
-            this.bunifuCustomLabel12.Name = "bunifuCustomLabel12";
-            this.bunifuCustomLabel12.Size = new System.Drawing.Size(40, 15);
-            this.bunifuCustomLabel12.TabIndex = 27;
-            this.bunifuCustomLabel12.Text = "녹화중";
-            this.bunifuCustomLabel12.Visible = false;
             // 
             // recordFileTextbox
             // 
@@ -223,6 +204,18 @@
             this.recordFileSettingButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.recordFileSettingButton.Click += new System.EventHandler(this.RecordFileSettingButton_Click);
             // 
+            // recordStateLabel
+            // 
+            this.recordStateLabel.AutoSize = true;
+            this.recordStateLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.recordStateLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.recordStateLabel.Location = new System.Drawing.Point(254, 41);
+            this.recordStateLabel.Name = "recordStateLabel";
+            this.recordStateLabel.Size = new System.Drawing.Size(40, 15);
+            this.recordStateLabel.TabIndex = 28;
+            this.recordStateLabel.Text = "녹화중";
+            this.recordStateLabel.Visible = false;
+            // 
             // beginRecordButton
             // 
             this.beginRecordButton.ActiveBorderThickness = 1;
@@ -245,46 +238,9 @@
             this.beginRecordButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.beginRecordButton.Name = "beginRecordButton";
             this.beginRecordButton.Size = new System.Drawing.Size(68, 30);
-            this.beginRecordButton.TabIndex = 21;
+            this.beginRecordButton.TabIndex = 22;
             this.beginRecordButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.beginRecordButton.Click += new System.EventHandler(this.BeginRecordButton_Click);
-            // 
-            // recordStateLabel
-            // 
-            this.recordStateLabel.AutoSize = true;
-            this.recordStateLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.recordStateLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.recordStateLabel.Location = new System.Drawing.Point(254, 41);
-            this.recordStateLabel.Name = "recordStateLabel";
-            this.recordStateLabel.Size = new System.Drawing.Size(40, 15);
-            this.recordStateLabel.TabIndex = 28;
-            this.recordStateLabel.Text = "녹화중";
-            this.recordStateLabel.Visible = false;
-            // 
-            // recordStartEndButton
-            // 
-            this.recordStartEndButton.ActiveBorderThickness = 1;
-            this.recordStartEndButton.ActiveCornerRadius = 20;
-            this.recordStartEndButton.ActiveFillColor = System.Drawing.Color.LightSalmon;
-            this.recordStartEndButton.ActiveForecolor = System.Drawing.Color.White;
-            this.recordStartEndButton.ActiveLineColor = System.Drawing.Color.Salmon;
-            this.recordStartEndButton.BackColor = System.Drawing.Color.Transparent;
-            this.recordStartEndButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("recordStartEndButton.BackgroundImage")));
-            this.recordStartEndButton.ButtonText = "녹화 시작";
-            this.recordStartEndButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.recordStartEndButton.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.recordStartEndButton.ForeColor = System.Drawing.Color.Salmon;
-            this.recordStartEndButton.IdleBorderThickness = 1;
-            this.recordStartEndButton.IdleCornerRadius = 20;
-            this.recordStartEndButton.IdleFillColor = System.Drawing.Color.Transparent;
-            this.recordStartEndButton.IdleForecolor = System.Drawing.SystemColors.ControlDarkDark;
-            this.recordStartEndButton.IdleLineColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.recordStartEndButton.Location = new System.Drawing.Point(108, 33);
-            this.recordStartEndButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.recordStartEndButton.Name = "recordStartEndButton";
-            this.recordStartEndButton.Size = new System.Drawing.Size(68, 30);
-            this.recordStartEndButton.TabIndex = 22;
-            this.recordStartEndButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // bunifuCustomLabel11
             // 
@@ -296,29 +252,6 @@
             this.bunifuCustomLabel11.Size = new System.Drawing.Size(52, 15);
             this.bunifuCustomLabel11.TabIndex = 19;
             this.bunifuCustomLabel11.Text = "파일 이름";
-            // 
-            // bunifuCircleProgressbar1
-            // 
-            this.bunifuCircleProgressbar1.animated = true;
-            this.bunifuCircleProgressbar1.animationIterval = 5;
-            this.bunifuCircleProgressbar1.animationSpeed = 3;
-            this.bunifuCircleProgressbar1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuCircleProgressbar1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuCircleProgressbar1.BackgroundImage")));
-            this.bunifuCircleProgressbar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.bunifuCircleProgressbar1.ForeColor = System.Drawing.Color.SeaGreen;
-            this.bunifuCircleProgressbar1.LabelVisible = false;
-            this.bunifuCircleProgressbar1.LineProgressThickness = 2;
-            this.bunifuCircleProgressbar1.LineThickness = 2;
-            this.bunifuCircleProgressbar1.Location = new System.Drawing.Point(292, 30);
-            this.bunifuCircleProgressbar1.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.bunifuCircleProgressbar1.MaxValue = 100;
-            this.bunifuCircleProgressbar1.Name = "bunifuCircleProgressbar1";
-            this.bunifuCircleProgressbar1.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            this.bunifuCircleProgressbar1.ProgressColor = System.Drawing.Color.IndianRed;
-            this.bunifuCircleProgressbar1.Size = new System.Drawing.Size(35, 35);
-            this.bunifuCircleProgressbar1.TabIndex = 29;
-            this.bunifuCircleProgressbar1.Value = 20;
-            this.bunifuCircleProgressbar1.Visible = false;
             // 
             // bunifuCustomLabel14
             // 
@@ -353,18 +286,6 @@
             this.recordStateProgressbar.TabIndex = 30;
             this.recordStateProgressbar.Value = 20;
             this.recordStateProgressbar.Visible = false;
-            // 
-            // bunifuCustomLabel9
-            // 
-            this.bunifuCustomLabel9.AutoSize = true;
-            this.bunifuCustomLabel9.Font = new System.Drawing.Font("NEXON Football Gothic L", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel9.ForeColor = System.Drawing.Color.Salmon;
-            this.bunifuCustomLabel9.Location = new System.Drawing.Point(184, 43);
-            this.bunifuCustomLabel9.Name = "bunifuCustomLabel9";
-            this.bunifuCustomLabel9.Size = new System.Drawing.Size(67, 13);
-            this.bunifuCustomLabel9.TabIndex = 25;
-            this.bunifuCustomLabel9.Text = "00 : 00 : 00";
-            this.bunifuCustomLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // recordTime
             // 
@@ -549,29 +470,6 @@
             this.bunifuCustomLabel13.Size = new System.Drawing.Size(53, 15);
             this.bunifuCustomLabel13.TabIndex = 19;
             this.bunifuCustomLabel13.Text = "순찰 파일";
-            // 
-            // patrolStateProgressbar
-            // 
-            this.patrolStateProgressbar.animated = true;
-            this.patrolStateProgressbar.animationIterval = 5;
-            this.patrolStateProgressbar.animationSpeed = 3;
-            this.patrolStateProgressbar.BackColor = System.Drawing.Color.Transparent;
-            this.patrolStateProgressbar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("patrolStateProgressbar.BackgroundImage")));
-            this.patrolStateProgressbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.patrolStateProgressbar.ForeColor = System.Drawing.Color.SeaGreen;
-            this.patrolStateProgressbar.LabelVisible = false;
-            this.patrolStateProgressbar.LineProgressThickness = 2;
-            this.patrolStateProgressbar.LineThickness = 2;
-            this.patrolStateProgressbar.Location = new System.Drawing.Point(298, 33);
-            this.patrolStateProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.patrolStateProgressbar.MaxValue = 100;
-            this.patrolStateProgressbar.Name = "patrolStateProgressbar";
-            this.patrolStateProgressbar.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            this.patrolStateProgressbar.ProgressColor = System.Drawing.Color.IndianRed;
-            this.patrolStateProgressbar.Size = new System.Drawing.Size(35, 35);
-            this.patrolStateProgressbar.TabIndex = 25;
-            this.patrolStateProgressbar.Value = 20;
-            this.patrolStateProgressbar.Visible = false;
             // 
             // patrolTime
             // 
@@ -1030,6 +928,29 @@
             this.panel4.Size = new System.Drawing.Size(98, 124);
             this.panel4.TabIndex = 0;
             // 
+            // patrolStateProgressbar
+            // 
+            this.patrolStateProgressbar.animated = true;
+            this.patrolStateProgressbar.animationIterval = 5;
+            this.patrolStateProgressbar.animationSpeed = 3;
+            this.patrolStateProgressbar.BackColor = System.Drawing.Color.Transparent;
+            this.patrolStateProgressbar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("patrolStateProgressbar.BackgroundImage")));
+            this.patrolStateProgressbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
+            this.patrolStateProgressbar.ForeColor = System.Drawing.Color.SeaGreen;
+            this.patrolStateProgressbar.LabelVisible = false;
+            this.patrolStateProgressbar.LineProgressThickness = 2;
+            this.patrolStateProgressbar.LineThickness = 2;
+            this.patrolStateProgressbar.Location = new System.Drawing.Point(298, 33);
+            this.patrolStateProgressbar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.patrolStateProgressbar.MaxValue = 100;
+            this.patrolStateProgressbar.Name = "patrolStateProgressbar";
+            this.patrolStateProgressbar.ProgressBackColor = System.Drawing.Color.Gainsboro;
+            this.patrolStateProgressbar.ProgressColor = System.Drawing.Color.IndianRed;
+            this.patrolStateProgressbar.Size = new System.Drawing.Size(35, 35);
+            this.patrolStateProgressbar.TabIndex = 25;
+            this.patrolStateProgressbar.Value = 20;
+            this.patrolStateProgressbar.Visible = false;
+            // 
             // DroneTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1113,20 +1034,15 @@
         private Bunifu.Framework.UI.BunifuThinButton2 patrolStartEndButton;
         private Bunifu.Framework.UI.BunifuThinButton2 patrolFileBrowseButton;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel13;
-        private Bunifu.Framework.UI.BunifuCircleProgressbar patrolStateProgressbar;
         private Bunifu.Framework.UI.BunifuCustomLabel patrolTime;
         private System.Windows.Forms.Panel recordControlPanel;
         private WindowsFormsControlLibrary1.BunifuCustomTextbox bunifuCustomTextbox1;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel12;
         private WindowsFormsControlLibrary1.BunifuCustomTextbox recordFileTextbox;
-        private Bunifu.Framework.UI.BunifuThinButton2 beginRecordButton;
         private Bunifu.Framework.UI.BunifuCustomLabel recordStateLabel;
-        private Bunifu.Framework.UI.BunifuThinButton2 recordStartEndButton;
+        private Bunifu.Framework.UI.BunifuThinButton2 beginRecordButton;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel11;
-        private Bunifu.Framework.UI.BunifuCircleProgressbar bunifuCircleProgressbar1;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel14;
         private Bunifu.Framework.UI.BunifuCircleProgressbar recordStateProgressbar;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel9;
         private Bunifu.Framework.UI.BunifuCustomLabel recordTime;
         private Bunifu.Framework.UI.BunifuThinButton2 recordFileSettingButton;
         public Bunifu.Framework.UI.BunifuImageButton bunifuImageButton4;
@@ -1137,5 +1053,6 @@
         public Bunifu.Framework.UI.BunifuImageButton bunifuImageButton7;
         public Bunifu.Framework.UI.BunifuImageButton bunifuImageButton6;
         public Bunifu.Framework.UI.BunifuImageButton bunifuImageButton5;
+        private Bunifu.Framework.UI.BunifuCircleProgressbar patrolStateProgressbar;
     }
 }

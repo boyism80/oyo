@@ -172,6 +172,7 @@ namespace oyo
             }
 
             this._currentFrame = frame;
+            this._currentFrame = this._currentFrame.CvtColor(ColorConversionCodes.BGRA2BGR);
             return frame;
         }
 

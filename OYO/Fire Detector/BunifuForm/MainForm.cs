@@ -146,10 +146,13 @@ namespace Fire_Detector.BunifuForm
             this.Receiver.OnConnected          += this.defaultView.Receiver_OnConnectionChanged;
             this.Receiver.OnConnected          += this.defaultView.sideExpandedBar.visualizeTab.Receiver_OnConnectionChanged;
             this.Receiver.OnConnected          += this.mainView.mainConnectionView.Receiver_OnConnectionChanged;
+            this.Receiver.OnConnected          += this.defaultView.sideExpandedBar.droneTab.Receiver_OnConnectionChanged;
+            this.Receiver.OnDisconnected       += this.Receiver_OnDisconnected;
             this.Receiver.OnDisconnected       += this.defaultView.Receiver_OnConnectionChanged;
             this.Receiver.OnDisconnected       += this.defaultView.sideExpandedBar.visualizeTab.Receiver_OnConnectionChanged;
             this.Receiver.OnDisconnected       += this.defaultView.sideExpandedBar.detectFireTab.Receiver_OnDisconnected;
             this.Receiver.OnDisconnected       += this.mainView.mainConnectionView.Receiver_OnConnectionChanged;
+            this.Receiver.OnDisconnected       += this.defaultView.sideExpandedBar.droneTab.Receiver_OnConnectionChanged;
             this.Receiver.OnUpdate             += this.Receiver_OnUpdate;
             this.Receiver.OnError              += this.Receiver_OnError;
 
@@ -192,6 +195,8 @@ namespace Fire_Detector.BunifuForm
 
             this.OnScreenStateChanged          += this.mainView.OnScreenStateChanged;
             this.OnScreenStateChanged          += this.mainView.mainConnectionView.OnScreenStateChanged;
+
+            this.Recorder                       = new OYORecorder();
         }
 
         /// <summary>

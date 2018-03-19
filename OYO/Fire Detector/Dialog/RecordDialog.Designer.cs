@@ -70,7 +70,7 @@
             this.caption.BackColor = System.Drawing.Color.Salmon;
             this.caption.Controls.Add(this.bunifuCustomLabel1);
             this.caption.Dock = System.Windows.Forms.DockStyle.Top;
-            this.caption.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.caption.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.caption.ForeColor = System.Drawing.Color.White;
             this.caption.Location = new System.Drawing.Point(0, 0);
             this.caption.Name = "caption";
@@ -80,7 +80,7 @@
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(10, 5);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(87, 16);
@@ -119,7 +119,7 @@
             this.cancelButton.Text = "취소";
             this.cancelButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cancelButton.Textcolor = System.Drawing.Color.White;
-            this.cancelButton.TextFont = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.TextFont = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // confirmButton
@@ -154,12 +154,13 @@
             this.confirmButton.Text = "확인";
             this.confirmButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.confirmButton.Textcolor = System.Drawing.Color.White;
-            this.confirmButton.TextFont = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmButton.TextFont = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
             // 
             // bunifuCustomLabel2
             // 
             this.bunifuCustomLabel2.AutoSize = true;
-            this.bunifuCustomLabel2.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel2.Font = new System.Drawing.Font("NEXON Football Gothic L", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(69, 81);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
@@ -169,15 +170,17 @@
             // 
             // bunifuCheckbox1
             // 
-            this.bunifuCheckbox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.bunifuCheckbox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.bunifuCheckbox1.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.bunifuCheckbox1.Checked = false;
+            this.bunifuCheckbox1.Checked = true;
             this.bunifuCheckbox1.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.bunifuCheckbox1.Enabled = false;
             this.bunifuCheckbox1.ForeColor = System.Drawing.Color.White;
             this.bunifuCheckbox1.Location = new System.Drawing.Point(72, 120);
             this.bunifuCheckbox1.Name = "bunifuCheckbox1";
             this.bunifuCheckbox1.Size = new System.Drawing.Size(20, 20);
             this.bunifuCheckbox1.TabIndex = 10;
+            this.bunifuCheckbox1.OnChange += new System.EventHandler(this.bunifuCheckbox1_OnChange);
             // 
             // bunifuCheckbox2
             // 
@@ -190,6 +193,7 @@
             this.bunifuCheckbox2.Name = "bunifuCheckbox2";
             this.bunifuCheckbox2.Size = new System.Drawing.Size(20, 20);
             this.bunifuCheckbox2.TabIndex = 10;
+            this.bunifuCheckbox2.OnChange += new System.EventHandler(this.bunifuCheckbox1_OnChange);
             // 
             // bunifuCheckbox3
             // 
@@ -202,6 +206,7 @@
             this.bunifuCheckbox3.Name = "bunifuCheckbox3";
             this.bunifuCheckbox3.Size = new System.Drawing.Size(20, 20);
             this.bunifuCheckbox3.TabIndex = 10;
+            this.bunifuCheckbox3.OnChange += new System.EventHandler(this.bunifuCheckbox1_OnChange);
             // 
             // bunifuCheckbox4
             // 
@@ -214,11 +219,12 @@
             this.bunifuCheckbox4.Name = "bunifuCheckbox4";
             this.bunifuCheckbox4.Size = new System.Drawing.Size(20, 20);
             this.bunifuCheckbox4.TabIndex = 10;
+            this.bunifuCheckbox4.OnChange += new System.EventHandler(this.bunifuCheckbox1_OnChange);
             // 
             // bunifuCustomLabel3
             // 
             this.bunifuCustomLabel3.AutoSize = true;
-            this.bunifuCustomLabel3.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel3.Font = new System.Drawing.Font("NEXON Football Gothic L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel3.Location = new System.Drawing.Point(98, 122);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
@@ -229,7 +235,7 @@
             // bunifuCustomLabel4
             // 
             this.bunifuCustomLabel4.AutoSize = true;
-            this.bunifuCustomLabel4.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel4.Font = new System.Drawing.Font("NEXON Football Gothic L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel4.Location = new System.Drawing.Point(218, 122);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
@@ -240,7 +246,7 @@
             // bunifuCustomLabel5
             // 
             this.bunifuCustomLabel5.AutoSize = true;
-            this.bunifuCustomLabel5.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel5.Font = new System.Drawing.Font("NEXON Football Gothic L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel5.Location = new System.Drawing.Point(339, 122);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
@@ -251,7 +257,7 @@
             // bunifuCustomLabel6
             // 
             this.bunifuCustomLabel6.AutoSize = true;
-            this.bunifuCustomLabel6.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel6.Font = new System.Drawing.Font("NEXON Football Gothic L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel6.Location = new System.Drawing.Point(460, 122);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
@@ -262,7 +268,7 @@
             // bunifuCustomLabel7
             // 
             this.bunifuCustomLabel7.AutoSize = true;
-            this.bunifuCustomLabel7.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel7.Font = new System.Drawing.Font("NEXON Football Gothic L", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuCustomLabel7.Location = new System.Drawing.Point(68, 205);
             this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
@@ -276,11 +282,13 @@
             this.bunifuCheckbox5.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.bunifuCheckbox5.Checked = true;
             this.bunifuCheckbox5.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.bunifuCheckbox5.Enabled = false;
             this.bunifuCheckbox5.ForeColor = System.Drawing.Color.White;
             this.bunifuCheckbox5.Location = new System.Drawing.Point(72, 241);
             this.bunifuCheckbox5.Name = "bunifuCheckbox5";
             this.bunifuCheckbox5.Size = new System.Drawing.Size(20, 20);
             this.bunifuCheckbox5.TabIndex = 10;
+            this.bunifuCheckbox5.OnChange += new System.EventHandler(this.bunifuCheckbox7_OnChange);
             // 
             // bunifuCheckbox6
             // 
@@ -293,6 +301,7 @@
             this.bunifuCheckbox6.Name = "bunifuCheckbox6";
             this.bunifuCheckbox6.Size = new System.Drawing.Size(20, 20);
             this.bunifuCheckbox6.TabIndex = 10;
+            this.bunifuCheckbox6.OnChange += new System.EventHandler(this.bunifuCheckbox7_OnChange);
             // 
             // bunifuCheckbox7
             // 
@@ -305,11 +314,12 @@
             this.bunifuCheckbox7.Name = "bunifuCheckbox7";
             this.bunifuCheckbox7.Size = new System.Drawing.Size(20, 20);
             this.bunifuCheckbox7.TabIndex = 10;
+            this.bunifuCheckbox7.OnChange += new System.EventHandler(this.bunifuCheckbox7_OnChange);
             // 
             // bunifuCustomLabel8
             // 
             this.bunifuCustomLabel8.AutoSize = true;
-            this.bunifuCustomLabel8.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel8.Font = new System.Drawing.Font("NEXON Football Gothic L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel8.Location = new System.Drawing.Point(98, 243);
             this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
@@ -320,7 +330,7 @@
             // bunifuCustomLabel9
             // 
             this.bunifuCustomLabel9.AutoSize = true;
-            this.bunifuCustomLabel9.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel9.Font = new System.Drawing.Font("NEXON Football Gothic L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel9.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel9.Location = new System.Drawing.Point(422, 243);
             this.bunifuCustomLabel9.Name = "bunifuCustomLabel9";
@@ -331,7 +341,7 @@
             // bunifuCustomLabel10
             // 
             this.bunifuCustomLabel10.AutoSize = true;
-            this.bunifuCustomLabel10.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel10.Font = new System.Drawing.Font("NEXON Football Gothic L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel10.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel10.Location = new System.Drawing.Point(260, 243);
             this.bunifuCustomLabel10.Name = "bunifuCustomLabel10";
@@ -342,7 +352,7 @@
             // bunifuCustomLabel11
             // 
             this.bunifuCustomLabel11.AutoSize = true;
-            this.bunifuCustomLabel11.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel11.Font = new System.Drawing.Font("NEXON Football Gothic L", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuCustomLabel11.Location = new System.Drawing.Point(69, 329);
             this.bunifuCustomLabel11.Name = "bunifuCustomLabel11";
@@ -353,7 +363,7 @@
             // bunifuCustomLabel12
             // 
             this.bunifuCustomLabel12.AutoSize = true;
-            this.bunifuCustomLabel12.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel12.Font = new System.Drawing.Font("NEXON Football Gothic L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel12.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuCustomLabel12.Location = new System.Drawing.Point(98, 369);
             this.bunifuCustomLabel12.Name = "bunifuCustomLabel12";
@@ -372,6 +382,7 @@
             this.bunifuCheckbox8.Name = "bunifuCheckbox8";
             this.bunifuCheckbox8.Size = new System.Drawing.Size(20, 20);
             this.bunifuCheckbox8.TabIndex = 10;
+            this.bunifuCheckbox8.OnChange += new System.EventHandler(this.bunifuCheckbox8_OnChange);
             // 
             // bunifuDragControl1
             // 

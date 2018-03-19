@@ -10,20 +10,20 @@ namespace Fire_Detector.Control.SideTabView
     {
         public static int WARNING_DRONE_SPEED = 15;
 
-        private bool _isPatroling = false;
+        private OpenCvSharp.Size                    _currentResolution = OpenCvSharp.Size.Zero;
+        private oyo.OYORecorder.RecordingStateType  _currentRecordType = oyo.OYORecorder.RecordingStateType.None;
 
         public DroneTab()
         {
             InitializeComponent();
-            if (this.Root == null) return;
+            if (this.Root == null)
+                return;
 
             //0302지승추가
             if (this.Root.Bebop.Connected)
                 enablePanel(true);
             else
                 enablePanel(false);
-            
-            ////
         }
 
         private void enablePanel(bool isEnable)
@@ -47,6 +47,11 @@ namespace Fire_Detector.Control.SideTabView
                     this.recordModeSwitch.Enabled = !isPatrolActive;
                 }));
 
+                this.patrolModeLabel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.patrolModeLabel.Text = isPatrolActive ? "On" : "Off";
+                }));
+
                 this.patrolFileBrowseButton.Invoke(new MethodInvoker(delegate ()
                 {
                 
@@ -66,9 +71,9 @@ namespace Fire_Detector.Control.SideTabView
 
                 this.patrolStartEndButton.Invoke(new MethodInvoker(delegate ()
                 {
-                    patrolStateLabel.Visible = this._isPatroling;
-                    patrolStateProgressbar.Visible = this._isPatroling;
-                    patrolStartEndButton.ButtonText = this._isPatroling ? "순찰 정지" : "순찰 시작";
+                    patrolStateLabel.Visible = isPatrolActive;
+                    patrolStateProgressbar.Visible = isPatrolActive;
+                    patrolStartEndButton.ButtonText = isPatrolActive ? "순찰 정지" : "순찰 시작";
                 }));
 
 
@@ -76,6 +81,16 @@ namespace Fire_Detector.Control.SideTabView
                 this.patrolModeSwitch.Invoke(new MethodInvoker(delegate ()
                 {
                     this.patrolModeSwitch.Enabled = !isRecordActive;
+                }));
+
+                this.recordModeLabel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.recordModeLabel.Text = isRecordActive ? "On" : "Off";
+                }));
+
+                this.bunifuCustomTextbox1.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.bunifuCustomTextbox1.Enabled = isRecordActive;
                 }));
 
                 this.recordFileSettingButton.Invoke(new MethodInvoker(delegate ()
@@ -156,6 +171,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void DroneSpeedSlider_ValueChanged(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             droneSpeedLabel.Text = droneSpeedSlider.Value.ToString();
 
             if (droneSpeedSlider.Value > WARNING_DRONE_SPEED) warningLabel.Visible = true;
@@ -166,17 +184,6 @@ namespace Fire_Detector.Control.SideTabView
         {
             if(this.Root == null)
                 return;
-
-            if (this.patrolModeSwitch.Value == false)
-            {
-                this._isPatroling = false;
-                this.patrolModeLabel.Text = "Off";
-            }
-            else
-                this.patrolModeLabel.Text = "On";
-
-
-
             this.update();
 
             if (this.patrolModeSwitch.Value) {
@@ -191,20 +198,35 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            if (this.recordModeSwitch.Value == false)
-            {
-                this.recordModeLabel.Text = "Off";
-            }
-            else
-                this.recordModeLabel.Text = "On";
-
-
             this.update();
+
             if (this.recordModeSwitch.Value)
             {
-                var message = "순찰모드와 같이 사용할 수 없습니다.";
-                var messageform = new Fire_Detector.Dialog.MessageDialog(message, SystemColors.ControlLightLight);
+                var message             = "순찰모드와 같이 사용할 수 없습니다.";
+                var messageform         = new Fire_Detector.Dialog.MessageDialog(message, SystemColors.ControlLightLight);
                 messageform.ShowDialog(this.Root);
+
+                var dialog              = new SaveFileDialog();
+                dialog.Filter           = string.Format("Video File | *.{0}", oyo.OYORecorder.DEFAULT_EXTENSION);
+                if (dialog.ShowDialog() == DialogResult.OK)
+                    this.bunifuCustomTextbox1.Text = dialog.FileName;
+            }
+            else
+            {
+                this.recordStateLabel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.recordStateLabel.Visible           = false;
+                }));
+
+                this.recordStateProgressbar.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.recordStateProgressbar.Visible     = false;
+                }));
+
+                this.recordTime.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.recordTime.Visible                 = false;
+                }));
             }
         }
 
@@ -217,28 +239,50 @@ namespace Fire_Detector.Control.SideTabView
             if(isActive == false)
                 return;
 
-            this._isPatroling = !this._isPatroling;
             this.update();
         }
 
-        private void RecordStartEndButton_Click(object sender, EventArgs e)
+        private void BeginRecordButton_Click(object sender, EventArgs e)
         {
-            if (recordStartEndButton.ButtonText.Equals("녹화 시작"))
+            if(this.Root == null)
+                return;
+
+            try
             {
-                recordStateLabel.Visible = true;
-                recordStateProgressbar.Visible = true;
-                recordStartEndButton.ButtonText = "녹화 정지";
+                if (this.Root.Recorder.IsRecording(this._currentRecordType))
+                {
+                    this.Root.Recorder.Stop(this._currentRecordType);
+                    this.recordTime.Visible                 = false;
+                    this.recordStateLabel.Visible           = false;
+                    this.recordStateProgressbar.Visible     = false;
+                    this.beginRecordButton.ButtonText       = "녹화 시작";
+                }
+                else
+                {
+                    if (this._currentRecordType == oyo.OYORecorder.RecordingStateType.None)
+                        throw new Exception("녹화 설정을 먼저 한 뒤에 녹화를 시작하세요.");
+
+                    var success = this.Root.Recorder.Record(this._currentRecordType, this.bunifuCustomTextbox1.Text, this._currentResolution, 11);
+                    if(success == false)
+                        throw new Exception("녹화를 시작할 수 없습니다. 호환성을 확인하세요.");
+
+                    this.recordStateLabel.Visible = true;
+                    this.recordStateProgressbar.Visible = true;
+                    this.beginRecordButton.ButtonText = "녹화 정지";
+                }
             }
-            else
+            catch (Exception exc)
             {
-                recordStateLabel.Visible = false;
-                recordStateProgressbar.Visible = false;
-                recordStartEndButton.ButtonText = "녹화 시작";
+                var dialog = new Dialog.MessageDialog(exc.Message);
+                dialog.ShowDialog(this);
             }
         }
 
         private void PatrolFileBrowseButton_Click(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             var isActive = (bool)this.patrolFileBrowseButton.Tag;
             if(isActive == false)
                 return;
@@ -253,16 +297,15 @@ namespace Fire_Detector.Control.SideTabView
             if(isActive == false)
                 return;
 
-            var patrolform = new Fire_Detector.Dialog.RecordDialog();
-            patrolform.ShowDialog();
-        }
-
-        private void BeginRecordButton_Click(object sender, EventArgs e)
-        {
-            var isActive = (bool)this.beginRecordButton.Tag;
-            if (isActive == false)
+            if(this.Root.Recorder.IsRecording(this._currentRecordType))
                 return;
 
+            var dialog = new Fire_Detector.Dialog.RecordDialog();
+            if(dialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            this._currentRecordType = dialog.RecordingType;
+            this._currentResolution = dialog.Resolution;
         }
 
         private void DroneTab_Load(object sender, EventArgs e)
@@ -277,7 +320,7 @@ namespace Fire_Detector.Control.SideTabView
                 this.update();
         }
 
-        public void UpdatePcmdUI(Pcmd pcmd)
+        public void updatePcmdUI(Pcmd pcmd)
         {
             if(this.Root == null)
                 return;
@@ -324,6 +367,15 @@ namespace Fire_Detector.Control.SideTabView
             this.bunifuImageButton4.Invoke(new MethodInvoker(delegate ()
             {
                 this.bunifuImageButton4.BackColor = pcmd.yaw < 0 ? Color.Salmon : Color.DarkGray;
+            }));
+        }
+
+        public void Receiver_OnConnectionChanged(oyo.OYOReceiver receiver)
+        {
+            this.recordModeSwitch.Invoke(new MethodInvoker(delegate ()
+            {
+                if(receiver.Connected == false)
+                    this.recordModeSwitch.Value = false;
             }));
         }
 

@@ -86,6 +86,7 @@ namespace Fire_Detector.BunifuForm
                 {
                     updatedFrame = receiver.Infrared(scaled);
                     this.UpdatedDataBuffer.SetInfrared(this.mappingPalette(updatedFrame), receiver.Temperature(scaled));
+                    this.Recorder.Write(OYORecorder.RecordingStateType.Infrared, updatedFrame);
                 }
                 else
                 {
@@ -166,6 +167,11 @@ namespace Fire_Detector.BunifuForm
             }));
         }
 
+        private void Receiver_OnDisconnected(OYOReceiver receiver)
+        {
+            this.Recorder.Release();
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             //
@@ -234,7 +240,7 @@ this._mutex.WaitOne();
                 this._pcmd.gaz = 0;
             }
 
-            this.defaultView.sideExpandedBar.droneTab.UpdatePcmdUI(this._pcmd);
+            this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);
 this._mutex.ReleaseMutex();
         }
 
@@ -245,6 +251,8 @@ this._mutex.ReleaseMutex();
 
             OYOKeysHook.Unset();
             this._mutex.Close();
+
+            this.Recorder.Release();
         }
 
         public void Bebop2_OnStreaming(Bebop2 bebop, Mat frame)
