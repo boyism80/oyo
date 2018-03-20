@@ -2,6 +2,7 @@
 using ParrotBebop2;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Fire_Detector.Control.SideTabView
@@ -12,6 +13,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private OpenCvSharp.Size                    _currentResolution = OpenCvSharp.Size.Zero;
         private oyo.OYORecorder.RecordingStateType  _currentRecordType = oyo.OYORecorder.RecordingStateType.None;
+
+        public bool ShowDetectionBoxes { get; private set; }
+        public bool ShowGmap { get; private set; }
 
         public DroneTab()
         {
@@ -88,9 +92,9 @@ namespace Fire_Detector.Control.SideTabView
                     this.recordModeLabel.Text = isRecordActive ? "On" : "Off";
                 }));
 
-                this.bunifuCustomTextbox1.Invoke(new MethodInvoker(delegate ()
+                this.recordFileNameTextBox.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.bunifuCustomTextbox1.Enabled = isRecordActive;
+                    this.recordFileNameTextBox.Enabled = isRecordActive;
                 }));
 
                 this.recordFileSettingButton.Invoke(new MethodInvoker(delegate ()
@@ -107,22 +111,6 @@ namespace Fire_Detector.Control.SideTabView
                     this.beginRecordButton.ActiveFillColor = isRecordActive ? Color.LightSalmon : Color.Transparent;
                     this.beginRecordButton.ActiveForecolor = isRecordActive ? Color.White : SystemColors.ControlDarkDark;
                     this.beginRecordButton.ActiveLineColor = isRecordActive ? Color.Salmon : SystemColors.ControlDarkDark;
-                }));
-
-                this.connectDroneProgressbar.Invoke(new MethodInvoker(delegate ()
-                {
-                    connectDroneProgressbar.animated = this.Root.Bebop.Connected;
-                    connectDroneProgressbar.Value = this.Root.Bebop.Connected ? 15 : 0;
-                }));
-
-                this.connectionLabel.Invoke(new MethodInvoker(delegate ()
-                {
-                    this.connectionLabel.Text = this.Root.Bebop.Connected ? "드론과 연결되었습니다." : "드론과 연결되지 않았습니다.";
-                }));
-
-                this.takeoffSwitch.Invoke(new MethodInvoker(delegate ()
-                {
-                    this.takeoffSwitch.Enabled = this.Root.Bebop.Connected;
                 }));
             }
             catch(Exception)
@@ -206,12 +194,7 @@ namespace Fire_Detector.Control.SideTabView
                 var messageform         = new Fire_Detector.Dialog.MessageDialog(message, SystemColors.ControlLightLight);
                 messageform.ShowDialog(this.Root);
 
-                recordFileSettingButton.Visible = true;
-
-                var dialog              = new SaveFileDialog();
-                dialog.Filter           = string.Format("Video File | *.{0}", oyo.OYORecorder.DEFAULT_EXTENSION);
-                if (dialog.ShowDialog() == DialogResult.OK)
-                    this.bunifuCustomTextbox1.Text = dialog.FileName;
+                this.recordFileSettingButton.Visible = true;
             }
             else
             {
@@ -268,7 +251,11 @@ namespace Fire_Detector.Control.SideTabView
                     if (this._currentRecordType == oyo.OYORecorder.RecordingStateType.None)
                         throw new Exception("녹화 설정을 먼저 한 뒤에 녹화를 시작하세요.");
 
-                    var success = this.Root.Recorder.Record(this._currentRecordType, this.bunifuCustomTextbox1.Text, this._currentResolution, 11);
+                    var directoryName = Path.GetDirectoryName(this.recordFileNameTextBox.Text);
+                    if(Directory.Exists(directoryName) == false)
+                        throw new Exception("올바른 경로가 아닙니다.");
+
+                    var success = this.Root.Recorder.Record(this._currentRecordType, this.recordFileNameTextBox.Text, this._currentResolution, 11);
                     if(success == false)
                         throw new Exception("녹화를 시작할 수 없습니다. 호환성을 확인하세요.");
 
@@ -311,8 +298,10 @@ namespace Fire_Detector.Control.SideTabView
             if(dialog.ShowDialog() != DialogResult.OK)
                 return;
 
-            this._currentRecordType = dialog.RecordingType;
-            this._currentResolution = dialog.Resolution;
+            this._currentRecordType             = dialog.RecordingType;
+            this._currentResolution             = dialog.Resolution;
+            this.ShowDetectionBoxes             = dialog.ShowDetectionBoxes;
+            this.ShowGmap                       = dialog.ShowGmap;
         }
 
         private void DroneTab_Load(object sender, EventArgs e)
@@ -388,14 +377,31 @@ namespace Fire_Detector.Control.SideTabView
             }));
         }
 
-        public void Bebop_OnDisconnected(Bebop2 bebop)
+        public void Bebop_OnConnectionChanged(Bebop2 bebop)
         {
-            this.update();
+            this.connectDroneProgressbar.Invoke(new MethodInvoker(delegate ()
+            {
+                connectDroneProgressbar.animated = bebop.Connected;
+                connectDroneProgressbar.Value = bebop.Connected ? 15 : 0;
+            }));
+
+            this.connectionLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.connectionLabel.Text = bebop.Connected ? "드론과 연결되었습니다." : "드론과 연결되지 않았습니다.";
+            }));
+
+            this.takeoffSwitch.Invoke(new MethodInvoker(delegate ()
+            {
+                this.takeoffSwitch.Enabled = bebop.Connected;
+            }));
         }
 
-        public void Bebop_OnConnected(Bebop2 bebop)
+        private void recordFileBrowseButton_Click(object sender, EventArgs e)
         {
-            this.update();
+            var dialog              = new SaveFileDialog();
+            dialog.Filter           = string.Format("Video File | *.{0}", oyo.OYORecorder.DEFAULT_EXTENSION);
+            if (dialog.ShowDialog() == DialogResult.OK)
+                this.recordFileNameTextBox.Text = dialog.FileName;
         }
     }
 }

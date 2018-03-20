@@ -77,69 +77,95 @@ namespace oyo
             this.GPS                        = new GPS(51.509865, -0.118092);
         }
 
-        private Rect GetDrawingSpace(Mat frame)
+        public OpenCvSharp.Point GetGmapPadding(Mat frame)
         {
-            try
+            var padding                     = new OpenCvSharp.Point();
+            var minimum                     = frame.Width > frame.Height ? frame.Height : frame.Width;
+            if (this.State == GmapState.Collapsed)
             {
-                var offset = new OpenCvSharp.Point();
+                padding.X                  += Math.Min((int)(minimum / 30.0f), (int)(this._icon.Width / 3.0f));
+                padding.Y                  += Math.Min((int)(minimum / 30.0f), (int)(this._icon.Height / 3.0f));
+            }
+
+            return padding;
+        }
+
+        private OpenCvSharp.Point GetGmapOffset(Mat frame, bool padding = true)
+        {
+            var offset                      = new OpenCvSharp.Point();
+            if (this._owner.SizeMode == PictureBoxSizeMode.CenterImage)
+            {
+                if(frame.Width > this._owner.Width)
+                    offset.X               += (int)((frame.Width - this._owner.Width) / 2.0f);
+
+                if(frame.Height > this._owner.Height)
+                    offset.Y               += (int)((frame.Height - this._owner.Height) / 2.0f);
+            }
+
+            if (padding)
+                offset                     += this.GetGmapPadding(frame);
+
+            return offset;
+        }
+
+        private OpenCvSharp.Size GetGmapSize(Mat frame)
+        {
+            var minimum                     = frame.Width > frame.Height ? frame.Height : frame.Width;
+            var size                        = new OpenCvSharp.Size();
+            if (this.State == GmapState.Collapsed)
+            {
+                size.Width                  = Math.Min((int)(minimum / 10.0f), this._icon.Width);
+                size.Height                 = Math.Min((int)(minimum / 10.0f), this._icon.Height);
+            }
+            else if (this.State == GmapState.Expanded)
+            {
                 if (this._owner.SizeMode == PictureBoxSizeMode.CenterImage)
                 {
-                    if(frame.Width > this._owner.Width)
-                        offset.X += (int)((frame.Width - this._owner.Width) / 2.0f);
+                    if (frame.Width > this._owner.Width)
+                        size.Width          = (int)(this._owner.Width * EXPANDED_WIDTH_RATIO);
+                    else
+                        size.Width          = (int)(frame.Width * EXPANDED_HEIGHT_RATIO);
 
-                    if(frame.Height > this._owner.Height)
-                        offset.Y += (int)((frame.Height - this._owner.Height) / 2.0f);
+                    if (frame.Height > this._owner.Height)
+                        size.Height         = (int)(this._owner.Height * EXPANDED_WIDTH_RATIO);
+                    else
+                        size.Height         = (int)(frame.Height * EXPANDED_HEIGHT_RATIO);
                 }
-
-                var minimum = frame.Width > frame.Height ? frame.Height : frame.Width;
-                var size = new OpenCvSharp.Size();
-                if (this.State == GmapState.Collapsed)
+                else if (this._owner.SizeMode == PictureBoxSizeMode.Zoom)
                 {
-                    offset.X += Math.Min((int)(minimum / 30.0f), (int)(this._icon.Width / 3.0f));
-                    offset.Y += Math.Min((int)(minimum / 30.0f), (int)(this._icon.Height / 3.0f));
-                    size.Width = Math.Min((int)(minimum / 10.0f), this._icon.Width);
-                    size.Height = Math.Min((int)(minimum / 10.0f), this._icon.Height);
-                }
-                else if (this.State == GmapState.Expanded)
-                {
-                    if (this._owner.SizeMode == PictureBoxSizeMode.CenterImage)
+                    if (frame.Width > frame.Height)
                     {
-                        if (frame.Width > this._owner.Width)
-                            size.Width = (int)(this._owner.Width * EXPANDED_WIDTH_RATIO);
-                        else
-                            size.Width = (int)(frame.Width * EXPANDED_HEIGHT_RATIO);
-
-                        if (frame.Height > this._owner.Height)
-                            size.Height = (int)(this._owner.Height * EXPANDED_WIDTH_RATIO);
-                        else
-                            size.Height = (int)(frame.Height * EXPANDED_HEIGHT_RATIO);
-                    }
-                    else if (this._owner.SizeMode == PictureBoxSizeMode.Zoom)
-                    {
-                        if (frame.Width > frame.Height)
-                        {
-                            size.Width = (int)(this._owner.Width * EXPANDED_WIDTH_RATIO);
-                            size.Height = (int)(frame.Height * EXPANDED_HEIGHT_RATIO);
-                        }
-                        else
-                        {
-                            size.Width = (int)(frame.Width * EXPANDED_WIDTH_RATIO);
-                            size.Height = (int)(this._owner.Height * EXPANDED_HEIGHT_RATIO);
-                        }
+                        size.Width          = (int)(this._owner.Width * EXPANDED_WIDTH_RATIO);
+                        size.Height         = (int)(frame.Height * EXPANDED_HEIGHT_RATIO);
                     }
                     else
                     {
-                        size.Width = (int)(this._owner.Width * EXPANDED_WIDTH_RATIO);
-                        size.Height = (int)(this._owner.Height * EXPANDED_HEIGHT_RATIO);
+                        size.Width          = (int)(frame.Width * EXPANDED_WIDTH_RATIO);
+                        size.Height         = (int)(this._owner.Height * EXPANDED_HEIGHT_RATIO);
                     }
                 }
                 else
                 {
-                    size.Width = frame.Width;
-                    size.Height = frame.Height;
+                    size.Width              = (int)(this._owner.Width * EXPANDED_WIDTH_RATIO);
+                    size.Height             = (int)(this._owner.Height * EXPANDED_HEIGHT_RATIO);
                 }
+            }
+            else
+            {
+                size.Width                  = frame.Width;
+                size.Height                 = frame.Height;
+            }
 
-                return new Rect(offset, size);
+            return size;
+        }
+
+        private Rect GetDrawingSpace(Mat frame)
+        {
+            try
+            {
+                var offset                  = this.GetGmapOffset(frame);
+                var size                    = this.GetGmapSize(frame);
+                return new Rect(this.GetGmapOffset(frame), this.GetGmapSize(frame));
             }
             catch (Exception)
             {
@@ -149,30 +175,35 @@ namespace oyo
 
         public Mat Overlay(Mat frame)
         {
+            return this.Overlay(frame, this.GetGmapOffset(frame));
+        }
+
+        public Mat Overlay(Mat frame, OpenCvSharp.Point offset)
+        {
             if(this.State != GmapState.Collapsed && this._cachedGmap.Empty())
                 return frame;
 
-            var area = this.GetDrawingSpace(frame);
+            var area                        = new OpenCvSharp.Rect(offset, this.GetGmapSize(frame));
             if (this.State == GmapState.Collapsed)
             {
-                frame = frame.CvtColor(ColorConversionCodes.BGR2BGRA);
-                var icon = this._icon.Resize(area.Size);
-                var mask = this._mask.Resize(area.Size);
+                frame                       = frame.CvtColor(ColorConversionCodes.BGR2BGRA);
+                var icon                    = this._icon.Resize(area.Size);
+                var mask                    = this._mask.Resize(area.Size);
                 icon.CopyTo(new Mat(frame, area), mask);
             }
             else if (this.State == GmapState.Expanded)
             {
-                var gmap = this._cachedGmap.Resize(area.Size);
+                var gmap                    = this._cachedGmap.Resize(area.Size);
                 gmap.CopyTo(new Mat(frame, area));
             }
             else
             {
-                var gmap = this._cachedGmap.Resize(area.Size);
-                frame = gmap;
+                var gmap                    = this._cachedGmap.Resize(area.Size);
+                frame                       = gmap;
             }
 
-            this._currentFrame = frame;
-            this._currentFrame = this._currentFrame.CvtColor(ColorConversionCodes.BGRA2BGR);
+            this._currentFrame              = frame;
+            this._currentFrame              = this._currentFrame.CvtColor(ColorConversionCodes.BGRA2BGR);
             return this._currentFrame;
         }
 
@@ -183,22 +214,22 @@ namespace oyo
                 if(this._currentFrame == null)
                     throw new Exception();
 
-                var area = this.GetDrawingSpace(this._currentFrame);
-                var ret = new Rectangle(area.X, area.Y, area.Width, area.Height);
+                var area                    = this.GetDrawingSpace(this._currentFrame);
+                var ret                     = new Rectangle(area.X, area.Y, area.Width, area.Height);
                 if (this._owner.SizeMode == PictureBoxSizeMode.CenterImage)
                 {
-                    ret.X += (int)((this._owner.Width - this._currentFrame.Width) / 2.0f);
-                    ret.Y += (int)((this._owner.Height - this._currentFrame.Height) / 2.0f);
+                    ret.X                 += (int)((this._owner.Width - this._currentFrame.Width) / 2.0f);
+                    ret.Y                 += (int)((this._owner.Height - this._currentFrame.Height) / 2.0f);
                 }
                 else if (this._owner.SizeMode == PictureBoxSizeMode.Zoom)
                 {
                     if (area.Width > area.Height)
                     {
-                        ret.Y += (int)((this._owner.Height - this._currentFrame.Height) / 2.0f);
+                        ret.Y             += (int)((this._owner.Height - this._currentFrame.Height) / 2.0f);
                     }
                     else
                     {
-                        ret.X += (int)((this._owner.Width - this._currentFrame.Width) / 2.0f);
+                        ret.X             += (int)((this._owner.Width - this._currentFrame.Width) / 2.0f);
                     }
                 }
                 else
@@ -227,18 +258,18 @@ namespace oyo
                 if(this._currentFrame == null)
                     throw new Exception();
 
-                var area = this.GetDrawingSpace(this._currentFrame);
+                var area                    = this.GetDrawingSpace(this._currentFrame);
 
-                var uri = new Uri(string.Format("http://maps.googleapis.com/maps/api/staticmap?center={0},{1}&markers=color:blue%7Clabel:OYO%7C{2},{3}&size={4}x{5}&sensor=true&format=png&maptype=roadmap&zoom=18&language=ko&key=AIzaSyDO1LpjNHsEWBWLFdBPc6acJgyujd8ur2s", this.GPS.lat, this.GPS.lon, this.GPS.lat, this.GPS.lon, area.Width, area.Height));
-                var httpRequest = (HttpWebRequest)HttpWebRequest.Create(uri);
-                var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-                var imageStream = httpResponse.GetResponseStream();
+                var uri                     = new Uri(string.Format("http://maps.googleapis.com/maps/api/staticmap?center={0},{1}&markers=color:blue%7Clabel:OYO%7C{2},{3}&size={4}x{5}&sensor=true&format=png&maptype=roadmap&zoom=18&language=ko&key=AIzaSyDO1LpjNHsEWBWLFdBPc6acJgyujd8ur2s", this.GPS.lat, this.GPS.lon, this.GPS.lat, this.GPS.lon, area.Width, area.Height));
+                var httpRequest             = HttpWebRequest.Create(uri) as HttpWebRequest;
+                var httpResponse            = httpRequest.GetResponse() as HttpWebResponse;
+                var imageStream             = httpResponse.GetResponseStream();
 
-                var mstream = new MemoryStream();
+                var mstream                 = new MemoryStream();
                 imageStream.CopyTo(mstream);
 
 this._mutex.WaitOne();
-                this._cachedGmap = Cv2.ImDecode(mstream.ToArray(), ImreadModes.AnyColor);
+                this._cachedGmap            = Cv2.ImDecode(mstream.ToArray(), ImreadModes.AnyColor);
 this._mutex.ReleaseMutex();
 
                 this.OnReceiveGmapEvent.Invoke(this._cachedGmap);
@@ -252,8 +283,8 @@ this._mutex.ReleaseMutex();
         {
             try
             {
-                var url = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&sensor=false&key=AIzaSyDO1LpjNHsEWBWLFdBPc6acJgyujd8ur2s", this.GPS.lat, this.GPS.lon);
-                var xml = XElement.Load(url);
+                var url                     = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&sensor=false&key=AIzaSyDO1LpjNHsEWBWLFdBPc6acJgyujd8ur2s", this.GPS.lat, this.GPS.lon);
+                var xml                     = XElement.Load(url);
                 if (xml.Element("status").Value != "OK")
                     return;
 
@@ -266,16 +297,16 @@ this._mutex.ReleaseMutex();
 
         public void Update()
         {
-            var requestGmapThread = new Thread(this.RequestGmap);
+            var requestGmapThread           = new Thread(this.RequestGmap);
             requestGmapThread.Start();
 
-            var requestAddressThread = new Thread(this.RequestAddress);
+            var requestAddressThread        = new Thread(this.RequestAddress);
             requestAddressThread.Start();
         }
 
         public void Update(GPS gps)
         {
-            this.GPS = gps;
+            this.GPS                        = gps;
             this.Update();
         }
     }

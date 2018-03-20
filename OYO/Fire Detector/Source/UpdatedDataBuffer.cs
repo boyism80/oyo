@@ -5,6 +5,13 @@ namespace Fire_Detector.Source
     public sealed class UpdatedDataBuffer
     {
         private Size _currentDisplaySize;
+        public Size Size
+        {
+            get
+            {
+                return this._currentDisplaySize;
+            }
+        }
         
         private Mat _infrared;
         public Mat Infrared

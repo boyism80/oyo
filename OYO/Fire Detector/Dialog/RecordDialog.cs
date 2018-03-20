@@ -12,6 +12,9 @@ namespace Fire_Detector.Dialog
         public oyo.OYORecorder.RecordingStateType RecordingType { get; private set; }
         public OpenCvSharp.Size Resolution { get; private set; }
 
+        public bool ShowDetectionBoxes { get; private set; }
+        public bool ShowGmap { get; private set; }
+
         public RecordDialog()
         {
             InitializeComponent();
@@ -83,7 +86,9 @@ namespace Fire_Detector.Dialog
                 }
             }
 
-            this.DialogResult = DialogResult.OK;
+            this.ShowDetectionBoxes     = this.bunifuCheckbox8.Checked;
+            this.ShowGmap               = this.bunifuCheckbox9.Checked;
+            this.DialogResult           = DialogResult.OK;
             this.Close();
         }
 

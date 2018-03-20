@@ -44,20 +44,21 @@ namespace Fire_Detector.BunifuForm
             var isMaximized = this.Left == 0 && this.Top == 0 && this.Size.Width == Screen.PrimaryScreen.WorkingArea.Width && this.Size.Height == Screen.PrimaryScreen.WorkingArea.Height;
             if (isMaximized)
             {
-                this.Left = this._beforePosition.X;
-                this.Top = this._beforePosition.Y;
-                this.Size = this._beforeSize;
-                this.bunifuDragControl.Vertical = true;
-                this.bunifuDragControl.Horizontal = true;
+                this.Left                           = this._beforePosition.X;
+                this.Top                            = this._beforePosition.Y;
+                this.Size                           = this._beforeSize;
+                this.bunifuDragControl.Vertical     = true;
+                this.bunifuDragControl.Horizontal   = true;
             }
             else
             {
-                this._beforePosition = new System.Drawing.Point(this.Left, this.Top);
-                this._beforeSize = this.Size;
-                this.Left = this.Top = 0;
-                this.Size = new System.Drawing.Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
-                this.bunifuDragControl.Vertical = false;
-                this.bunifuDragControl.Horizontal = false;
+                this._beforePosition                = new System.Drawing.Point(this.Left, this.Top);
+                this._beforeSize                    = this.Size;
+                this.Left                           = 0;
+                this.Top                            = 0;
+                this.Size                           = new System.Drawing.Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
+                this.bunifuDragControl.Vertical     = false;
+                this.bunifuDragControl.Horizontal   = false;
             }
 
             this.OnScreenStateChanged.Invoke(this.Size, !isMaximized);
@@ -70,27 +71,27 @@ namespace Fire_Detector.BunifuForm
                 //
                 // Get scaled
                 //
-                var scaled = this.Config.Visualize.Scaled;
+                var scaled                          = this.Config.Visualize.Scaled;
                 if (this.Config.Blending.Enabled || this.defaultView.streamingFrameBox.SizeMode != PictureBoxSizeMode.CenterImage)
-                    scaled = Source.Config.VisualizeConfig.MAX_SCALED_SIZE;
+                    scaled                          = Source.Config.VisualizeConfig.MAX_SCALED_SIZE;
 
                 else if (this.StreamingType == StreamingType.Visual)
-                    scaled = Source.Config.VisualizeConfig.MAX_SCALED_SIZE / 2.0f;
+                    scaled                          = Source.Config.VisualizeConfig.MAX_SCALED_SIZE / 2.0f;
 
 
                 //
                 // Get updated frame and store buffer
                 //
-                var updatedFrame = new Mat();
+                var updatedFrame                    = new Mat();
                 if (streamingType == StreamingType.Infrared)
                 {
-                    updatedFrame = receiver.Infrared(scaled);
+                    updatedFrame                    = receiver.Infrared(scaled);
                     this.UpdatedDataBuffer.SetInfrared(this.mappingPalette(updatedFrame), receiver.Temperature(scaled));
                     this.Recorder.Write(OYORecorder.RecordingStateType.Infrared, updatedFrame);
                 }
                 else
                 {
-                    updatedFrame = receiver.Visual();
+                    updatedFrame                    = receiver.Visual();
                     this.UpdatedDataBuffer.SetVisual(updatedFrame);
                     this.Recorder.Write(OYORecorder.RecordingStateType.Visual, updatedFrame);
                 }
@@ -99,68 +100,113 @@ namespace Fire_Detector.BunifuForm
                 //
                 // Set current frame box size to fix frame and temperature table size
                 //
-                updatedFrame = this.UpdatedDataBuffer.SetDisplay(this.GetDisplaySize(streamingType, updatedFrame));
+                var currentDisplaySize              = this.GetDisplaySize(streamingType, updatedFrame);
+                updatedFrame                        = this.UpdatedDataBuffer.SetDisplay(currentDisplaySize);
 
 
                 //
                 // Blend if user checked
                 //
-                var temperature = this.UpdatedDataBuffer.Temperature;
-                var blendedFrame = new Mat();
+                var blendedFrame                    = new Mat();
                 if (this.Config.Blending.Enabled || this.Recorder.IsRecording(OYORecorder.RecordingStateType.Blending))
                 {
-                    var mask = temperature.Threshold(this.defaultView.sideExpandedBar.visualizeTab.thresholdSlider.Value, 255, ThresholdTypes.Binary);
+                    var mask                        = this.UpdatedDataBuffer.Temperature.Threshold(this.defaultView.sideExpandedBar.visualizeTab.thresholdSlider.Value, 255, ThresholdTypes.Binary);
                     this.Blender.Update(this.UpdatedDataBuffer.Visual);
                     this.Blender.Update(this.UpdatedDataBuffer.Infrared, mask);
 
                     if(this.Blender.Blendable)
-                        blendedFrame = this.Blender.Blending();
+                        blendedFrame                = this.Blender.Blending();
 
                     if(this.Config.Blending.Enabled)
-                        updatedFrame = blendedFrame;
+                        updatedFrame                = blendedFrame;
 
                     if(this.Recorder.IsRecording(OYORecorder.RecordingStateType.Blending) && streamingType == StreamingType.Infrared)
                         this.Recorder.Write(OYORecorder.RecordingStateType.Blending, blendedFrame);
                 }
-                
+
+
                 //
-                // Detect if user checked
+                // Record display frame
+                //
+                var isDisplayRecordable             = this.Recorder.IsRecording(OYORecorder.RecordingStateType.Display) && ((this.Config.Blending.Enabled && streamingType == StreamingType.Infrared) || (this.StreamingType == streamingType));
+                if (isDisplayRecordable)
+                {
+                    var currentRecordSize           = this.Recorder.GetRecordSize(OYORecorder.RecordingStateType.Display);
+                    var displayFrame                = updatedFrame.Resize(currentRecordSize);
+                    this.UpdatedDataBuffer.SetDisplay(currentRecordSize);
+
+                    // Draw detection boxes
+                    if (this.defaultView.sideExpandedBar.droneTab.ShowDetectionBoxes)
+                    {
+                        var mask                    = this.UpdatedDataBuffer.Temperature.Threshold(this.defaultView.sideExpandedBar.detectFireTab.desiredTemperatureSlider.Value, 255, ThresholdTypes.Binary);
+                        var betweenMin              = this.UpdatedDataBuffer.MeanTemperature - this.UpdatedDataBuffer.MinimumTemperature;
+                        var betweenMax              = this.UpdatedDataBuffer.MaximumTemperature - this.UpdatedDataBuffer.MeanTemperature;
+
+                        this.Detector.Update(mask, delegate (RotatedRect detectedRect)
+                        {
+                            var center              = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
+                            if(center - this.UpdatedDataBuffer.MeanTemperature > betweenMin * DETECTION_ALPHA)
+                                return true;
+
+                            return false;
+                        });
+
+                        displayFrame                = this.Detector.DrawDetectedRects(displayFrame);
+
+
+                        // Draw temperature label
+                        foreach (var detectedRect in this.Detector.DetectedRects)
+                        {
+                            var center              = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
+                            this.markTemperature(displayFrame, new Point(detectedRect.Center.X, detectedRect.Center.Y), center, Scalar.Red);
+                        }
+                    }
+
+                    // Draw google map
+                    if (this.defaultView.sideExpandedBar.droneTab.ShowGmap)
+                    {
+                        displayFrame                = this.Overlayer.Overlay(displayFrame, this.Overlayer.GetGmapPadding(displayFrame));
+                    }
+
+                    // Write record frame
+                    this.Recorder.Write(OYORecorder.RecordingStateType.Display, displayFrame);
+
+                    // Restore previous size
+                    this.UpdatedDataBuffer.SetDisplay(currentDisplaySize);
+                }
+                
+
+                //
+                // Detect current frame that showing
                 //
                 if (this.Config.Detecting.Enabled)
                 {
-                    var mask = temperature.Threshold(this.defaultView.sideExpandedBar.detectFireTab.desiredTemperatureSlider.Value, 255, ThresholdTypes.Binary);
-                    var betweenMin = this.UpdatedDataBuffer.MeanTemperature - this.UpdatedDataBuffer.MinimumTemperature;
-                    var betweenMax = this.UpdatedDataBuffer.MaximumTemperature - this.UpdatedDataBuffer.MeanTemperature;
+                    var mask                        = this.UpdatedDataBuffer.Temperature.Threshold(this.defaultView.sideExpandedBar.detectFireTab.desiredTemperatureSlider.Value, 255, ThresholdTypes.Binary);
+                    var betweenMin                  = this.UpdatedDataBuffer.MeanTemperature - this.UpdatedDataBuffer.MinimumTemperature;
+                    var betweenMax                  = this.UpdatedDataBuffer.MaximumTemperature - this.UpdatedDataBuffer.MeanTemperature;
 
                     this.Detector.Update(mask, delegate (RotatedRect detectedRect)
                     {
-                        var center = temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
+                        var center                  = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
                         if(center - this.UpdatedDataBuffer.MeanTemperature > betweenMin * DETECTION_ALPHA)
                             return true;
 
                         return false;
                     });
 
-                    updatedFrame = this.Detector.DrawDetectedRects(updatedFrame);
+                    updatedFrame                    = this.Detector.DrawDetectedRects(updatedFrame);
 
 
                     // Draw temperature label
                     foreach (var detectedRect in this.Detector.DetectedRects)
                     {
-                        var center = temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
-                        this.markTemperature(updatedFrame, new Point(detectedRect.Center.X, detectedRect.Center.Y), center, Scalar.Red, scaled);
+                        var center                  = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
+                        this.markTemperature(updatedFrame, new Point(detectedRect.Center.X, detectedRect.Center.Y), center, Scalar.Red);
                     }
                 }
 
-                updatedFrame = this.Overlayer.Overlay(updatedFrame);
-
-                var invalidated = (this.Config.Blending.Enabled || (this.StreamingType == streamingType));
-                if(this.Recorder.IsRecording(OYORecorder.RecordingStateType.Display))
-                {
-                    if((this.Config.Blending.Enabled && streamingType == StreamingType.Infrared) || (this.StreamingType == streamingType))
-                        this.Recorder.Write(OYORecorder.RecordingStateType.Display, updatedFrame);
-                }
-
+                var invalidated                     = (this.Config.Blending.Enabled || (this.StreamingType == streamingType));
+                updatedFrame                        = this.Overlayer.Overlay(updatedFrame);
                 this.OnFrameUpdated.Invoke(this.UpdatedDataBuffer, updatedFrame, invalidated);
             }
             catch (Exception)

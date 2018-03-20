@@ -169,9 +169,9 @@ namespace Fire_Detector.BunifuForm
 
             this.Bebop                          = new Bebop2();
             this.Bebop.OnConnected             += this.mainView.mainConnectionView.Bebop_OnConnectionChanged;
-            this.Bebop.OnConnected             += this.defaultView.sideExpandedBar.droneTab.Bebop_OnConnected;
+            this.Bebop.OnConnected             += this.defaultView.sideExpandedBar.droneTab.Bebop_OnConnectionChanged;
             this.Bebop.OnDisconnected          += this.mainView.mainConnectionView.Bebop_OnConnectionChanged;
-            this.Bebop.OnDisconnected          += this.defaultView.sideExpandedBar.droneTab.Bebop_OnDisconnected;
+            this.Bebop.OnDisconnected          += this.defaultView.sideExpandedBar.droneTab.Bebop_OnConnectionChanged;
             this.Bebop.OnStreaming             += this.Bebop2_OnStreaming;
             this.Bebop.OnRequestPcmd           += this.Bebop2_OnRequestPcmd;
             this.Bebop.OnAltitudeChanged       += this.Bebop2_OnAltitudeChanged;
@@ -237,9 +237,9 @@ namespace Fire_Detector.BunifuForm
         /// <param name="temperature">표시할 온도값</param>
         /// <param name="color">레이블 백그라운드 색상</param>
         /// <param name="scaled">스케일된 값. 디폴트는 1.0f</param>
-        private void markTemperature(Mat frame, OpenCvSharp.Point location, double temperature, Scalar color, float scaled = 1.0f)
+        private void markTemperature(Mat frame, OpenCvSharp.Point location, double temperature, Scalar color)
         {
-            var fontScaled                   = scaled * 0.2f;
+            var fontScaled                   = frame.Width / 400.0f;
             var baseLine                     = 0;
             var text                         = string.Format("{0} 'C", temperature.ToString("N2"));
             var font                         = HersheyFonts.HersheyPlain;
