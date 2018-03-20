@@ -4,6 +4,7 @@ using OpenCvSharp;
 using oyo;
 using ParrotBebop2;
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -25,6 +26,9 @@ namespace Fire_Detector.BunifuForm
         /// 드론에게 보낼 컨트롤을 조작하는데 필요한 뮤텍스 인스턴스입니다.
         /// </summary>
         private Mutex               _mutex = new Mutex();
+
+        private Stopwatch           _stopwatch = new Stopwatch();
+        private int                 _fps;
 
         private void exitButton_Click(object sender, EventArgs e)
         {
@@ -68,6 +72,9 @@ namespace Fire_Detector.BunifuForm
         {
             try
             {
+                var stopwatch = new Stopwatch();
+                stopwatch.Start();
+
                 //
                 // Get scaled
                 //
@@ -205,9 +212,42 @@ namespace Fire_Detector.BunifuForm
                     }
                 }
 
+                
+
+                if ((this.Config.Blending.Enabled && streamingType == StreamingType.Infrared) || (!this.Config.Blending.Enabled && this.StreamingType == streamingType))
+                {
+                    this._stopwatch.Stop();
+                    this._fps                       = (int)(1000.0f / this._stopwatch.ElapsedMilliseconds);
+
+                    this._stopwatch.Reset();
+                    this._stopwatch.Start();
+                }
+
+                updatedFrame                        = updatedFrame.Resize(currentDisplaySize);
+                var fontScaled                      = Math.Min(updatedFrame.Width / 1200.0f, 0.8f);
+                var baseLine                        = 0;
+                var text                            = string.Format("fps : {0}", this._fps);
+                var font                            = HersheyFonts.HersheyPlain;
+                var textSize                        = Cv2.GetTextSize(text, font, fontScaled, 1, out baseLine);
+                Cv2.PutText(updatedFrame, text, new OpenCvSharp.Point(updatedFrame.Width - textSize.Width * 2, textSize.Height * 3), HersheyFonts.HersheyDuplex, fontScaled, Scalar.White);
+
+
                 var invalidated                     = (this.Config.Blending.Enabled || (this.StreamingType == streamingType));
                 updatedFrame                        = this.Overlayer.Overlay(updatedFrame);
+
                 this.OnFrameUpdated.Invoke(this.UpdatedDataBuffer, updatedFrame, invalidated);
+
+                stopwatch.Stop();
+                var processingType = string.Empty;
+                if (this.Config.Blending.Enabled)
+                    processingType = "블렌딩";
+                else if (this.StreamingType == StreamingType.Infrared)
+                    processingType = "열화상";
+                else
+                    processingType = "실화상";
+
+                if(streamingType == this.StreamingType)
+                    Console.WriteLine(string.Format("{0} 처리에 걸린 시간 : {1}초", processingType, stopwatch.ElapsedMilliseconds / 1000.0f));
             }
             catch (Exception)
             {
