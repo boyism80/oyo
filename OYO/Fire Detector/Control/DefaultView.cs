@@ -58,7 +58,7 @@ namespace Fire_Detector.Control
             if(this.Root == null)
                 return;
 
-            if (this.Root.Receiver.Connected == false && this.Root.Bebop.Connected == false)
+            if (this.Root.Receiver.Connected == false && this.Root.Bebop2.Connected == false)
                 return;
 
             switch (this.streamingFrameBox.SizeMode)
@@ -84,7 +84,7 @@ namespace Fire_Detector.Control
             if(this.Root == null)
                 return;
 
-            this.Root.Config.Visualize.Scaled += (e.Delta / 120);
+            this.Root.Config.Visualizer.Scaled += (e.Delta / 120);
             this.Root.Overlayer.Update();
         }
 

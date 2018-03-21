@@ -24,7 +24,7 @@ namespace Fire_Detector.Control.SideTabView
                 return;
 
             //0302지승추가
-            if (this.Root.Bebop.Connected)
+            if (this.Root.Bebop2.Connected)
                 enablePanel(true);
             else
                 enablePanel(false);
@@ -122,10 +122,10 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            if(this.Root.Bebop.Connected)
-                this.Root.Bebop.Disconnect();
+            if(this.Root.Bebop2.Connected)
+                this.Root.Bebop2.Disconnect();
             else
-                this.Root.Bebop.Connect();
+                this.Root.Bebop2.Connect();
 
             this.update();
         }
@@ -136,9 +136,9 @@ namespace Fire_Detector.Control.SideTabView
                 return;
 
             if(this.takeoffSwitch.Value)
-                this.Root.Bebop.takeoff();
+                this.Root.Bebop2.takeoff();
             else
-                this.Root.Bebop.landing();
+                this.Root.Bebop2.landing();
 
             //if (takeoffSwitch.Value == true)
             //{
@@ -321,7 +321,7 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            if(this.Root.Bebop.Connected == false)
+            if(this.Root.Bebop2.Connected == false)
                 return;
 
             this.bunifuImageButton5.Invoke(new MethodInvoker(delegate ()

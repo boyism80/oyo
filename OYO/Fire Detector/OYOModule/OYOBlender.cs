@@ -97,7 +97,7 @@ namespace oyo
 			}
 		}
 
-		public OYOBlender(Size size, float alpha = 0.5f, bool smooth = false)
+		public OYOBlender(Size size, float alpha = 0.5f, bool smooth = true)
 		{
 			this.Size				= size;
 			this.Smooth				= smooth;

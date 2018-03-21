@@ -2,6 +2,7 @@
 using OpenCvSharp;
 using oyo;
 using ParrotBebop2;
+using SimpleJSON;
 using System;
 using System.Windows.Forms;
 
@@ -94,15 +95,15 @@ namespace Fire_Detector.BunifuForm
         /// </summary>
         public OYOReceiver                      Receiver { get; private set; }
 
-        /// <summary>
-        /// 적외선 프레임과 실화상 프레임을 블렌딩해주는 인스턴스입니다.
-        /// </summary>
-        public OYOBlender                       Blender { get; private set; }
+        ///// <summary>
+        ///// 적외선 프레임과 실화상 프레임을 블렌딩해주는 인스턴스입니다.
+        ///// </summary>
+        //public OYOBlender                       Blender { get; private set; }
 
-        /// <summary>
-        /// 산불 감지를 수행하는 인스턴스입니다.
-        /// </summary>
-        public OYODetector                      Detector { get; private set; }
+        ///// <summary>
+        ///// 산불 감지를 수행하는 인스턴스입니다.
+        ///// </summary>
+        //public OYODetector                      Detector { get; private set; }
 
         /// <summary>
         /// 녹화 기능을 수행하는 인스턴스입니다.
@@ -115,12 +116,6 @@ namespace Fire_Detector.BunifuForm
         public OYOGMapOverlayer                 Overlayer { get; private set; }
 
         /// <summary>
-        /// 현재 스트리밍 타입입니다.
-        /// 적외선 타입 혹은 실화상 타입이 될 수 있습니다.
-        /// </summary>
-        public StreamingType                    StreamingType { get; set; }
-
-        /// <summary>
         /// 사용자가 설정한 현재 설정 상태입니다.
         /// </summary>
         public Config                           Config { get; private set; }
@@ -128,7 +123,7 @@ namespace Fire_Detector.BunifuForm
         /// <summary>
         /// 드론에 대한 인스턴스입니다.
         /// </summary>
-        public Bebop2                           Bebop { get; private set; }
+        public Bebop2                           Bebop2 { get; private set; }
 
         /// <summary>
         /// 립모션 컨트롤러 인스턴스입니다.
@@ -156,27 +151,27 @@ namespace Fire_Detector.BunifuForm
             this.Receiver.OnUpdate             += this.Receiver_OnUpdate;
             this.Receiver.OnError              += this.Receiver_OnError;
 
-            this.Blender                        = new OYOBlender(new OpenCvSharp.Size(720, 480));
-            this.Blender.Smooth                 = true;
-            this.Blender.Transparency           = this.defaultView.sideExpandedBar.visualizeTab.transparencySlider.Value / 100.0f;
+            //this.Blender                        = new OYOBlender(new OpenCvSharp.Size(720, 480));
+            //this.Blender.Smooth                 = true;
+            //this.Blender.Transparency           = this.defaultView.sideExpandedBar.visualizeTab.transparencySlider.Value / 100.0f;
 
-            this.Detector                       = new OYODetector();
+            //this.Detector                       = new OYODetector();
 
             this.Recorder                       = new OYORecorder();
 
             this.Overlayer                      = new OYOGMapOverlayer(this.defaultView.streamingFrameBox);
             this.Overlayer.OnReceiveAddressEvent += this.defaultView.Overlayer_OnReceiveAddressEvent;
 
-            this.Bebop                          = new Bebop2();
-            this.Bebop.OnConnected             += this.mainView.mainConnectionView.Bebop_OnConnectionChanged;
-            this.Bebop.OnConnected             += this.defaultView.sideExpandedBar.droneTab.Bebop_OnConnectionChanged;
-            this.Bebop.OnDisconnected          += this.mainView.mainConnectionView.Bebop_OnConnectionChanged;
-            this.Bebop.OnDisconnected          += this.defaultView.sideExpandedBar.droneTab.Bebop_OnConnectionChanged;
-            this.Bebop.OnStreaming             += this.Bebop2_OnStreaming;
-            this.Bebop.OnRequestPcmd           += this.Bebop2_OnRequestPcmd;
-            this.Bebop.OnAltitudeChanged       += this.Bebop2_OnAltitudeChanged;
-            this.Bebop.OnPositionChanged       += this.Bebop_OnPositionChanged;
-            this.Bebop.OnError                 += this.Bebop_OnError;
+            this.Bebop2                          = new Bebop2();
+            this.Bebop2.OnConnected             += this.mainView.mainConnectionView.Bebop_OnConnectionChanged;
+            this.Bebop2.OnConnected             += this.defaultView.sideExpandedBar.droneTab.Bebop_OnConnectionChanged;
+            this.Bebop2.OnDisconnected          += this.mainView.mainConnectionView.Bebop_OnConnectionChanged;
+            this.Bebop2.OnDisconnected          += this.defaultView.sideExpandedBar.droneTab.Bebop_OnConnectionChanged;
+            this.Bebop2.OnStreaming             += this.Bebop2_OnStreaming;
+            this.Bebop2.OnRequestPcmd           += this.Bebop2_OnRequestPcmd;
+            this.Bebop2.OnAltitudeChanged       += this.Bebop2_OnAltitudeChanged;
+            this.Bebop2.OnPositionChanged       += this.Bebop_OnPositionChanged;
+            this.Bebop2.OnError                 += this.Bebop_OnError;
 
 
             this.LeapController                 = new Leap.Controller();
@@ -188,7 +183,7 @@ namespace Fire_Detector.BunifuForm
             this.LeapController.FrameReady     += this.mainView.mainConnectionView.LeapController_FrameReady;
 
             this.Config                         = new Config();
-            this.Config.Visualize.Palette       = this.defaultView.sideExpandedBar.visualizeTab.palettesDropDown.selectedValue;
+            this.Config.Visualizer.Palette       = this.defaultView.sideExpandedBar.visualizeTab.palettesDropDown.selectedValue;
 
             this.OnFrameUpdated                += this.defaultView.OnFrameUpdated;
             this.OnFrameUpdated                += this.defaultView.sideExpandedBar.detectFireTab.OnFrameUpdated;
@@ -206,10 +201,10 @@ namespace Fire_Detector.BunifuForm
         /// <returns>팔레트가 적용된 이미지 프레임</returns>
         private Mat mappingPalette(Mat frame)
         {
-            lock (this.Config.Visualize.Palette)
+            lock (this.Config.Visualizer.Palette)
             {
                 var ret = new Mat();
-                switch (this.Config.Visualize.Palette)
+                switch (this.Config.Visualizer.Palette)
                 {
                     case "Grayscale":
                         ret = frame;
@@ -220,7 +215,7 @@ namespace Fire_Detector.BunifuForm
                         break;
 
                     default:
-                        var ctype = (ColormapTypes)Enum.Parse(typeof(ColormapTypes), this.Config.Visualize.Palette);
+                        var ctype = (ColormapTypes)Enum.Parse(typeof(ColormapTypes), this.Config.Visualizer.Palette);
                         Cv2.ApplyColorMap(frame, ret, ctype);
                         break;
                 }
@@ -252,6 +247,34 @@ namespace Fire_Detector.BunifuForm
             Cv2.PutText(frame, text, new OpenCvSharp.Point(location.X + padding.Width, location.Y + (textSize.Height - padding.Height)), font, fontScaled, Scalar.White);
         }
 
+        private bool loadConfig(string path)
+        {
+            try
+            {
+                var json = JSONClass.LoadFromCompressedFile(path);
+                this.Config.FromJson(json);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private bool saveConfig(string path)
+        {
+            try
+            {
+                var json = this.Config.ToJson();
+                json.SaveToCompressedFile(path);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         /// <summary>
         /// 이미지가 표시될 크기를 얻습니다.
         /// PictureBox의 사이즈 모드에 따라 이미지의 크기가 변경되므로 이 메소드를 이용해 정확한 크기를 얻어야합니다.
@@ -261,13 +284,13 @@ namespace Fire_Detector.BunifuForm
         /// <returns>표시될 이미지의 크기</returns>
         public OpenCvSharp.Size GetDisplaySize(StreamingType streamingType, Mat frame)
         {
-            if(this.StreamingType == streamingType)
+            if(this.Config.Visualizer.StreamingType == streamingType)
                 this._cachedDisplaySize         = frame.Size();
 
             if (this.defaultView.streamingFrameBox.SizeMode == PictureBoxSizeMode.CenterImage)
             {
-                if(this.Config.Blending.Enabled)
-                    this._cachedDisplaySize     = this.Blender.Size;
+                if(this.Config.Blender.Enabled)
+                    this._cachedDisplaySize     = this.Config.Blender.Size;
 
                 return this._cachedDisplaySize;
             }
@@ -287,6 +310,11 @@ namespace Fire_Detector.BunifuForm
                     return new OpenCvSharp.Size(this.defaultView.streamingFrameBox.Width * aspect, this.defaultView.streamingFrameBox.Height);
                 }
             }
+        }
+
+        public bool synchronizeFromConfig()
+        {
+            return true;
         }
     }
 }

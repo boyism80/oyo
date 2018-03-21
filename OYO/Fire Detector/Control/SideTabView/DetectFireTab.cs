@@ -51,7 +51,7 @@ namespace Fire_Detector.Control.SideTabView
                     this.Root.defaultView.detectingProgressbar.animated     = detecting;
                 }));
 
-                this.Root.Config.Detecting.Enabled                          = detecting;
+                this.Root.Config.Detector.Enabled                          = detecting;
             }
             catch (Exception)
             { }
@@ -91,6 +91,20 @@ namespace Fire_Detector.Control.SideTabView
         public void Receiver_OnDisconnected(OYOReceiver receiver)
         {
             this.detectionStateSwitch.Value = false;
+        }
+
+        public bool synchronizeFromConfig(Config config)
+        {
+            try
+            {
+                this.detectionStateSwitch.Value = config.Detector.Enabled;
+                this.desiredTemperatureSlider.Value = config.Detector.Threshold;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

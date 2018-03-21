@@ -188,7 +188,7 @@ namespace oyo
 
                 return this._socket.Connected;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this._socket.Close();
                 this._socket = null;

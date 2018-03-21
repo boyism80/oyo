@@ -12,18 +12,7 @@ namespace oyo
         // Threshold
         //  엣지 검출에 사용될 임계값입니다.
         //
-        private Range _threshold;
-        public Range Threshold
-        {
-            get
-            {
-                return this._threshold;
-            }
-            set
-            {
-                this._threshold = value;
-            }
-        }
+        private Range _threshold = new Range(50, 100);
 
         //
         // DetectedVertices
@@ -65,12 +54,12 @@ namespace oyo
 
         public OYODetector()
         {
-            this.Threshold = new Range(50, 100);
+            this._threshold = new Range(50, 100);
         }
 
         public OYODetector(Range threshold)
         {
-            this.Threshold = threshold;
+            this._threshold = threshold;
         }
 
         //
@@ -88,7 +77,7 @@ namespace oyo
 
             this._detectedRects.Clear();
 
-            var edged           = source.Canny(this.Threshold.Start, this.Threshold.End).Dilate(null).Erode(null);
+            var edged           = source.Canny(this._threshold.Start, this._threshold.End).Dilate(null).Erode(null);
             var cnts            = null as Point[][];
             var hierarchy       = null as HierarchyIndex[];
 

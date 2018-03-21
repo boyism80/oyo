@@ -35,9 +35,9 @@ namespace Fire_Detector.Control
 
                 this.droneProgressbar.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.droneProgressbar.Value                 = this.Root.Bebop.Connected ? 15 : 0;
-                    this.droneProgressbar.animated              = this.Root.Bebop.Connected;
-                    this.droneProgressbar.ProgressBackColor     = this.Root.Bebop.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
+                    this.droneProgressbar.Value                 = this.Root.Bebop2.Connected ? 15 : 0;
+                    this.droneProgressbar.animated              = this.Root.Bebop2.Connected;
+                    this.droneProgressbar.ProgressBackColor     = this.Root.Bebop2.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
                 }));
 
                 this.bunifuCustomLabel17.Invoke(new MethodInvoker(delegate ()
@@ -48,7 +48,7 @@ namespace Fire_Detector.Control
 
                 this.droneStatePanel.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.droneStatePanel.Visible                = this.Root.Bebop.Connected;
+                    this.droneStatePanel.Visible                = this.Root.Bebop2.Connected;
                 }));
             }
             catch(Exception)
@@ -110,10 +110,10 @@ namespace Fire_Detector.Control
             if(this.Root == null)
                 return;
 
-            if(this.Root.Bebop.Connected)
-                this.Root.Bebop.Disconnect();
+            if(this.Root.Bebop2.Connected)
+                this.Root.Bebop2.Disconnect();
             else
-                this.Root.Bebop.Connect();
+                this.Root.Bebop2.Connect();
         }
 
         private void leapMotionImageButton_Click(object sender, System.EventArgs e)
