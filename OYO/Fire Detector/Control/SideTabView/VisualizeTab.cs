@@ -18,12 +18,9 @@ namespace Fire_Detector.Control.SideTabView
             this.horizontalRange.RangeMax = 80;
             this.verticalityRange.RangeMin = 20;
             this.verticalityRange.RangeMax = 80;
-
-            foreach (var cname in Enum.GetNames(typeof(ColormapTypes)))
-                this.palettesDropDown.AddItem(cname);
         }
 
-        public bool synchronizeFromConfig(Config config)
+        public bool synchronizeFromConfig()
         {
             try
             {
@@ -33,43 +30,82 @@ namespace Fire_Detector.Control.SideTabView
                 var backgroundActiveColor = System.Drawing.Color.LightCoral;
                 var backgroundInactiveColor = System.Drawing.Color.DarkGray;
 
+                this.palettesDropDown.Invoke(new MethodInvoker(delegate ()
+                {
+                    for (var i = 0; i < this.palettesDropDown.Items.Length; i++)
+                    {
+                        if (this.palettesDropDown.Items[i].Equals(this.Root.Visualizer.Palette))
+                        {
+                            this.palettesDropDown.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }));
+
+
+                //
+                // 표시 모드(열화상, 실화상, 블렌딩) 선택 버튼
+                //
                 this.infraredViewButton.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.infraredViewButton.color = (this.Root.Receiver.Connected && !this.Root.Config.Blender.Enabled && this.Root.Config.Visualizer.StreamingType == oyo.StreamingType.Infrared) ? backgroundActiveColor : backgroundInactiveColor;
+                    this.infraredViewButton.Enabled = this.Root.Receiver.Connected;
+                    this.infraredViewButton.color = (this.Root.Receiver.Connected && !this.Root.Blender.Enabled && this.Root.Visualizer.StreamingType == oyo.StreamingType.Infrared) ? backgroundActiveColor : backgroundInactiveColor;
                 }));
 
                 this.visualViewButton.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.visualViewButton.color = (this.Root.Receiver.Connected && !this.Root.Config.Blender.Enabled && this.Root.Config.Visualizer.StreamingType == oyo.StreamingType.Visual) ? backgroundActiveColor : backgroundInactiveColor;
+                    this.visualViewButton.Enabled = this.Root.Receiver.Connected;
+                    this.visualViewButton.color = (this.Root.Receiver.Connected && !this.Root.Blender.Enabled && this.Root.Visualizer.StreamingType == oyo.StreamingType.Visual) ? backgroundActiveColor : backgroundInactiveColor;
                 }));
 
                 this.blendingViewButton.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.blendingViewButton.color = (this.Root.Receiver.Connected && this.Root.Config.Blender.Enabled) ? backgroundActiveColor : backgroundInactiveColor;
+                    this.blendingViewButton.Enabled = this.Root.Receiver.Connected;
+                    this.blendingViewButton.color = (this.Root.Receiver.Connected && this.Root.Blender.Enabled) ? backgroundActiveColor : backgroundInactiveColor;
                 }));
 
+                this.fixLevelCheckBox.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.fixLevelCheckBox.Checked = this.Root.Receiver.FixLevel;
+                    this.levelTemperatureRange.RangeMin = (int)this.Root.Receiver.LevelTemperatureRange.Start;
+                    this.levelTemperatureRange.RangeMax = (int)this.Root.Receiver.LevelTemperatureRange.End;
+                    this.levelTemperatureRange_RangeMinChanged(this.levelTemperatureRange, EventArgs.Empty);
+                    this.levelTemperatureRange_RangeMaxChanged(this.levelTemperatureRange, EventArgs.Empty);
+                }));
+
+                //
+                // 블렌딩 옵션 (임계값, 투명도) 슬라이더
+                //
                 this.thresholdSlider.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.thresholdSlider.Value = config.Blender.Threshold;
+                    this.thresholdSlider.Value = this.Root.Blender.Threshold;
+                    this.thresholdSlider_ValueChanged(this.thresholdSlider, EventArgs.Empty);
                 }));
 
                 this.transparencySlider.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.transparencySlider.Value = (int)(config.Blender.Transparency * 100.0f);
+                    this.transparencySlider.Value = (int)(this.Root.Blender.Transparency * 100.0f);
+                    this.transparencySlider_ValueChanged(this.transparencySlider, EventArgs.Empty);
                 }));
 
+
+                //
+                // 블렌딩 크로핑 레인지바
+                //
                 this.horizontalRange.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.horizontalRange.MaximumRange = config.Blender.Size.Width;
-                    this.horizontalRange.RangeMin = config.Blender.CroppedRect.X;
-                    this.horizontalRange.RangeMax = config.Blender.CroppedRect.Width - config.Blender.CroppedRect.X;
+                    this.horizontalRange.MaximumRange = this.Root.Blender.Size.Width;
+                    this.horizontalRange.RangeMin = this.Root.Blender.VisualCroppedRect.X;
+                    this.horizontalRange.RangeMax = this.Root.Blender.VisualCroppedRect.Width - this.Root.Blender.VisualCroppedRect.X;
+                    this.horizontalRange_RangeChanged(this.horizontalRange, EventArgs.Empty);
                 }));
 
                 this.verticalityRange.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.verticalityRange.MaximumRange = config.Blender.Size.Height;
-                    this.verticalityRange.RangeMin = config.Blender.CroppedRect.Y;
-                    this.verticalityRange.RangeMax = config.Blender.CroppedRect.Height - config.Blender.CroppedRect.Y;
+                    this.verticalityRange.MaximumRange = this.Root.Blender.Size.Height;
+                    this.verticalityRange.RangeMin = this.Root.Blender.VisualCroppedRect.Y;
+                    this.verticalityRange.RangeMax = this.Root.Blender.VisualCroppedRect.Height - this.Root.Blender.VisualCroppedRect.Y;
+                    this.verticalityRange_RangeChanged(this.verticalityRange, EventArgs.Empty);
                 }));
 
                 return true;
@@ -95,7 +131,7 @@ namespace Fire_Detector.Control.SideTabView
                     connectionLabel.Text = receiver.Connected ? "서버와 연결되었습니다." : "서버와 연결되지 않았습니다.";
                 }));
 
-                this.synchronizeFromConfig(this.Root.Config);
+                this.synchronizeFromConfig();
             }
             catch (Exception)
             { }
@@ -117,9 +153,9 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            this.Root.Config.Visualizer.StreamingType = oyo.StreamingType.Infrared;
-            this.Root.Config.Blender.Enabled = false;
-            this.synchronizeFromConfig(Root.Config);
+            this.Root.Visualizer.StreamingType = oyo.StreamingType.Infrared;
+            this.Root.Blender.Enabled = false;
+            this.synchronizeFromConfig();
         }
 
         private void visualViewButton_Click(object sender, EventArgs e)
@@ -127,9 +163,9 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            this.Root.Config.Visualizer.StreamingType = oyo.StreamingType.Visual;
-            this.Root.Config.Blender.Enabled = false;
-            this.synchronizeFromConfig(Root.Config);
+            this.Root.Visualizer.StreamingType = oyo.StreamingType.Visual;
+            this.Root.Blender.Enabled = false;
+            this.synchronizeFromConfig();
         }
 
         private void palettesDropDown_onItemSelected(object sender, EventArgs e)
@@ -137,7 +173,7 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            this.Root.Config.Visualizer.Palette = this.palettesDropDown.selectedValue;
+            this.Root.Visualizer.Palette = this.palettesDropDown.selectedValue;
         }
 
         private void VisualizeTab_Load(object sender, EventArgs e)
@@ -145,10 +181,7 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            //this.thresholdSlider_ValueChanged(this.thresholdSlider, EventArgs.Empty);
-            //this.transparencySlider_ValueChanged(this.transparencySlider, EventArgs.Empty);
-
-            this.synchronizeFromConfig(Root.Config);
+            this.synchronizeFromConfig();
         }
 
         private void blendingViewButton_Click(object sender, EventArgs e)
@@ -156,8 +189,8 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            this.Root.Config.Blender.Enabled = true;
-            this.synchronizeFromConfig(Root.Config);
+            this.Root.Blender.Enabled = true;
+            this.synchronizeFromConfig();
         }
 
         private void fixLevelCheckBox_OnChange(object sender, EventArgs e)
@@ -188,8 +221,8 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            this.Root.Config.Blender.Threshold      = this.thresholdSlider.Value;
-            this.thresholdLabel.Text                = this.Root.Config.Blender.Threshold.ToString();
+            this.Root.Blender.Threshold      = this.thresholdSlider.Value;
+            this.thresholdLabel.Text                = this.Root.Blender.Threshold.ToString();
         }
 
         private void transparencySlider_ValueChanged(object sender, EventArgs e)
@@ -197,8 +230,8 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            this.Root.Config.Blender.Transparency   = this.transparencySlider.Value / 100.0f;
-            this.transparencyLabel.Text             = this.Root.Config.Blender.Transparency.ToString();
+            this.Root.Blender.Transparency   = this.transparencySlider.Value / 100.0f;
+            this.transparencyLabel.Text             = (this.Root.Blender.Transparency * 100.0f).ToString();
         }
 
         private void levelTemperatureRange_RangeMaxChanged(object sender, EventArgs e)
@@ -216,8 +249,9 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            this.Root.Config.Blender.CroppedRect = new Rect(new OpenCvSharp.Point(this.horizontalRange.RangeMin, this.Root.Config.Blender.CroppedRect.Y), 
-                                                     new OpenCvSharp.Size(this.horizontalRange.RangeMax - this.horizontalRange.RangeMin, this.Root.Config.Blender.CroppedRect.Height));
+            var offset  = new OpenCvSharp.Point(this.horizontalRange.RangeMin, this.Root.Blender.VisualCroppedRect.Y);
+            var size    = new OpenCvSharp.Size(this.horizontalRange.RangeMax - this.horizontalRange.RangeMin, this.Root.Blender.VisualCroppedRect.Height);
+            this.Root.Blender.VisualCroppedRect = new Rect(offset, size);
         }
 
         private void verticalityRange_RangeChanged(object sender, EventArgs e)
@@ -225,8 +259,9 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            this.Root.Config.Blender.CroppedRect = new Rect(new OpenCvSharp.Point(this.Root.Config.Blender.CroppedRect.X, this.verticalityRange.RangeMin), 
-                                                     new OpenCvSharp.Size(this.Root.Config.Blender.CroppedRect.Width, this.verticalityRange.RangeMax - this.verticalityRange.RangeMin));
+            var offset = new OpenCvSharp.Point(this.Root.Blender.VisualCroppedRect.X, this.verticalityRange.RangeMin);
+            var size   = new OpenCvSharp.Size(this.Root.Blender.VisualCroppedRect.Width, this.verticalityRange.RangeMax - this.verticalityRange.RangeMin);
+            this.Root.Blender.VisualCroppedRect = new Rect(offset, size);
         }
     }
 }

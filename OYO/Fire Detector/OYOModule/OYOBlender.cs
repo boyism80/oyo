@@ -10,7 +10,7 @@ namespace oyo
     //  포그라운드의 관심영역을 추출하기 위한 마스크 총 3가지의 정보가 업데이트되면
     //  블렌딩 작업을 수행할 수 있습니다.
     //
-    public class OYOBlender
+    public partial class OYOBlender
 	{
         //
         // _foreground
@@ -81,7 +81,9 @@ namespace oyo
         //  상대적으로 해상도가 큰 실화상 이미지의 일부를 잘라내어 겹치게 만들어 주어야 합니다.
         //  이 때 이 프로퍼티가 사용됩니다.
         //
-        public Rect CroppedRect { get; set; }
+        public Rect VisualCroppedRect { get; set; }
+
+        //public Rect InfraredCroppedRect { get; set; }
 
 
         //
@@ -102,7 +104,7 @@ namespace oyo
 			this.Size				= size;
 			this.Smooth				= smooth;
 			this.Transparency		= alpha;
-            this.CroppedRect        = new Rect(new Point(), this.Size);
+            this.VisualCroppedRect        = new Rect(new Point(), this.Size);
 		}
 
         //
@@ -154,7 +156,7 @@ namespace oyo
             blended_frame.ConvertTo(blended_frame, MatType.CV_8UC3);
 
             return blended_frame;
-		}
+        }
 
         //
         // Update
@@ -204,7 +206,7 @@ namespace oyo
 			if (this._background.Channels() == 1)
 				this._background    = this._background.CvtColor(ColorConversionCodes.GRAY2BGR);
 
-			this._background        = this._background.Clone(this.CroppedRect).Resize(this.Size);
+			this._background        = this._background.Clone(this.VisualCroppedRect).Resize(this.Size);
 
 			return this.Blendable;
 		}

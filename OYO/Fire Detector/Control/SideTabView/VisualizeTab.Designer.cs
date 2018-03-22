@@ -453,13 +453,25 @@
             this.palettesDropDown.ForeColor = System.Drawing.Color.White;
             this.palettesDropDown.Items = new string[] {
         "Grayscale",
-        "IronBlack"};
+        "IronBlack",
+        "Autumn",
+        "Bone",
+        "Jet",
+        "Winter",
+        "Rainbow",
+        "Ocean",
+        "Summer",
+        "Spring",
+        "Cool",
+        "Hsv",
+        "Pink",
+        "Hot"};
             this.palettesDropDown.Location = new System.Drawing.Point(105, 4);
             this.palettesDropDown.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.palettesDropDown.Name = "palettesDropDown";
             this.palettesDropDown.NomalColor = System.Drawing.Color.Salmon;
             this.palettesDropDown.onHoverColor = System.Drawing.Color.DarkSalmon;
-            this.palettesDropDown.selectedIndex = 0;
+            this.palettesDropDown.selectedIndex = -1;
             this.palettesDropDown.Size = new System.Drawing.Size(232, 22);
             this.palettesDropDown.TabIndex = 2;
             this.palettesDropDown.onItemSelected += new System.EventHandler(this.palettesDropDown_onItemSelected);
@@ -721,7 +733,7 @@
             this.panel22.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel22.Location = new System.Drawing.Point(0, 557);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(350, 100);
+            this.panel22.Size = new System.Drawing.Size(350, 139);
             this.panel22.TabIndex = 45;
             // 
             // verticalityRange
@@ -746,9 +758,9 @@
             this.horizontalRange.BorderRadius = 5;
             this.horizontalRange.IndicatorColor = System.Drawing.Color.Salmon;
             this.horizontalRange.Location = new System.Drawing.Point(110, 6);
-            this.horizontalRange.MaximumRange = 720;
+            this.horizontalRange.MaximumRange = 640;
             this.horizontalRange.Name = "horizontalRange";
-            this.horizontalRange.RangeMax = 720;
+            this.horizontalRange.RangeMax = 640;
             this.horizontalRange.RangeMin = 0;
             this.horizontalRange.Size = new System.Drawing.Size(224, 28);
             this.horizontalRange.TabIndex = 3;

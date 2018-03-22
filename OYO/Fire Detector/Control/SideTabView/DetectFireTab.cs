@@ -16,10 +16,11 @@ namespace Fire_Detector.Control.SideTabView
 
         private void desiredTemperatureSlider_ValueChanged(object sender, EventArgs e)
         {
-            desiredTemperatureLabel.Text = desiredTemperatureSlider.Value.ToString();
-
             if(this.Root == null)
                 return;
+
+            this.Root.Detector.Threshold            = desiredTemperatureSlider.Value;
+            this.desiredTemperatureLabel.Text       = this.Root.Detector.Threshold.ToString();
         }
 
         private void detectionStateSwitch_OnValueChange(object sender, EventArgs e)
@@ -51,7 +52,7 @@ namespace Fire_Detector.Control.SideTabView
                     this.Root.defaultView.detectingProgressbar.animated     = detecting;
                 }));
 
-                this.Root.Config.Detector.Enabled                          = detecting;
+                this.Root.Detector.Enabled                                  = detecting;
             }
             catch (Exception)
             { }
@@ -66,8 +67,10 @@ namespace Fire_Detector.Control.SideTabView
 
         private void DetectFireTab_Load(object sender, EventArgs e)
         {
-            this.detectionStateSwitch_OnValueChange(this.detectionStateSwitch, EventArgs.Empty);
-            this.desiredTemperatureSlider_ValueChanged(this.desiredTemperatureSlider, EventArgs.Empty);
+            if(this.Root == null)
+                return;
+
+            this.synchronizeFromConfig();
         }
 
         public void OnFrameUpdated(UpdatedDataBuffer buffer, Mat updatedFrame, bool invalidated)
@@ -90,15 +93,28 @@ namespace Fire_Detector.Control.SideTabView
 
         public void Receiver_OnDisconnected(OYOReceiver receiver)
         {
-            this.detectionStateSwitch.Value = false;
+            //this.detectionStateSwitch.Value = false;
         }
 
-        public bool synchronizeFromConfig(Config config)
+        public bool synchronizeFromConfig()
         {
             try
             {
-                this.detectionStateSwitch.Value = config.Detector.Enabled;
-                this.desiredTemperatureSlider.Value = config.Detector.Threshold;
+                if(this.Root == null)
+                    return false;
+
+                this.detectionStateSwitch.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.detectionStateSwitch.Value         = this.Root.Detector.Enabled;
+                    this.detectionStateSwitch_OnValueChange(this.detectionStateSwitch, EventArgs.Empty);
+                }));
+
+                this.desiredTemperatureSlider.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.desiredTemperatureSlider.Value     = this.Root.Detector.Threshold;
+                    this.desiredTemperatureSlider_ValueChanged(this.desiredTemperatureSlider, EventArgs.Empty);
+                }));
+
                 return true;
             }
             catch (Exception)

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace oyo
 {
-    public class OYODetector
+    public partial class OYODetector
     {
         public delegate bool isDetectedDelegate(RotatedRect detectedRect);
 

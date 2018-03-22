@@ -19,10 +19,17 @@ namespace Fire_Detector.Source
             json["enabled"]             = new JSONData(this.Enabled);
 
             json["crop"]                = new JSONClass();
-            json["crop"]["x"]           = new JSONData(base.CroppedRect.X);
-            json["crop"]["y"]           = new JSONData(base.CroppedRect.Y);
-            json["crop"]["width"]       = new JSONData(base.CroppedRect.Width);
-            json["crop"]["height"]      = new JSONData(base.CroppedRect.Height);
+            json["crop"]["visual"]    = new JSONClass();
+            json["crop"]["visual"]["x"] = new JSONData(base.VisualCroppedRect.X);
+            json["crop"]["visual"]["y"] = new JSONData(base.VisualCroppedRect.Y);
+            json["crop"]["visual"]["width"] = new JSONData(base.VisualCroppedRect.Width);
+            json["crop"]["visual"]["height"] = new JSONData(base.VisualCroppedRect.Height);
+
+            //json["crop"]["infrared"]    = new JSONClass();
+            //json["crop"]["infrared"]["x"] = new JSONData(base.InfraredCroppedRect.X);
+            //json["crop"]["infrared"]["y"] = new JSONData(base.InfraredCroppedRect.Y);
+            //json["crop"]["infrared"]["width"] = new JSONData(base.InfraredCroppedRect.Width);
+            //json["crop"]["infrared"]["height"] = new JSONData(base.InfraredCroppedRect.Height);
 
             json["size"]                = new JSONClass();
             json["size"]["width"]       = new JSONData(base.Size.Width);
@@ -41,7 +48,8 @@ namespace Fire_Detector.Source
             {
                 this.Enabled            = json["enabled"].AsBool;
 
-                base.CroppedRect        = new OpenCvSharp.Rect(new OpenCvSharp.Point(json["crop"]["x"].AsInt, json["crop"]["y"].AsInt), new OpenCvSharp.Size(json["crop"]["width"].AsInt, json["crop"]["height"].AsInt));
+                base.VisualCroppedRect  = new OpenCvSharp.Rect(new OpenCvSharp.Point(json["crop"]["visual"]["x"].AsInt, json["crop"]["visual"]["y"].AsInt), new OpenCvSharp.Size(json["crop"]["visual"]["width"].AsInt, json["crop"]["visual"]["height"].AsInt));
+                //base.InfraredCroppedRect = new OpenCvSharp.Rect(new OpenCvSharp.Point(json["crop"]["infrared"]["x"].AsInt, json["crop"]["infrared"]["y"].AsInt), new OpenCvSharp.Size(json["crop"]["infrared"]["width"].AsInt, json["crop"]["infrared"]["height"].AsInt));
                 base.Size               = new OpenCvSharp.Size(json["size"]["width"].AsInt, json["size"]["height"].AsInt);
                 base.Transparency       = json["transparency"].AsFloat;
                 base.Smooth             = json["smooth"].AsBool;
@@ -142,15 +150,11 @@ namespace Fire_Detector.Source
 
     public class Config
     {
-        public Blending Blender { get; private set; }
-        public Detecting Detector { get; private set; }
         public Visualizing Visualizer { get; private set; }
 
 
         public Config()
         {
-            this.Blender = new Blending(new OpenCvSharp.Size(720, 480));
-            this.Detector = new Detecting();
             this.Visualizer = new Visualizing();
         }
 
@@ -158,8 +162,6 @@ namespace Fire_Detector.Source
         {
             var json                        = new JSONClass();
             json["visualize"]               = this.Visualizer.ToJson();
-            json["detecting"]               = this.Detector.ToJson();
-            json["blending"]                = this.Blender.ToJson();
 
             return json;
         }
@@ -169,8 +171,6 @@ namespace Fire_Detector.Source
             try
             {
                 this.Visualizer.FromJson(json["visualize"]);
-                this.Detector.FromJson(json["detecting"]);
-                this.Blender.FromJson(json["blending"]);
                 return true;
             }
             catch (Exception)

@@ -84,7 +84,7 @@ namespace Fire_Detector.Control
             if(this.Root == null)
                 return;
 
-            this.Root.Config.Visualizer.Scaled += (e.Delta / 120);
+            this.Root.Visualizer.Scaled += (e.Delta / 120);
             this.Root.Overlayer.Update();
         }
 

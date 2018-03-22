@@ -99,11 +99,11 @@ namespace Fire_Detector.BunifuForm
                 //
                 // Get scaled
                 //
-                var scaled                          = this.Config.Visualizer.Scaled;
-                if (this.Config.Blender.Enabled || this.defaultView.streamingFrameBox.SizeMode != PictureBoxSizeMode.CenterImage)
+                var scaled                          = this.Visualizer.Scaled;
+                if (this.Blender.Enabled || this.defaultView.streamingFrameBox.SizeMode != PictureBoxSizeMode.CenterImage)
                     scaled                          = Source.Visualizing.MAX_SCALED_SIZE;
 
-                else if (this.Config.Visualizer.StreamingType == StreamingType.Visual)
+                else if (this.Visualizer.StreamingType == StreamingType.Visual)
                     scaled                          = Source.Visualizing.MAX_SCALED_SIZE / 2.0f;
 
 
@@ -114,7 +114,7 @@ namespace Fire_Detector.BunifuForm
                 if (streamingType == StreamingType.Infrared)
                 {
                     updatedFrame                    = receiver.Infrared(scaled);
-                    this.UpdatedDataBuffer.SetInfrared(this.mappingPalette(updatedFrame), receiver.Temperature(scaled));
+                    this.UpdatedDataBuffer.SetInfrared(this.Visualizer.mappingPalette(updatedFrame), receiver.Temperature(scaled));
                     this.Recorder.Write(OYORecorder.RecordingStateType.Infrared, updatedFrame);
                 }
                 else
@@ -136,16 +136,16 @@ namespace Fire_Detector.BunifuForm
                 // Blend if user checked
                 //
                 var blendedFrame                    = new Mat();
-                if (this.Config.Blender.Enabled || this.Recorder.IsRecording(OYORecorder.RecordingStateType.Blending))
+                if (this.Blender.Enabled || this.Recorder.IsRecording(OYORecorder.RecordingStateType.Blending))
                 {
-                    var mask                        = this.UpdatedDataBuffer.Temperature.Threshold(this.Config.Blender.Threshold, 255, ThresholdTypes.Binary);
-                    this.Config.Blender.Update(this.UpdatedDataBuffer.Visual);
-                    this.Config.Blender.Update(this.UpdatedDataBuffer.Infrared, mask);
+                    var mask                        = this.UpdatedDataBuffer.Temperature.Threshold(this.Blender.Threshold, 255, ThresholdTypes.Binary);
+                    this.Blender.Update(this.UpdatedDataBuffer.Visual);
+                    this.Blender.Update(this.UpdatedDataBuffer.Infrared, mask);
 
-                    if(this.Config.Blender.Blendable)
-                        blendedFrame                = this.Config.Blender.Blending();
+                    if(this.Blender.Blendable)
+                        blendedFrame                = this.Blender.Blending();
 
-                    if(this.Config.Blender.Enabled)
+                    if(this.Blender.Enabled)
                         updatedFrame                = blendedFrame;
 
                     if(this.Recorder.IsRecording(OYORecorder.RecordingStateType.Blending) && streamingType == StreamingType.Infrared)
@@ -156,7 +156,7 @@ namespace Fire_Detector.BunifuForm
                 //
                 // Record display frame
                 //
-                var isDisplayRecordable             = this.Recorder.IsRecording(OYORecorder.RecordingStateType.Display) && ((this.Config.Blender.Enabled && streamingType == StreamingType.Infrared) || (this.Config.Visualizer.StreamingType == streamingType));
+                var isDisplayRecordable             = this.Recorder.IsRecording(OYORecorder.RecordingStateType.Display) && ((this.Blender.Enabled && streamingType == StreamingType.Infrared) || (this.Visualizer.StreamingType == streamingType));
                 if (isDisplayRecordable)
                 {
                     var currentRecordSize           = this.Recorder.GetRecordSize(OYORecorder.RecordingStateType.Display);
@@ -170,7 +170,7 @@ namespace Fire_Detector.BunifuForm
                         var betweenMin              = this.UpdatedDataBuffer.MeanTemperature - this.UpdatedDataBuffer.MinimumTemperature;
                         var betweenMax              = this.UpdatedDataBuffer.MaximumTemperature - this.UpdatedDataBuffer.MeanTemperature;
 
-                        this.Config.Detector.Update(mask, delegate (RotatedRect detectedRect)
+                        this.Detector.Update(mask, delegate (RotatedRect detectedRect)
                         {
                             var center              = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
                             if(center - this.UpdatedDataBuffer.MeanTemperature > betweenMin * DETECTION_ALPHA)
@@ -179,14 +179,14 @@ namespace Fire_Detector.BunifuForm
                             return false;
                         });
 
-                        displayFrame                = this.Config.Detector.DrawDetectedRects(displayFrame);
+                        displayFrame                = this.Detector.DrawDetectedRects(displayFrame);
 
 
                         // Draw temperature label
-                        foreach (var detectedRect in this.Config.Detector.DetectedRects)
+                        foreach (var detectedRect in this.Detector.DetectedRects)
                         {
                             var center              = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
-                            this.markTemperature(displayFrame, new Point(detectedRect.Center.X, detectedRect.Center.Y), center, Scalar.Red);
+                            this.Visualizer.markTemperature(displayFrame, new Point(detectedRect.Center.X, detectedRect.Center.Y), center, Scalar.Red);
                         }
                     }
 
@@ -207,13 +207,18 @@ namespace Fire_Detector.BunifuForm
                 //
                 // Detect current frame that showing
                 //
-                if (this.Config.Detector.Enabled)
+                if (this.Detector.Enabled)
                 {
                     var mask                        = this.UpdatedDataBuffer.Temperature.Threshold(this.defaultView.sideExpandedBar.detectFireTab.desiredTemperatureSlider.Value, 255, ThresholdTypes.Binary);
+                    //if (this.Blender.Enabled)
+                    //{
+                    //    mask                        = mask.Clone(this.Blender.InfraredCroppedRect);
+                    //    mask                        = mask.Resize(this.UpdatedDataBuffer.Temperature.Size());
+                    //}
                     var betweenMin                  = this.UpdatedDataBuffer.MeanTemperature - this.UpdatedDataBuffer.MinimumTemperature;
                     var betweenMax                  = this.UpdatedDataBuffer.MaximumTemperature - this.UpdatedDataBuffer.MeanTemperature;
 
-                    this.Config.Detector.Update(mask, delegate (RotatedRect detectedRect)
+                    this.Detector.Update(mask, delegate (RotatedRect detectedRect)
                     {
                         var center                  = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
                         if(center - this.UpdatedDataBuffer.MeanTemperature > betweenMin * DETECTION_ALPHA)
@@ -222,20 +227,20 @@ namespace Fire_Detector.BunifuForm
                         return false;
                     });
 
-                    updatedFrame                    = this.Config.Detector.DrawDetectedRects(updatedFrame);
+                    updatedFrame                    = this.Detector.DrawDetectedRects(updatedFrame);
 
 
                     // Draw temperature label
-                    foreach (var detectedRect in this.Config.Detector.DetectedRects)
+                    foreach (var detectedRect in this.Detector.DetectedRects)
                     {
                         var center                  = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
-                        this.markTemperature(updatedFrame, new Point(detectedRect.Center.X, detectedRect.Center.Y), center, Scalar.Red);
+                        this.Visualizer.markTemperature(updatedFrame, new Point(detectedRect.Center.X, detectedRect.Center.Y), center, Scalar.Red);
                     }
                 }
 
                 
 
-                if ((this.Config.Blender.Enabled && streamingType == StreamingType.Infrared) || (!this.Config.Blender.Enabled && this.Config.Visualizer.StreamingType == streamingType))
+                if ((this.Blender.Enabled && streamingType == StreamingType.Infrared) || (!this.Blender.Enabled && this.Visualizer.StreamingType == streamingType))
                 {
                     this._stopwatch.Stop();
                     this._fps                       = (int)(1000.0f / this._stopwatch.ElapsedMilliseconds);
@@ -253,24 +258,24 @@ namespace Fire_Detector.BunifuForm
                 Cv2.PutText(updatedFrame, text, new OpenCvSharp.Point(updatedFrame.Width - textSize.Width * 2, textSize.Height * 3), HersheyFonts.HersheyDuplex, fontScaled, Scalar.White);
 
 
-                var invalidated                     = (this.Config.Blender.Enabled || (this.Config.Visualizer.StreamingType == streamingType));
+                var invalidated                     = (this.Blender.Enabled || (this.Visualizer.StreamingType == streamingType));
                 updatedFrame                        = this.Overlayer.Overlay(updatedFrame);
 
                 this.OnFrameUpdated.Invoke(this.UpdatedDataBuffer, updatedFrame, invalidated);
 
                 stopwatch.Stop();
                 var processingType = string.Empty;
-                if (this.Config.Blender.Enabled)
+                if (this.Blender.Enabled)
                     processingType = "블렌딩";
-                else if (this.Config.Visualizer.StreamingType == StreamingType.Infrared)
+                else if (this.Visualizer.StreamingType == StreamingType.Infrared)
                     processingType = "열화상";
                 else
                     processingType = "실화상";
 
-                if(streamingType == this.Config.Visualizer.StreamingType)
+                if(streamingType == this.Visualizer.StreamingType)
                     Console.WriteLine(string.Format("{0} 처리에 걸린 시간 : {1}초", processingType, stopwatch.ElapsedMilliseconds / 1000.0f));
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return;
             }
