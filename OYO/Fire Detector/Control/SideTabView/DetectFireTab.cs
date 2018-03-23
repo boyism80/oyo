@@ -60,9 +60,11 @@ namespace Fire_Detector.Control.SideTabView
 
         private void notificationSwitch_OnValueChange(object sender, EventArgs e)
         {
-            if (notificationSwitch.Value == true)
-                notificationLabel.Text = "On";
-            else notificationLabel.Text = "Off";
+            if(this.Root == null)
+                return;
+
+            this.notificationLabel.Text         = this.notificationSwitch.Value ? "On" : "Off";
+            this.Root.Detector.Notification     = this.notificationSwitch.Value;
         }
 
         private void DetectFireTab_Load(object sender, EventArgs e)
@@ -107,6 +109,11 @@ namespace Fire_Detector.Control.SideTabView
                 {
                     this.detectionStateSwitch.Value         = this.Root.Detector.Enabled;
                     this.detectionStateSwitch_OnValueChange(this.detectionStateSwitch, EventArgs.Empty);
+                }));
+
+                this.notificationSwitch.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.notificationSwitch.Value           = this.Root.Detector.Notification;
                 }));
 
                 this.desiredTemperatureSlider.Invoke(new MethodInvoker(delegate ()

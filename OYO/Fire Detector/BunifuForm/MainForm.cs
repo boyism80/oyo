@@ -179,23 +179,24 @@ namespace Fire_Detector.BunifuForm
         {
             try
             {
-                var json = JSONClass.LoadFromCompressedFile(path);
+                var json                                = JSONClass.LoadFromCompressedFile(path);
 
-                this.Receiver.FixLevel = json["receiver"]["fix_level"].AsBool;
-                this.Receiver.LevelTemperatureRange = new Rangef(json["receiver"]["level_min"].AsFloat, json["receiver"]["level_max"].AsFloat);
+                this.Receiver.FixLevel                  = json["receiver"]["fix_level"].AsBool;
+                this.Receiver.LevelTemperatureRange     = new Rangef(json["receiver"]["level_min"].AsFloat, json["receiver"]["level_max"].AsFloat);
                 
-                this.Visualizer.Palette = json["visualizer"]["palette"].Value;
-                this.Visualizer.Scaled = json["visualizer"]["scaled"].AsFloat;
-                this.Visualizer.StreamingType = (StreamingType)json["visualizer"]["streaming_type"].AsInt;
+                this.Visualizer.Palette                 = json["visualizer"]["palette"].Value;
+                this.Visualizer.Scaled                  = json["visualizer"]["scaled"].AsFloat;
+                this.Visualizer.StreamingType           = (StreamingType)json["visualizer"]["streaming_type"].AsInt;
 
-                this.Blender.Enabled = json["blender"]["enabled"].AsBool;
-                this.Blender.Size = new OpenCvSharp.Size(json["blender"]["size"]["width"].AsInt, json["blender"]["size"]["height"].AsInt);
-                this.Blender.Transparency = json["blender"]["transparency"].AsFloat;
-                this.Blender.Threshold = json["blender"]["threshold"].AsInt;
-                this.Blender.Smooth = json["blender"]["smooth"].AsBool;
+                this.Blender.Enabled                    = json["blender"]["enabled"].AsBool;
+                this.Blender.Size                       = new OpenCvSharp.Size(json["blender"]["size"]["width"].AsInt, json["blender"]["size"]["height"].AsInt);
+                this.Blender.Transparency               = json["blender"]["transparency"].AsFloat;
+                this.Blender.Threshold                  = json["blender"]["threshold"].AsInt;
+                this.Blender.Smooth                     = json["blender"]["smooth"].AsBool;
 
-                this.Detector.Enabled = json["detector"]["enabled"].AsBool;
-                this.Detector.Threshold = json["detector"]["threshold"].AsInt;
+                this.Detector.Enabled                   = json["detector"]["enabled"].AsBool;
+                this.Detector.Notification              = json["detector"]["notification"].AsBool;
+                this.Detector.Threshold                 = json["detector"]["threshold"].AsInt;
                 return true;
             }
             catch (Exception)
@@ -208,26 +209,27 @@ namespace Fire_Detector.BunifuForm
         {
             try
             {
-                var json = new JSONClass();
+                var json                                = new JSONClass();
 
-                json["receiver"]["fix_level"] = new JSONData(this.Receiver.FixLevel);
-                json["receiver"]["level_min"] = new JSONData(this.Receiver.LevelTemperatureRange.Start);
-                json["receiver"]["level_max"] = new JSONData(this.Receiver.LevelTemperatureRange.End);
+                json["receiver"]["fix_level"]           = new JSONData(this.Receiver.FixLevel);
+                json["receiver"]["level_min"]           = new JSONData(this.Receiver.LevelTemperatureRange.Start);
+                json["receiver"]["level_max"]           = new JSONData(this.Receiver.LevelTemperatureRange.End);
 
-                json["visualizer"]["palette"] = new JSONData(this.Visualizer.Palette);
-                json["visualizer"]["scaled"] = new JSONData(this.Visualizer.Scaled);
-                json["visualilzer"]["streaming_type"] = new JSONData((int)this.Visualizer.StreamingType);
+                json["visualizer"]["palette"]           = new JSONData(this.Visualizer.Palette);
+                json["visualizer"]["scaled"]            = new JSONData(this.Visualizer.Scaled);
+                json["visualilzer"]["streaming_type"]   = new JSONData((int)this.Visualizer.StreamingType);
 
-                json["blender"]["enabled"]      = new JSONData(this.Blender.Enabled);
-                json["blender"]["size"]         = new JSONClass();
-                json["blender"]["size"]["width"] = new JSONData(this.Blender.Size.Width);
-                json["blender"]["size"]["height"] = new JSONData(this.Blender.Size.Height);
-                json["blender"]["transparency"] = new JSONData(this.Blender.Transparency);
-                json["blender"]["threshold"] = new JSONData(this.Blender.Threshold);
-                json["blender"]["smooth"] = new JSONData(this.Blender.Smooth);
+                json["blender"]["enabled"]              = new JSONData(this.Blender.Enabled);
+                json["blender"]["size"]                 = new JSONClass();
+                json["blender"]["size"]["width"]        = new JSONData(this.Blender.Size.Width);
+                json["blender"]["size"]["height"]       = new JSONData(this.Blender.Size.Height);
+                json["blender"]["transparency"]         = new JSONData(this.Blender.Transparency);
+                json["blender"]["threshold"]            = new JSONData(this.Blender.Threshold);
+                json["blender"]["smooth"]               = new JSONData(this.Blender.Smooth);
 
-                json["detector"]["enabled"] = new JSONData(this.Detector.Enabled);
-                json["detector"]["threshold"] = new JSONData(this.Detector.Threshold);
+                json["detector"]["enabled"]             = new JSONData(this.Detector.Enabled);
+                json["detector"]["notification"]        = new JSONData(this.Detector.Notification);
+                json["detector"]["threshold"]           = new JSONData(this.Detector.Threshold);
 
                 json.SaveToCompressedFile(path);
                 return true;

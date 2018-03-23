@@ -1,5 +1,4 @@
-﻿using Fire_Detector.Source;
-using OpenCvSharp;
+﻿using OpenCvSharp;
 using oyo;
 using System;
 using System.Windows.Forms;

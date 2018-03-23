@@ -101,10 +101,10 @@ namespace Fire_Detector.BunifuForm
                 //
                 var scaled                          = this.Visualizer.Scaled;
                 if (this.Blender.Enabled || this.defaultView.streamingFrameBox.SizeMode != PictureBoxSizeMode.CenterImage)
-                    scaled                          = Source.Visualizing.MAX_SCALED_SIZE;
+                    scaled                          = OYOVisualizer.MAX_SCALED_SIZE;
 
                 else if (this.Visualizer.StreamingType == StreamingType.Visual)
-                    scaled                          = Source.Visualizing.MAX_SCALED_SIZE / 2.0f;
+                    scaled                          = OYOVisualizer.MAX_SCALED_SIZE / 2.0f;
 
 
                 //
