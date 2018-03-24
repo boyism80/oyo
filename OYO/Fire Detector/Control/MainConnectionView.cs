@@ -40,9 +40,13 @@ namespace Fire_Detector.Control
                     this.droneProgressbar.ProgressBackColor     = this.Root.Bebop2.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
                 }));
 
-                this.bunifuCustomLabel17.Invoke(new MethodInvoker(delegate ()
+                this.cameraConnectionLabel.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.bunifuCustomLabel17.Text               = this.Root.Receiver.Connected ? "연결됨" : "연결 안됨";
+                    this.cameraConnectionLabel.Text               = this.Root.Receiver.Connected ? "연결됨" : "연결 안됨";
+                }));
+
+                this.cameraStatePanel.Invoke(new MethodInvoker(delegate ()
+                {
                     this.cameraStatePanel.Visible               = this.Root.Receiver.Connected;
                 }));
 
@@ -141,7 +145,7 @@ namespace Fire_Detector.Control
                 var isRightActive                       = (frame.RightHand() != null);
                 this.leapLeftDetectingLabel.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.leapLeftDetectingLabel.Text    = isLeftActive ? "왼손 인식중" : "왼속 인식 안됨";
+                    this.leapLeftDetectingLabel.Text    = isLeftActive ? "왼손 인식중" : "왼손 인식 안됨";
                 }));
 
                 this.leapRightDetectingLabel.Invoke(new MethodInvoker(delegate ()
@@ -175,9 +179,9 @@ namespace Fire_Detector.Control
                 this.leapmotionStatePanel.Visible = false;
             }));
 
-            this.bunifuCustomLabel2.Invoke(new MethodInvoker(delegate ()
+            this.leapmotionConnectionLabel.Invoke(new MethodInvoker(delegate ()
             {
-                this.bunifuCustomLabel2.Text                        = "연결 안 됨";
+                this.leapmotionConnectionLabel.Text                        = "연결 안 됨";
             }));
         }
 
@@ -198,9 +202,9 @@ namespace Fire_Detector.Control
                 this.leapmotionStatePanel.Visible = true;
             }));
 
-            this.bunifuCustomLabel2.Invoke(new MethodInvoker(delegate ()
+            this.leapmotionConnectionLabel.Invoke(new MethodInvoker(delegate ()
             {
-                this.bunifuCustomLabel2.Text                        = "연결됨";
+                this.leapmotionConnectionLabel.Text                        = "연결됨";
             }));
         }
 

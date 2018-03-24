@@ -36,13 +36,80 @@ namespace Fire_Detector.Control.SideTabView
 
         public void LeapController_FrameReady(object sender, Leap.FrameEventArgs e)
         {
-            var hand = e.frame.RightHand();
-            if(hand == null)
-                return;
+            var handRight = e.frame.RightHand();
+            if(handRight != null)
+            {
+                this.leapPitchLabel.Text    = handRight.PalmNormal.x.ToString("0.00");
+                this.leapYawLabel.Text      = handRight.PalmNormal.y.ToString("0.00");
+                this.leapRollLabel.Text     = handRight.PalmNormal.z.ToString("0.00");
+            }
 
-            this.leapPitchLabel.Text    = hand.PalmPosition.x.ToString("0.00");
-            this.leapYawLabel.Text      = hand.PalmPosition.y.ToString("0.00");
-            this.leapRollLabel.Text     = hand.PalmPosition.z.ToString("0.00");
+            var handLeft = e.frame.LeftHand();
+            if(handLeft != null)
+            { }
+
+            var isDetectedLeft = (handLeft != null);
+            var isDetectedRight = (handRight != null);
+
+            this.handLeftDetectionLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.handLeftDetectionLabel.Text = isDetectedLeft ? "인식중입니다." : "인식되지 않은 상태입니다.";
+            }));
+
+            this.handLeftDetectionProgressbar.Invoke(new MethodInvoker(delegate ()
+            {
+                this.handLeftDetectionProgressbar.Value = isDetectedLeft ? 15 : 0;
+                this.handLeftDetectionProgressbar.animated = isDetectedLeft;
+            }));
+
+            this.handRightDetectionLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.handRightDetectionLabel.Text = isDetectedRight ? "인식중입니다." : "인식되지 않은 상태입니다.";
+            }));
+
+            this.handRightDetectionProgressbar.Invoke(new MethodInvoker(delegate ()
+            {
+                this.handRightDetectionProgressbar.Value = isDetectedRight ? 15 : 0;
+                this.handRightDetectionProgressbar.animated = isDetectedRight;
+            }));
+        }
+
+        public void LeapController_Disconnect(object sender, Leap.DeviceEventArgs e)
+        {
+            try
+            {
+                this.connectLeapmotionProgressbar.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.connectLeapmotionProgressbar.animated = false;
+                    this.connectLeapmotionProgressbar.Value = 0;
+                }));
+
+                this.leapmotionConnectionLabel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.leapmotionConnectionLabel.Text = "립모션과 연결되어 있지 않습니다.";
+                }));
+            }
+            catch(Exception)
+            { }
+        }
+
+        public void LeapController_Connect(object sender, Leap.DeviceEventArgs e)
+        {
+            try
+            {
+                this.connectLeapmotionProgressbar.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.connectLeapmotionProgressbar.animated = true;
+                    this.connectLeapmotionProgressbar.Value = 15;
+                }));
+
+                this.leapmotionConnectionLabel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.leapmotionConnectionLabel.Text = "립모션과 연결되어 있습니다.";
+                }));
+            }
+            catch(Exception)
+            { }
         }
     }
 }

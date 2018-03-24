@@ -144,7 +144,7 @@ namespace Fire_Detector.Control.SideTabView
                 this.connectionCameraProgressbar.Invoke(new MethodInvoker(delegate ()
                 {
                     this.connectionCameraProgressbar.animated = receiver.Connected;
-                    this.connectionCameraProgressbar.Value = receiver.Connected ? 40 : 0;
+                    this.connectionCameraProgressbar.Value = receiver.Connected ? 15 : 0;
                 }));
 
                 this.connectionLabel.Invoke(new MethodInvoker(delegate ()

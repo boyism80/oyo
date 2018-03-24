@@ -36,7 +36,7 @@
             this.leapmotionStatePanel = new System.Windows.Forms.Panel();
             this.leapRightDetectingLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.leapLeftDetectingLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.leapmotionConnectionLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel25 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.leapmotionLeftPanel = new System.Windows.Forms.Panel();
             this.leapmotionNameLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -47,7 +47,7 @@
             this.cameraStatePanel = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel15 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel16 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel17 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.cameraConnectionLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel18 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.raspCamLeftPanel = new System.Windows.Forms.Panel();
             this.raspCamNameLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -62,7 +62,7 @@
             this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.droneConnectionLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.droneLeftPanel = new System.Windows.Forms.Panel();
             this.droneNameLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -137,7 +137,7 @@
             // 
             this.leapmotionRightPanel.BackColor = System.Drawing.Color.Transparent;
             this.leapmotionRightPanel.Controls.Add(this.leapmotionStatePanel);
-            this.leapmotionRightPanel.Controls.Add(this.bunifuCustomLabel2);
+            this.leapmotionRightPanel.Controls.Add(this.leapmotionConnectionLabel);
             this.leapmotionRightPanel.Controls.Add(this.bunifuCustomLabel25);
             this.leapmotionRightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.leapmotionRightPanel.Location = new System.Drawing.Point(0, 0);
@@ -180,18 +180,18 @@
             this.leapLeftDetectingLabel.TabIndex = 12;
             this.leapLeftDetectingLabel.Text = "왼손 인식 안됨";
             // 
-            // bunifuCustomLabel2
+            // leapmotionConnectionLabel
             // 
-            this.bunifuCustomLabel2.AutoSize = true;
-            this.bunifuCustomLabel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuCustomLabel2.Font = new System.Drawing.Font("NEXON Football Gothic B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.Salmon;
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(0, 74);
-            this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(68, 38);
-            this.bunifuCustomLabel2.TabIndex = 9;
-            this.bunifuCustomLabel2.Text = "연결 안 됨";
+            this.leapmotionConnectionLabel.AutoSize = true;
+            this.leapmotionConnectionLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.leapmotionConnectionLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.leapmotionConnectionLabel.ForeColor = System.Drawing.Color.Salmon;
+            this.leapmotionConnectionLabel.Location = new System.Drawing.Point(0, 74);
+            this.leapmotionConnectionLabel.Name = "leapmotionConnectionLabel";
+            this.leapmotionConnectionLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.leapmotionConnectionLabel.Size = new System.Drawing.Size(68, 38);
+            this.leapmotionConnectionLabel.TabIndex = 9;
+            this.leapmotionConnectionLabel.Text = "연결 안 됨";
             // 
             // bunifuCustomLabel25
             // 
@@ -288,7 +288,7 @@
             // 
             this.raspCamRightPanel.BackColor = System.Drawing.Color.Transparent;
             this.raspCamRightPanel.Controls.Add(this.cameraStatePanel);
-            this.raspCamRightPanel.Controls.Add(this.bunifuCustomLabel17);
+            this.raspCamRightPanel.Controls.Add(this.cameraConnectionLabel);
             this.raspCamRightPanel.Controls.Add(this.bunifuCustomLabel18);
             this.raspCamRightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.raspCamRightPanel.Location = new System.Drawing.Point(0, 0);
@@ -331,18 +331,18 @@
             this.bunifuCustomLabel16.TabIndex = 12;
             this.bunifuCustomLabel16.Text = "실화상 카메라 정상 작동중";
             // 
-            // bunifuCustomLabel17
+            // cameraConnectionLabel
             // 
-            this.bunifuCustomLabel17.AutoSize = true;
-            this.bunifuCustomLabel17.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuCustomLabel17.Font = new System.Drawing.Font("NEXON Football Gothic B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel17.ForeColor = System.Drawing.Color.Salmon;
-            this.bunifuCustomLabel17.Location = new System.Drawing.Point(0, 74);
-            this.bunifuCustomLabel17.Name = "bunifuCustomLabel17";
-            this.bunifuCustomLabel17.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.bunifuCustomLabel17.Size = new System.Drawing.Size(68, 38);
-            this.bunifuCustomLabel17.TabIndex = 9;
-            this.bunifuCustomLabel17.Text = "연결 안 됨";
+            this.cameraConnectionLabel.AutoSize = true;
+            this.cameraConnectionLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cameraConnectionLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cameraConnectionLabel.ForeColor = System.Drawing.Color.Salmon;
+            this.cameraConnectionLabel.Location = new System.Drawing.Point(0, 74);
+            this.cameraConnectionLabel.Name = "cameraConnectionLabel";
+            this.cameraConnectionLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.cameraConnectionLabel.Size = new System.Drawing.Size(68, 38);
+            this.cameraConnectionLabel.TabIndex = 9;
+            this.cameraConnectionLabel.Text = "연결 안 됨";
             // 
             // bunifuCustomLabel18
             // 
@@ -448,7 +448,7 @@
             // 
             this.droneRightPanel.BackColor = System.Drawing.Color.Transparent;
             this.droneRightPanel.Controls.Add(this.droneStatePanel);
-            this.droneRightPanel.Controls.Add(this.bunifuCustomLabel5);
+            this.droneRightPanel.Controls.Add(this.droneConnectionLabel);
             this.droneRightPanel.Controls.Add(this.bunifuCustomLabel1);
             this.droneRightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.droneRightPanel.Location = new System.Drawing.Point(0, 0);
@@ -530,18 +530,18 @@
             this.bunifuCustomLabel6.TabIndex = 7;
             this.bunifuCustomLabel6.Text = "Battery 100%";
             // 
-            // bunifuCustomLabel5
+            // droneConnectionLabel
             // 
-            this.bunifuCustomLabel5.AutoSize = true;
-            this.bunifuCustomLabel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuCustomLabel5.Font = new System.Drawing.Font("NEXON Football Gothic B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel5.ForeColor = System.Drawing.Color.Salmon;
-            this.bunifuCustomLabel5.Location = new System.Drawing.Point(0, 74);
-            this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
-            this.bunifuCustomLabel5.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.bunifuCustomLabel5.Size = new System.Drawing.Size(68, 38);
-            this.bunifuCustomLabel5.TabIndex = 1;
-            this.bunifuCustomLabel5.Text = "연결 안 됨";
+            this.droneConnectionLabel.AutoSize = true;
+            this.droneConnectionLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.droneConnectionLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.droneConnectionLabel.ForeColor = System.Drawing.Color.Salmon;
+            this.droneConnectionLabel.Location = new System.Drawing.Point(0, 74);
+            this.droneConnectionLabel.Name = "droneConnectionLabel";
+            this.droneConnectionLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.droneConnectionLabel.Size = new System.Drawing.Size(68, 38);
+            this.droneConnectionLabel.TabIndex = 1;
+            this.droneConnectionLabel.Text = "연결 안 됨";
             // 
             // bunifuCustomLabel1
             // 
@@ -736,10 +736,10 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         private System.Windows.Forms.Panel bottomPanel;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel25;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel17;
+        private Bunifu.Framework.UI.BunifuCustomLabel cameraConnectionLabel;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel18;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
+        private Bunifu.Framework.UI.BunifuCustomLabel droneConnectionLabel;
+        private Bunifu.Framework.UI.BunifuCustomLabel leapmotionConnectionLabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

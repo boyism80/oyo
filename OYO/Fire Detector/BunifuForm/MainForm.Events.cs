@@ -399,23 +399,28 @@ this._mutex.ReleaseMutex();
         private void LeapController_FrameReady(object sender, Leap.FrameEventArgs e)
         {
             var hand = e.frame.RightHand();
-            if(hand == null)
-                return;
+            if(hand != null)
+            {
+                if(hand.PalmNormal.x > 0.3f)
+                    this._pcmd.roll = -5;
+                else if(hand.PalmNormal.x < -0.3f)
+                    this._pcmd.roll = 5;
+                else
+                    this._pcmd.roll = 0;
 
-            if(hand.PalmNormal.x > 0.3f)
-                this._pcmd.roll = -5;
-            else if(hand.PalmNormal.x < -0.3f)
-                this._pcmd.roll = 5;
+
+                if(hand.PalmPosition.y > 250.0f)
+                    this._pcmd.gaz = 25;
+                else if(hand.PalmPosition.y < 150.0f)
+                    this._pcmd.gaz = -25;
+                else
+                    this._pcmd.gaz = 0;
+            }
             else
+            {
                 this._pcmd.roll = 0;
-
-
-            if(hand.PalmPosition.y > 250.0f)
-                this._pcmd.gaz = 25;
-            else if(hand.PalmPosition.y < 150.0f)
-                this._pcmd.gaz = -25;
-            else
                 this._pcmd.gaz = 0;
+            }
 
             this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);
         }
