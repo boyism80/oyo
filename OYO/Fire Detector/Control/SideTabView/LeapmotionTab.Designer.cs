@@ -59,6 +59,15 @@
             this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel11 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.bunifuCustomLabel9 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel10 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.leapPitchLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.leapYawLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel14 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.leapRollLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectLeapmotionButton)).BeginInit();
@@ -75,6 +84,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -478,11 +489,115 @@
             this.bunifuCustomLabel11.TabIndex = 0;
             this.bunifuCustomLabel11.Text = "조종";
             // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.leapRollLabel);
+            this.panel11.Controls.Add(this.bunifuCustomLabel14);
+            this.panel11.Controls.Add(this.leapYawLabel);
+            this.panel11.Controls.Add(this.bunifuCustomLabel7);
+            this.panel11.Controls.Add(this.bunifuCustomLabel10);
+            this.panel11.Controls.Add(this.leapPitchLabel);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel11.Location = new System.Drawing.Point(0, 401);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(350, 136);
+            this.panel11.TabIndex = 44;
+            // 
+            // panel12
+            // 
+            this.panel12.AutoSize = true;
+            this.panel12.Controls.Add(this.bunifuCustomLabel9);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel12.Location = new System.Drawing.Point(0, 375);
+            this.panel12.Name = "panel12";
+            this.panel12.Padding = new System.Windows.Forms.Padding(5);
+            this.panel12.Size = new System.Drawing.Size(350, 26);
+            this.panel12.TabIndex = 43;
+            // 
+            // bunifuCustomLabel9
+            // 
+            this.bunifuCustomLabel9.AutoSize = true;
+            this.bunifuCustomLabel9.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel9.ForeColor = System.Drawing.Color.Salmon;
+            this.bunifuCustomLabel9.Location = new System.Drawing.Point(24, 5);
+            this.bunifuCustomLabel9.Name = "bunifuCustomLabel9";
+            this.bunifuCustomLabel9.Size = new System.Drawing.Size(33, 16);
+            this.bunifuCustomLabel9.TabIndex = 0;
+            this.bunifuCustomLabel9.Text = "조종";
+            // 
+            // bunifuCustomLabel7
+            // 
+            this.bunifuCustomLabel7.AutoSize = true;
+            this.bunifuCustomLabel7.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bunifuCustomLabel7.Location = new System.Drawing.Point(40, 38);
+            this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
+            this.bunifuCustomLabel7.Size = new System.Drawing.Size(31, 15);
+            this.bunifuCustomLabel7.TabIndex = 0;
+            this.bunifuCustomLabel7.Text = "Yaw";
+            // 
+            // bunifuCustomLabel10
+            // 
+            this.bunifuCustomLabel10.AutoSize = true;
+            this.bunifuCustomLabel10.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel10.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bunifuCustomLabel10.Location = new System.Drawing.Point(40, 12);
+            this.bunifuCustomLabel10.Name = "bunifuCustomLabel10";
+            this.bunifuCustomLabel10.Size = new System.Drawing.Size(37, 15);
+            this.bunifuCustomLabel10.TabIndex = 0;
+            this.bunifuCustomLabel10.Text = "Pitch";
+            // 
+            // leapPitchLabel
+            // 
+            this.leapPitchLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.leapPitchLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.leapPitchLabel.Location = new System.Drawing.Point(112, 12);
+            this.leapPitchLabel.Name = "leapPitchLabel";
+            this.leapPitchLabel.Size = new System.Drawing.Size(137, 15);
+            this.leapPitchLabel.TabIndex = 1;
+            this.leapPitchLabel.Text = "0";
+            this.leapPitchLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // leapYawLabel
+            // 
+            this.leapYawLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.leapYawLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.leapYawLabel.Location = new System.Drawing.Point(112, 38);
+            this.leapYawLabel.Name = "leapYawLabel";
+            this.leapYawLabel.Size = new System.Drawing.Size(137, 15);
+            this.leapYawLabel.TabIndex = 1;
+            this.leapYawLabel.Text = "0";
+            this.leapYawLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // bunifuCustomLabel14
+            // 
+            this.bunifuCustomLabel14.AutoSize = true;
+            this.bunifuCustomLabel14.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel14.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bunifuCustomLabel14.Location = new System.Drawing.Point(40, 65);
+            this.bunifuCustomLabel14.Name = "bunifuCustomLabel14";
+            this.bunifuCustomLabel14.Size = new System.Drawing.Size(30, 15);
+            this.bunifuCustomLabel14.TabIndex = 0;
+            this.bunifuCustomLabel14.Text = "Roll";
+            // 
+            // leapRollLabel
+            // 
+            this.leapRollLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.leapRollLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.leapRollLabel.Location = new System.Drawing.Point(112, 65);
+            this.leapRollLabel.Name = "leapRollLabel";
+            this.leapRollLabel.Size = new System.Drawing.Size(137, 15);
+            this.leapRollLabel.TabIndex = 1;
+            this.leapRollLabel.Text = "0";
+            this.leapRollLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // LeapmotionTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.panel11);
+            this.Controls.Add(this.panel12);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel6);
@@ -512,6 +627,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -548,5 +667,14 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel8;
         private System.Windows.Forms.Panel panel10;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel11;
+        private System.Windows.Forms.Panel panel11;
+        private Bunifu.Framework.UI.BunifuCustomLabel leapRollLabel;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel14;
+        private Bunifu.Framework.UI.BunifuCustomLabel leapYawLabel;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel7;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel10;
+        private Bunifu.Framework.UI.BunifuCustomLabel leapPitchLabel;
+        private System.Windows.Forms.Panel panel12;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel9;
     }
 }

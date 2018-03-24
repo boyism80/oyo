@@ -1,5 +1,6 @@
 ﻿using BebopCommandSet;
 using Fire_Detector.Dialog;
+using Fire_Detector.Source.Extension;
 using OpenCvSharp;
 using oyo;
 using ParrotBebop2;
@@ -49,6 +50,9 @@ namespace Fire_Detector.BunifuForm
 
             this.Recorder.Release();
             this.saveConfig("config.json");
+
+            this.LeapController.FrameReady -= this.mainView.mainConnectionView.LeapController_FrameReady;
+            this.LeapController.FrameReady -= this.LeapController_FrameReady;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -390,6 +394,30 @@ this._mutex.ReleaseMutex();
                 var dialog = new MessageDialog(message, System.Drawing.Color.Gainsboro);
                 dialog.ShowDialog(mainform);
             }));
+        }
+
+        private void LeapController_FrameReady(object sender, Leap.FrameEventArgs e)
+        {
+            var hand = e.frame.RightHand();
+            if(hand == null)
+                return;
+
+            if(hand.PalmNormal.x > 0.3f)
+                this._pcmd.roll = -5;
+            else if(hand.PalmNormal.x < -0.3f)
+                this._pcmd.roll = 5;
+            else
+                this._pcmd.roll = 0;
+
+
+            if(hand.PalmPosition.y > 250.0f)
+                this._pcmd.gaz = 25;
+            else if(hand.PalmPosition.y < 150.0f)
+                this._pcmd.gaz = -25;
+            else
+                this._pcmd.gaz = 0;
+
+            this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);
         }
     }
 }
