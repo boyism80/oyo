@@ -17,6 +17,8 @@ namespace Fire_Detector.Control.SideTabView
             this.horizontalRange.RangeMax = 80;
             this.verticalityRange.RangeMin = 20;
             this.verticalityRange.RangeMax = 80;
+
+            
         }
 
         public bool synchronizeFromConfig()
@@ -115,6 +117,26 @@ namespace Fire_Detector.Control.SideTabView
             }
         }
         
+        private void synchronizeStreamingModeUI()
+        {
+            if (this.Root.Blender.Enabled)
+            {
+                blendingOptionPanel.Visible = true;
+                infraredOptionPanel.Visible = true;
+            }
+            else if (this.Root.Visualizer.StreamingType == StreamingType.Infrared)
+            {
+                blendingOptionPanel.Visible = false;
+                infraredOptionPanel.Visible = true;
+            }
+            else // this.Root.Visualizer.StreamingType == StreamingType.Visual
+            {
+                blendingOptionPanel.Visible = false;
+                infraredOptionPanel.Visible = false;
+            }
+            
+        }
+
         public void Receiver_OnConnectionChanged(OYOReceiver receiver)
         {
             try
@@ -155,6 +177,7 @@ namespace Fire_Detector.Control.SideTabView
             this.Root.Visualizer.StreamingType = oyo.StreamingType.Infrared;
             this.Root.Blender.Enabled = false;
             this.synchronizeFromConfig();
+            this.synchronizeStreamingModeUI();
         }
 
         private void visualViewButton_Click(object sender, EventArgs e)
@@ -165,6 +188,7 @@ namespace Fire_Detector.Control.SideTabView
             this.Root.Visualizer.StreamingType = oyo.StreamingType.Visual;
             this.Root.Blender.Enabled = false;
             this.synchronizeFromConfig();
+            this.synchronizeStreamingModeUI();
         }
 
         private void palettesDropDown_onItemSelected(object sender, EventArgs e)
@@ -181,6 +205,7 @@ namespace Fire_Detector.Control.SideTabView
                 return;
 
             this.synchronizeFromConfig();
+            this.synchronizeStreamingModeUI();
         }
 
         private void blendingViewButton_Click(object sender, EventArgs e)
@@ -190,6 +215,7 @@ namespace Fire_Detector.Control.SideTabView
 
             this.Root.Blender.Enabled = true;
             this.synchronizeFromConfig();
+            this.synchronizeStreamingModeUI();
         }
 
         private void fixLevelCheckBox_OnChange(object sender, EventArgs e)
@@ -262,5 +288,7 @@ namespace Fire_Detector.Control.SideTabView
             var size   = new OpenCvSharp.Size(this.Root.Blender.VisualCroppedRect.Width, this.verticalityRange.RangeMax - this.verticalityRange.RangeMin);
             this.Root.Blender.VisualCroppedRect = new Rect(offset, size);
         }
+
+        
     }
 }
