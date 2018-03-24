@@ -134,18 +134,25 @@ namespace Fire_Detector.Control
 
         public void LeapController_FrameReady(object sender, Leap.FrameEventArgs e)
         {
-            var frame = e.frame;
-            var isLeftActive = (frame.LeftHand() != null);
-            var isRightActive = (frame.RightHand() != null);
-            this.leapLeftDetectingLabel.Invoke(new MethodInvoker(delegate ()
+            try
             {
-                this.leapLeftDetectingLabel.Text = isLeftActive ? "왼손 인식중" : "왼속 인식 안됨";
-            }));
+                var frame                               = e.frame;
+                var isLeftActive                        = (frame.LeftHand() != null);
+                var isRightActive                       = (frame.RightHand() != null);
+                this.leapLeftDetectingLabel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.leapLeftDetectingLabel.Text    = isLeftActive ? "왼손 인식중" : "왼속 인식 안됨";
+                }));
 
-            this.leapRightDetectingLabel.Invoke(new MethodInvoker(delegate ()
+                this.leapRightDetectingLabel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.leapRightDetectingLabel.Text   = isRightActive ? "오른손 인식중" : "오른손 인식 안됨";
+                }));
+            }
+            catch(Exception)
             {
-                this.leapRightDetectingLabel.Text = isRightActive ? "오른손 인식중" : "오른손 인식 안됨";
-            }));
+
+            }
         }
 
         public void LeapController_DeviceLost(object sender, Leap.DeviceEventArgs e)

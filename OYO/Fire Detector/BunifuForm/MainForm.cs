@@ -164,7 +164,9 @@ namespace Fire_Detector.BunifuForm
             this.LeapController.Disconnect     += this.mainView.mainConnectionView.LeapmotionController_Disconnect;
             this.LeapController.Device         += this.mainView.mainConnectionView.LeapController_Device;
             this.LeapController.DeviceLost     += this.mainView.mainConnectionView.LeapController_DeviceLost;
+            this.LeapController.FrameReady     += this.LeapController_FrameReady;
             this.LeapController.FrameReady     += this.mainView.mainConnectionView.LeapController_FrameReady;
+            this.LeapController.FrameReady     += this.defaultView.sideExpandedBar.leapmotionTab.LeapController_FrameReady;
 
             this.OnFrameUpdated                += this.defaultView.OnFrameUpdated;
             this.OnFrameUpdated                += this.defaultView.sideExpandedBar.detectFireTab.OnFrameUpdated;

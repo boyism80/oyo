@@ -1,4 +1,5 @@
 ﻿using BebopCommandSet;
+using Fire_Detector.Source.Extension;
 using ParrotBebop2;
 using System;
 using System.Drawing;
@@ -321,8 +322,8 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            if(this.Root.Bebop2.Connected == false)
-                return;
+            //if(this.Root.Bebop2.Connected == false)
+            //    return;
 
             this.bunifuImageButton5.Invoke(new MethodInvoker(delegate ()
             {
