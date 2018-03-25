@@ -175,6 +175,19 @@ namespace Fire_Detector.Control.SideTabView
                 return;
             this.update();
 
+            this.patrolFileTextbox.Invoke(new MethodInvoker(delegate ()
+            {
+                this.patrolFileTextbox.BackColor = this.patrolModeSwitch.Value ? Color.White : Color.Gainsboro;
+                this.patrolFileTextbox.Text = this.patrolModeSwitch.Value ? "순찰파일을 선택해주세요." : "순찰 모드를 On 해주세요.";
+
+            }));
+
+            this.patrolFileBrowseButton.Invoke(new MethodInvoker(delegate ()
+            {
+                this.patrolFileBrowseButton.IdleForecolor = this.patrolModeSwitch.Value ? System.Drawing.Color.Salmon : SystemColors.ControlDarkDark;
+                this.patrolFileBrowseButton.IdleLineColor = this.patrolModeSwitch.Value ? System.Drawing.Color.Salmon : SystemColors.ControlDarkDark;
+            }));
+
             if (this.patrolModeSwitch.Value) {
                 var message = "녹화모드와 같이 사용할 수 없습니다.";
                 var messageform = new Fire_Detector.Dialog.MessageDialog(message, SystemColors.Control);
@@ -188,6 +201,19 @@ namespace Fire_Detector.Control.SideTabView
                 return;
 
             this.update();
+
+            this.recordFileNameTextBox.Invoke(new MethodInvoker(delegate ()
+            {
+                this.recordFileNameTextBox.BackColor = this.recordModeSwitch.Value ? Color.White : Color.Gainsboro;
+                this.recordFileNameTextBox.Text = this.recordModeSwitch.Value ? "파일경로를 선택해주세요." : "녹화 모드를 On 해주세요.";
+
+            }));
+
+            this.recordFileBrowseButton.Invoke(new MethodInvoker(delegate ()
+            {
+                this.recordFileBrowseButton.IdleForecolor = this.recordModeSwitch.Value ? System.Drawing.Color.Salmon : SystemColors.ControlDarkDark;
+                this.recordFileBrowseButton.IdleLineColor = this.recordModeSwitch.Value ? System.Drawing.Color.Salmon : SystemColors.ControlDarkDark;
+            }));
 
             if (this.recordModeSwitch.Value)
             {
