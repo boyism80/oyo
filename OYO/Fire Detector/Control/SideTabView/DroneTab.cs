@@ -395,13 +395,18 @@ namespace Fire_Detector.Control.SideTabView
 
         public void Receiver_OnConnectionChanged(oyo.OYOReceiver receiver)
         {
-            this.recordModeSwitch.Invoke(new MethodInvoker(delegate ()
+            try
             {
-                if(receiver.Connected == false)
-                    this.recordModeSwitch.Value = false;
+                this.recordModeSwitch.Invoke(new MethodInvoker(delegate ()
+                {
+                    if (receiver.Connected == false)
+                        this.recordModeSwitch.Value = false;
 
-                this.recordModeSwitch.Enabled = receiver.Connected;
-            }));
+                    this.recordModeSwitch.Enabled = receiver.Connected;
+                }));
+            }
+            catch (Exception)
+            { }
         }
 
         public void Bebop_OnConnectionChanged(Bebop2 bebop)

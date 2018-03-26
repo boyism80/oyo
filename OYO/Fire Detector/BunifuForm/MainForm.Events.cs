@@ -29,15 +29,61 @@ namespace Fire_Detector.BunifuForm
         private Mutex               _mutex = new Mutex();
 
         private Stopwatch           _stopwatch = new Stopwatch();
-        private int                 _fps;
+        private int                 _fps, _lastFps;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            OYOKeysHook.OnKeyboardHook += this.OnKeyboardHook;
+            this.Receiver.OnConnected               += this.defaultView.Receiver_OnConnectionChanged;
+            this.Receiver.OnConnected               += this.defaultView.sideExpandedBar.visualizeTab.Receiver_OnConnectionChanged;
+            this.Receiver.OnConnected               += this.mainView.mainConnectionView.Receiver_OnConnectionChanged;
+            this.Receiver.OnConnected               += this.defaultView.sideExpandedBar.droneTab.Receiver_OnConnectionChanged;
+            this.Receiver.OnDisconnected            += this.Receiver_OnDisconnected;
+            this.Receiver.OnDisconnected            += this.defaultView.Receiver_OnConnectionChanged;
+            this.Receiver.OnDisconnected            += this.defaultView.sideExpandedBar.visualizeTab.Receiver_OnConnectionChanged;
+            this.Receiver.OnDisconnected            += this.defaultView.sideExpandedBar.detectFireTab.Receiver_OnDisconnected;
+            this.Receiver.OnDisconnected            += this.mainView.mainConnectionView.Receiver_OnConnectionChanged;
+            this.Receiver.OnDisconnected            += this.defaultView.sideExpandedBar.droneTab.Receiver_OnConnectionChanged;
+            this.Receiver.OnUpdate                  += this.Receiver_OnUpdate;
+            this.Receiver.OnError                   += this.Receiver_OnError;
+
+            this.Overlayer.OnReceiveAddressEvent    += this.defaultView.Overlayer_OnReceiveAddressEvent;
+
+            this.Bebop2.OnConnected                 += this.mainView.mainConnectionView.Bebop_OnConnectionChanged;
+            this.Bebop2.OnConnected                 += this.defaultView.sideExpandedBar.droneTab.Bebop_OnConnectionChanged;
+            this.Bebop2.OnDisconnected              += this.mainView.mainConnectionView.Bebop_OnConnectionChanged;
+            this.Bebop2.OnDisconnected              += this.defaultView.sideExpandedBar.droneTab.Bebop_OnConnectionChanged;
+            this.Bebop2.OnStreaming                 += this.Bebop2_OnStreaming;
+            this.Bebop2.OnRequestPcmd               += this.Bebop2_OnRequestPcmd;
+            this.Bebop2.OnAltitudeChanged           += this.Bebop2_OnAltitudeChanged;
+            this.Bebop2.OnPositionChanged           += this.Bebop_OnPositionChanged;
+            this.Bebop2.OnError                     += this.Bebop_OnError;
+
+
+            
+            this.LeapController.Connect             += this.mainView.mainConnectionView.LeapmotionController_Connect;
+            this.LeapController.Disconnect          += this.mainView.mainConnectionView.LeapmotionController_Disconnect;
+            this.LeapController.Device              += this.mainView.mainConnectionView.LeapController_Device;
+            this.LeapController.Device              += this.defaultView.sideExpandedBar.leapmotionTab.LeapController_Connect;
+            this.LeapController.DeviceLost          += this.mainView.mainConnectionView.LeapController_DeviceLost;
+            this.LeapController.DeviceLost          += this.defaultView.sideExpandedBar.leapmotionTab.LeapController_Disconnect;
+            this.LeapController.FrameReady          += this.LeapController_FrameReady;
+            this.LeapController.FrameReady          += this.mainView.mainConnectionView.LeapController_FrameReady;
+            this.LeapController.FrameReady          += this.defaultView.sideExpandedBar.leapmotionTab.LeapController_FrameReady;
+
+            this.OnFrameUpdated                     += this.defaultView.OnFrameUpdated;
+            this.OnFrameUpdated                     += this.defaultView.sideExpandedBar.detectFireTab.OnFrameUpdated;
+
+            this.OnScreenStateChanged               += this.mainView.OnScreenStateChanged;
+            this.OnScreenStateChanged               += this.mainView.mainConnectionView.OnScreenStateChanged;
+
+
+            OYOKeysHook.OnKeyboardHook              += this.OnKeyboardHook;
             OYOKeysHook.Set();
 
             this.OnScreenStateChanged.Invoke(this.Size, false);
             this.loadConfig("config.json");
+
+            this._stopwatch.Start();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -245,18 +291,19 @@ namespace Fire_Detector.BunifuForm
                 
 
                 if ((this.Blender.Enabled && streamingType == StreamingType.Infrared) || (!this.Blender.Enabled && this.Visualizer.StreamingType == streamingType))
-                {
-                    this._stopwatch.Stop();
-                    this._fps                       = (int)(1000.0f / this._stopwatch.ElapsedMilliseconds);
+                    this._fps++;
 
-                    this._stopwatch.Reset();
-                    this._stopwatch.Start();
+                if (this._stopwatch.ElapsedMilliseconds > 1000.0f)
+                {
+                    this._lastFps = this._fps;
+                    this._fps = 0;
+                    this._stopwatch.Restart();
                 }
 
                 updatedFrame                        = updatedFrame.Resize(currentDisplaySize);
                 var fontScaled                      = Math.Min(updatedFrame.Width / 1200.0f, 0.8f);
                 var baseLine                        = 0;
-                var text                            = string.Format("fps : {0}", this._fps);
+                var text                            = string.Format("fps : {0}", this._lastFps);
                 var font                            = HersheyFonts.HersheyPlain;
                 var textSize                        = Cv2.GetTextSize(text, font, fontScaled, 1, out baseLine);
                 Cv2.PutText(updatedFrame, text, new OpenCvSharp.Point(updatedFrame.Width - textSize.Width * 2, textSize.Height * 3), HersheyFonts.HersheyDuplex, fontScaled, Scalar.White);
@@ -268,16 +315,18 @@ namespace Fire_Detector.BunifuForm
                 this.OnFrameUpdated.Invoke(this.UpdatedDataBuffer, updatedFrame, invalidated);
 
                 stopwatch.Stop();
-                var processingType = string.Empty;
-                if (this.Blender.Enabled)
-                    processingType = "블렌딩";
-                else if (this.Visualizer.StreamingType == StreamingType.Infrared)
-                    processingType = "열화상";
-                else
-                    processingType = "실화상";
 
-                if(streamingType == this.Visualizer.StreamingType)
-                    Console.WriteLine(string.Format("{0} 처리에 걸린 시간 : {1}초", processingType, stopwatch.ElapsedMilliseconds / 1000.0f));
+                var header = string.Empty;
+                if(this.Blender.Enabled)
+                    header = "Blend";
+                else if(this.Visualizer.StreamingType == StreamingType.Infrared)
+                    header = "Infrared";
+                else
+                    header = "Visual";
+
+                if(this.Visualizer.StreamingType == streamingType)
+                    Console.WriteLine(string.Format("elapsed time of {0}: {1}", header, stopwatch.ElapsedMilliseconds / 1000.0f));
+                stopwatch.Restart();
             }
             catch (Exception e)
             {
