@@ -42,7 +42,7 @@ namespace Fire_Detector.Control
 
                 this.cameraConnectionLabel.Invoke(new MethodInvoker(delegate ()
                 {
-                    this.cameraConnectionLabel.Text               = this.Root.Receiver.Connected ? "연결됨" : "연결 안됨";
+                    this.cameraConnectionLabel.Text             = this.Root.Receiver.Connected ? "연결됨" : "연결 안됨";
                 }));
 
                 this.cameraStatePanel.Invoke(new MethodInvoker(delegate ()
@@ -66,22 +66,22 @@ namespace Fire_Detector.Control
 
             foreach(var panel in this.iconPanels)
             {
-                var left                    = (panel.Tag as Panel[])[0];
-                var right                   = (panel.Tag as Panel[])[1];
+                var left                            = (panel.Tag as Panel[])[0];
+                var right                           = (panel.Tag as Panel[])[1];
 
-                left.Dock                   = isMaximize ? DockStyle.Left : DockStyle.Fill;
+                left.Dock                           = isMaximize ? DockStyle.Left : DockStyle.Fill;
 
-                var progressbar             = left.Tag as Bunifu.Framework.UI.BunifuCircleProgressbar;
-                progressbar.Size            = new System.Drawing.Size((int)(left.Width * 0.6f), (int)(left.Width * 0.6f));
-                progressbar.Location        = new System.Drawing.Point((left.Width - progressbar.Width) / 2, progressbar.Location.Y);
+                var progressbar                     = left.Tag as Bunifu.Framework.UI.BunifuCircleProgressbar;
+                progressbar.Size                    = new System.Drawing.Size((int)(left.Width * 0.6f), (int)(left.Width * 0.6f));
+                progressbar.Location                = new System.Drawing.Point((left.Width - progressbar.Width) / 2, progressbar.Location.Y);
 
-                var icon                    = progressbar.Tag as Bunifu.Framework.UI.BunifuImageButton;
-                icon.Width                  = icon.Height = (int)(left.Width * 0.32f);
-                icon.Location               = new System.Drawing.Point(progressbar.Location.X + (progressbar.Width - icon.Width) / 2,
-                                                         progressbar.Location.Y + (progressbar.Height - icon.Height) / 2);
+                var icon                            = progressbar.Tag as Bunifu.Framework.UI.BunifuImageButton;
+                icon.Width                          = icon.Height = (int)(left.Width * 0.32f);
+                icon.Location                       = new System.Drawing.Point(progressbar.Location.X + (progressbar.Width - icon.Width) / 2,
+                                                                               progressbar.Location.Y + (progressbar.Height - icon.Height) / 2);
 
-                var label                   = icon.Tag as Bunifu.Framework.UI.BunifuCustomLabel;
-                label.Font                  = new Font(label.Font.FontFamily, (18.0f / 335.0f) * left.Width, label.Font.Style);
+                var label                           = icon.Tag as Bunifu.Framework.UI.BunifuCustomLabel;
+                label.Font                          = new Font(label.Font.FontFamily, (18.0f / 335.0f) * left.Width, label.Font.Style);
 
                 right.Visible = isMaximize;
             }
@@ -96,6 +96,8 @@ namespace Fire_Detector.Control
         {
             if(this.Root == null)
                 return;
+
+            this.LeapController_Device(this.Root.LeapController, new Leap.DeviceEventArgs(this.Root.LeapController.Devices.ActiveDevice));
         }
 
         private void raspCamImageButton_Click(object sender, System.EventArgs e)
@@ -181,13 +183,16 @@ namespace Fire_Detector.Control
 
             this.leapmotionConnectionLabel.Invoke(new MethodInvoker(delegate ()
             {
-                this.leapmotionConnectionLabel.Text                        = "연결 안 됨";
+                this.leapmotionConnectionLabel.Text             = "연결 안 됨";
             }));
         }
 
         public void LeapController_Device(object sender, Leap.DeviceEventArgs e)
         {
             if(this.Root == null)
+                return;
+
+            if(this.Root.LeapController.IsConnected == false)
                 return;
 
             this.leapmotionProgressbar.Invoke(new MethodInvoker(delegate ()
@@ -204,17 +209,8 @@ namespace Fire_Detector.Control
 
             this.leapmotionConnectionLabel.Invoke(new MethodInvoker(delegate ()
             {
-                this.leapmotionConnectionLabel.Text                        = "연결됨";
+                this.leapmotionConnectionLabel.Text             = "연결됨";
             }));
-        }
-
-        public void LeapmotionController_Disconnect(object sender, Leap.ConnectionLostEventArgs e)
-        {
-        }
-
-        public void LeapmotionController_Connect(object sender, Leap.ConnectionEventArgs e)
-        {
-            //throw new NotImplementedException();
         }
     }
 }

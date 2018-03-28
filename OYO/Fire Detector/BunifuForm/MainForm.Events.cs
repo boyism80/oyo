@@ -59,11 +59,9 @@ namespace Fire_Detector.BunifuForm
             this.Bebop2.OnError                     += this.Bebop_OnError;
 
 
-            
-            this.LeapController.Connect             += this.mainView.mainConnectionView.LeapmotionController_Connect;
-            this.LeapController.Disconnect          += this.mainView.mainConnectionView.LeapmotionController_Disconnect;
+
             this.LeapController.Device              += this.mainView.mainConnectionView.LeapController_Device;
-            this.LeapController.Device              += this.defaultView.sideExpandedBar.leapmotionTab.LeapController_Connect;
+            this.LeapController.Device              += this.defaultView.sideExpandedBar.leapmotionTab.LeapController_Device;
             this.LeapController.DeviceLost          += this.mainView.mainConnectionView.LeapController_DeviceLost;
             this.LeapController.DeviceLost          += this.defaultView.sideExpandedBar.leapmotionTab.LeapController_Disconnect;
             this.LeapController.FrameReady          += this.LeapController_FrameReady;
@@ -75,7 +73,6 @@ namespace Fire_Detector.BunifuForm
 
             this.OnScreenStateChanged               += this.mainView.OnScreenStateChanged;
             this.OnScreenStateChanged               += this.mainView.mainConnectionView.OnScreenStateChanged;
-
 
             OYOKeysHook.OnKeyboardHook              += this.OnKeyboardHook;
             OYOKeysHook.Set();
@@ -98,6 +95,7 @@ namespace Fire_Detector.BunifuForm
             this.saveConfig("config.json");
 
             this.LeapController.FrameReady -= this.mainView.mainConnectionView.LeapController_FrameReady;
+            this.LeapController.FrameReady -= this.defaultView.sideExpandedBar.leapmotionTab.LeapController_FrameReady;
             this.LeapController.FrameReady -= this.LeapController_FrameReady;
         }
 
@@ -450,25 +448,39 @@ this._mutex.ReleaseMutex();
             var hand = e.frame.RightHand();
             if(hand != null)
             {
-                if(hand.PalmNormal.x > 0.3f)
-                    this._pcmd.roll = -5;
-                else if(hand.PalmNormal.x < -0.3f)
-                    this._pcmd.roll = 5;
+                // move left, right
+                var angle_rotated = hand.PalmNormal.AngleTo(Leap.Vector.Down) * (180 / Math.PI);
+                var cross_rotated = hand.PalmNormal.Cross(Leap.Vector.Down);
+
+                if(angle_rotated > 30.0f)
+                    this._pcmd.roll = 5 * (cross_rotated.z > 0 ? 1 : -1);
                 else
                     this._pcmd.roll = 0;
 
 
+                // move up, down
                 if(hand.PalmPosition.y > 250.0f)
                     this._pcmd.gaz = 25;
                 else if(hand.PalmPosition.y < 150.0f)
                     this._pcmd.gaz = -25;
                 else
                     this._pcmd.gaz = 0;
+
+                // move forward, backward
+                var direction = (hand.PalmPosition - Leap.Vector.Zero).Normalized;
+                var angle_forward = direction.AngleTo(Leap.Vector.Up) * (180 / Math.PI);
+                var cross_forward = direction.Cross(Leap.Vector.Up);
+                var calibrated_angle = 15 + angle_forward * (cross_forward.x > 0 ? 1 : -1);
+                if(Math.Abs(calibrated_angle) > 20.0f)
+                    this._pcmd.pitch = 5 * (cross_forward.x > 0 ? 1 : -1);
+                else
+                    this._pcmd.pitch = 0;
             }
             else
             {
                 this._pcmd.roll = 0;
                 this._pcmd.gaz = 0;
+                this._pcmd.pitch = 0;
             }
 
             this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);

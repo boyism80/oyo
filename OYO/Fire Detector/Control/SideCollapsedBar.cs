@@ -19,7 +19,7 @@ namespace Fire_Detector.Control
 
             //this.Visible = false;
             mainform.defaultView.sideExpandedBar.Visible = true;
-            mainform.defaultView.sideExpandedBar.SetActiveTab(mainform.defaultView.sideExpandedBar.droneTab);
+            mainform.defaultView.sideExpandedBar.ActivatedTab = mainform.defaultView.sideExpandedBar.droneTab;
         }
 
         private void homeButton_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace Fire_Detector.Control
 
             //this.Visible = false;
             mainform.defaultView.sideExpandedBar.Visible = true;
-            mainform.defaultView.sideExpandedBar.SetActiveTab(mainform.defaultView.sideExpandedBar.leapmotionTab);
+            mainform.defaultView.sideExpandedBar.ActivatedTab = mainform.defaultView.sideExpandedBar.leapmotionTab;
         }
 
         private void paletteTabButton_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace Fire_Detector.Control
 
             //this.Visible = false;
             mainform.defaultView.sideExpandedBar.Visible = true;
-            mainform.defaultView.sideExpandedBar.SetActiveTab(mainform.defaultView.sideExpandedBar.visualizeTab);
+            mainform.defaultView.sideExpandedBar.ActivatedTab = mainform.defaultView.sideExpandedBar.visualizeTab;
         }
 
         private void alarmTabButton_Click(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace Fire_Detector.Control
 
            // this.Visible = false;
             mainform.defaultView.sideExpandedBar.Visible = true;
-            mainform.defaultView.sideExpandedBar.SetActiveTab(mainform.defaultView.sideExpandedBar.detectFireTab);
+            mainform.defaultView.sideExpandedBar.ActivatedTab = mainform.defaultView.sideExpandedBar.detectFireTab;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using BebopCommandSet;
-using Fire_Detector.Source.Extension;
 using ParrotBebop2;
 using System;
 using System.Drawing;
@@ -351,46 +350,51 @@ namespace Fire_Detector.Control.SideTabView
             //if(this.Root.Bebop2.Connected == false)
             //    return;
 
-            this.bunifuImageButton5.Invoke(new MethodInvoker(delegate ()
+            try
             {
-                this.bunifuImageButton5.BackColor = pcmd.pitch > 0 ? Color.Salmon : Color.DarkGray;
-            }));
+                this.bunifuImageButton5.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.bunifuImageButton5.BackColor = pcmd.pitch > 0 ? Color.Salmon : Color.DarkGray;
+                }));
 
 
-            this.bunifuImageButton6.Invoke(new MethodInvoker(delegate ()
-            {
-                this.bunifuImageButton6.BackColor = pcmd.pitch < 0 ? Color.Salmon : Color.DarkGray;
-            }));
+                this.bunifuImageButton6.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.bunifuImageButton6.BackColor = pcmd.pitch < 0 ? Color.Salmon : Color.DarkGray;
+                }));
 
-            this.bunifuImageButton7.Invoke(new MethodInvoker(delegate ()
-            {
-                this.bunifuImageButton7.BackColor = pcmd.roll < 0 ? Color.Salmon : Color.DarkGray;
-            }));
+                this.bunifuImageButton7.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.bunifuImageButton7.BackColor = pcmd.roll < 0 ? Color.Salmon : Color.DarkGray;
+                }));
 
-            this.bunifuImageButton8.Invoke(new MethodInvoker(delegate ()
-            {
-                this.bunifuImageButton8.BackColor = pcmd.roll > 0 ? Color.Salmon : Color.DarkGray;
-            }));
+                this.bunifuImageButton8.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.bunifuImageButton8.BackColor = pcmd.roll > 0 ? Color.Salmon : Color.DarkGray;
+                }));
 
-            this.bunifuImageButton1.Invoke(new MethodInvoker(delegate ()
-            {
-                this.bunifuImageButton1.BackColor = pcmd.gaz > 0 ? Color.Salmon : Color.DarkGray;
-            }));
+                this.bunifuImageButton1.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.bunifuImageButton1.BackColor = pcmd.gaz > 0 ? Color.Salmon : Color.DarkGray;
+                }));
 
-            this.bunifuImageButton2.Invoke(new MethodInvoker(delegate ()
-            {
-                this.bunifuImageButton2.BackColor = pcmd.gaz < 0 ? Color.Salmon : Color.DarkGray;
-            }));
+                this.bunifuImageButton2.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.bunifuImageButton2.BackColor = pcmd.gaz < 0 ? Color.Salmon : Color.DarkGray;
+                }));
 
-            this.bunifuImageButton3.Invoke(new MethodInvoker(delegate ()
-            {
-                this.bunifuImageButton3.BackColor = pcmd.yaw > 0 ? Color.Salmon : Color.DarkGray;
-            }));
+                this.bunifuImageButton3.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.bunifuImageButton3.BackColor = pcmd.yaw > 0 ? Color.Salmon : Color.DarkGray;
+                }));
 
-            this.bunifuImageButton4.Invoke(new MethodInvoker(delegate ()
-            {
-                this.bunifuImageButton4.BackColor = pcmd.yaw < 0 ? Color.Salmon : Color.DarkGray;
-            }));
+                this.bunifuImageButton4.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.bunifuImageButton4.BackColor = pcmd.yaw < 0 ? Color.Salmon : Color.DarkGray;
+                }));
+            }
+            catch(Exception)
+            { }
         }
 
         public void Receiver_OnConnectionChanged(oyo.OYOReceiver receiver)

@@ -1,9 +1,7 @@
 ﻿using Fire_Detector.Control.SideTabView;
 using System;
-using System.Windows.Forms;
-using Fire_Detector.Source;
-using OpenCvSharp;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Fire_Detector.Control
 {
@@ -64,7 +62,7 @@ namespace Fire_Detector.Control
             if (tab != null)
             {
                 this.Root.defaultView.sideExpandedBar.Visible = true;
-                this.Root.defaultView.sideExpandedBar.SetActiveTab(tab.Tag as BaseControl);
+                this.Root.defaultView.sideExpandedBar.ActivatedTab = tab.Tag as BaseControl;
             }
         }
 
