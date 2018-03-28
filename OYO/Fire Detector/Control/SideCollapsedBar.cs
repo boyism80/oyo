@@ -1,11 +1,11 @@
 ﻿using Fire_Detector.BunifuForm;
+using Fire_Detector.Control.SideTabView;
 using System;
 using System.Drawing;
-using System.Windows.Forms;
 
 namespace Fire_Detector.Control
 {
-    public partial class SideCollapsedBar : UserControl
+    public partial class SideCollapsedBar : BaseControl
     {
         public SideCollapsedBar()
         {
@@ -14,39 +14,36 @@ namespace Fire_Detector.Control
 
         private void droneTabButton_Click(object sender, EventArgs e)
         {
-            var mainform = this.FindForm() as MainForm;
-            if(mainform == null)
+            if (this.Root == null)
                 return;
 
             //this.Visible = false;
-            mainform.defaultView.sideExpandedBar.Visible = true;
-            mainform.defaultView.sideExpandedBar.ActivatedTab = mainform.defaultView.sideExpandedBar.droneTab;
-            
+            this.Root.defaultView.sideExpandedBar.Visible = true;
+            this.Root.defaultView.sideExpandedBar.ActivatedTab = this.Root.defaultView.sideExpandedBar.droneTab;
+
             this.droneTabButton.BackColor = System.Drawing.Color.White;
             this.paletteTabButton.BackColor = Color.FromArgb(255, 200, 160);
             this.leapmotionTabButton.BackColor = Color.FromArgb(255, 200, 160);
-            this.alarmTabButton.BackColor = Color.FromArgb(255, 200, 160); 
+            this.alarmTabButton.BackColor = Color.FromArgb(255, 200, 160);
         }
 
         private void homeButton_Click(object sender, EventArgs e)
         {
-            var mainform = this.FindForm() as MainForm;
-            if(mainform == null)
+            if (this.Root == null)
                 return;
-            
-            mainform.defaultView.Visible = false;
-            mainform.mainView.Visible = true;
+
+            this.Root.defaultView.Visible = false;
+            this.Root.mainView.Visible = true;
         }
 
         private void leapmotionTabButton_Click(object sender, EventArgs e)
         {
-            var mainform = this.FindForm() as MainForm;
-            if(mainform == null)
+            if (this.Root == null)
                 return;
 
             //this.Visible = false;
-            mainform.defaultView.sideExpandedBar.Visible = true;
-            mainform.defaultView.sideExpandedBar.ActivatedTab = mainform.defaultView.sideExpandedBar.leapmotionTab;
+            this.Root.defaultView.sideExpandedBar.Visible = true;
+            this.Root.defaultView.sideExpandedBar.ActivatedTab = this.Root.defaultView.sideExpandedBar.leapmotionTab;
 
             this.droneTabButton.BackColor = Color.FromArgb(255, 200, 160);
             this.paletteTabButton.BackColor = Color.FromArgb(255, 200, 160);
@@ -56,13 +53,12 @@ namespace Fire_Detector.Control
 
         private void paletteTabButton_Click(object sender, EventArgs e)
         {
-            var mainform = this.FindForm() as MainForm;
-            if(mainform == null)
+            if (this.Root == null)
                 return;
 
             //this.Visible = false;
-            mainform.defaultView.sideExpandedBar.Visible = true;
-            mainform.defaultView.sideExpandedBar.ActivatedTab = mainform.defaultView.sideExpandedBar.visualizeTab;
+            this.Root.defaultView.sideExpandedBar.Visible = true;
+            this.Root.defaultView.sideExpandedBar.ActivatedTab = this.Root.defaultView.sideExpandedBar.visualizeTab;
 
             this.droneTabButton.BackColor = Color.FromArgb(255, 200, 160);
             this.paletteTabButton.BackColor = System.Drawing.Color.White;
@@ -72,13 +68,12 @@ namespace Fire_Detector.Control
 
         private void alarmTabButton_Click(object sender, EventArgs e)
         {
-            var mainform = this.FindForm() as MainForm;
-            if(mainform == null)
+            if (this.Root == null)
                 return;
 
-           // this.Visible = false;
-            mainform.defaultView.sideExpandedBar.Visible = true;
-            mainform.defaultView.sideExpandedBar.ActivatedTab = mainform.defaultView.sideExpandedBar.detectFireTab;
+            // this.Visible = false;
+            this.Root.defaultView.sideExpandedBar.Visible = true;
+            this.Root.defaultView.sideExpandedBar.ActivatedTab = this.Root.defaultView.sideExpandedBar.detectFireTab;
 
             this.droneTabButton.BackColor = Color.FromArgb(255, 200, 160);
             this.paletteTabButton.BackColor = Color.FromArgb(255, 200, 160);
@@ -88,48 +83,83 @@ namespace Fire_Detector.Control
 
         private void droneTabButton_MouseHover(object sender, EventArgs e)
         {
-            this.droneTabButton.BackColor = System.Drawing.Color.White;
+            this.droneTabButton.BackColor = Color.FromArgb(230, 180, 150);
         }
 
         private void droneTabButton_MouseLeave(object sender, EventArgs e)
         {
-            //조건문넣기(getActiveTab이 droneTab이 아닐때
-            this.droneTabButton.BackColor = Color.FromArgb(255, 200, 160);
+            if (this.Root == null)
+                return;
+
+            var current = this.Root.defaultView.sideExpandedBar.ActivatedTab;
+            if (current != this.Root.defaultView.sideExpandedBar.droneTab)
+            {
+                this.droneTabButton.BackColor = Color.FromArgb(255, 200, 160);
+            }
+            else
+                this.droneTabButton.BackColor = System.Drawing.Color.White;
         }
 
         private void paletteTabButton_MouseHover(object sender, EventArgs e)
         {
-            this.paletteTabButton.BackColor = System.Drawing.Color.White;
+            this.paletteTabButton.BackColor = Color.FromArgb(230, 180, 150);
         }
 
         private void paletteTabButton_MouseLeave(object sender, EventArgs e)
         {
-            this.paletteTabButton.BackColor = Color.FromArgb(255, 200, 160);
+            if (this.Root == null)
+                return;
+
+            var current = this.Root.defaultView.sideExpandedBar.ActivatedTab;
+            if (current != this.Root.defaultView.sideExpandedBar.visualizeTab)
+            {
+                this.paletteTabButton.BackColor = Color.FromArgb(255, 200, 160);
+            }
+            else
+                this.paletteTabButton.BackColor = System.Drawing.Color.White;
         }
 
         private void leapmotionTabButton_MouseHover(object sender, EventArgs e)
         {
-            this.leapmotionTabButton.BackColor = System.Drawing.Color.White;
+            this.leapmotionTabButton.BackColor = Color.FromArgb(230, 180, 150);
         }
 
         private void leapmotionTabButton_MouseLeave(object sender, EventArgs e)
         {
-            this.leapmotionTabButton.BackColor = Color.FromArgb(255, 200, 160);
+            if (this.Root == null)
+                return;
+
+            var current = this.Root.defaultView.sideExpandedBar.ActivatedTab;
+            if (current != this.Root.defaultView.sideExpandedBar.leapmotionTab)
+            {
+                this.leapmotionTabButton.BackColor = Color.FromArgb(255, 200, 160);
+            }
+            else
+                this.leapmotionTabButton.BackColor = System.Drawing.Color.White;
         }
 
         private void alarmTabButton_MouseHover(object sender, EventArgs e)
         {
-            this.alarmTabButton.BackColor = System.Drawing.Color.White;
+            this.alarmTabButton.BackColor = Color.FromArgb(230, 180, 150);
         }
 
         private void alarmTabButton_MouseLeave(object sender, EventArgs e)
         {
-            this.alarmTabButton.BackColor = Color.FromArgb(255, 200, 160);
+            if (this.Root == null)
+                return;
+
+            var current = this.Root.defaultView.sideExpandedBar.ActivatedTab;
+            if (current != this.Root.defaultView.sideExpandedBar.detectFireTab)
+            {
+                this.alarmTabButton.BackColor = Color.FromArgb(255, 200, 160);
+            }
+            else
+                this.alarmTabButton.BackColor = System.Drawing.Color.White;
         }
 
         private void homeButton_MouseHover(object sender, EventArgs e)
         {
-            this.homeButton.BackColor = System.Drawing.Color.White;
+            this.homeButton.BackColor = Color.FromArgb(230, 180, 150);
         }
 
         private void homeButton_MouseLeave(object sender, EventArgs e)
