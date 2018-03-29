@@ -83,6 +83,8 @@ namespace oyo
         //
         public Rect VisualCroppedRect { get; set; }
 
+        public Rect InfraredCroppedRect { get; set; }
+
         //public Rect InfraredCroppedRect { get; set; }
 
 
@@ -101,10 +103,11 @@ namespace oyo
 
 		public OYOBlender(Size size, float alpha = 0.5f, bool smooth = true)
 		{
-			this.Size				= size;
-			this.Smooth				= smooth;
-			this.Transparency		= alpha;
-            this.VisualCroppedRect        = new Rect(new Point(), this.Size);
+			this.Size				    = size;
+			this.Smooth				    = smooth;
+			this.Transparency		    = alpha;
+            this.VisualCroppedRect      = new Rect(new Point(), this.Size);
+            this.InfraredCroppedRect    = new Rect(new Point(), this.Size);
 		}
 
         //
@@ -183,6 +186,9 @@ namespace oyo
 				this._mask.ConvertTo(this._mask, MatType.CV_8UC1);
 			if(this._mask.Size() != this.Size)
 				this._mask          = this._mask.Resize(this.Size);
+
+            this._foreground        = this._foreground.Clone(this.InfraredCroppedRect).Resize(this.Size);
+            this._mask              = this.Mask.Clone(this.InfraredCroppedRect).Resize(this.Size);
 
 			return this.Blendable;
 		}
