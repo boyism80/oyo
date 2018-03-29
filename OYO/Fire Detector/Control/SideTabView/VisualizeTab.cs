@@ -18,6 +18,11 @@ namespace Fire_Detector.Control.SideTabView
             this.verticalityRange.RangeMin = 20;
             this.verticalityRange.RangeMax = 80;
 
+            this.horizontalRange_inf.RangeMin = 20;
+            this.horizontalRange_inf.RangeMax = 80;
+            this.verticalityRange_inf.RangeMin = 20;
+            this.verticalityRange_inf.RangeMax = 80;
+
             
         }
 
@@ -134,7 +139,6 @@ namespace Fire_Detector.Control.SideTabView
                 blendingOptionPanel.Visible = false;
                 infraredOptionPanel.Visible = false;
             }
-            
         }
 
         public void Receiver_OnConnectionChanged(OYOReceiver receiver)
@@ -289,6 +293,24 @@ namespace Fire_Detector.Control.SideTabView
             this.Root.Blender.VisualCroppedRect = new Rect(offset, size);
         }
 
-        
+        private void horizontalRange_inf_RangeChanged(object sender, EventArgs e)
+        {
+            if(this.Root == null)
+                return;
+
+            var offset  = new OpenCvSharp.Point(this.horizontalRange_inf.RangeMin, this.Root.Blender.InfraredCroppedRect.Y);
+            var size    = new OpenCvSharp.Size(this.horizontalRange_inf.RangeMax - this.horizontalRange_inf.RangeMin, this.Root.Blender.InfraredCroppedRect.Height);
+            this.Root.Blender.InfraredCroppedRect = new Rect(offset, size);
+        }
+
+        private void verticalRange_inf_RangeChanged(object sender, EventArgs e)
+        {
+            if(this.Root == null)
+                return;
+
+            var offset = new OpenCvSharp.Point(this.Root.Blender.InfraredCroppedRect.X, this.verticalityRange_inf.RangeMin);
+            var size   = new OpenCvSharp.Size(this.Root.Blender.InfraredCroppedRect.Width, this.verticalityRange_inf.RangeMax - this.verticalityRange_inf.RangeMin);
+            this.Root.Blender.InfraredCroppedRect = new Rect(offset, size);
+        }
     }
 }
