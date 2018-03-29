@@ -1,4 +1,4 @@
-﻿using Bunifu.Framework.UI;
+using Bunifu.Framework.UI;
 using Fire_Detector.Control.SideTabView;
 using System;
 using System.Drawing;

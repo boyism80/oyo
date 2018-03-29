@@ -48,6 +48,9 @@ namespace Fire_Detector.Control
                 return;
 
             this.Root.defaultView.sideExpandedBar.Visible = false;
+            //
+            //버튼들 색 ㅊ초기화 Color.FromArgb(255, 200, 160);
+            //
         }
 
         private void SideExpandedBar_Load(object sender, System.EventArgs e)
