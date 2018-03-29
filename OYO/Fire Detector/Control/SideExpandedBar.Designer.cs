@@ -126,6 +126,7 @@
             this.Controls.Add(this.buttonCollapse);
             this.Name = "SideExpandedBar";
             this.Size = new System.Drawing.Size(350, 738);
+            this.Load += new System.EventHandler(this.SideExpandedBar_Load);
             this.ResumeLayout(false);
 
         }

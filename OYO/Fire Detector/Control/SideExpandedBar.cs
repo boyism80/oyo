@@ -1,4 +1,5 @@
-﻿using Fire_Detector.Control.SideTabView;
+﻿using Bunifu.Framework.UI;
+using Fire_Detector.Control.SideTabView;
 
 namespace Fire_Detector.Control
 {
@@ -30,6 +31,9 @@ namespace Fire_Detector.Control
 
                 this.buttonCollapse.Text = value.Tag as string;
                 this._activatedTab = value;
+
+
+                this.Root.defaultView.sideCollapsedBar.Activated = this._activatedTab.Tag as BunifuImageButton;
             }
         }
 
@@ -44,6 +48,14 @@ namespace Fire_Detector.Control
                 return;
 
             this.Root.defaultView.sideExpandedBar.Visible = false;
+        }
+
+        private void SideExpandedBar_Load(object sender, System.EventArgs e)
+        {
+            this.droneTab.Tag = this.Root.defaultView.sideCollapsedBar.droneTabButton;
+            this.visualizeTab.Tag = this.Root.defaultView.sideCollapsedBar.visualizationTabButton;
+            this.leapmotionTab.Tag = this.Root.defaultView.sideCollapsedBar.leapmotionTabButton;
+            this.detectFireTab.Tag = this.Root.defaultView.sideCollapsedBar.detectionTabButton;
         }
     }
 }

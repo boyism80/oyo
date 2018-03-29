@@ -129,6 +129,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void LeapmotionTab_Load(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.LeapController_Device(this.Root.LeapController, new Leap.DeviceEventArgs(this.Root.LeapController.Devices.ActiveDevice));
         }
     }

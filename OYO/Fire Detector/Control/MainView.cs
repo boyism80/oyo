@@ -47,7 +47,7 @@ namespace Fire_Detector.Control
             tab.Visible = false;
         }
 
-        private void bottomLabel_Click(object sender, EventArgs e)
+        public void bottomLabel_Click(object sender, EventArgs e)
         {
             if(this.Root == null)
                 return;
