@@ -390,6 +390,7 @@
             this.detectFireLabel.Name = "detectFireLabel";
             this.detectFireLabel.Size = new System.Drawing.Size(204, 46);
             this.detectFireLabel.TabIndex = 21;
+            this.detectFireLabel.Tag = "";
             this.detectFireLabel.Text = "Detect Fire";
             this.detectFireLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.detectFireLabel.Click += new System.EventHandler(this.bottomLabel_Click);
@@ -459,6 +460,7 @@
             this.leapmotionLabel.Name = "leapmotionLabel";
             this.leapmotionLabel.Size = new System.Drawing.Size(204, 46);
             this.leapmotionLabel.TabIndex = 21;
+            this.leapmotionLabel.Tag = "";
             this.leapmotionLabel.Text = "Leapmotion";
             this.leapmotionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.leapmotionLabel.Click += new System.EventHandler(this.bottomLabel_Click);
@@ -493,6 +495,7 @@
             this.droneControlLabel.Name = "droneControlLabel";
             this.droneControlLabel.Size = new System.Drawing.Size(204, 46);
             this.droneControlLabel.TabIndex = 21;
+            this.droneControlLabel.Tag = "";
             this.droneControlLabel.Text = "Drone Control";
             this.droneControlLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.droneControlLabel.Click += new System.EventHandler(this.bottomLabel_Click);
@@ -527,6 +530,7 @@
             this.visualizeLabel.Name = "visualizeLabel";
             this.visualizeLabel.Size = new System.Drawing.Size(204, 46);
             this.visualizeLabel.TabIndex = 21;
+            this.visualizeLabel.Tag = "";
             this.visualizeLabel.Text = "Visualize";
             this.visualizeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.visualizeLabel.Click += new System.EventHandler(this.bottomLabel_Click);

@@ -989,6 +989,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "DroneTab";
             this.Size = new System.Drawing.Size(350, 694);
+            this.Tag = "Drone Control";
             this.Load += new System.EventHandler(this.DroneTab_Load);
             this.VisibleChanged += new System.EventHandler(this.DroneTab_VisibleChanged);
             this.panel2.ResumeLayout(false);
