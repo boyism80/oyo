@@ -9,7 +9,7 @@ namespace Fire_Detector.Control
     {
         public static Color ACTIVATED_COLOR = Color.White;
         public static Color INACTIVATED_COLOR = Color.FromArgb(255, 200, 160);
-        public static Color HOVERED_COLOR = Color.White;
+        public static Color HOVERED_COLOR = Color.FromArgb(230, 180, 150);
 
 
         private BunifuImageButton[] buttons;
@@ -86,6 +86,7 @@ namespace Fire_Detector.Control
         private void buttons_MouseHover(object sender, EventArgs e)
         {
             this.Hovered = sender as BunifuImageButton;
+            this.Hovered.BackColor = HOVERED_COLOR;
         }
 
         private void button_MouseLeave(object sender, EventArgs e)
