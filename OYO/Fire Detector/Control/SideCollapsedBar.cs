@@ -99,8 +99,11 @@ namespace Fire_Detector.Control
         {
             if(this.Root == null)
                 return;
-
-            this.Hovered = null;
+            
+            if (this._activated == sender as BunifuImageButton)
+                this._activated.BackColor = ACTIVATED_COLOR;
+            else
+                this.Hovered = null;
         }
     }
 }
