@@ -59,6 +59,9 @@ namespace Fire_Detector.Control
 
         private void SideCollapsedBar_Load(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.droneTabButton.Tag = this.Root.mainView.droneControlLabel;
             this.visualizationTabButton.Tag = this.Root.mainView.visualizeLabel;
             this.leapmotionTabButton.Tag = this.Root.mainView.leapmotionLabel;
@@ -85,11 +88,17 @@ namespace Fire_Detector.Control
 
         private void buttons_MouseHover(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.Hovered = sender as BunifuImageButton;
         }
 
         private void button_MouseLeave(object sender, EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.Hovered = null;
         }
     }

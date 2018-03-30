@@ -606,6 +606,7 @@
             this.Controls.Add(this.panel3);
             this.Name = "LeapmotionTab";
             this.Size = new System.Drawing.Size(350, 694);
+            this.Tag = "Leapmotion";
             this.Load += new System.EventHandler(this.LeapmotionTab_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

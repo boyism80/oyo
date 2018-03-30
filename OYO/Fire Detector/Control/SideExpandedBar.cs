@@ -29,11 +29,13 @@ namespace Fire_Detector.Control
                 if(exists == false)
                     return;
 
-                this.buttonCollapse.Text = value.Tag as string;
+                var title = (value.Tag as object[])[0] as string;
+                var activated_side_button = (value.Tag as object[])[1] as BunifuImageButton;
+
+                this.Root.defaultView.sideCollapsedBar.Activated = activated_side_button;
+                this.buttonCollapse.Text = title;
+
                 this._activatedTab = value;
-
-
-                this.Root.defaultView.sideCollapsedBar.Activated = this._activatedTab.Tag as BunifuImageButton;
             }
         }
 
@@ -48,17 +50,14 @@ namespace Fire_Detector.Control
                 return;
 
             this.Root.defaultView.sideExpandedBar.Visible = false;
-            //
-            //버튼들 색 ㅊ초기화 Color.FromArgb(255, 200, 160);
-            //
         }
 
         private void SideExpandedBar_Load(object sender, System.EventArgs e)
         {
-            this.droneTab.Tag = this.Root.defaultView.sideCollapsedBar.droneTabButton;
-            this.visualizeTab.Tag = this.Root.defaultView.sideCollapsedBar.visualizationTabButton;
-            this.leapmotionTab.Tag = this.Root.defaultView.sideCollapsedBar.leapmotionTabButton;
-            this.detectFireTab.Tag = this.Root.defaultView.sideCollapsedBar.detectionTabButton;
+            this.droneTab.Tag       = new object[] { "Drone Control", this.Root.defaultView.sideCollapsedBar.droneTabButton }; 
+            this.visualizeTab.Tag   = new object[] { "Visualization", this.Root.defaultView.sideCollapsedBar.visualizationTabButton }; 
+            this.leapmotionTab.Tag  = new object[] { "Leapmotion", this.Root.defaultView.sideCollapsedBar.leapmotionTabButton }; 
+            this.detectFireTab.Tag  = new object[] { "Detection", this.Root.defaultView.sideCollapsedBar.detectionTabButton }; 
         }
     }
 }

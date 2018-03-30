@@ -814,6 +814,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "VisualizeTab";
             this.Size = new System.Drawing.Size(350, 694);
+            this.Tag = "Visualization";
             this.Load += new System.EventHandler(this.VisualizeTab_Load);
             this.panel12.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
