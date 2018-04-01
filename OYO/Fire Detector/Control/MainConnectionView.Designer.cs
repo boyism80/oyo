@@ -139,11 +139,11 @@
             this.leapmotionRightPanel.Controls.Add(this.leapmotionStatePanel);
             this.leapmotionRightPanel.Controls.Add(this.leapmotionConnectionLabel);
             this.leapmotionRightPanel.Controls.Add(this.bunifuCustomLabel25);
-            this.leapmotionRightPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.leapmotionRightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.leapmotionRightPanel.Location = new System.Drawing.Point(0, 0);
             this.leapmotionRightPanel.Name = "leapmotionRightPanel";
             this.leapmotionRightPanel.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.leapmotionRightPanel.Size = new System.Drawing.Size(109, 291);
+            this.leapmotionRightPanel.Size = new System.Drawing.Size(336, 291);
             this.leapmotionRightPanel.TabIndex = 37;
             // 
             // leapmotionStatePanel
@@ -153,7 +153,7 @@
             this.leapmotionStatePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.leapmotionStatePanel.Location = new System.Drawing.Point(0, 112);
             this.leapmotionStatePanel.Name = "leapmotionStatePanel";
-            this.leapmotionStatePanel.Size = new System.Drawing.Size(109, 179);
+            this.leapmotionStatePanel.Size = new System.Drawing.Size(336, 179);
             this.leapmotionStatePanel.TabIndex = 12;
             // 
             // leapRightDetectingLabel
@@ -290,11 +290,11 @@
             this.raspCamRightPanel.Controls.Add(this.cameraStatePanel);
             this.raspCamRightPanel.Controls.Add(this.cameraConnectionLabel);
             this.raspCamRightPanel.Controls.Add(this.bunifuCustomLabel18);
-            this.raspCamRightPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.raspCamRightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.raspCamRightPanel.Location = new System.Drawing.Point(0, 0);
             this.raspCamRightPanel.Name = "raspCamRightPanel";
             this.raspCamRightPanel.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.raspCamRightPanel.Size = new System.Drawing.Size(102, 291);
+            this.raspCamRightPanel.Size = new System.Drawing.Size(335, 291);
             this.raspCamRightPanel.TabIndex = 36;
             // 
             // cameraStatePanel
@@ -304,7 +304,7 @@
             this.cameraStatePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cameraStatePanel.Location = new System.Drawing.Point(0, 112);
             this.cameraStatePanel.Name = "cameraStatePanel";
-            this.cameraStatePanel.Size = new System.Drawing.Size(102, 179);
+            this.cameraStatePanel.Size = new System.Drawing.Size(335, 179);
             this.cameraStatePanel.TabIndex = 12;
             // 
             // bunifuCustomLabel15
@@ -450,11 +450,11 @@
             this.droneRightPanel.Controls.Add(this.droneStatePanel);
             this.droneRightPanel.Controls.Add(this.droneConnectionLabel);
             this.droneRightPanel.Controls.Add(this.bunifuCustomLabel1);
-            this.droneRightPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.droneRightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.droneRightPanel.Location = new System.Drawing.Point(0, 0);
             this.droneRightPanel.Name = "droneRightPanel";
             this.droneRightPanel.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.droneRightPanel.Size = new System.Drawing.Size(102, 291);
+            this.droneRightPanel.Size = new System.Drawing.Size(335, 291);
             this.droneRightPanel.TabIndex = 35;
             // 
             // droneStatePanel
@@ -467,7 +467,7 @@
             this.droneStatePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.droneStatePanel.Location = new System.Drawing.Point(0, 112);
             this.droneStatePanel.Name = "droneStatePanel";
-            this.droneStatePanel.Size = new System.Drawing.Size(102, 179);
+            this.droneStatePanel.Size = new System.Drawing.Size(335, 179);
             this.droneStatePanel.TabIndex = 2;
             // 
             // bunifuCustomLabel11
@@ -752,8 +752,8 @@
         private System.Windows.Forms.Panel leapmotionStatePanel;
         private Bunifu.Framework.UI.BunifuCustomLabel leapRightDetectingLabel;
         private Bunifu.Framework.UI.BunifuCustomLabel leapLeftDetectingLabel;
-        public Bunifu.Framework.UI.BunifuImageButton droneImageButton;
-        public Bunifu.Framework.UI.BunifuImageButton raspCamImageButton;
-        public Bunifu.Framework.UI.BunifuImageButton leapMotionImageButton;
+        private Bunifu.Framework.UI.BunifuImageButton droneImageButton;
+        private Bunifu.Framework.UI.BunifuImageButton raspCamImageButton;
+        private Bunifu.Framework.UI.BunifuImageButton leapMotionImageButton;
     }
 }
