@@ -50,6 +50,7 @@ namespace Fire_Detector.Control
                 return;
 
             this.Root.defaultView.sideExpandedBar.Visible = false;
+            this.Root.defaultView.sideCollapsedBar.Activated = null;
         }
 
         private void SideExpandedBar_Load(object sender, System.EventArgs e)

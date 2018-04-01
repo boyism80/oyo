@@ -38,7 +38,6 @@ namespace Fire_Detector.Control.SideTabView
             recordModeSwitch.Enabled = isEnable;
         }
 
-
         private void update()
         {
             if(this.Root == null)
@@ -122,12 +121,7 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            if(this.Root.Bebop2.Connected)
-                this.Root.Bebop2.Disconnect();
-            else
-                this.Root.Bebop2.Connect();
-
-            this.update();
+            this.Root.mainView.mainConnectionView.droneImageButton_Click(sender, e);
         }
 
         private void TakeoffSwitch_OnValueChange(object sender, EventArgs e)
@@ -346,9 +340,6 @@ namespace Fire_Detector.Control.SideTabView
         {
             if(this.Root == null)
                 return;
-
-            //if(this.Root.Bebop2.Connected == false)
-            //    return;
 
             try
             {

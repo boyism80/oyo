@@ -1,4 +1,5 @@
 ﻿using Fire_Detector.Control.SideTabView;
+using Fire_Detector.Dialog;
 using Fire_Detector.Source.Extension;
 using oyo;
 using ParrotBebop2;
@@ -100,7 +101,7 @@ namespace Fire_Detector.Control
             this.LeapController_Device(this.Root.LeapController, new Leap.DeviceEventArgs(this.Root.LeapController.Devices.ActiveDevice));
         }
 
-        private void raspCamImageButton_Click(object sender, System.EventArgs e)
+        public void raspCamImageButton_Click(object sender, System.EventArgs e)
         {
             if(this.Root == null)
                 return;
@@ -111,7 +112,7 @@ namespace Fire_Detector.Control
                 this.Root.Receiver.Connect();
         }
 
-        private void droneImageButton_Click(object sender, System.EventArgs e)
+        public void droneImageButton_Click(object sender, System.EventArgs e)
         {
             if(this.Root == null)
                 return;
@@ -122,9 +123,24 @@ namespace Fire_Detector.Control
                 this.Root.Bebop2.Connect();
         }
 
-        private void leapMotionImageButton_Click(object sender, System.EventArgs e)
+        public void leapMotionImageButton_Click(object sender, System.EventArgs e)
         {
-            // 립모션이랑 연결
+            if(this.Root == null)
+                return;
+
+            if(this.Root.LeapController.Enabled == false)
+            {
+                this.Root.LeapController.Enabled = true;
+                if(this.Root.LeapController.Enabled == false)
+                {
+                    var dialog = new MessageDialog("립모션이 연결되어 있지 않습니다.");
+                    dialog.ShowDialog(this.Root);
+                }
+            }
+            else
+            {
+                this.Root.LeapController.Enabled = false;
+            }
         }
 
         private void MainConnectionView_VisibleChanged(object sender, EventArgs e)
@@ -192,7 +208,7 @@ namespace Fire_Detector.Control
             if(this.Root == null)
                 return;
 
-            if(this.Root.LeapController.IsConnected == false)
+            if(this.Root.LeapController.Enabled == false)
                 return;
 
             this.leapmotionProgressbar.Invoke(new MethodInvoker(delegate ()

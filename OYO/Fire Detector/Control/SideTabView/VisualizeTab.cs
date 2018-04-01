@@ -167,10 +167,7 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            if(this.Root.Receiver.Connected)
-                this.Root.Receiver.Exit();
-            else
-                this.Root.Receiver.Connect();
+            this.Root.mainView.mainConnectionView.raspCamImageButton_Click(sender, e);
         }
 
         private void infraredViewButton_Click(object sender, EventArgs e)

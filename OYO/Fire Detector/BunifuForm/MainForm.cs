@@ -112,7 +112,7 @@ namespace Fire_Detector.BunifuForm
         /// <summary>
         /// 립모션 컨트롤러 인스턴스입니다.
         /// </summary>
-        public Leap.Controller                  LeapController { get; private set; }
+        public OYOLeapmotion                  LeapController { get; private set; }
         #endregion
 
         public MainForm()
@@ -128,7 +128,7 @@ namespace Fire_Detector.BunifuForm
             this.Overlayer                      = new OYOGMapOverlayer(this.defaultView.streamingFrameBox);
             this.Bebop2                         = new Bebop2();
             this.Recorder                       = new OYORecorder();
-            this.LeapController                 = new Leap.Controller();
+            this.LeapController                 = new OYOLeapmotion();
             this.LeapController.SetPolicy(Leap.Controller.PolicyFlag.POLICY_ALLOW_PAUSE_RESUME);
         }
 

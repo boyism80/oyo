@@ -22,40 +22,37 @@ namespace Fire_Detector.Control.SideTabView
 
         private void connectLeapmotionButton_Click(object sender, EventArgs e)
         {
-            if (connectLeapmotionProgressbar.animated == true)
-            {
-                connectLeapmotionProgressbar.animated = false;
-                connectLeapmotionProgressbar.Value = 0;
-            }
-            else
-            {
-                connectLeapmotionProgressbar.animated = true;
-                connectLeapmotionProgressbar.Value = 15;
-            }
+            if(this.Root == null)
+                return;
+
+            this.Root.mainView.mainConnectionView.leapMotionImageButton_Click(sender, e);
         }
 
         public void LeapController_FrameReady(object sender, Leap.FrameEventArgs e)
         {
             try
             {
-                var hand = e.frame.RightHand();
-                if(hand != null)
+                var handRight = e.frame.RightHand();
+                if(handRight != null)
                 {
-                    // move forward, backward
-                    var direction = (hand.PalmPosition - Leap.Vector.Zero).Normalized;
-                    var angle_forward = direction.AngleTo(Leap.Vector.Up) * (180 / Math.PI);
-                    var cross_forward = direction.Cross(Leap.Vector.Up);
-                    this.leapPitchLabel.Text    = (15 + angle_forward * (cross_forward.x > 0 ? 1 : -1)).ToString("0.00");
-                    this.leapYawLabel.Text      = cross_forward.y.ToString("0.00");
-                    this.leapRollLabel.Text     = cross_forward.z.ToString("0.00");
+                    
                 }
 
                 var handLeft = e.frame.LeftHand();
                 if(handLeft != null)
-                { }
+                {
+                    // move forward, backward
+                    var direction = handLeft.Direction.Normalized;
+                    var cross = direction.Cross(Leap.Vector.Forward);
+                    var angle = direction.AngleTo(Leap.Vector.Forward) * 180.0f / Math.PI * (cross.y > 0 ? 1 : -1) - 10.0f;
+                    
+                    this.leapPitchLabel.Text    = angle.ToString("0.00");
+                    //this.leapYawLabel.Text      = cross.y.ToString("0.00");
+                    //this.leapRollLabel.Text     = cross.z.ToString("0.00");
+                }
 
                 var isDetectedLeft = (handLeft != null);
-                var isDetectedRight = (hand != null);
+                var isDetectedRight = (handRight != null);
 
                 this.handLeftDetectionLabel.Invoke(new MethodInvoker(delegate ()
                 {
@@ -109,7 +106,7 @@ namespace Fire_Detector.Control.SideTabView
                 if(this.Root == null)
                     return;
 
-                if(this.Root.LeapController.IsConnected == false)
+                if(this.Root.LeapController.Enabled == false)
                     return;
 
                 this.connectLeapmotionProgressbar.Invoke(new MethodInvoker(delegate ()
