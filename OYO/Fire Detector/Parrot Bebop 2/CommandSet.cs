@@ -50,13 +50,25 @@ namespace BebopCommandSet
         }
     }
 
-    public struct Pcmd
+    public class Pcmd
     {
         public int flag;
         public int roll;
         public int pitch;
         public int yaw;
         public int gaz;
+
+        public Pcmd()
+        { }
+
+        public Pcmd(int pitch, int yaw, int roll, int gaz, int flag)
+        {
+            this.pitch = pitch;
+            this.yaw = yaw;
+            this.roll = roll;
+            this.gaz = gaz;
+            this.flag = flag;
+        }
 
         public Pcmd(Pcmd right)
         {

@@ -74,11 +74,18 @@ namespace Fire_Detector.BunifuForm
             this.OnScreenStateChanged               += this.mainView.OnScreenStateChanged;
             this.OnScreenStateChanged               += this.mainView.mainConnectionView.OnScreenStateChanged;
 
+            this.PatrolReader.OnChanged             += this.PatrolReader_OnChanged;
+            this.PatrolReader.OnExit                += this.PatrolReader_OnExit;
+
             OYOKeysHook.OnKeyboardHook              += this.OnKeyboardHook;
             OYOKeysHook.Set();
 
             this.OnScreenStateChanged.Invoke(this.Size, false);
             this.loadConfig("config.json");
+
+            // 테스트 코드
+            //this.PatrolWriter.StartRecord("temp.dat");
+            this.PatrolReader.StartPatrol("temp.dat");
 
             this._stopwatch.Start();
         }
@@ -97,6 +104,9 @@ namespace Fire_Detector.BunifuForm
             this.LeapController.FrameReady -= this.mainView.mainConnectionView.LeapController_FrameReady;
             this.LeapController.FrameReady -= this.defaultView.sideExpandedBar.leapmotionTab.LeapController_FrameReady;
             this.LeapController.FrameReady -= this.LeapController_FrameReady;
+
+            //this.PatrolWriter.StopRecord();
+            this.PatrolReader.StopPatrol();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -355,6 +365,9 @@ namespace Fire_Detector.BunifuForm
         /// <param name="isDown">키가 눌렸다면 true, 아니라면 false</param>
         private void OnKeyboardHook(Keys key, bool isDown)
         {
+            if(this.PatrolReader.Patroling)
+                return;
+
 this._mutex.WaitOne();
             switch (key)
             {
@@ -405,6 +418,7 @@ this._mutex.WaitOne();
             }
 
             this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);
+            //this.PatrolWriter.Write(this._pcmd);
 this._mutex.ReleaseMutex();
         }
 
@@ -445,6 +459,9 @@ this._mutex.ReleaseMutex();
 
         private void LeapController_FrameReady(object sender, Leap.FrameEventArgs e)
         {
+            if(this.PatrolReader.Patroling)
+                return;
+
             var handRight = e.frame.RightHand();
             if(handRight != null)
             {
@@ -501,6 +518,17 @@ this._mutex.ReleaseMutex();
                 this._pcmd.yaw = 0;
             }
 
+            this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);
+        }
+
+        private void PatrolReader_OnExit()
+        {
+            Console.WriteLine("patroling has done");
+        }
+
+        private void PatrolReader_OnChanged(Pcmd pcmd)
+        {
+            this._pcmd = new Pcmd(pcmd);
             this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);
         }
     }
