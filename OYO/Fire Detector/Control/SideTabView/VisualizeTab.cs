@@ -22,8 +22,6 @@ namespace Fire_Detector.Control.SideTabView
             this.horizontalRange_inf.RangeMax = 80;
             this.verticalityRange_inf.RangeMin = 20;
             this.verticalityRange_inf.RangeMax = 80;
-
-            
         }
 
         public bool synchronizeFromConfig()

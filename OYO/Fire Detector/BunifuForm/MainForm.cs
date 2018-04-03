@@ -49,6 +49,15 @@ namespace Fire_Detector.BunifuForm
         /// 37.5'C부터 비정상 상태로 감지하게 됩니다.
         /// </summary>
         private static float                    DETECTION_ALPHA      = 1.5f;
+
+
+        private static float                    LEAPMOTION_MINIMUM_MOVE_SIDE_ANGLE      = 30.0f;
+        private static float                    LEAPMOTION_MINIMUM_UP_POSITION          = 250.0f;
+        private static float                    LEAPMOTION_MINIMUM_DOWN_POSITION        = 150.0f;
+        private static float                    LEAPMOTION_MINIMUM_FORWARD_ANGLE        = 20.0f;
+        private static float                    LEAPMOTION_CALIBRATION_FORWARD_VALUE    = 15.0f;
+        private static float                    LEAPMOTION_MINIMUM_ROTATION_ANGLE       = 25.0f;
+        private static float                    LEAPMOTION_CALIBRATION_ROTATION_VALUE   = -10.0f;
         #endregion
 
         #region private 필드 선언부

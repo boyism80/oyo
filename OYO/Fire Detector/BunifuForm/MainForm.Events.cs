@@ -368,6 +368,9 @@ namespace Fire_Detector.BunifuForm
             if(this.PatrolReader.Patroling)
                 return;
 
+            if(this.LeapController.Enabled)
+                return;
+
 this._mutex.WaitOne();
             switch (key)
             {
@@ -462,60 +465,63 @@ this._mutex.ReleaseMutex();
             if(this.PatrolReader.Patroling)
                 return;
 
-            var handRight = e.frame.RightHand();
+            var handRight                   = e.frame.RightHand();
             if(handRight != null)
             {
                 // move left, right
-                var angle_rotated = handRight.PalmNormal.AngleTo(Leap.Vector.Down) * (180 / Math.PI);
-                var cross_rotated = handRight.PalmNormal.Cross(Leap.Vector.Down);
+                var angle_rotated           = handRight.PalmNormal.AngleTo(Leap.Vector.Down) * (180 / Math.PI);
+                var cross_rotated           = handRight.PalmNormal.Cross(Leap.Vector.Down);
 
-                if(angle_rotated > 30.0f)
-                    this._pcmd.roll = 5 * (cross_rotated.z > 0 ? 1 : -1);
+                if(angle_rotated > MainForm.LEAPMOTION_MINIMUM_MOVE_SIDE_ANGLE)
+                    this._pcmd.roll         = 5 * (cross_rotated.z > 0 ? 1 : -1);
                 else
-                    this._pcmd.roll = 0;
+                    this._pcmd.roll         = 0;
 
 
+                
                 // move up, down
-                if(handRight.PalmPosition.y > 250.0f)
-                    this._pcmd.gaz = 25;
-                else if(handRight.PalmPosition.y < 150.0f)
-                    this._pcmd.gaz = -25;
+                if(handRight.PalmPosition.y > MainForm.LEAPMOTION_MINIMUM_UP_POSITION)
+                    this._pcmd.gaz          = 25;
+                else if(handRight.PalmPosition.y < MainForm.LEAPMOTION_MINIMUM_DOWN_POSITION)
+                    this._pcmd.gaz          = -25;
                 else
-                    this._pcmd.gaz = 0;
+                    this._pcmd.gaz          = 0;
+
+
 
                 // move forward, backward
-                var direction = (handRight.PalmPosition - Leap.Vector.Zero).Normalized;
-                var angle_forward = direction.AngleTo(Leap.Vector.Up) * (180 / Math.PI);
-                var cross_forward = direction.Cross(Leap.Vector.Up);
-                var calibrated_angle = 15 + angle_forward * (cross_forward.x > 0 ? 1 : -1);
-                if(Math.Abs(calibrated_angle) > 20.0f)
-                    this._pcmd.pitch = 5 * (cross_forward.x > 0 ? 1 : -1);
+                var direction               = (handRight.PalmPosition - Leap.Vector.Zero).Normalized;
+                var angle_forward           = direction.AngleTo(Leap.Vector.Up) * (180 / Math.PI);
+                var cross_forward           = direction.Cross(Leap.Vector.Up);
+                var calibrated_angle        = MainForm.LEAPMOTION_CALIBRATION_FORWARD_VALUE + angle_forward * (cross_forward.x > 0 ? 1 : -1);
+                if(Math.Abs(calibrated_angle) > MainForm.LEAPMOTION_MINIMUM_FORWARD_ANGLE)
+                    this._pcmd.pitch        = 5 * (calibrated_angle > 0 ? 1 : -1);
                 else
-                    this._pcmd.pitch = 0;
+                    this._pcmd.pitch        = 0;
             }
             else
             {
-                this._pcmd.roll = 0;
-                this._pcmd.gaz = 0;
-                this._pcmd.pitch = 0;
+                this._pcmd.roll             = 0;
+                this._pcmd.gaz              = 0;
+                this._pcmd.pitch            = 0;
             }
 
             var handLeft = e.frame.LeftHand();
             if(handLeft != null)
             {
                 // rotate left, right
-                var direction = handLeft.Direction.Normalized;
-                var cross = direction.Cross(Leap.Vector.Forward);
-                var angle = direction.AngleTo(Leap.Vector.Forward) * 180.0f / Math.PI * (cross.y < 0 ? 1 : -1) - 10.0f;
+                var direction               = handLeft.Direction.Normalized;
+                var cross                   = direction.Cross(Leap.Vector.Forward);
+                var angle                   = direction.AngleTo(Leap.Vector.Forward) * 180.0f / Math.PI * (cross.y < 0 ? 1 : -1) + MainForm.LEAPMOTION_CALIBRATION_ROTATION_VALUE;
 
-                if(Math.Abs(angle) > 25.0f)
-                    this._pcmd.yaw = 50 * (angle > 0.0f ? 1 : -1);
+                if(Math.Abs(angle) > MainForm.LEAPMOTION_MINIMUM_ROTATION_ANGLE)
+                    this._pcmd.yaw          = 50 * (angle > 0.0f ? 1 : -1);
                 else
-                    this._pcmd.yaw = 0;
+                    this._pcmd.yaw          = 0;
             }
             else
             {
-                this._pcmd.yaw = 0;
+                this._pcmd.yaw              = 0;
             }
 
             this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);
