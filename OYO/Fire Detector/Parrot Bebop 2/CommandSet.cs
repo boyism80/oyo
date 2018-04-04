@@ -58,6 +58,14 @@ namespace BebopCommandSet
         public int yaw;
         public int gaz;
 
+        public Pcmd Reversed
+        {
+            get
+            {
+                return new Pcmd(-this.pitch, -this.yaw, -this.roll, -this.gaz, this.flag);
+            }
+        }
+
         public Pcmd()
         { }
 
@@ -77,6 +85,24 @@ namespace BebopCommandSet
             this.roll = right.roll;
             this.yaw = right.yaw;
             this.gaz = right.gaz;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var right = obj as Pcmd;
+            if(right == null)
+                return base.Equals(obj);
+
+            return (this.pitch == right.pitch   &&
+                    this.yaw == right.yaw       &&
+                    this.roll == right.roll     &&
+                    this.gaz == right.gaz       &&
+                    this.flag == right.flag);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("pitch : {0}, yaw : {1}, roll : {2}, gaz : {3}, flag : {4}", this.pitch, this.yaw, this.roll, this.gaz, this.flag);
         }
     }
 

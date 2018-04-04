@@ -33,6 +33,11 @@ namespace oyo
 
             return buffer;
         }
+
+        public override string ToString()
+        {
+            return string.Format("elapsed time : {0}\ncommand : {1}", this.ElapsedTime, this.Command);
+        }
     }
 
 
@@ -112,13 +117,14 @@ namespace oyo
 
     public class OYOPatrolReader
     {
-        private Queue<PatrolElement> _patrol_element_queue = new Queue<PatrolElement>();
+        //private Queue<PatrolElement> _patrol_element_queue = new Queue<PatrolElement>();
+        private PatrolElement[] _patrol_elements;
 
-        public delegate void CommandChangedEvent(Pcmd Pcmd);
-        public delegate void PatrolExitEvent();
+        public delegate void ChangedEvent(Pcmd Pcmd);
+        public delegate void ExitEvent();
 
-        public event CommandChangedEvent OnChanged;
-        public event PatrolExitEvent OnExit;
+        public event ChangedEvent OnChanged;
+        public event ExitEvent OnExit;
 
         public bool Patroling { get; private set; }
 
@@ -136,11 +142,12 @@ namespace oyo
                 using (var reader = new BinaryReader(fstream))
                 {
                     var count = reader.ReadInt32();
+                    this._patrol_elements = new PatrolElement[count];
                     for(var i = 0; i < count; i++)
                     {
                         var elapsed_time = reader.ReadInt32();
                         var Pcmd = new Pcmd(reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32());
-                        this._patrol_element_queue.Enqueue(new PatrolElement(elapsed_time, Pcmd));
+                        this._patrol_elements[i] = new PatrolElement(elapsed_time, Pcmd);
                     }
                 }
                 this.Patroling = true;
@@ -160,21 +167,41 @@ namespace oyo
             if(this.Patroling == false)
                 return;
 
-            this._patrol_element_queue.Clear();
+            this.Patroling = false;
+            this._patrol_elements = null;
         }
 
         private void InterruptThreadRoutine()
         {
-            while(this._patrol_element_queue.Count != 0)
+            var reversed = this._patrol_elements.Clone() as PatrolElement[];
+            Array.Reverse(reversed);
+            while (this.Patroling)
             {
-                var element = this._patrol_element_queue.Dequeue();
-                Thread.Sleep(element.ElapsedTime);
+                foreach (var element in this._patrol_elements)
+                {
+                    if (this.Patroling == false)
+                        break;
 
-                if(this.OnChanged != null)
-                    this.OnChanged.Invoke(element.Command);
+                    if (this.OnChanged != null)
+                        this.OnChanged.Invoke(element.Command);
+
+                    Console.WriteLine(element);
+                    Thread.Sleep(element.ElapsedTime);
+                }
+
+                foreach (var element in reversed)
+                {
+                    if (this.Patroling == false)
+                        break;
+
+                    if (this.OnChanged != null)
+                        this.OnChanged.Invoke(element.Command.Reversed);
+
+                    Console.WriteLine(element);
+                    Thread.Sleep(element.ElapsedTime);
+                }
             }
 
-            this.Patroling = false;
             if(this.OnExit != null)
                 this.OnExit.Invoke();
         }

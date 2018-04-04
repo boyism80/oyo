@@ -30,6 +30,7 @@ namespace Fire_Detector.BunifuForm
 
         private Stopwatch           _stopwatch = new Stopwatch();
         private int                 _fps, _lastFps;
+        private bool                mode_read = true;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -84,8 +85,11 @@ namespace Fire_Detector.BunifuForm
             this.loadConfig("config.json");
 
             // 테스트 코드
-            //this.PatrolWriter.StartRecord("temp.dat");
-            this.PatrolReader.StartPatrol("temp.dat");
+            if(this.mode_read)
+                this.PatrolReader.StartPatrol("temp.dat");
+            else
+                this.PatrolWriter.StartRecord("temp.dat");
+            
 
             this._stopwatch.Start();
         }
@@ -105,8 +109,11 @@ namespace Fire_Detector.BunifuForm
             this.LeapController.FrameReady -= this.defaultView.sideExpandedBar.leapmotionTab.LeapController_FrameReady;
             this.LeapController.FrameReady -= this.LeapController_FrameReady;
 
-            //this.PatrolWriter.StopRecord();
-            this.PatrolReader.StopPatrol();
+            if(this.mode_read)
+                this.PatrolReader.StopPatrol();
+            else
+                this.PatrolWriter.StopRecord();
+            
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -421,8 +428,9 @@ this._mutex.WaitOne();
             }
 
             this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);
-            //this.PatrolWriter.Write(this._pcmd);
-this._mutex.ReleaseMutex();
+            if(!this.mode_read)
+                this.PatrolWriter.Write(this._pcmd);
+            this._mutex.ReleaseMutex();
         }
 
         public void Bebop2_OnStreaming(Bebop2 bebop, Mat frame)
