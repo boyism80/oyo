@@ -181,6 +181,13 @@ namespace Fire_Detector.Control.SideTabView
                 this.patrolFileBrowseButton.IdleLineColor = this.patrolModeSwitch.Value ? System.Drawing.Color.Salmon : SystemColors.ControlDarkDark;
             }));
 
+            this.patrolVersionSwitch.Invoke(new MethodInvoker(delegate ()
+            {
+                this.patrolVersionSwitch.Visible = patrolModeSwitch.Value;
+                this.patrolVersionLabel.Visible = patrolModeSwitch.Value;
+            }));
+
+            
             if (this.patrolModeSwitch.Value) {
                 var message = "녹화모드와 같이 사용할 수 없습니다.";
                 var messageform = new Fire_Detector.Dialog.MessageDialog(message, SystemColors.Control);
@@ -429,6 +436,20 @@ namespace Fire_Detector.Control.SideTabView
             dialog.Filter           = string.Format("Video File | *.{0}", oyo.OYORecorder.DEFAULT_EXTENSION);
             if (dialog.ShowDialog() == DialogResult.OK)
                 this.recordFileNameTextBox.Text = dialog.FileName;
+        }
+
+        private void patrolVersionSwitch_OnValueChange(object sender, EventArgs e)
+        {
+            if (patrolVersionSwitch.Value == false)
+            {
+                var dialog = new Fire_Detector.Dialog.PatrolPathDialog();
+                if (dialog.ShowDialog() != DialogResult.OK)
+                    return;
+            }
+           this.patrolVersionLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.patrolVersionLabel.Text = this.patrolVersionSwitch.Value ? "순찰 불러오기" : "순찰 저장하기";
+            }));
         }
     }
 }
