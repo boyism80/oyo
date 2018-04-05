@@ -709,7 +709,7 @@
             this.verticalityRange_inf.RangeMin = 0;
             this.verticalityRange_inf.Size = new System.Drawing.Size(224, 28);
             this.verticalityRange_inf.TabIndex = 3;
-            this.verticalityRange_inf.RangeChanged += new System.EventHandler(this.verticalRange_inf_RangeChanged);
+            this.verticalityRange_inf.RangeChanged += new System.EventHandler(this.verticalityRange_inf_RangeChanged);
             // 
             // verticalityRange
             // 

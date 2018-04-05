@@ -112,6 +112,22 @@ namespace Fire_Detector.Control.SideTabView
                     this.verticalityRange_RangeChanged(this.verticalityRange, EventArgs.Empty);
                 }));
 
+                this.horizontalRange_inf.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.horizontalRange_inf.MaximumRange = this.Root.Blender.Size.Width;
+                    this.horizontalRange_inf.RangeMin = this.Root.Blender.InfraredCroppedRect.X;
+                    this.horizontalRange_inf.RangeMax = this.Root.Blender.InfraredCroppedRect.Width - this.Root.Blender.InfraredCroppedRect.X;
+                    this.horizontalRange_inf_RangeChanged(this.horizontalRange_inf, EventArgs.Empty);
+                }));
+
+                this.verticalityRange_inf.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.verticalityRange_inf.MaximumRange = this.Root.Blender.Size.Height;
+                    this.verticalityRange_inf.RangeMin = this.Root.Blender.InfraredCroppedRect.Y;
+                    this.verticalityRange_inf.RangeMax = this.Root.Blender.InfraredCroppedRect.Height - this.Root.Blender.InfraredCroppedRect.Y;
+                    this.verticalityRange_inf_RangeChanged(this.verticalityRange_inf, EventArgs.Empty);
+                }));
+
                 return true;
             }
             catch (Exception)
@@ -298,7 +314,7 @@ namespace Fire_Detector.Control.SideTabView
             this.Root.Blender.InfraredCroppedRect = new Rect(offset, size);
         }
 
-        private void verticalRange_inf_RangeChanged(object sender, EventArgs e)
+        private void verticalityRange_inf_RangeChanged(object sender, EventArgs e)
         {
             if(this.Root == null)
                 return;
