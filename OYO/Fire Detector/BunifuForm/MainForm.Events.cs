@@ -75,21 +75,14 @@ namespace Fire_Detector.BunifuForm
             this.OnScreenStateChanged               += this.mainView.OnScreenStateChanged;
             this.OnScreenStateChanged               += this.mainView.mainConnectionView.OnScreenStateChanged;
 
-            this.PatrolReader.OnChanged             += this.PatrolReader_OnChanged;
-            this.PatrolReader.OnExit                += this.PatrolReader_OnExit;
+            this.Patrol.Reader.OnChanged            += this.PatrolReader_OnChanged;
+            this.Patrol.Reader.OnExit               += this.PatrolReader_OnExit;
 
             OYOKeysHook.OnKeyboardHook              += this.OnKeyboardHook;
             OYOKeysHook.Set();
 
             this.OnScreenStateChanged.Invoke(this.Size, false);
             this.loadConfig("config.json");
-
-            // 테스트 코드
-            if(this.mode_read)
-                this.PatrolReader.StartPatrol("temp.dat");
-            else
-                this.PatrolWriter.StartRecord("temp.dat");
-            
 
             this._stopwatch.Start();
         }
@@ -108,12 +101,6 @@ namespace Fire_Detector.BunifuForm
             this.LeapController.FrameReady -= this.mainView.mainConnectionView.LeapController_FrameReady;
             this.LeapController.FrameReady -= this.defaultView.sideExpandedBar.leapmotionTab.LeapController_FrameReady;
             this.LeapController.FrameReady -= this.LeapController_FrameReady;
-
-            if(this.mode_read)
-                this.PatrolReader.StopPatrol();
-            else
-                this.PatrolWriter.StopRecord();
-            
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -372,7 +359,7 @@ namespace Fire_Detector.BunifuForm
         /// <param name="isDown">키가 눌렸다면 true, 아니라면 false</param>
         private void OnKeyboardHook(Keys key, bool isDown)
         {
-            if(this.PatrolReader.Patroling)
+            if(this.Patrol.Reader.IsEnabled())
                 return;
 
             if(this.LeapController.Enabled)
@@ -428,8 +415,8 @@ this._mutex.WaitOne();
             }
 
             this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);
-            if(!this.mode_read)
-                this.PatrolWriter.Write(this._pcmd);
+            if(this.Patrol.Mode == OYOPatrol.PatrolMode.Write)
+                this.Patrol.Writer.Write(this._pcmd);
             this._mutex.ReleaseMutex();
         }
 
@@ -470,7 +457,7 @@ this._mutex.ReleaseMutex();
 
         private void LeapController_FrameReady(object sender, Leap.FrameEventArgs e)
         {
-            if(this.PatrolReader.Patroling)
+            if(this.Patrol.Reader.IsEnabled())
                 return;
 
             var handRight                   = e.frame.RightHand();

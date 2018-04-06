@@ -40,8 +40,16 @@ namespace oyo
         }
     }
 
+    public abstract class OYOBasePatrol
+    {
+        protected OYOBasePatrol()
+        { }
 
-    public class OYOPatrolWriter
+        public abstract bool IsEnabled();
+    }
+
+
+    public class OYOPatrolWriter : OYOBasePatrol
     {
         private FileStream _fstream;
         private Stopwatch _stopwatch = new Stopwatch();
@@ -49,18 +57,14 @@ namespace oyo
 
         public Queue<PatrolElement> PatrolElementQueue { get; private set; }
 
-        public bool Recording
+        public override bool IsEnabled()
         {
-            get
-            {
-                return this._fstream != null;
-            }
+            return this._fstream != null;
         }
-
 
         public bool StartRecord(string filename)
         {
-            if(this.Recording == true)
+            if(this.IsEnabled())
                 return false;
 
             this.PatrolElementQueue = new Queue<PatrolElement>();
@@ -68,9 +72,9 @@ namespace oyo
             return true;
         }
 
-        public void StopRecord()
+        public void Stop()
         {
-            if(this.Recording == false)
+            if(this.IsEnabled() == false)
                 return;
 
             this.Write(new Pcmd());
@@ -94,7 +98,7 @@ namespace oyo
 
         public bool Write(Pcmd Pcmd)
         {
-            if(this.Recording == false)
+            if(this.IsEnabled() == false)
                 return false;
 
             if(this._last_Pcmd != null && this._last_Pcmd.Equals(Pcmd))
@@ -115,10 +119,10 @@ namespace oyo
         }
     }
 
-    public class OYOPatrolReader
+    public class OYOPatrolReader : OYOBasePatrol
     {
-        //private Queue<PatrolElement> _patrol_element_queue = new Queue<PatrolElement>();
         private PatrolElement[] _patrol_elements;
+        private bool _isPatrol;
 
         public delegate void ChangedEvent(Pcmd Pcmd);
         public delegate void ExitEvent();
@@ -126,16 +130,14 @@ namespace oyo
         public event ChangedEvent OnChanged;
         public event ExitEvent OnExit;
 
-        public bool Patroling { get; private set; }
-
         public OYOPatrolReader()
         { }
 
-        public bool StartPatrol(string filename)
+        public bool Start(string filename)
         {
             try
             {
-                if (this.Patroling)
+                if (this.IsEnabled())
                     throw new Exception("cannot load patrol file while patroling");
 
                 var fstream = File.Open(filename, FileMode.Open);
@@ -150,7 +152,7 @@ namespace oyo
                         this._patrol_elements[i] = new PatrolElement(elapsed_time, Pcmd);
                     }
                 }
-                this.Patroling = true;
+                this._isPatrol = true;
 
                 var thread = new Thread(this.InterruptThreadRoutine);
                 thread.Start();
@@ -162,12 +164,12 @@ namespace oyo
             }
         }
 
-        public void StopPatrol()
+        public void Stop()
         {
-            if(this.Patroling == false)
+            if(this.IsEnabled() == false)
                 return;
 
-            this.Patroling = false;
+            this._isPatrol = false;
             this._patrol_elements = null;
         }
 
@@ -175,11 +177,11 @@ namespace oyo
         {
             var reversed = this._patrol_elements.Clone() as PatrolElement[];
             Array.Reverse(reversed);
-            while (this.Patroling)
+            while (this.IsEnabled())
             {
                 foreach (var element in this._patrol_elements)
                 {
-                    if (this.Patroling == false)
+                    if (this.IsEnabled() == false)
                         break;
 
                     if (this.OnChanged != null)
@@ -191,7 +193,7 @@ namespace oyo
 
                 foreach (var element in reversed)
                 {
-                    if (this.Patroling == false)
+                    if (this.IsEnabled() == false)
                         break;
 
                     if (this.OnChanged != null)
@@ -204,6 +206,58 @@ namespace oyo
 
             if(this.OnExit != null)
                 this.OnExit.Invoke();
+        }
+
+        public override bool IsEnabled()
+        {
+            return this._isPatrol;
+        }
+    }
+
+    public class OYOPatrol
+    {
+        public enum PatrolMode
+        {
+            Read, Write,
+        }
+
+        private PatrolMode _mode = PatrolMode.Read;
+        public PatrolMode Mode
+        {
+            get
+            {
+                return this._mode;
+            }
+            set
+            {
+                if (this.Mode == PatrolMode.Read)
+                    this.Reader.Stop();
+                else
+                    this.Writer.Stop();
+                this._mode = value;
+            }
+        }
+
+        public OYOPatrolReader Reader { get; private set; }
+
+        public OYOPatrolWriter Writer { get; private set; }
+
+        public bool Enabled
+        {
+            get
+            {
+                if(this.Mode == PatrolMode.Read)
+                    return this.Reader.IsEnabled();
+
+                else
+                    return this.Writer.IsEnabled();
+            }
+        }
+
+        public OYOPatrol()
+        {
+            this.Reader = new OYOPatrolReader();
+            this.Writer = new OYOPatrolWriter();
         }
     }
 }

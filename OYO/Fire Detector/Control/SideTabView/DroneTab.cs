@@ -38,7 +38,7 @@ namespace Fire_Detector.Control.SideTabView
             recordModeSwitch.Enabled = isEnable;
         }
 
-        private void update()
+        private void synchronizeUI()
         {
             if(this.Root == null)
                 return;
@@ -57,27 +57,44 @@ namespace Fire_Detector.Control.SideTabView
 
                 this.patrolFileBrowseButton.Invoke(new MethodInvoker(delegate ()
                 {
-                
                     this.patrolFileBrowseButton.Tag = isPatrolActive;
                     this.patrolFileBrowseButton.ActiveFillColor = isPatrolActive ? Color.LightSalmon : Color.Transparent;
                     this.patrolFileBrowseButton.ActiveForecolor = isPatrolActive ? Color.White : SystemColors.ControlDarkDark;
                     this.patrolFileBrowseButton.ActiveLineColor = isPatrolActive ? Color.Salmon : SystemColors.ControlDarkDark;
                 }));
 
-                this.patrolStartEndButton.Invoke(new MethodInvoker(delegate () {
-
-                    this.patrolStartEndButton.Tag = isPatrolActive;
-                    this.patrolStartEndButton.ActiveFillColor = isPatrolActive ? Color.LightSalmon : Color.Transparent;
-                    this.patrolStartEndButton.ActiveForecolor = isPatrolActive ? Color.White : SystemColors.ControlDarkDark;
-                    this.patrolStartEndButton.ActiveLineColor = isPatrolActive ? Color.Salmon : SystemColors.ControlDarkDark;
-                }));
-
-                this.patrolStartEndButton.Invoke(new MethodInvoker(delegate ()
+                this.patrolVersionLabel.Invoke(new MethodInvoker(delegate ()
                 {
-                    patrolStateLabel.Visible = isPatrolActive;
-                    patrolStateProgressbar.Visible = isPatrolActive;
-                    patrolStartEndButton.ButtonText = isPatrolActive ? "순찰 정지" : "순찰 시작";
+                    if(this.Root.Patrol.Mode == oyo.OYOPatrol.PatrolMode.Read)
+                        this.patrolVersionLabel.Text = "순찰 기록모드";
+                    else
+                        this.patrolVersionLabel.Text = "순찰 실행모드";
                 }));
+
+                var isPatrolRunning = this.Root.Patrol.Enabled;
+                this.patrolStartEndButton.Invoke(new MethodInvoker(delegate () 
+                {
+                    this.patrolStartEndButton.ActiveFillColor = isPatrolRunning ? Color.LightSalmon : Color.Transparent;
+                    this.patrolStartEndButton.ActiveForecolor = isPatrolRunning ? Color.White : SystemColors.ControlDarkDark;
+                    this.patrolStartEndButton.ActiveLineColor = isPatrolRunning ? Color.Salmon : SystemColors.ControlDarkDark;
+                    this.patrolStartEndButton.ButtonText = isPatrolRunning ? "순찰 정지" : "순찰 시작";
+                }));
+
+                this.patrolTime.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.patrolTime.Visible = isPatrolRunning;
+                }));
+
+                this.patrolStateLabel.Invoke(new MethodInvoker(delegate ()
+                {
+                    patrolStateLabel.Visible = isPatrolRunning;
+                }));
+
+                this.patrolStateProgressbar.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.patrolStateProgressbar.Visible = isPatrolRunning;
+                }));
+                
 
 
                 var isRecordActive = this.recordModeSwitch.Value;
@@ -166,7 +183,7 @@ namespace Fire_Detector.Control.SideTabView
         {
             if(this.Root == null)
                 return;
-            this.update();
+            this.synchronizeUI();
 
             this.patrolFileTextbox.Invoke(new MethodInvoker(delegate ()
             {
@@ -200,13 +217,12 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            this.update();
+            this.synchronizeUI();
 
             this.recordFileNameTextBox.Invoke(new MethodInvoker(delegate ()
             {
                 this.recordFileNameTextBox.BackColor = this.recordModeSwitch.Value ? Color.White : Color.Gainsboro;
                 this.recordFileNameTextBox.Text = this.recordModeSwitch.Value ? "파일경로를 선택해주세요." : "녹화 모드를 On 해주세요.";
-
             }));
 
             this.recordFileBrowseButton.Invoke(new MethodInvoker(delegate ()
@@ -251,11 +267,11 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            var isActive = (bool)this.patrolStartEndButton.Tag;
+            var isActive = this.patrolModeSwitch.Value;
             if(isActive == false)
                 return;
 
-            this.update();
+            this.synchronizeUI();
         }
 
         private void BeginRecordButton_Click(object sender, EventArgs e)
@@ -304,7 +320,7 @@ namespace Fire_Detector.Control.SideTabView
             if(this.Root == null)
                 return;
 
-            var isActive = (bool)this.patrolFileBrowseButton.Tag;
+            var isActive = this.patrolModeSwitch.Value;
             if(isActive == false)
                 return;
 
@@ -340,7 +356,7 @@ namespace Fire_Detector.Control.SideTabView
         private void DroneTab_VisibleChanged(object sender, EventArgs e)
         {
             if(this.Visible)
-                this.update();
+                this.synchronizeUI();
         }
 
         public void updatePcmdUI(Pcmd pcmd)
@@ -440,16 +456,15 @@ namespace Fire_Detector.Control.SideTabView
 
         private void patrolVersionSwitch_OnValueChange(object sender, EventArgs e)
         {
-            if (patrolVersionSwitch.Value == false)
-            {
-                var dialog = new Fire_Detector.Dialog.PatrolPathDialog();
-                if (dialog.ShowDialog() != DialogResult.OK)
-                    return;
-            }
-           this.patrolVersionLabel.Invoke(new MethodInvoker(delegate ()
-            {
-                this.patrolVersionLabel.Text = this.patrolVersionSwitch.Value ? "순찰 불러오기" : "순찰 저장하기";
-            }));
+            if(this.Root == null)
+                return;
+
+            if(this.Root.Patrol.Mode == oyo.OYOPatrol.PatrolMode.Read)
+                this.Root.Patrol.Mode = oyo.OYOPatrol.PatrolMode.Write;
+            else
+                this.Root.Patrol.Mode = oyo.OYOPatrol.PatrolMode.Read;
+
+            this.synchronizeUI();
         }
     }
 }

@@ -123,9 +123,7 @@ namespace Fire_Detector.BunifuForm
         /// </summary>
         public OYOLeapmotion                    LeapController { get; private set; }
 
-        public OYOPatrolReader                  PatrolReader { get; private set; }
-
-        public OYOPatrolWriter                  PatrolWriter { get; private set; }
+        public OYOPatrol                        Patrol { get; private set;}
         #endregion
 
         public MainForm()
@@ -142,8 +140,7 @@ namespace Fire_Detector.BunifuForm
             this.Bebop2                         = new Bebop2();
             this.Recorder                       = new OYORecorder();
             this.LeapController                 = new OYOLeapmotion();
-            this.PatrolReader                   = new OYOPatrolReader();
-            this.PatrolWriter                   = new OYOPatrolWriter();
+            this.Patrol                         = new OYOPatrol();
 
             this.LeapController.SetPolicy(Leap.Controller.PolicyFlag.POLICY_ALLOW_PAUSE_RESUME);
         }
