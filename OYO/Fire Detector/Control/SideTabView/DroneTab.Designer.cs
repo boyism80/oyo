@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DroneTab));
             this.panel2 = new System.Windows.Forms.Panel();
             this.recordPanel = new System.Windows.Forms.Panel();
@@ -50,7 +51,7 @@
             this.patrolPanel = new System.Windows.Forms.Panel();
             this.patrolVersionSwitch = new Bunifu.Framework.UI.BunifuiOSSwitch();
             this.patrolControlPanel = new System.Windows.Forms.Panel();
-            this.patrolFileTextbox = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
+            this.patrolFileTextBox = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.patrolStateLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.patrolStartEndButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.patrolFileBrowseButton = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -91,6 +92,7 @@
             this.connectDroneProgressbar = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.patrolWriteTimer = new System.Windows.Forms.Timer(this.components);
             this.panel2.SuspendLayout();
             this.recordPanel.SuspendLayout();
             this.recordControlPanel.SuspendLayout();
@@ -421,7 +423,7 @@
             // 
             // patrolControlPanel
             // 
-            this.patrolControlPanel.Controls.Add(this.patrolFileTextbox);
+            this.patrolControlPanel.Controls.Add(this.patrolFileTextBox);
             this.patrolControlPanel.Controls.Add(this.patrolStateLabel);
             this.patrolControlPanel.Controls.Add(this.patrolStartEndButton);
             this.patrolControlPanel.Controls.Add(this.patrolFileBrowseButton);
@@ -434,17 +436,17 @@
             this.patrolControlPanel.Size = new System.Drawing.Size(350, 72);
             this.patrolControlPanel.TabIndex = 19;
             // 
-            // patrolFileTextbox
+            // patrolFileTextBox
             // 
-            this.patrolFileTextbox.BackColor = System.Drawing.Color.Gainsboro;
-            this.patrolFileTextbox.BorderColor = System.Drawing.Color.Salmon;
-            this.patrolFileTextbox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.patrolFileTextbox.Location = new System.Drawing.Point(110, 12);
-            this.patrolFileTextbox.Name = "patrolFileTextbox";
-            this.patrolFileTextbox.ReadOnly = true;
-            this.patrolFileTextbox.Size = new System.Drawing.Size(172, 21);
-            this.patrolFileTextbox.TabIndex = 22;
-            this.patrolFileTextbox.Text = "순찰 모드를 On 해주세요.";
+            this.patrolFileTextBox.BackColor = System.Drawing.Color.Gainsboro;
+            this.patrolFileTextBox.BorderColor = System.Drawing.Color.Salmon;
+            this.patrolFileTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.patrolFileTextBox.Location = new System.Drawing.Point(110, 12);
+            this.patrolFileTextBox.Name = "patrolFileTextBox";
+            this.patrolFileTextBox.ReadOnly = true;
+            this.patrolFileTextBox.Size = new System.Drawing.Size(172, 21);
+            this.patrolFileTextBox.TabIndex = 22;
+            this.patrolFileTextBox.Text = "순찰 모드를 On 해주세요.";
             // 
             // patrolStateLabel
             // 
@@ -1014,6 +1016,11 @@
             this.panel4.Size = new System.Drawing.Size(98, 124);
             this.panel4.TabIndex = 0;
             // 
+            // patrolWriteTimer
+            // 
+            this.patrolWriteTimer.Interval = 1000;
+            this.patrolWriteTimer.Tick += new System.EventHandler(this.patrolWriteTimer_Tick);
+            // 
             // DroneTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1093,7 +1100,7 @@
         private System.Windows.Forms.Panel panel10;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel10;
         private System.Windows.Forms.Panel patrolControlPanel;
-        private WindowsFormsControlLibrary1.BunifuCustomTextbox patrolFileTextbox;
+        private WindowsFormsControlLibrary1.BunifuCustomTextbox patrolFileTextBox;
         private Bunifu.Framework.UI.BunifuCustomLabel patrolStateLabel;
         private Bunifu.Framework.UI.BunifuThinButton2 patrolStartEndButton;
         private Bunifu.Framework.UI.BunifuThinButton2 patrolFileBrowseButton;
@@ -1121,5 +1128,6 @@
         private Bunifu.Framework.UI.BunifuiOSSwitch patrolVersionSwitch;
         private Bunifu.Framework.UI.BunifuCustomLabel patrolVersionLabel;
         private Bunifu.Framework.UI.BunifuCustomLabel patrolTime;
+        private System.Windows.Forms.Timer patrolWriteTimer;
     }
 }

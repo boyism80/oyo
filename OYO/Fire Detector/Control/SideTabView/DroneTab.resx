@@ -146,15 +146,15 @@
   <data name="recordStateProgressbar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVFhH7ZWxT8JAFMYZHR0d3XQyLiaOzE78ASR0cOjA
-        4ELiAIkLEAaBjQGDoyOjo5iQMIECQ1sKaeLCZBjdqO8z3xESC1ZbnO6XvBS+9l2/e/fumtBoNBrNL/A8
-        b9913eS41boc1+tnlP8PMbA3nU7LYmIuVx/xYpp+P532+5nMclQu26Nm84SP747JZHIuL7eUCYRrWc+v
-        udxikM0uvwzR1LBYvGVa/NCIMmHhP2+tGNVqqWGh8K5MjarVO96KDy6NqkgbvcJbgQxLpc7KUKVyQTke
-        ZrNZQ1UExihvRQy9wQwqRSkepFkXMBO0NJtAEw8Mwx/m877V7R5RjoZU4hBGsHsohcbp9TrMTVGKBgbi
-        Ej1SCo3klGnmhlI0ZDCDZtqUQiPLeo1c6bkapWg4jnNKMxal0GACzDUoRQO7R8r8gUHl9wHlH0Ge5HjI
-        w4QoR0cGfMKgEqGXCn2CHLnOwx4HobBt+1hVR/rApLwRHAHqebnGs5PWgQlWBw15L7MNPIXRtMoInqMc
-        P2p3cMZziQdoEld4seirjygNx7c8QciLv32510MMLnayNNuAKQkTZ4hEA9URE8mdV0Oj0Wj+RCLxCWrO
-        vvLK9SlDAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHRSURBVFhH7ZYxSAJRGMcdHd1qbGxsbGgIWhprNwgEEUEQ
+        UmhocNJbvG4LXG5wEKcghMZGWyzrvM7zvG50iGgrisr+n3wnEpda93J6P/hQ/nfn+927770zIpFIJJJf
+        4HlezHGcTSp8X+Z4cWDQaL/fL0FggM/hZCF7QtUWItbr9dYxqPVN4oIKEi9+xlLbfJl47ur1XaNcHjqd
+        Dg1okRgfGtPtdldxrOlLofb5kDiudT3WzuefW/H40CgW76lX+FAgmJUCydBs4dwVjsVwq6qXJHKVyby6
+        mrbE8VQgc86z0+RIDO2Dg3eSuVGULEczoSb2+0jY7JiatjWalWTyg6O58WcHUjschcOoVI5IBj3zyNHc
+        QKTEMgWOwmHoujKSyeUeOJobrLhDknFd95ijcBiqujd6TOn0G0dzA5FTkkGJWeJovmgrkfgkoY6ibHA8
+        E7oOEh7J2La9xnF4zGrVshqNoW2aZxzNZGKvGZAYx+GhndVfpuiDFMc/Qruzfz4+xaykSUiCfpwKDanj
+        bgN3YWpaX4TO41g8/urgOx6gapShsjQw8vFLlIXFPZ4gMHDQm3tcEKQ3tvhHMw2SQqVoD0Gd0OxAgv5k
+        /e9sSCQSyZ+IRL4AvIK/NiV5dK4AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="recordFileSettingButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -224,15 +224,15 @@
   <data name="patrolStateProgressbar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHOSURBVFhH7ZW/SwJhGMcdGxsbm6IpGhsa+hPaanAQXAQH
-        XYSGhBBRXJRDREShsUkdGxuaFX+VPw+XQAjCsSHSnq98XxE67erOpvcDD6ffu+e57/u8z915NBqNRvML
-        xuPx7nO5fNk0jLBZqRxQ/j/EwM5oNEoOh8OJHOdPpdK85vUuoh4MfrYMo9EqFo94+fYYDAYnYqALEyra
-        uZzZiESm9VBopkzV/P5ZM5O5Zpr70Igy0cV/nlrSTqUumtHomzLVSqdLPOUe3BrVkSpmhacsacXjj4tt
-        8/nmnULhlLI7mKaZVx2BMcobacZiL4vuJBKvlNxBhnUKM1Zbsw4McTub/Rh2OnNZwD5lZ6AQjODpoWQb
-        ybtn7jklZ6AQCqIwJdtITpJmbig5Q4r5aKZKyTayrVfIlZnLUHJGv98/ppkuJdtgAcz1UXIGnh5p8zuK
-        yu89yj+CPMkZIw8LouwcKfiAohK2twpzghw5TmCMsnN6vd6h6o7MQYDyWvAKUNfL0Z0naRWYYHcwkLey
-        Wsu3MIZWGcF1lN1HPR1c8UTiDppEGDcWffkRpWH3tscKufG3L/dqiMHpVrZmEzAlEcA7RCKP7oiJs613
-        Q6PRaP6Ex/MFZoK/kw7db/UAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHLSURBVFhH7ZYxSAJRGMcdGxsbGxtbhMbGxtodQgRdBEWF
+        hgY3FYfEJXC5wUGc2oymprRFUw/0zlNuaHCIaEuC6vp/8j2RuPTqXk7vBx/K/6nvd9+9986AQqFQKH6B
+        bdvblmUdUuH9DsebA5NujcfjHASmeHWWC9kLqrYRsdFodIBJh98kbqkgMRMZSx3x1+QzqNdPLMMQAkMS
+        46EFhmHsYawlpFCnPCSPB03b7iaTM5RjNps3tFZ4yBV0JUsy1C18dpdjOfTL5bt2KOR04vE3EuN4JZC5
+        5u60OJJDN5V6J5lePp/gaC20iMU6ktYdvVoNkkg7HP7gyDOiO5A65sgfeqVyTjLdTOaZI89AJMcyWY78
+        oWtafi6TTj9x5BnsuDOSmUwmFxz5o1coRLgzrxx5BiJXJIOSs8Vp93Si0U8S0kulIMdrwaKlk9omGdM0
+        9zn2T79YfOxEIg4OvnuO1rJ01kxJjGP/GI1G0BwM5tsU6yDG8Y/Q6Sy2tbSdtAxJ0I9TYUFquFrXw48W
+        rRChz3EsH7E7+IqnqBplqARNjHzxEGVhebfHDUzs9uReFATpiS3/1qyCpFAxOkNQl9QdSNCfrP/thkKh
+        UPyJQOALccC+x9cGPjgAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="patrolModeSwitch.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -3346,4 +3346,7 @@
         SgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="patrolWriteTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

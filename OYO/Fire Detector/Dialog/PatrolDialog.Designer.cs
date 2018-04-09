@@ -39,11 +39,8 @@
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.patrolFileListView = new Fire_Detector.Control.PatrolFileListView();
-            this.patrolFileListViewItem1 = new Fire_Detector.Control.PatrolFileListViewItem();
-            this.patrolFileListViewItem2 = new Fire_Detector.Control.PatrolFileListViewItem();
             this.caption.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
-            this.patrolFileListView.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -198,38 +195,10 @@
             // patrolFileListView
             // 
             this.patrolFileListView.AutoScroll = true;
-            this.patrolFileListView.Controls.Add(this.patrolFileListViewItem1);
-            this.patrolFileListView.Controls.Add(this.patrolFileListViewItem2);
-            this.patrolFileListView.Items.Add(this.patrolFileListViewItem1);
-            this.patrolFileListView.Items.Add(this.patrolFileListViewItem2);
             this.patrolFileListView.Location = new System.Drawing.Point(12, 41);
             this.patrolFileListView.Name = "patrolFileListView";
             this.patrolFileListView.Size = new System.Drawing.Size(696, 384);
             this.patrolFileListView.TabIndex = 5;
-            // 
-            // patrolFileListViewItem1
-            // 
-            this.patrolFileListViewItem1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.patrolFileListViewItem1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.patrolFileListViewItem1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.patrolFileListViewItem1.Location = new System.Drawing.Point(0, 80);
-            this.patrolFileListViewItem1.Name = "patrolFileListViewItem1";
-            this.patrolFileListViewItem1.Padding = new System.Windows.Forms.Padding(10, 10, 30, 10);
-            this.patrolFileListViewItem1.Selected = false;
-            this.patrolFileListViewItem1.Size = new System.Drawing.Size(696, 80);
-            this.patrolFileListViewItem1.TabIndex = 0;
-            // 
-            // patrolFileListViewItem2
-            // 
-            this.patrolFileListViewItem2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.patrolFileListViewItem2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.patrolFileListViewItem2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.patrolFileListViewItem2.Location = new System.Drawing.Point(0, 0);
-            this.patrolFileListViewItem2.Name = "patrolFileListViewItem2";
-            this.patrolFileListViewItem2.Padding = new System.Windows.Forms.Padding(10, 10, 30, 10);
-            this.patrolFileListViewItem2.Selected = false;
-            this.patrolFileListViewItem2.Size = new System.Drawing.Size(696, 80);
-            this.patrolFileListViewItem2.TabIndex = 0;
             // 
             // PatrolDialog
             // 
@@ -244,10 +213,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PatrolDialog";
             this.Text = "PatrolDialog";
+            this.Load += new System.EventHandler(this.PatrolDialog_Load);
             this.caption.ResumeLayout(false);
             this.caption.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
-            this.patrolFileListView.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -264,7 +233,5 @@
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private Control.PatrolFileListView patrolFileListView;
-        private Control.PatrolFileListViewItem patrolFileListViewItem1;
-        private Control.PatrolFileListViewItem patrolFileListViewItem2;
     }
 }

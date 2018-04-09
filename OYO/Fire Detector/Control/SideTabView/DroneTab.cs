@@ -1,4 +1,5 @@
 ﻿using BebopCommandSet;
+using Fire_Detector.Dialog;
 using ParrotBebop2;
 using System;
 using System.Drawing;
@@ -13,6 +14,44 @@ namespace Fire_Detector.Control.SideTabView
 
         private OpenCvSharp.Size                    _currentResolution = OpenCvSharp.Size.Zero;
         private oyo.OYORecorder.RecordingStateType  _currentRecordType = oyo.OYORecorder.RecordingStateType.None;
+
+
+        private string _currentPatrolFileName;
+        public string PatrolFileName
+        {
+            get
+            {
+                return this._currentPatrolFileName;
+            }
+            private set
+            {
+                this._currentPatrolFileName = value;
+                this.patrolFileTextBox.Text = (this.PatrolFileName == null || this.PatrolFileName == string.Empty) ? "순찰파일을 선택해주세요." : Path.GetFileNameWithoutExtension(this.PatrolFileName);
+            }
+        }
+
+        private int _elapsedTime;
+        public int ElapsedTime
+        {
+            get
+            {
+                return this._elapsedTime;
+            }
+
+            private set
+            {
+                this._elapsedTime = value;
+
+                var seconds = value;
+                var hours = seconds / 3600;
+                seconds -= hours * 3600;
+
+                var minutes = seconds / 60;
+                seconds -= minutes * 60;
+
+                this.patrolTime.Text = string.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
+            }
+        }
 
         public bool ShowDetectionBoxes { get; private set; }
         public bool ShowGmap { get; private set; }
@@ -66,9 +105,9 @@ namespace Fire_Detector.Control.SideTabView
                 this.patrolVersionLabel.Invoke(new MethodInvoker(delegate ()
                 {
                     if(this.Root.Patrol.Mode == oyo.OYOPatrol.PatrolMode.Read)
-                        this.patrolVersionLabel.Text = "순찰 기록모드";
-                    else
                         this.patrolVersionLabel.Text = "순찰 실행모드";
+                    else
+                        this.patrolVersionLabel.Text = "순찰 기록모드";
                 }));
 
                 var isPatrolRunning = this.Root.Patrol.Enabled;
@@ -111,6 +150,13 @@ namespace Fire_Detector.Control.SideTabView
                 this.recordFileNameTextBox.Invoke(new MethodInvoker(delegate ()
                 {
                     this.recordFileNameTextBox.Enabled = isRecordActive;
+                }));
+
+                this.recordFileBrowseButton.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.recordFileBrowseButton.ActiveFillColor = isRecordActive ? Color.LightSalmon : Color.Transparent;
+                    this.recordFileBrowseButton.ActiveForecolor = isRecordActive ? Color.White : SystemColors.ControlDarkDark;
+                    this.recordFileBrowseButton.ActiveLineColor = isRecordActive ? Color.Salmon : SystemColors.ControlDarkDark;
                 }));
 
                 this.recordFileSettingButton.Invoke(new MethodInvoker(delegate ()
@@ -183,13 +229,13 @@ namespace Fire_Detector.Control.SideTabView
         {
             if(this.Root == null)
                 return;
-            this.synchronizeUI();
 
-            this.patrolFileTextbox.Invoke(new MethodInvoker(delegate ()
+            this.PatrolFileName = null;
+
+            this.patrolFileTextBox.Invoke(new MethodInvoker(delegate ()
             {
-                this.patrolFileTextbox.BackColor = this.patrolModeSwitch.Value ? Color.White : Color.Gainsboro;
-                this.patrolFileTextbox.Text = this.patrolModeSwitch.Value ? "순찰파일을 선택해주세요." : "순찰 모드를 On 해주세요.";
-
+                this.patrolFileTextBox.BackColor = this.patrolModeSwitch.Value ? Color.White : Color.Gainsboro;
+                this.patrolFileTextBox.Text = this.patrolModeSwitch.Value ? "순찰파일을 선택해주세요." : "순찰 모드를 On 해주세요.";
             }));
 
             this.patrolFileBrowseButton.Invoke(new MethodInvoker(delegate ()
@@ -204,12 +250,20 @@ namespace Fire_Detector.Control.SideTabView
                 this.patrolVersionLabel.Visible = patrolModeSwitch.Value;
             }));
 
-            
-            if (this.patrolModeSwitch.Value) {
+
+            if (this.patrolModeSwitch.Value)
+            {
                 var message = "녹화모드와 같이 사용할 수 없습니다.";
                 var messageform = new Fire_Detector.Dialog.MessageDialog(message, SystemColors.Control);
                 messageform.ShowDialog(this.Root);
             }
+            else
+            {
+                this.Root.Patrol.Stop();
+                this.ElapsedTime = 0;
+            }
+
+            this.synchronizeUI();
         }
 
         private void RecordModeSwitch_OnValueChange(object sender, EventArgs e)
@@ -264,14 +318,48 @@ namespace Fire_Detector.Control.SideTabView
 
         private void PatrolStartEndButton_Click(object sender, EventArgs e)
         {
-            if(this.Root == null)
-                return;
+            try
+            {
+                if (this.Root == null)
+                    return;
 
-            var isActive = this.patrolModeSwitch.Value;
-            if(isActive == false)
-                return;
+                if(this.patrolModeSwitch.Value == false)
+                    return;
 
-            this.synchronizeUI();
+                if(this.PatrolFileName == null)
+                    throw new Exception("순찰 파일명을 설정하지 않았습니다.");
+
+                var isActive = this.patrolModeSwitch.Value;
+                if (isActive == false)
+                    return;
+
+                if (this.Root.Patrol.Enabled)
+                {
+                    if (this.Root.Patrol.Mode == oyo.OYOPatrol.PatrolMode.Read)
+                        this.Root.Patrol.Reader.Stop();
+                    else
+                        this.Root.Patrol.Writer.Stop();
+
+                    this.patrolWriteTimer.Stop();
+                    this.ElapsedTime = 0;
+                }
+                else
+                {
+                    if (this.Root.Patrol.Mode == oyo.OYOPatrol.PatrolMode.Read)
+                        this.Root.Patrol.Reader.Start(this.PatrolFileName);
+                    else
+                        this.Root.Patrol.Writer.Start(this.PatrolFileName);
+
+                    this.patrolWriteTimer.Start();
+                }
+
+                this.synchronizeUI();
+            }
+            catch (Exception exc)
+            {
+                var dialog = new Dialog.MessageDialog(exc.Message);
+                dialog.ShowDialog(this);
+            }
         }
 
         private void BeginRecordButton_Click(object sender, EventArgs e)
@@ -281,6 +369,9 @@ namespace Fire_Detector.Control.SideTabView
 
             try
             {
+                if(this.recordModeSwitch.Value == false)
+                    return;
+
                 if (this.Root.Recorder.IsRecording(this._currentRecordType))
                 {
                     this.Root.Recorder.Stop(this._currentRecordType);
@@ -324,8 +415,22 @@ namespace Fire_Detector.Control.SideTabView
             if(isActive == false)
                 return;
 
-            var patrolform = new Fire_Detector.Dialog.PatrolDialog();
-            patrolform.ShowDialog();
+            if (this.Root.Patrol.Mode == oyo.OYOPatrol.PatrolMode.Read)
+            {
+                var patrolform = new PatrolDialog();
+                if(patrolform.ShowDialog() == DialogResult.Cancel)
+                    return;
+
+                this.PatrolFileName = patrolform.FileName.Clone() as string;
+            }
+            else
+            {
+                var patrolform = new PatrolPathDialog();
+                if(patrolform.ShowDialog(this.Root) != DialogResult.OK)
+                    return;
+
+                this.PatrolFileName = patrolform.FileName.Clone() as string;
+            }
         }
 
         private void RecordFileSettingButton_Click(object sender, EventArgs e)
@@ -448,6 +553,9 @@ namespace Fire_Detector.Control.SideTabView
 
         private void recordFileBrowseButton_Click(object sender, EventArgs e)
         {
+            if(this.recordModeSwitch.Value == false)
+                return;
+
             var dialog              = new SaveFileDialog();
             dialog.Filter           = string.Format("Video File | *.{0}", oyo.OYORecorder.DEFAULT_EXTENSION);
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -464,7 +572,15 @@ namespace Fire_Detector.Control.SideTabView
             else
                 this.Root.Patrol.Mode = oyo.OYOPatrol.PatrolMode.Read;
 
+            this.PatrolFileName = null;
+            this.ElapsedTime = 0;
+
             this.synchronizeUI();
+        }
+
+        private void patrolWriteTimer_Tick(object sender, EventArgs e)
+        {
+            this.ElapsedTime += 1;
         }
     }
 }

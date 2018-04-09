@@ -62,7 +62,7 @@ namespace oyo
             return this._fstream != null;
         }
 
-        public bool StartRecord(string filename)
+        public bool Start(string filename)
         {
             if(this.IsEnabled())
                 return false;
@@ -133,6 +133,32 @@ namespace oyo
         public OYOPatrolReader()
         { }
 
+        public static PatrolElement[] Read(string filename)
+        {
+            try
+            {
+                var fstream = File.Open(filename, FileMode.Open);
+                var list = null as PatrolElement[];
+                using (var reader = new BinaryReader(fstream))
+                {
+                    var count = reader.ReadInt32();
+                    list = new PatrolElement[count];
+                    for (var i = 0; i < count; i++)
+                    {
+                        var elapsed_time = reader.ReadInt32();
+                        var Pcmd = new Pcmd(reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32());
+                        list[i] = new PatrolElement(elapsed_time, Pcmd);
+                    }
+                }
+                fstream.Close();
+                return list;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
         public bool Start(string filename)
         {
             try
@@ -140,18 +166,7 @@ namespace oyo
                 if (this.IsEnabled())
                     throw new Exception("cannot load patrol file while patroling");
 
-                var fstream = File.Open(filename, FileMode.Open);
-                using (var reader = new BinaryReader(fstream))
-                {
-                    var count = reader.ReadInt32();
-                    this._patrol_elements = new PatrolElement[count];
-                    for(var i = 0; i < count; i++)
-                    {
-                        var elapsed_time = reader.ReadInt32();
-                        var Pcmd = new Pcmd(reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32());
-                        this._patrol_elements[i] = new PatrolElement(elapsed_time, Pcmd);
-                    }
-                }
+                this._patrol_elements = Read(filename);
                 this._isPatrol = true;
 
                 var thread = new Thread(this.InterruptThreadRoutine);
@@ -258,6 +273,12 @@ namespace oyo
         {
             this.Reader = new OYOPatrolReader();
             this.Writer = new OYOPatrolWriter();
+        }
+
+        public void Stop()
+        {
+            this.Reader.Stop();
+            this.Writer.Stop();
         }
     }
 }

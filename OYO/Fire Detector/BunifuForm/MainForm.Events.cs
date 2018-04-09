@@ -30,7 +30,6 @@ namespace Fire_Detector.BunifuForm
 
         private Stopwatch           _stopwatch = new Stopwatch();
         private int                 _fps, _lastFps;
-        private bool                mode_read = true;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -91,6 +90,7 @@ namespace Fire_Detector.BunifuForm
         {
             this.Receiver.Exit();
             this.Bebop2.Disconnect();
+            this.Patrol.Stop();
 
             OYOKeysHook.Unset();
             this._mutex.Close();

@@ -33,7 +33,7 @@
             this.caption = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.confirmButton = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.bunifuMetroTextbox1 = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.patrolFileNameTextBox = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.cancelButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
@@ -104,20 +104,20 @@
             // 
             // bunifuMetroTextbox1
             // 
-            this.bunifuMetroTextbox1.BorderColorFocused = System.Drawing.Color.Salmon;
-            this.bunifuMetroTextbox1.BorderColorIdle = System.Drawing.SystemColors.ControlDark;
-            this.bunifuMetroTextbox1.BorderColorMouseHover = System.Drawing.Color.Salmon;
-            this.bunifuMetroTextbox1.BorderThickness = 3;
-            this.bunifuMetroTextbox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextbox1.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuMetroTextbox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuMetroTextbox1.isPassword = false;
-            this.bunifuMetroTextbox1.Location = new System.Drawing.Point(90, 68);
-            this.bunifuMetroTextbox1.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuMetroTextbox1.Name = "bunifuMetroTextbox1";
-            this.bunifuMetroTextbox1.Size = new System.Drawing.Size(249, 34);
-            this.bunifuMetroTextbox1.TabIndex = 9;
-            this.bunifuMetroTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.patrolFileNameTextBox.BorderColorFocused = System.Drawing.Color.Salmon;
+            this.patrolFileNameTextBox.BorderColorIdle = System.Drawing.SystemColors.ControlDark;
+            this.patrolFileNameTextBox.BorderColorMouseHover = System.Drawing.Color.Salmon;
+            this.patrolFileNameTextBox.BorderThickness = 3;
+            this.patrolFileNameTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.patrolFileNameTextBox.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patrolFileNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.patrolFileNameTextBox.isPassword = false;
+            this.patrolFileNameTextBox.Location = new System.Drawing.Point(90, 68);
+            this.patrolFileNameTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.patrolFileNameTextBox.Name = "bunifuMetroTextbox1";
+            this.patrolFileNameTextBox.Size = new System.Drawing.Size(249, 34);
+            this.patrolFileNameTextBox.TabIndex = 9;
+            this.patrolFileNameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuCustomLabel2
             // 
@@ -178,7 +178,7 @@
             this.ClientSize = new System.Drawing.Size(364, 168);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.bunifuCustomLabel2);
-            this.Controls.Add(this.bunifuMetroTextbox1);
+            this.Controls.Add(this.patrolFileNameTextBox);
             this.Controls.Add(this.caption);
             this.Controls.Add(this.confirmButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -195,7 +195,7 @@
 
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
-        private Bunifu.Framework.UI.BunifuMetroTextbox bunifuMetroTextbox1;
+        private Bunifu.Framework.UI.BunifuMetroTextbox patrolFileNameTextBox;
         private System.Windows.Forms.Panel caption;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         private Bunifu.Framework.UI.BunifuFlatButton confirmButton;
