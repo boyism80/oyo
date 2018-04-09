@@ -37,9 +37,9 @@ namespace Fire_Detector.BunifuForm
         /// <summary>
         /// 카메라서버의 주소입니다.
         /// </summary>
-        private static string                   HOST_NAME            = "luxir01.iptime.org"; // 192.168.0.80
-
-
+        private static string                   HOST_NAME            = "luxir01.iptime.org"; // luxir01.iptime.org (포트포워딩 ip)
+                                                                                             // 192.168.42.80 (드론 ip)
+                                                                                             // 192.168.0.80 (테스트용 라즈베리파이 ip)
         /// <summary>
         /// 이 값은 산불을 감지할 때 사용되는 값입니다.
         /// 사용자가 지정한 일정 온도를 기반으로 어느 영역이 감지되었을 때, 감지된 영역의 온도가 최저온도와 평균온도의 차이보다
