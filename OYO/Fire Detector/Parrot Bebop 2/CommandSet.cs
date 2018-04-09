@@ -104,6 +104,15 @@ namespace BebopCommandSet
         {
             return string.Format("pitch : {0}, yaw : {1}, roll : {2}, gaz : {3}, flag : {4}", this.pitch, this.yaw, this.roll, this.gaz, this.flag);
         }
+
+        public void Reset()
+        {
+            this.pitch = 0;
+            this.yaw = 0;
+            this.roll = 0;
+            this.gaz = 0;
+            this.flag = 0;
+        }
     }
 
     public class CommandSet

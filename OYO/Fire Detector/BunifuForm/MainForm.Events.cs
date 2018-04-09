@@ -525,6 +525,9 @@ this._mutex.ReleaseMutex();
         private void PatrolReader_OnExit()
         {
             Console.WriteLine("patroling has done");
+            this._pcmd.Reset();
+
+            this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);
         }
 
         private void PatrolReader_OnChanged(Pcmd pcmd)
