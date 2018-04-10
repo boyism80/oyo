@@ -1,4 +1,5 @@
 ﻿using BebopCommandSet;
+using Leap;
 using OpenCvSharp;
 using SimpleJSON;
 using System;
@@ -28,7 +29,7 @@ namespace ParrotBebop2
         public delegate void                    StreamingEvent(Bebop2 bebop, Mat frame);
         public delegate Pcmd                    RequestPcmdEvent(Bebop2 bebop);
         public delegate void                    BatteryChangedEvent(Bebop2 bebop2, int battery);
-        public delegate void                    SpeedChangedEvent(Bebop2 bebop2, float x, float y, float z);
+        public delegate void                    SpeedChangedEvent(Bebop2 bebop2, Vector speed);
         public delegate void                    RotationChangedEvent(Bebop2 bebop2, float pitch, float yaw, float roll);
         public delegate void                    PositionChangedEvent(Bebop2 bebop2, double lat, double lon, double alt);
         public delegate void                    PilotStateChanged(Bebop2 bebop2, Bebop2State currentState);
@@ -73,9 +74,7 @@ namespace ParrotBebop2
             }
         }
 
-        public float SpeedX { get; private set; }
-        public float SpeedY { get; private set; }
-        public float SpeedZ { get; private set; }
+        public Vector Speed { get; private set; }
 
         public float Pitch { get; private set; }
         public float Yaw { get; private set; }
@@ -253,7 +252,7 @@ namespace ParrotBebop2
                     if (capture.Read(frame) == false)
                         break;
 
-                    frame = frame.Resize(new Size(frame.Width / 2, frame.Height / 2));
+                    frame = frame.Resize(new OpenCvSharp.Size(frame.Width / 2, frame.Height / 2));
                     this.OnStreaming.Invoke(this, frame);
                 }
                 catch(Exception)
@@ -383,12 +382,10 @@ namespace ParrotBebop2
                             }
                             else if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_SPEEDCHANGED)
                             {
-                                this.SpeedX = reader.ReadSingle();
-                                this.SpeedY = reader.ReadSingle();
-                                this.SpeedZ = reader.ReadSingle();
+                                this.Speed = new Vector(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
 
                                 if(this.OnSpeedChanged != null)
-                                    this.OnSpeedChanged.Invoke(this, this.SpeedX, this.SpeedY, this.SpeedZ);
+                                    this.OnSpeedChanged.Invoke(this, this.Speed);
                             }
                             else if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_ATTITUDECHANGED)
                             {

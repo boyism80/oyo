@@ -2,6 +2,7 @@
 using Fire_Detector.Source;
 using OpenCvSharp;
 using oyo;
+using ParrotBebop2;
 using System;
 using System.Drawing;
 using System.IO;
@@ -52,10 +53,10 @@ namespace Fire_Detector.Control
 
         private void streamingFrameBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if(e.Button != MouseButtons.Left)
+            if(this.Root == null)
                 return;
 
-            if(this.Root == null)
+            if(e.Button != MouseButtons.Left)
                 return;
 
             if (this.Root.Receiver.Connected == false && this.Root.Bebop2.Connected == false)
@@ -90,10 +91,10 @@ namespace Fire_Detector.Control
 
         private void streamingFrameBox_MouseClick(object sender, MouseEventArgs e)
         {
-            if(e.Button != MouseButtons.Left)
+            if(this.Root == null)
                 return;
 
-            if(this.Root == null)
+            if(e.Button != MouseButtons.Left)
                 return;
 
             if(this.Root.Receiver.Connected == false)
@@ -136,6 +137,22 @@ namespace Fire_Detector.Control
         public void Overlayer_OnReceiveAddressEvent(string address)
         {
             this.bunifuCustomLabel2.Text = address;
+        }
+
+        public void Bebop2_OnSpeedChanged(Bebop2 bebop2, Leap.Vector speed)
+        {
+            this.droneSpeedLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.droneSpeedLabel.Text = string.Format("{0:F2}m/s", speed.MagnitudeSquared);
+            }));
+        }
+
+        public void Bebop2_OnAltitudeChanged(Bebop2 bebop, double altitude)
+        {
+            this.droneAltitudeLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.droneAltitudeLabel.Text = string.Format("{0:F2}m", altitude);
+            }));
         }
     }
 }

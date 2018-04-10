@@ -55,6 +55,9 @@ namespace Fire_Detector.Control
 
         private void SideExpandedBar_Load(object sender, System.EventArgs e)
         {
+            if(this.Root == null)
+                return;
+
             this.droneTab.Tag       = new object[] { "Drone Control", this.Root.defaultView.sideCollapsedBar.droneTabButton }; 
             this.visualizeTab.Tag   = new object[] { "Visualization", this.Root.defaultView.sideCollapsedBar.visualizationTabButton }; 
             this.leapmotionTab.Tag  = new object[] { "Leapmotion", this.Root.defaultView.sideCollapsedBar.leapmotionTabButton }; 

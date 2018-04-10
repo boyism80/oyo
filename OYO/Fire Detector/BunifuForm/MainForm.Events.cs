@@ -56,7 +56,8 @@ namespace Fire_Detector.BunifuForm
             this.Bebop2.OnDisconnected              += this.defaultView.sideExpandedBar.droneTab.Bebop_OnConnectionChanged;
             this.Bebop2.OnStreaming                 += this.Bebop2_OnStreaming;
             this.Bebop2.OnRequestPcmd               += this.Bebop2_OnRequestPcmd;
-            this.Bebop2.OnAltitudeChanged           += this.Bebop2_OnAltitudeChanged;
+            this.Bebop2.OnSpeedChanged              += this.defaultView.Bebop2_OnSpeedChanged;
+            this.Bebop2.OnAltitudeChanged           += this.defaultView.Bebop2_OnAltitudeChanged;
             this.Bebop2.OnPositionChanged           += this.Bebop_OnPositionChanged;
             this.Bebop2.OnError                     += this.Bebop_OnError;
 
@@ -432,14 +433,6 @@ this._mutex.WaitOne();
             var pcmd = new Pcmd(this._pcmd);
 this._mutex.ReleaseMutex();
             return pcmd;
-        }
-
-        public void Bebop2_OnAltitudeChanged(Bebop2 bebop, double altitude)
-        {
-            this.defaultView.droneAltitudeLabel.Invoke(new MethodInvoker(delegate ()
-            {
-                this.defaultView.droneAltitudeLabel.Text = altitude.ToString();
-            }));
         }
 
         private void Bebop_OnPositionChanged(Bebop2 bebop2, double lat, double lon, double alt)
