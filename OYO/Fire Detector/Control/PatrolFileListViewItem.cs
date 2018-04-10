@@ -88,23 +88,6 @@ namespace Fire_Detector.Control
             }
         }
 
-        public string ElapsedTiemText
-        {
-            get
-            {
-                var elapsedTimeSeconds = this.ElapsedTime / 1000;
-                var hours = elapsedTimeSeconds / 3600;
-                elapsedTimeSeconds -= hours * 3600;
-
-                var minutes = elapsedTimeSeconds / 60;
-                elapsedTimeSeconds -= minutes * 60;
-
-                var seconds = elapsedTimeSeconds;
-
-                return string.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
-            }
-        }
-
         public PatrolFileListViewItem(string filename)
         {
             InitializeComponent();
@@ -113,7 +96,9 @@ namespace Fire_Detector.Control
             this.fileNameTextBox.Text = Path.GetFileName(this.FileName);
             this.dateTimeTextBox.Text = this.FileDateTimeText;
             this.fileSizeTextBox.Text = this.FileSizeText;
-            this.bunifuCustomLabel2.Text = this.ElapsedTiemText;
+
+            var time = TimeSpan.FromSeconds(this.ElapsedTime / 1000);
+            this.durationTextBox.Text = time.ToString(@"hh\:mm\:ss");
         }
 
         private void UpdateUI()

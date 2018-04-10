@@ -138,7 +138,6 @@ namespace Fire_Detector.BunifuForm
             this.Recorder                       = new OYORecorder();
             this.Overlayer                      = new OYOGMapOverlayer(this.defaultView.streamingFrameBox);
             this.Bebop2                         = new Bebop2();
-            this.Recorder                       = new OYORecorder();
             this.LeapController                 = new OYOLeapmotion();
             this.Patrol                         = new OYOPatrol();
 

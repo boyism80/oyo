@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.fileSizeTextBox = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.durationTextBox = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.dateTimeTextBox = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.fileNameTextBox = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.SuspendLayout();
@@ -47,13 +47,13 @@
             // 
             // bunifuCustomLabel2
             // 
-            this.bunifuCustomLabel2.AutoSize = true;
-            this.bunifuCustomLabel2.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(15, 54);
-            this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(62, 16);
-            this.bunifuCustomLabel2.TabIndex = 0;
-            this.bunifuCustomLabel2.Text = "00:00:00";
+            this.durationTextBox.AutoSize = true;
+            this.durationTextBox.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.durationTextBox.Location = new System.Drawing.Point(15, 54);
+            this.durationTextBox.Name = "bunifuCustomLabel2";
+            this.durationTextBox.Size = new System.Drawing.Size(62, 16);
+            this.durationTextBox.TabIndex = 0;
+            this.durationTextBox.Text = "00:00:00";
             // 
             // bunifuCustomLabel3
             // 
@@ -84,7 +84,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.fileSizeTextBox);
             this.Controls.Add(this.fileNameTextBox);
-            this.Controls.Add(this.bunifuCustomLabel2);
+            this.Controls.Add(this.durationTextBox);
             this.Controls.Add(this.dateTimeTextBox);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "PatrolFileListViewItem";
@@ -99,7 +99,7 @@
         #endregion
         private Bunifu.Framework.UI.BunifuCustomLabel fileNameTextBox;
         private Bunifu.Framework.UI.BunifuCustomLabel fileSizeTextBox;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
+        private Bunifu.Framework.UI.BunifuCustomLabel durationTextBox;
         private Bunifu.Framework.UI.BunifuCustomLabel dateTimeTextBox;
     }
 }

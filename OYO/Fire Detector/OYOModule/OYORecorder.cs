@@ -18,7 +18,21 @@ namespace oyo
             Display     = 0x00000008,
         }
 
+        public delegate void                    StartEvent(RecordingStateType type);
+        public delegate void                    StopEvent(RecordingStateType type);
+        public delegate void                    RecordedEvent(RecordingStateType type, Mat frame, int count);
+        public delegate void                    IncreasedTimeEvent(RecordingStateType type, int count, int seconds);
+        
+
+
         private Dictionary<RecordingStateType, VideoWriter> _videoRecordTable = new Dictionary<RecordingStateType, VideoWriter>();
+        private Dictionary<RecordingStateType, int> _recordedFrameCountTable = new Dictionary<RecordingStateType, int>();
+
+
+        public event StartEvent                 OnStart;
+        public event StopEvent                  OnStop;
+        public event RecordedEvent              OnRecorded;
+        public event IncreasedTimeEvent         OnIncreasedTime;
 
         public bool AnyVideoRecording
         {
@@ -54,6 +68,11 @@ namespace oyo
             this._videoRecordTable.Add(RecordingStateType.Visual, new VideoWriter());
             this._videoRecordTable.Add(RecordingStateType.Blending, new VideoWriter());
             this._videoRecordTable.Add(RecordingStateType.Display, new VideoWriter());
+
+            this._recordedFrameCountTable.Add(RecordingStateType.Infrared, 0);
+            this._recordedFrameCountTable.Add(RecordingStateType.Visual, 0);
+            this._recordedFrameCountTable.Add(RecordingStateType.Blending, 0);
+            this._recordedFrameCountTable.Add(RecordingStateType.Display, 0);
         }
 
         public bool IsRecording(RecordingStateType type)
@@ -93,7 +112,12 @@ namespace oyo
                 {
                     this._videoRecordTable[type].Open(path, FourCC.XVID, fps, size);
                 }
-                return this._videoRecordTable[type].IsOpened();
+
+                var success = this._videoRecordTable[type].IsOpened();
+                if(success && this.OnStart != null)
+                    this.OnStart.Invoke(type);
+
+                return success;
             }
             catch (Exception)
             {
@@ -111,6 +135,9 @@ namespace oyo
                 lock (this._videoRecordTable[type])
                 {
                     this._videoRecordTable[type].Release();
+                    this._recordedFrameCountTable[type] = 0;
+                    if(this.OnStop != null)
+                        this.OnStop.Invoke(type);
                 }
                 return true;
             }
@@ -122,8 +149,8 @@ namespace oyo
 
         public void Release()
         {
-            foreach(var writer in this._videoRecordTable.Values)
-                writer.Release();
+            foreach(var type in this._videoRecordTable.Keys)
+                this.Stop(type);
         }
 
         public void Write(RecordingStateType type, Mat frame)
@@ -136,6 +163,15 @@ namespace oyo
                 lock (this._videoRecordTable[type])
                 {
                     this._videoRecordTable[type].Write(frame.Resize(this._videoRecordTable[type].FrameSize));
+                    this._recordedFrameCountTable[type]++;
+
+                    if (this.OnRecorded != null)
+                        this.OnRecorded.Invoke(type, frame, this._recordedFrameCountTable[type]);
+
+                    var seconds = this._recordedFrameCountTable[type] / (int)this._videoRecordTable[type].Fps;
+                    var mod = this._recordedFrameCountTable[type] % (int)this._videoRecordTable[type].Fps;
+                    if(this.OnIncreasedTime != null && mod == 0)
+                        this.OnIncreasedTime.Invoke(type, this._recordedFrameCountTable[type], seconds);
                 }
             }
             catch (Exception)

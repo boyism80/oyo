@@ -1,5 +1,6 @@
 ﻿using BebopCommandSet;
 using Fire_Detector.Dialog;
+using oyo;
 using ParrotBebop2;
 using System;
 using System.Drawing;
@@ -42,14 +43,8 @@ namespace Fire_Detector.Control.SideTabView
             {
                 this._elapsedTime = value;
 
-                var seconds = value;
-                var hours = seconds / 3600;
-                seconds -= hours * 3600;
-
-                var minutes = seconds / 60;
-                seconds -= minutes * 60;
-
-                this.patrolTime.Text = string.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
+                var time = TimeSpan.FromSeconds(this._elapsedTime);
+                this.patrolTime.Text = time.ToString(@"hh\:mm\:ss");
             }
         }
 
@@ -581,6 +576,15 @@ namespace Fire_Detector.Control.SideTabView
         private void patrolWriteTimer_Tick(object sender, EventArgs e)
         {
             this.ElapsedTime += 1;
+        }
+
+        public void Recorder_OnIncreasedTime(OYORecorder.RecordingStateType type, int count, int seconds)
+        {
+            this.recordTime.Invoke(new MethodInvoker(delegate ()
+            {
+                var time = TimeSpan.FromSeconds(seconds);
+                this.recordTime.Text = time.ToString(@"hh\:mm\:ss");
+            }));
         }
     }
 }

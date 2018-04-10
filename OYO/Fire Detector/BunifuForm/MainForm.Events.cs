@@ -46,6 +46,8 @@ namespace Fire_Detector.BunifuForm
             this.Receiver.OnUpdate                  += this.Receiver_OnUpdate;
             this.Receiver.OnError                   += this.Receiver_OnError;
 
+            this.Recorder.OnIncreasedTime           += this.defaultView.sideExpandedBar.droneTab.Recorder_OnIncreasedTime;
+
             this.Overlayer.OnReceiveAddressEvent    += this.defaultView.Overlayer_OnReceiveAddressEvent;
 
             this.Bebop2.OnConnected                 += this.mainView.mainConnectionView.Bebop_OnConnectionChanged;
