@@ -202,7 +202,6 @@ namespace oyo
                     if (this.OnChanged != null)
                         this.OnChanged.Invoke(element.Command);
 
-                    Console.WriteLine(element);
                     Thread.Sleep(element.ElapsedTime);
                 }
 
@@ -214,7 +213,6 @@ namespace oyo
                     if (this.OnChanged != null)
                         this.OnChanged.Invoke(element.Command.Reversed);
 
-                    Console.WriteLine(element);
                     Thread.Sleep(element.ElapsedTime);
                 }
             }

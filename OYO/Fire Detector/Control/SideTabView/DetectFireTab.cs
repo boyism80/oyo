@@ -2,12 +2,15 @@
 using OpenCvSharp;
 using oyo;
 using System;
+using System.Media;
 using System.Windows.Forms;
 
 namespace Fire_Detector.Control.SideTabView
 {
     public partial class DetectFireTab : BaseControl
     {
+        private SoundPlayer _soundPlayer = new SoundPlayer("resources/sounds/alarm.wav");
+
         public DetectFireTab()
         {
             InitializeComponent();
@@ -127,6 +130,20 @@ namespace Fire_Detector.Control.SideTabView
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+        public void DetectFireTab_OnDetectionStateChanged(bool isDetected, RotatedRect[] detectedRects)
+        {
+            if(isDetected)
+            {
+                this._soundPlayer.PlayLooping();
+                Console.WriteLine("play alaram sound");
+            }
+            else
+            {
+                this._soundPlayer.Stop();
+                Console.WriteLine("stop alarm sound");
             }
         }
     }

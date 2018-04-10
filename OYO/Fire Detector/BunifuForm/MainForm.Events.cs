@@ -77,6 +77,8 @@ namespace Fire_Detector.BunifuForm
             this.OnScreenStateChanged               += this.mainView.OnScreenStateChanged;
             this.OnScreenStateChanged               += this.mainView.mainConnectionView.OnScreenStateChanged;
 
+            this.OnDetectionStateChanged            += this.defaultView.sideExpandedBar.detectFireTab.DetectFireTab_OnDetectionStateChanged;
+
             this.Patrol.Reader.OnChanged            += this.PatrolReader_OnChanged;
             this.Patrol.Reader.OnExit               += this.PatrolReader_OnExit;
 
@@ -94,6 +96,7 @@ namespace Fire_Detector.BunifuForm
             this.Receiver.Exit();
             this.Bebop2.Disconnect();
             this.Patrol.Stop();
+            this.InterruptDetectionDisable();
 
             OYOKeysHook.Unset();
             this._mutex.Close();
@@ -282,6 +285,21 @@ namespace Fire_Detector.BunifuForm
                         return false;
                     });
 
+                    var detected                    = this.Detector.DetectedRects.Length != 0;
+                    if(this._currentDetected != detected)
+                    {
+                        this._currentDetected       = detected;
+                        if(this.OnDetectionStateChanged != null)
+                            this.OnDetectionStateChanged.Invoke(this._currentDetected, this.Detector.DetectedRects);
+                    }
+
+                    if(this._currentDetectedCount != this.Detector.DetectedRects.Length)
+                    {
+                        this._currentDetectedCount  = this.Detector.DetectedRects.Length;
+                        if(this.OnDetectionCountChanged != null)
+                            this.OnDetectionCountChanged.Invoke(this.Detector.DetectedRects);
+                    }
+
                     updatedFrame                    = this.Detector.DrawDetectedRects(updatedFrame);
 
 
@@ -291,6 +309,10 @@ namespace Fire_Detector.BunifuForm
                         var center                  = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
                         this.Visualizer.markTemperature(updatedFrame, new Point(detectedRect.Center.X, detectedRect.Center.Y), center, Scalar.Red);
                     }
+                }
+                else
+                {
+                    this.InterruptDetectionDisable();
                 }
 
                 
@@ -329,8 +351,6 @@ namespace Fire_Detector.BunifuForm
                 else
                     header = "Visual";
 
-                if(this.Visualizer.StreamingType == streamingType)
-                    Console.WriteLine(string.Format("elapsed time of {0}: {1}", header, stopwatch.ElapsedMilliseconds / 1000.0f));
                 stopwatch.Restart();
             }
             catch (Exception e)
@@ -519,7 +539,6 @@ this._mutex.ReleaseMutex();
 
         private void PatrolReader_OnExit()
         {
-            Console.WriteLine("patroling has done");
             this._pcmd.Reset();
 
             this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);
