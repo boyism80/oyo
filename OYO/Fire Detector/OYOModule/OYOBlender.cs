@@ -74,17 +74,6 @@ namespace oyo
 			}
 		}
 
-        //
-        // CroppedRect
-        //  백그라운드를 잘라낼 영역을 설정합니다.
-        //  적외선 카메라와 실화상 카메라의 물리적 위치가 100% 겹쳐질 수 없기 때문에
-        //  상대적으로 해상도가 큰 실화상 이미지의 일부를 잘라내어 겹치게 만들어 주어야 합니다.
-        //  이 때 이 프로퍼티가 사용됩니다.
-        //
-        public Rect VisualCroppedRect { get; set; }
-
-        public Rect InfraredCroppedRect { get; set; }
-
         //public Rect InfraredCroppedRect { get; set; }
 
 
@@ -106,8 +95,6 @@ namespace oyo
 			this.Size				    = size;
 			this.Smooth				    = smooth;
 			this.Transparency		    = alpha;
-            this.VisualCroppedRect      = new Rect(new Point(), this.Size);
-            this.InfraredCroppedRect    = new Rect(new Point(), this.Size);
 		}
 
         //
@@ -187,8 +174,8 @@ namespace oyo
 			if(this._mask.Size() != this.Size)
 				this._mask          = this._mask.Resize(this.Size);
 
-            this._foreground        = this._foreground.Clone(this.InfraredCroppedRect).Resize(this.Size);
-            this._mask              = this.Mask.Clone(this.InfraredCroppedRect).Resize(this.Size);
+            //this._foreground        = this._foreground.Clone(this.InfraredCroppedRect).Resize(this.Size);
+            //this._mask              = this.Mask.Clone(this.InfraredCroppedRect).Resize(this.Size);
 
 			return this.Blendable;
 		}
@@ -212,7 +199,7 @@ namespace oyo
 			if (this._background.Channels() == 1)
 				this._background    = this._background.CvtColor(ColorConversionCodes.GRAY2BGR);
 
-			this._background        = this._background.Clone(this.VisualCroppedRect).Resize(this.Size);
+			//this._background        = this._background.Clone(this.VisualCroppedRect).Resize(this.Size);
 
 			return this.Blendable;
 		}

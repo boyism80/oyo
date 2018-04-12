@@ -118,8 +118,11 @@ namespace Fire_Detector.Source
                 this._lastFrame = this._lastFrame.Resize(this._currentDisplaySize);
 
 
-            Cv2.MinMaxLoc(this._temperature, out this._minval, out this._maxval, out this._minloc, out this._maxloc);
-            this._meanval = this._temperature.Mean().Val0;
+            if (this._temperature != null)
+            {
+                Cv2.MinMaxLoc(this._temperature, out this._minval, out this._maxval, out this._minloc, out this._maxloc);
+                this._meanval = this._temperature.Mean().Val0;
+            }
         }
 
         public Mat SetDisplay(Size currentDisplaySize)

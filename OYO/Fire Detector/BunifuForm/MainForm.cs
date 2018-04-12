@@ -176,10 +176,10 @@ namespace Fire_Detector.BunifuForm
                 this.Blender.Threshold                  = json["blender"]["threshold"].AsInt;
                 this.Blender.Smooth                     = json["blender"]["smooth"].AsBool;
 
-                this.Blender.VisualCroppedRect          = new Rect(new OpenCvSharp.Point(json["blender"]["crop"]["visual"]["x"].AsInt, json["blender"]["crop"]["visual"]["y"].AsInt),
-                                                                   new OpenCvSharp.Size(json["blender"]["crop"]["visual"]["width"].AsInt, json["blender"]["crop"]["visual"]["height"].AsInt));
-                this.Blender.InfraredCroppedRect        = new Rect(new OpenCvSharp.Point(json["blender"]["crop"]["infrared"]["x"].AsInt, json["blender"]["crop"]["infrared"]["y"].AsInt),
-                                                                   new OpenCvSharp.Size(json["blender"]["crop"]["infrared"]["width"].AsInt, json["blender"]["crop"]["infrared"]["height"].AsInt));
+                //this.Blender.VisualCroppedRect          = new Rect(new OpenCvSharp.Point(json["blender"]["crop"]["visual"]["x"].AsInt, json["blender"]["crop"]["visual"]["y"].AsInt),
+                //                                                   new OpenCvSharp.Size(json["blender"]["crop"]["visual"]["width"].AsInt, json["blender"]["crop"]["visual"]["height"].AsInt));
+                //this.Blender.InfraredCroppedRect        = new Rect(new OpenCvSharp.Point(json["blender"]["crop"]["infrared"]["x"].AsInt, json["blender"]["crop"]["infrared"]["y"].AsInt),
+                //                                                   new OpenCvSharp.Size(json["blender"]["crop"]["infrared"]["width"].AsInt, json["blender"]["crop"]["infrared"]["height"].AsInt));
 
                 this.Detector.Enabled                   = json["detector"]["enabled"].AsBool;
                 this.Detector.Notification              = json["detector"]["notification"].AsBool;
@@ -214,17 +214,17 @@ namespace Fire_Detector.BunifuForm
                 json["blender"]["threshold"]            = new JSONData(this.Blender.Threshold);
                 json["blender"]["smooth"]               = new JSONData(this.Blender.Smooth);
 
-                json["blender"]["crop"]                 = new JSONClass();
-                json["blender"]["crop"]["visual"]       = new JSONClass();
-                json["blender"]["crop"]["visual"]["x"]  = new JSONData(this.Blender.VisualCroppedRect.X);
-                json["blender"]["crop"]["visual"]["y"]  = new JSONData(this.Blender.VisualCroppedRect.Y);
-                json["blender"]["crop"]["visual"]["width"]  = new JSONData(this.Blender.VisualCroppedRect.Width);
-                json["blender"]["crop"]["visual"]["height"]  = new JSONData(this.Blender.VisualCroppedRect.Height);
-                json["blender"]["crop"]["infrared"]       = new JSONClass();
-                json["blender"]["crop"]["infrared"]["x"]  = new JSONData(this.Blender.InfraredCroppedRect.X);
-                json["blender"]["crop"]["infrared"]["y"]  = new JSONData(this.Blender.InfraredCroppedRect.Y);
-                json["blender"]["crop"]["infrared"]["width"]  = new JSONData(this.Blender.InfraredCroppedRect.Width);
-                json["blender"]["crop"]["infrared"]["height"]  = new JSONData(this.Blender.InfraredCroppedRect.Height);
+                //json["blender"]["crop"]                 = new JSONClass();
+                //json["blender"]["crop"]["visual"]       = new JSONClass();
+                //json["blender"]["crop"]["visual"]["x"]  = new JSONData(this.Blender.VisualCroppedRect.X);
+                //json["blender"]["crop"]["visual"]["y"]  = new JSONData(this.Blender.VisualCroppedRect.Y);
+                //json["blender"]["crop"]["visual"]["width"]  = new JSONData(this.Blender.VisualCroppedRect.Width);
+                //json["blender"]["crop"]["visual"]["height"]  = new JSONData(this.Blender.VisualCroppedRect.Height);
+                //json["blender"]["crop"]["infrared"]       = new JSONClass();
+                //json["blender"]["crop"]["infrared"]["x"]  = new JSONData(this.Blender.InfraredCroppedRect.X);
+                //json["blender"]["crop"]["infrared"]["y"]  = new JSONData(this.Blender.InfraredCroppedRect.Y);
+                //json["blender"]["crop"]["infrared"]["width"]  = new JSONData(this.Blender.InfraredCroppedRect.Width);
+                //json["blender"]["crop"]["infrared"]["height"]  = new JSONData(this.Blender.InfraredCroppedRect.Height);
 
                 json["detector"]["enabled"]             = new JSONData(this.Detector.Enabled);
                 json["detector"]["notification"]        = new JSONData(this.Detector.Notification);

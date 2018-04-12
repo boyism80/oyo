@@ -169,15 +169,20 @@ namespace Fire_Detector.BunifuForm
                 // Get updated frame and store buffer
                 //
                 var updatedFrame                    = new Mat();
+                var previousSize                    = new OpenCvSharp.Size();
                 if (streamingType == StreamingType.Infrared)
                 {
                     updatedFrame                    = receiver.Infrared(scaled);
+                    previousSize                    = updatedFrame.Size();
+                    updatedFrame                    = this.Visualizer.Crop(updatedFrame, StreamingType.Infrared).Resize(previousSize);
                     this.UpdatedDataBuffer.SetInfrared(this.Visualizer.mappingPalette(updatedFrame), receiver.Temperature(scaled));
                     this.Recorder.Write(OYORecorder.RecordingStateType.Infrared, updatedFrame);
                 }
                 else
                 {
                     updatedFrame                    = receiver.Visual();
+                    previousSize                    = updatedFrame.Size();
+                    updatedFrame                    = this.Visualizer.Crop(updatedFrame, StreamingType.Visual).Resize(previousSize);
                     this.UpdatedDataBuffer.SetVisual(updatedFrame);
                     this.Recorder.Write(OYORecorder.RecordingStateType.Visual, updatedFrame);
                 }
@@ -268,11 +273,6 @@ namespace Fire_Detector.BunifuForm
                 if (this.Detector.Enabled)
                 {
                     var mask                        = this.UpdatedDataBuffer.Temperature.Threshold(this.defaultView.sideExpandedBar.detectFireTab.desiredTemperatureSlider.Value, 255, ThresholdTypes.Binary);
-                    //if (this.Blender.Enabled)
-                    //{
-                    //    mask                        = mask.Clone(this.Blender.InfraredCroppedRect);
-                    //    mask                        = mask.Resize(this.UpdatedDataBuffer.Temperature.Size());
-                    //}
                     var betweenMin                  = this.UpdatedDataBuffer.MeanTemperature - this.UpdatedDataBuffer.MinimumTemperature;
                     var betweenMax                  = this.UpdatedDataBuffer.MaximumTemperature - this.UpdatedDataBuffer.MeanTemperature;
 

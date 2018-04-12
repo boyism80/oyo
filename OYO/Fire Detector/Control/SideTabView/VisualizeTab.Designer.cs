@@ -74,14 +74,6 @@
             this.blendingOptionPanel = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel9 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.verticalityRange_inf = new Bunifu.Framework.UI.BunifuRange();
-            this.verticalityRange = new Bunifu.Framework.UI.BunifuRange();
-            this.horizontalRange_inf = new Bunifu.Framework.UI.BunifuRange();
-            this.bunifuCustomLabel13 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.horizontalRange = new Bunifu.Framework.UI.BunifuRange();
-            this.bunifuCustomLabel12 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel11 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel10 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.connectVisualizeButton)).BeginInit();
@@ -659,18 +651,10 @@
             this.blendingOptionPanel.Controls.Add(this.bunifuCustomLabel1);
             this.blendingOptionPanel.Controls.Add(this.thresholdSlider);
             this.blendingOptionPanel.Controls.Add(this.bunifuCustomLabel5);
-            this.blendingOptionPanel.Controls.Add(this.verticalityRange_inf);
-            this.blendingOptionPanel.Controls.Add(this.verticalityRange);
-            this.blendingOptionPanel.Controls.Add(this.horizontalRange_inf);
-            this.blendingOptionPanel.Controls.Add(this.bunifuCustomLabel13);
-            this.blendingOptionPanel.Controls.Add(this.horizontalRange);
-            this.blendingOptionPanel.Controls.Add(this.bunifuCustomLabel12);
-            this.blendingOptionPanel.Controls.Add(this.bunifuCustomLabel11);
-            this.blendingOptionPanel.Controls.Add(this.bunifuCustomLabel10);
             this.blendingOptionPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.blendingOptionPanel.Location = new System.Drawing.Point(0, 459);
             this.blendingOptionPanel.Name = "blendingOptionPanel";
-            this.blendingOptionPanel.Size = new System.Drawing.Size(350, 245);
+            this.blendingOptionPanel.Size = new System.Drawing.Size(350, 104);
             this.blendingOptionPanel.TabIndex = 45;
             this.blendingOptionPanel.Visible = false;
             // 
@@ -695,110 +679,6 @@
             this.bunifuCustomLabel9.Size = new System.Drawing.Size(71, 16);
             this.bunifuCustomLabel9.TabIndex = 1;
             this.bunifuCustomLabel9.Text = "블렌딩 옵션";
-            // 
-            // verticalityRange_inf
-            // 
-            this.verticalityRange_inf.BackColor = System.Drawing.Color.Transparent;
-            this.verticalityRange_inf.BackgroudColor = System.Drawing.Color.Silver;
-            this.verticalityRange_inf.BorderRadius = 5;
-            this.verticalityRange_inf.IndicatorColor = System.Drawing.Color.Salmon;
-            this.verticalityRange_inf.Location = new System.Drawing.Point(110, 214);
-            this.verticalityRange_inf.MaximumRange = 480;
-            this.verticalityRange_inf.Name = "verticalityRange_inf";
-            this.verticalityRange_inf.RangeMax = 480;
-            this.verticalityRange_inf.RangeMin = 0;
-            this.verticalityRange_inf.Size = new System.Drawing.Size(224, 28);
-            this.verticalityRange_inf.TabIndex = 3;
-            this.verticalityRange_inf.RangeChanged += new System.EventHandler(this.verticalityRange_inf_RangeChanged);
-            // 
-            // verticalityRange
-            // 
-            this.verticalityRange.BackColor = System.Drawing.Color.Transparent;
-            this.verticalityRange.BackgroudColor = System.Drawing.Color.Silver;
-            this.verticalityRange.BorderRadius = 5;
-            this.verticalityRange.IndicatorColor = System.Drawing.Color.Salmon;
-            this.verticalityRange.Location = new System.Drawing.Point(110, 146);
-            this.verticalityRange.MaximumRange = 480;
-            this.verticalityRange.Name = "verticalityRange";
-            this.verticalityRange.RangeMax = 480;
-            this.verticalityRange.RangeMin = 0;
-            this.verticalityRange.Size = new System.Drawing.Size(224, 28);
-            this.verticalityRange.TabIndex = 3;
-            this.verticalityRange.RangeChanged += new System.EventHandler(this.verticalityRange_RangeChanged);
-            // 
-            // horizontalRange_inf
-            // 
-            this.horizontalRange_inf.BackColor = System.Drawing.Color.Transparent;
-            this.horizontalRange_inf.BackgroudColor = System.Drawing.Color.Silver;
-            this.horizontalRange_inf.BorderRadius = 5;
-            this.horizontalRange_inf.IndicatorColor = System.Drawing.Color.Salmon;
-            this.horizontalRange_inf.Location = new System.Drawing.Point(110, 180);
-            this.horizontalRange_inf.MaximumRange = 640;
-            this.horizontalRange_inf.Name = "horizontalRange_inf";
-            this.horizontalRange_inf.RangeMax = 640;
-            this.horizontalRange_inf.RangeMin = 0;
-            this.horizontalRange_inf.Size = new System.Drawing.Size(224, 28);
-            this.horizontalRange_inf.TabIndex = 3;
-            this.horizontalRange_inf.RangeChanged += new System.EventHandler(this.horizontalRange_inf_RangeChanged);
-            // 
-            // bunifuCustomLabel13
-            // 
-            this.bunifuCustomLabel13.AutoSize = true;
-            this.bunifuCustomLabel13.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel13.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bunifuCustomLabel13.Location = new System.Drawing.Point(43, 220);
-            this.bunifuCustomLabel13.Name = "bunifuCustomLabel13";
-            this.bunifuCustomLabel13.Size = new System.Drawing.Size(29, 15);
-            this.bunifuCustomLabel13.TabIndex = 2;
-            this.bunifuCustomLabel13.Text = "수직";
-            // 
-            // horizontalRange
-            // 
-            this.horizontalRange.BackColor = System.Drawing.Color.Transparent;
-            this.horizontalRange.BackgroudColor = System.Drawing.Color.Silver;
-            this.horizontalRange.BorderRadius = 5;
-            this.horizontalRange.IndicatorColor = System.Drawing.Color.Salmon;
-            this.horizontalRange.Location = new System.Drawing.Point(110, 112);
-            this.horizontalRange.MaximumRange = 640;
-            this.horizontalRange.Name = "horizontalRange";
-            this.horizontalRange.RangeMax = 640;
-            this.horizontalRange.RangeMin = 0;
-            this.horizontalRange.Size = new System.Drawing.Size(224, 28);
-            this.horizontalRange.TabIndex = 3;
-            this.horizontalRange.RangeChanged += new System.EventHandler(this.horizontalRange_RangeChanged);
-            // 
-            // bunifuCustomLabel12
-            // 
-            this.bunifuCustomLabel12.AutoSize = true;
-            this.bunifuCustomLabel12.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel12.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bunifuCustomLabel12.Location = new System.Drawing.Point(42, 183);
-            this.bunifuCustomLabel12.Name = "bunifuCustomLabel12";
-            this.bunifuCustomLabel12.Size = new System.Drawing.Size(28, 15);
-            this.bunifuCustomLabel12.TabIndex = 2;
-            this.bunifuCustomLabel12.Text = "수평";
-            // 
-            // bunifuCustomLabel11
-            // 
-            this.bunifuCustomLabel11.AutoSize = true;
-            this.bunifuCustomLabel11.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel11.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bunifuCustomLabel11.Location = new System.Drawing.Point(43, 152);
-            this.bunifuCustomLabel11.Name = "bunifuCustomLabel11";
-            this.bunifuCustomLabel11.Size = new System.Drawing.Size(29, 15);
-            this.bunifuCustomLabel11.TabIndex = 2;
-            this.bunifuCustomLabel11.Text = "수직";
-            // 
-            // bunifuCustomLabel10
-            // 
-            this.bunifuCustomLabel10.AutoSize = true;
-            this.bunifuCustomLabel10.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel10.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bunifuCustomLabel10.Location = new System.Drawing.Point(42, 115);
-            this.bunifuCustomLabel10.Name = "bunifuCustomLabel10";
-            this.bunifuCustomLabel10.Size = new System.Drawing.Size(28, 15);
-            this.bunifuCustomLabel10.TabIndex = 2;
-            this.bunifuCustomLabel10.Text = "수평";
             // 
             // VisualizeTab
             // 
@@ -892,15 +772,7 @@
         private System.Windows.Forms.Panel panel20;
         private Bunifu.Framework.UI.BunifuRange levelTemperatureRange;
         private System.Windows.Forms.Panel blendingOptionPanel;
-        private Bunifu.Framework.UI.BunifuRange verticalityRange;
-        private Bunifu.Framework.UI.BunifuRange horizontalRange;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel11;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel10;
         private System.Windows.Forms.Panel panel21;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel9;
-        private Bunifu.Framework.UI.BunifuRange verticalityRange_inf;
-        private Bunifu.Framework.UI.BunifuRange horizontalRange_inf;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel13;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel12;
     }
 }
