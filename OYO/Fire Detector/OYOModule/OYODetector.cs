@@ -6,7 +6,7 @@ namespace oyo
 {
     public partial class OYODetector
     {
-        public delegate bool isDetectedDelegate(RotatedRect detectedRect);
+        public delegate bool                    isDetectedDelegate(RotatedRect detectedRect);
 
         //
         // Threshold

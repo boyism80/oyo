@@ -46,6 +46,10 @@ namespace Fire_Detector.BunifuForm
             this.Receiver.OnUpdate                  += this.Receiver_OnUpdate;
             this.Receiver.OnError                   += this.Receiver_OnError;
 
+            this.Detector.OnEnabledChanged          += this.defaultView.sideExpandedBar.detectFireTab.Detector_OnNotificationChanged;
+            this.Detector.OnNotificationChanged     += this.defaultView.sideExpandedBar.detectFireTab.Detector_OnNotificationChanged;
+            this.Detector.OnDetectionStateChanged   += this.defaultView.sideExpandedBar.detectFireTab.Detector_OnDetectionStateChanged;
+
             this.Recorder.OnIncreasedTime           += this.defaultView.sideExpandedBar.droneTab.Recorder_OnIncreasedTime;
 
             this.Overlayer.OnReceiveAddressEvent    += this.defaultView.Overlayer_OnReceiveAddressEvent;
@@ -77,7 +81,6 @@ namespace Fire_Detector.BunifuForm
             this.OnScreenStateChanged               += this.mainView.OnScreenStateChanged;
             this.OnScreenStateChanged               += this.mainView.mainConnectionView.OnScreenStateChanged;
 
-            this.OnDetectionStateChanged            += this.defaultView.sideExpandedBar.detectFireTab.DetectFireTab_OnDetectionStateChanged;
 
             this.Patrol.Reader.OnChanged            += this.PatrolReader_OnChanged;
             this.Patrol.Reader.OnExit               += this.PatrolReader_OnExit;
@@ -276,7 +279,7 @@ namespace Fire_Detector.BunifuForm
                     var betweenMin                  = this.UpdatedDataBuffer.MeanTemperature - this.UpdatedDataBuffer.MinimumTemperature;
                     var betweenMax                  = this.UpdatedDataBuffer.MaximumTemperature - this.UpdatedDataBuffer.MeanTemperature;
 
-                    this.Detector.Update(mask, delegate (RotatedRect detectedRect)
+                    this.Detector.Detect(mask, delegate (RotatedRect detectedRect)
                     {
                         var center                  = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
                         if(center - this.UpdatedDataBuffer.MeanTemperature > betweenMin * DETECTION_ALPHA)
@@ -284,21 +287,6 @@ namespace Fire_Detector.BunifuForm
 
                         return false;
                     });
-
-                    var detected                    = this.Detector.DetectedRects.Length != 0;
-                    if(this._currentDetected != detected)
-                    {
-                        this._currentDetected       = detected;
-                        if(this.OnDetectionStateChanged != null)
-                            this.OnDetectionStateChanged.Invoke(this._currentDetected, this.Detector.DetectedRects);
-                    }
-
-                    if(this._currentDetectedCount != this.Detector.DetectedRects.Length)
-                    {
-                        this._currentDetectedCount  = this.Detector.DetectedRects.Length;
-                        if(this.OnDetectionCountChanged != null)
-                            this.OnDetectionCountChanged.Invoke(this.Detector.DetectedRects);
-                    }
 
                     updatedFrame                    = this.Detector.DrawDetectedRects(updatedFrame);
 

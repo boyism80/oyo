@@ -133,17 +133,34 @@ namespace Fire_Detector.Control.SideTabView
             }
         }
 
-        public void DetectFireTab_OnDetectionStateChanged(bool isDetected, RotatedRect[] detectedRects)
+        public void Detector_OnDetectionStateChanged(bool isDetected, RotatedRect[] detectedRects)
         {
             if(isDetected)
             {
                 this._soundPlayer.PlayLooping();
-                Console.WriteLine("play alaram sound");
+                Console.WriteLine("play sound");
             }
             else
             {
                 this._soundPlayer.Stop();
-                Console.WriteLine("stop alarm sound");
+                Console.WriteLine("stop sound");
+            }
+        }
+
+        public void Detector_OnNotificationChanged(bool enabled, bool isDetected)
+        {
+            if(enabled)
+            {
+                if(isDetected)
+                {
+                    this._soundPlayer.PlayLooping();
+                    Console.WriteLine("play sound");
+                }
+            }
+            else
+            {
+                this._soundPlayer.Stop();
+                Console.WriteLine("stop sound");
             }
         }
     }

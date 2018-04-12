@@ -31,10 +31,6 @@ namespace Fire_Detector.BunifuForm
         /// <param name="size">변경된 폼의 크기</param>
         /// <param name="isMaximize">최대화 여부</param>
         public delegate void                    ScreenStateChangedEvent(System.Drawing.Size size, bool isMaximize);
-
-
-        public delegate void                    DetectionStateChangedEvent(bool isDetected, RotatedRect[] detectedRects);
-        public delegate void                    DetectionCountChangedEvent(RotatedRect[] detectedRects);
         #endregion
 
         #region 정적 공유 상수 선언부
@@ -76,10 +72,6 @@ namespace Fire_Detector.BunifuForm
         /// </summary>
         private System.Drawing.Point            _beforePosition;
         private System.Drawing.Size             _beforeSize;
-
-
-        private bool                            _currentDetected;
-        private int                             _currentDetectedCount;
         #endregion
 
         #region 이벤트 핸들러 선언부
@@ -92,10 +84,6 @@ namespace Fire_Detector.BunifuForm
         /// 메인폼의 크기가 바뀔 때 호출되는 이벤트입니다.
         /// </summary>
         public event ScreenStateChangedEvent    OnScreenStateChanged;
-
-        public event DetectionStateChangedEvent OnDetectionStateChanged;
-        
-        public event DetectionCountChangedEvent OnDetectionCountChanged;
 
         #endregion
 
