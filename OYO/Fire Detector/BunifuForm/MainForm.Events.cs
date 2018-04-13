@@ -99,7 +99,6 @@ namespace Fire_Detector.BunifuForm
             this.Receiver.Exit();
             this.Bebop2.Disconnect();
             this.Patrol.Stop();
-            this.InterruptDetectionDisable();
 
             OYOKeysHook.Unset();
             this._mutex.Close();
@@ -160,32 +159,23 @@ namespace Fire_Detector.BunifuForm
                 //
                 // Get scaled
                 //
-                var scaled                          = this.Visualizer.Scaled;
-                if (this.Blender.Enabled || this.defaultView.streamingFrameBox.SizeMode != PictureBoxSizeMode.CenterImage)
-                    scaled                          = OYOVisualizer.MAX_SCALED_SIZE;
-
-                else if (this.Visualizer.StreamingType == StreamingType.Visual)
-                    scaled                          = OYOVisualizer.MAX_SCALED_SIZE / 2.0f;
+                var scaled = this.Visualizer.Scaled / 10.0f;
+                var baseSize = new OpenCvSharp.Size(640 * scaled, 480 * scaled);
 
 
                 //
                 // Get updated frame and store buffer
                 //
                 var updatedFrame                    = new Mat();
-                var previousSize                    = new OpenCvSharp.Size();
                 if (streamingType == StreamingType.Infrared)
                 {
-                    updatedFrame                    = receiver.Infrared(scaled);
-                    previousSize                    = updatedFrame.Size();
-                    updatedFrame                    = this.Visualizer.Crop(updatedFrame, StreamingType.Infrared).Resize(previousSize);
-                    this.UpdatedDataBuffer.SetInfrared(this.Visualizer.mappingPalette(updatedFrame), receiver.Temperature(scaled));
+                    updatedFrame                    = receiver.Infrared(baseSize);
+                    this.UpdatedDataBuffer.SetInfrared(this.Visualizer.mappingPalette(updatedFrame), receiver.Temperature(baseSize));
                     this.Recorder.Write(OYORecorder.RecordingStateType.Infrared, updatedFrame);
                 }
                 else
                 {
-                    updatedFrame                    = receiver.Visual();
-                    previousSize                    = updatedFrame.Size();
-                    updatedFrame                    = this.Visualizer.Crop(updatedFrame, StreamingType.Visual).Resize(previousSize);
+                    updatedFrame                    = receiver.Visual(baseSize);
                     this.UpdatedDataBuffer.SetVisual(updatedFrame);
                     this.Recorder.Write(OYORecorder.RecordingStateType.Visual, updatedFrame);
                 }
@@ -194,6 +184,7 @@ namespace Fire_Detector.BunifuForm
                 //
                 // Set current frame box size to fix frame and temperature table size
                 //
+                this.Blender.Size                   = baseSize;
                 var currentDisplaySize              = this.GetDisplaySize(streamingType, updatedFrame);
                 updatedFrame                        = this.UpdatedDataBuffer.SetDisplay(currentDisplaySize);
 
@@ -297,10 +288,6 @@ namespace Fire_Detector.BunifuForm
                         var center                  = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
                         this.Visualizer.markTemperature(updatedFrame, new Point(detectedRect.Center.X, detectedRect.Center.Y), center, Scalar.Red);
                     }
-                }
-                else
-                {
-                    this.InterruptDetectionDisable();
                 }
 
                 

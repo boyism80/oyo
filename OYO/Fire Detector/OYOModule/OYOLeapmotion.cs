@@ -5,9 +5,9 @@ namespace oyo
 {
     public class OYOLeapmotion : Leap.Controller
     {
-        public new event EventHandler<DeviceEventArgs> Connect;
-        public new event EventHandler<DeviceEventArgs> Disconnect;
-        public new event EventHandler<FrameEventArgs> FrameReady;
+        public new event EventHandler<DeviceEventArgs>  Connect;
+        public new event EventHandler<DeviceEventArgs>  Disconnect;
+        public new event EventHandler<FrameEventArgs>   FrameReady;
 
         private bool _enabled;
         public bool Enabled

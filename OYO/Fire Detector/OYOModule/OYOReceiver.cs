@@ -239,7 +239,7 @@ namespace oyo
                 using (var reader = new BinaryReader(new MemoryStream(headerBuffer)))
                 {
                     var type                    = reader.ReadInt32();
-                    streamingType                   = (type == 0 ? StreamingType.Infrared : StreamingType.Visual);
+                    streamingType               = (type == 0 ? StreamingType.Infrared : StreamingType.Visual);
 
                     var size                    = reader.ReadInt32();
                     var buffer                  = new byte[size];

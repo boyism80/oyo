@@ -17,47 +17,7 @@ namespace Fire_Detector.Control
         {
             InitializeComponent();
 
-            this.iconPanels                 = new Panel[] { this.dronePanel, this.raspCamPanel, this.leapmotionPanel };
-        }
-
-        private void update()
-        {
-            if(this.Root == null)
-                return;
-
-            try
-            {
-                this.raspCamProgressbar.Invoke(new MethodInvoker(delegate ()
-                {
-                    this.raspCamProgressbar.Value               = this.Root.Receiver.Connected ? 15 : 0;
-                    this.raspCamProgressbar.animated            = this.Root.Receiver.Connected;
-                    this.raspCamProgressbar.ProgressBackColor   = this.Root.Receiver.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
-                }));
-
-                this.droneProgressbar.Invoke(new MethodInvoker(delegate ()
-                {
-                    this.droneProgressbar.Value                 = this.Root.Bebop2.Connected ? 15 : 0;
-                    this.droneProgressbar.animated              = this.Root.Bebop2.Connected;
-                    this.droneProgressbar.ProgressBackColor     = this.Root.Bebop2.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
-                }));
-
-                this.cameraConnectionLabel.Invoke(new MethodInvoker(delegate ()
-                {
-                    this.cameraConnectionLabel.Text             = this.Root.Receiver.Connected ? "연결됨" : "연결 안됨";
-                }));
-
-                this.cameraStatePanel.Invoke(new MethodInvoker(delegate ()
-                {
-                    this.cameraStatePanel.Visible               = this.Root.Receiver.Connected;
-                }));
-
-                this.droneStatePanel.Invoke(new MethodInvoker(delegate ()
-                {
-                    this.droneStatePanel.Visible                = this.Root.Bebop2.Connected;
-                }));
-            }
-            catch(Exception)
-            {}
+            this.iconPanels                         = new Panel[] { this.dronePanel, this.raspCamPanel, this.leapmotionPanel };
         }
 
         public void OnScreenStateChanged(System.Drawing.Size size, bool isMaximize)
@@ -90,7 +50,27 @@ namespace Fire_Detector.Control
 
         public void Receiver_OnConnectionChanged(OYOReceiver receiver)
         {
-            this.update();
+            try
+            {
+                this.raspCamProgressbar.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.raspCamProgressbar.Value               = receiver.Connected ? 15 : 0;
+                    this.raspCamProgressbar.animated            = receiver.Connected;
+                    this.raspCamProgressbar.ProgressBackColor   = receiver.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
+                }));
+
+                this.cameraConnectionLabel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.cameraConnectionLabel.Text             = receiver.Connected ? "연결됨" : "연결 안됨";
+                }));
+
+                this.cameraStatePanel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.cameraStatePanel.Visible               = receiver.Connected;
+                }));
+            }
+            catch (Exception)
+            { }
         }
 
         private void MainConnectionView_Load(object sender, System.EventArgs e)
@@ -143,15 +123,24 @@ namespace Fire_Detector.Control
             }
         }
 
-        private void MainConnectionView_VisibleChanged(object sender, EventArgs e)
-        {
-            if(this.Visible)
-                this.update();
-        }
-
         public void Bebop_OnConnectionChanged(Bebop2 bebop)
         {
-            this.update();
+            try
+            {
+                this.droneProgressbar.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.droneProgressbar.Value             = this.Root.Bebop2.Connected ? 15 : 0;
+                    this.droneProgressbar.animated          = this.Root.Bebop2.Connected;
+                    this.droneProgressbar.ProgressBackColor = this.Root.Bebop2.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
+                }));
+            
+                this.droneStatePanel.Invoke(new MethodInvoker(delegate ()
+                {
+                    this.droneStatePanel.Visible            = this.Root.Bebop2.Connected;
+                }));
+            }
+            catch(Exception)
+            { }
         }
 
         public void LeapController_FrameReady(object sender, Leap.FrameEventArgs e)

@@ -263,21 +263,5 @@ namespace Fire_Detector.BunifuForm
                 }
             }
         }
-
-        private void InterruptDetectionDisable()
-        {
-            if(this._currentDetected == false)
-                return;
-
-            var emptyRects = new RotatedRect[] { };
-
-            this._currentDetected = false;
-            if (this.OnDetectionStateChanged != null)
-                this.OnDetectionStateChanged.Invoke(false, emptyRects);
-
-            this._currentDetectedCount = 0;
-            if (this.OnDetectionCountChanged != null)
-                this.OnDetectionCountChanged.Invoke(emptyRects);
-        }
     }
 }
