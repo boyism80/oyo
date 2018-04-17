@@ -100,9 +100,6 @@ namespace Fire_Detector.Control
             if(this.Root.Receiver.Connected == false)
                 return;
 
-            if(this.Root.Overlayer.Enabled == false)
-                return;
-
             var area = this.Root.Overlayer.ActiveArea();
             if (area.IsEmpty == false && area.Contains(e.X, e.Y))
             {

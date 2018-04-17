@@ -190,6 +190,7 @@ namespace oyo
                 var icon                    = this._icon.Resize(area.Size);
                 var mask                    = this._mask.Resize(area.Size);
                 icon.CopyTo(new Mat(frame, area), mask);
+                frame                       = frame.CvtColor(ColorConversionCodes.BGRA2BGR);
             }
             else if (this.State == GmapState.Expanded)
             {
@@ -203,7 +204,6 @@ namespace oyo
             }
 
             this._currentFrame              = frame;
-            this._currentFrame              = this._currentFrame.CvtColor(ColorConversionCodes.BGRA2BGR);
             return this._currentFrame;
         }
 
@@ -223,7 +223,7 @@ namespace oyo
                 }
                 else if (this._owner.SizeMode == PictureBoxSizeMode.Zoom)
                 {
-                    if (area.Width > area.Height)
+                    if (this._currentFrame.Width > this._currentFrame.Height)
                     {
                         ret.Y             += (int)((this._owner.Height - this._currentFrame.Height) / 2.0f);
                     }
@@ -249,8 +249,7 @@ namespace oyo
         {
             try
             {
-                if(this.OnReceiveGmapEvent == null)
-                    return;
+                
 
                 if (this.State == GmapState.Collapsed)
                     throw new Exception();
@@ -272,7 +271,8 @@ this._mutex.WaitOne();
                 this._cachedGmap            = Cv2.ImDecode(mstream.ToArray(), ImreadModes.AnyColor);
 this._mutex.ReleaseMutex();
 
-                this.OnReceiveGmapEvent.Invoke(this._cachedGmap);
+                if(this.OnReceiveGmapEvent != null)
+                    this.OnReceiveGmapEvent.Invoke(this._cachedGmap);
             }
             catch (Exception)
             {

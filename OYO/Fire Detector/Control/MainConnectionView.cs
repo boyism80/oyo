@@ -136,6 +136,7 @@ namespace Fire_Detector.Control
             
                 this.droneStatePanel.Invoke(new MethodInvoker(delegate ()
                 {
+                    this.droneConnectionLabel.Text          = this.Root.Bebop2.Connected ? "연결됨" : "연결 안 됨";
                     this.droneStatePanel.Visible            = this.Root.Bebop2.Connected;
                 }));
             }
