@@ -415,7 +415,7 @@ this._mutex.WaitOne();
             this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);
             if(this.Patrol.Mode == OYOPatrol.PatrolMode.Write)
                 this.Patrol.Writer.Write(this._pcmd);
-            this._mutex.ReleaseMutex();
+this._mutex.ReleaseMutex();
         }
 
         public void Bebop2_OnStreaming(Bebop2 bebop, Mat frame)
@@ -507,6 +507,19 @@ this._mutex.ReleaseMutex();
             else
             {
                 this._pcmd.yaw              = 0;
+            }
+
+            if (this._pcmd.pitch == 0 && this._pcmd.roll == 0)
+            {
+                this._pcmd.flag = 0;
+                this._pcmd.pitch = 0;
+                this._pcmd.roll = 0;
+            }
+            else
+            {
+                this._pcmd.flag = 1;
+                this._pcmd.yaw = 0;
+                this._pcmd.gaz = 0;
             }
 
             this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);

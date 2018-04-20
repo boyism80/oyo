@@ -390,7 +390,7 @@
             this.palettesDropDown.DisabledColor = System.Drawing.Color.Gray;
             this.palettesDropDown.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.palettesDropDown.ForeColor = System.Drawing.Color.White;
-            this.palettesDropDown.Items = new string[] {
+            this.palettesDropDown.items = new string[] {
         "Grayscale",
         "IronBlack",
         "Autumn",

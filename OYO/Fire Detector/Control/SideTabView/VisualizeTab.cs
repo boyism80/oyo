@@ -27,7 +27,7 @@ namespace Fire_Detector.Control.SideTabView
 
                 this.palettesDropDown.Invoke(new MethodInvoker(delegate ()
                 {
-                    for (var i = 0; i < this.palettesDropDown.Items.Length; i++)
+                    for (var i = 0; i < this.palettesDropDown.Items.Count; i++)
                     {
                         if (this.palettesDropDown.Items[i].Equals(this.Root.Visualizer.Palette))
                         {

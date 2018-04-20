@@ -33,8 +33,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.recordPanel = new System.Windows.Forms.Panel();
             this.recordControlPanel = new System.Windows.Forms.Panel();
-            this.recordFileNameTextBox = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
-            this.recordFileTextbox = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
+            this.recordFileNameTextBox = new Bunifu.Framework.BunifuCustomTextbox();
+            this.recordFileTextbox = new Bunifu.Framework.BunifuCustomTextbox();
             this.recordFileBrowseButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.recordStateLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.beginRecordButton = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -51,7 +51,7 @@
             this.patrolPanel = new System.Windows.Forms.Panel();
             this.patrolVersionSwitch = new Bunifu.Framework.UI.BunifuiOSSwitch();
             this.patrolControlPanel = new System.Windows.Forms.Panel();
-            this.patrolFileTextBox = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
+            this.patrolFileTextBox = new Bunifu.Framework.BunifuCustomTextbox();
             this.patrolStateLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.patrolStartEndButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.patrolFileBrowseButton = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -1100,14 +1100,14 @@
         private System.Windows.Forms.Panel panel10;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel10;
         private System.Windows.Forms.Panel patrolControlPanel;
-        private WindowsFormsControlLibrary1.BunifuCustomTextbox patrolFileTextBox;
+        private Bunifu.Framework.BunifuCustomTextbox patrolFileTextBox;
         private Bunifu.Framework.UI.BunifuCustomLabel patrolStateLabel;
         private Bunifu.Framework.UI.BunifuThinButton2 patrolStartEndButton;
         private Bunifu.Framework.UI.BunifuThinButton2 patrolFileBrowseButton;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel13;
         private System.Windows.Forms.Panel recordControlPanel;
-        private WindowsFormsControlLibrary1.BunifuCustomTextbox recordFileNameTextBox;
-        private WindowsFormsControlLibrary1.BunifuCustomTextbox recordFileTextbox;
+        private Bunifu.Framework.BunifuCustomTextbox recordFileNameTextBox;
+        private Bunifu.Framework.BunifuCustomTextbox recordFileTextbox;
         private Bunifu.Framework.UI.BunifuCustomLabel recordStateLabel;
         private Bunifu.Framework.UI.BunifuThinButton2 beginRecordButton;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel11;
