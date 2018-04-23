@@ -392,6 +392,7 @@
             this.palettesDropDown.ForeColor = System.Drawing.Color.White;
             this.palettesDropDown.items = new string[] {
         "Grayscale",
+        "Default",
         "IronBlack",
         "Autumn",
         "Bone",

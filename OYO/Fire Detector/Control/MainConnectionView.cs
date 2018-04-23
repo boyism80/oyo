@@ -1,4 +1,5 @@
-﻿using Fire_Detector.Control.SideTabView;
+﻿using Bunifu.Framework.UI;
+using Fire_Detector.Control.SideTabView;
 using Fire_Detector.Dialog;
 using Fire_Detector.Source.Extension;
 using oyo;
@@ -12,12 +13,14 @@ namespace Fire_Detector.Control
     public partial class MainConnectionView : BaseControl
     {
         private Panel[]         iconPanels;
+        private BunifuCircleProgressbar[] progressbars;
 
         public MainConnectionView()
         {
             InitializeComponent();
 
             this.iconPanels                         = new Panel[] { this.dronePanel, this.raspCamPanel, this.leapmotionPanel };
+            this.progressbars                       = new BunifuCircleProgressbar[] { this.droneProgressbar, this.raspCamProgressbar, this.leapmotionProgressbar };
         }
 
         public void OnScreenStateChanged(System.Drawing.Size size, bool isMaximize)
@@ -52,10 +55,11 @@ namespace Fire_Detector.Control
         {
             try
             {
+                this.SetProgressbarState(this.raspCamProgressbar, receiver.Connected);
+
                 this.raspCamProgressbar.Invoke(new MethodInvoker(delegate ()
                 {
                     this.raspCamProgressbar.Value               = receiver.Connected ? 15 : 0;
-                    this.raspCamProgressbar.animated            = receiver.Connected;
                     this.raspCamProgressbar.ProgressBackColor   = receiver.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
                 }));
 
@@ -127,10 +131,11 @@ namespace Fire_Detector.Control
         {
             try
             {
+                this.SetProgressbarState(this.droneProgressbar, this.Root.Bebop2.Connected);
+
                 this.droneProgressbar.Invoke(new MethodInvoker(delegate ()
                 {
                     this.droneProgressbar.Value             = this.Root.Bebop2.Connected ? 15 : 0;
-                    this.droneProgressbar.animated          = this.Root.Bebop2.Connected;
                     this.droneProgressbar.ProgressBackColor = this.Root.Bebop2.Connected ? Color.Gainsboro : Color.FromArgb(255, 200, 150);
                 }));
             
@@ -172,12 +177,13 @@ namespace Fire_Detector.Control
             if(this.Root == null)
                 return;
 
+            this.SetProgressbarState(this.leapmotionProgressbar, true);
+
             this.leapmotionProgressbar.Invoke(new MethodInvoker(delegate ()
             {
                 this.leapmotionProgressbar.Invoke(new MethodInvoker(delegate ()
                 {
                     this.leapmotionProgressbar.Value               = 0;
-                    this.leapmotionProgressbar.animated            = false;
                     this.leapmotionProgressbar.ProgressBackColor   = Color.FromArgb(255, 200, 150);
                 }));
             }));
@@ -201,10 +207,11 @@ namespace Fire_Detector.Control
             if(this.Root.LeapController.Enabled == false)
                 return;
 
+            this.SetProgressbarState(this.leapmotionProgressbar, true);
+
             this.leapmotionProgressbar.Invoke(new MethodInvoker(delegate ()
             {
                 this.leapmotionProgressbar.Value               = 15;
-                this.leapmotionProgressbar.animated            = true;
                 this.leapmotionProgressbar.ProgressBackColor   = Color.Gainsboro;
             }));
 
@@ -217,6 +224,26 @@ namespace Fire_Detector.Control
             {
                 this.leapmotionConnectionLabel.Text             = "연결됨";
             }));
+        }
+
+        public void SetProgressbarState(Bunifu.Framework.UI.BunifuCircleProgressbar target, bool value)
+        {
+            foreach (var progressbar in this.progressbars)
+            {
+                if(target != progressbar && value == false)
+                    continue;
+
+                progressbar.Invoke(new MethodInvoker(delegate ()
+                {
+                    var old = progressbar.animated;
+                    progressbar.animated = false;
+
+                    if (progressbar == target)
+                        progressbar.animated = value;
+                    else
+                        progressbar.animated = old;
+                }));
+            }
         }
     }
 }

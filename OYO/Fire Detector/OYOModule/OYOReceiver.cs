@@ -188,7 +188,7 @@ namespace oyo
 
                 return this._socket.Connected;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 this._socket.Close();
                 this._socket = null;
@@ -216,6 +216,23 @@ namespace oyo
             this._socket = null;
         }
 
+        private byte[] Receive(int size)
+        {
+            var bytes = new byte[size];
+            var offset = 0;
+
+            while (size != offset)
+            {
+                var recvsize = this._socket.Receive(bytes, offset, size - offset, SocketFlags.None);
+                if(recvsize == 0)
+                    return null;
+
+                offset += recvsize;
+            }
+
+            return bytes;
+        }
+
         //
         // Receive
         //  서버로부터 데이터를 얻어옵니다.
@@ -231,29 +248,18 @@ namespace oyo
         {
             lock(this._socket)
             {
-                var headerBuffer                = new byte[sizeof(int) + sizeof(int)];
-                var headerSize                  = this._socket.Receive(headerBuffer);
-                if(headerSize == 0)
+                var header                      = this.Receive(sizeof(int) + sizeof(int));
+                if(header == null)
                     return null;
             
-                using (var reader = new BinaryReader(new MemoryStream(headerBuffer)))
+                using (var reader = new BinaryReader(new MemoryStream(header)))
                 {
                     var type                    = reader.ReadInt32();
+                    var size                    = reader.ReadInt32();
                     streamingType               = (type == 0 ? StreamingType.Infrared : StreamingType.Visual);
 
-                    var size                    = reader.ReadInt32();
-                    var buffer                  = new byte[size];
-                    var offset                  = 0;
-                    while (size != offset)
-                    {
-                        var recvsize            = this._socket.Receive(buffer, offset, size - offset, SocketFlags.None);
-                        if(recvsize == 0)
-                            return null;
-
-                        offset                 += recvsize;
-                    }
-
-                    return buffer;
+                    
+                    return this.Receive(size);
                 }
             }
         }
@@ -269,7 +275,6 @@ namespace oyo
         //
         private void Update(ref StreamingType streamingType)
         {
-
             var buffer = this.Receive(ref streamingType);
             if (buffer == null)
                 throw new SocketException(10024);

@@ -46,7 +46,7 @@ namespace Fire_Detector.Control.SideTabView
                     var cross = direction.Cross(Leap.Vector.Forward);
                     var angle = direction.AngleTo(Leap.Vector.Forward) * 180.0f / Math.PI * (cross.y > 0 ? 1 : -1) - 10.0f;
                     
-                    this.leapPitchLabel.Text    = angle.ToString("0.00");
+                    //this.leapPitchLabel.Text    = angle.ToString("0.00");
                     //this.leapYawLabel.Text      = cross.y.ToString("0.00");
                     //this.leapRollLabel.Text     = cross.z.ToString("0.00");
                 }
