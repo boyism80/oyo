@@ -24,6 +24,7 @@ namespace oyo
         //
         public static readonly uint             LeptonWidth                 = 80;
         public static readonly uint             LeptonHeight                = 60;
+        public static readonly Rect             CropArea                    = new Rect(new Point(11, 41), new Size(560, 420));
 
         //
         // LeptonBufferSize
@@ -286,11 +287,6 @@ namespace oyo
                 {
                     for (var col = 0; col < LeptonWidth; col++)
                     {
-                        //var bytes = reader.ReadBytes(sizeof(ushort));
-                        //Array.Reverse(bytes);
-                        //BitConverter.ToInt16(bytes, 0);
-                        //this._radioactiveTable[row, col] = BitConverter.ToUInt16(bytes, 0);
-
                         this._radioactiveTable[row, col] = reader.ReadUInt16();
                         this._temperatureTable[row, col] = Radioactive2Temperature(this._radioactiveTable[row, col]);
                     }
@@ -299,6 +295,7 @@ namespace oyo
             else if (streamingType == StreamingType.Visual)
             {
                 this._visual = Cv2.ImDecode(buffer, ImreadModes.AnyColor);
+                this._visual = this._visual.Clone(CropArea);
             }
             else
             {
