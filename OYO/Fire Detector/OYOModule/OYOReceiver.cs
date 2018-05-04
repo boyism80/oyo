@@ -17,22 +17,7 @@ namespace oyo
     //
     public class OYOReceiver
     {
-        //
-        // LeptonWidth, LeptonHeight
-        //  Lepton 2.5가 제공하는 해상도입니다.
-        //  이 해상도는 Lepton 3.0 혹은 다른 모듈로 교체하면서 변경될 수 있습니다.
-        //
-        public static readonly uint             LeptonWidth                 = 80;
-        public static readonly uint             LeptonHeight                = 60;
         public static readonly Rect             CropArea                    = new Rect(new Point(11, 41), new Size(560, 420));
-
-        //
-        // LeptonBufferSize
-        //  서버로부터 방사 데이터를 얻는데 필요한 버퍼의 크기입니다.
-        //  실화상 이미지의 크기는 jpg로 인코딩되어 유동적인 크기를 가지지만 방사데이터는 항상 고정된 버퍼의 크기를 가집니다.
-        //  방사값 하나의 데이터 크기는 2bytes입니다.
-        //
-        public static readonly uint             LeptonBufferSize            = LeptonWidth * LeptonHeight * sizeof(ushort);
 
         //
         // CriteriaTable, RadioactiveBoundaryTable
@@ -70,14 +55,14 @@ namespace oyo
         //  서버로부터 얻은 방사값을 2차원 배열에 저장합니다.
         //  업데이트가 될 때마다 이 값은 변경됩니다.
         //
-        private ushort[,]                       _radioactiveTable           = new ushort[LeptonHeight, LeptonWidth];
+        private ushort[,]                       _radioactiveTable           = null;
 
         //
         // _temperatureTable
         //  방사값 테이블을 온도정보와 맵핑한 결과를 저장하는 온도 테이블입니다.
         //  방사값 테이블과 마찬가지로 업데이트가 될 때마다 이 값은 변경됩니다.
         //
-        private  float[,]                       _temperatureTable           = new  float[LeptonHeight, LeptonWidth];
+        private  float[,]                       _temperatureTable           = null;
 
         //
         // _visual
@@ -245,21 +230,23 @@ namespace oyo
         // Return
         //  해당 데이터를 바이트배열 형식으로 리턴합니다.
         //
-        private byte[] Receive(ref StreamingType streamingType)
+        private byte[] Receive(ref StreamingType streamingType, ref int width, ref int height)
         {
             lock(this._socket)
             {
-                var header                      = this.Receive(sizeof(int) + sizeof(int));
+                var header                      = this.Receive(sizeof(int) * 4);
                 if(header == null)
                     return null;
             
                 using (var reader = new BinaryReader(new MemoryStream(header)))
                 {
                     var type                    = reader.ReadInt32();
-                    var size                    = reader.ReadInt32();
                     streamingType               = (type == 0 ? StreamingType.Infrared : StreamingType.Visual);
 
-                    
+                    width                       = reader.ReadInt32();
+                    height                      = reader.ReadInt32();
+                    var size                    = reader.ReadInt32();
+
                     return this.Receive(size);
                 }
             }
@@ -276,16 +263,22 @@ namespace oyo
         //
         private void Update(ref StreamingType streamingType)
         {
-            var buffer = this.Receive(ref streamingType);
+            var width = 0;
+            var height = 0;
+
+            var buffer = this.Receive(ref streamingType, ref width, ref height);
             if (buffer == null)
                 throw new SocketException(10024);
 
             if (streamingType == StreamingType.Infrared)
             {
+                this._radioactiveTable = new ushort[height, width];
+                this._temperatureTable = new float[height, width];
+
                 var reader = new BinaryReader(new MemoryStream(buffer));
-                for (var row = 0; row < LeptonHeight; row++)
+                for (var row = 0; row < height; row++)
                 {
-                    for (var col = 0; col < LeptonWidth; col++)
+                    for (var col = 0; col < width; col++)
                     {
                         this._radioactiveTable[row, col] = reader.ReadUInt16();
                         this._temperatureTable[row, col] = Radioactive2Temperature(this._radioactiveTable[row, col]);
