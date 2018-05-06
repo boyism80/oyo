@@ -1080,7 +1080,6 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         private Bunifu.Framework.UI.BunifuCustomLabel connectionLabel;
-        private Bunifu.Framework.UI.BunifuSlider droneSpeedSlider;
         private Bunifu.Framework.UI.BunifuCustomLabel droneSpeedLabel;
         private Bunifu.Framework.UI.BunifuiOSSwitch takeoffSwitch;
         private Bunifu.Framework.UI.BunifuCustomLabel detectionStateLabel;
@@ -1129,5 +1128,6 @@
         private Bunifu.Framework.UI.BunifuCustomLabel patrolVersionLabel;
         private Bunifu.Framework.UI.BunifuCustomLabel patrolTime;
         private System.Windows.Forms.Timer patrolWriteTimer;
+        private Bunifu.Framework.UI.BunifuSlider droneSpeedSlider;
     }
 }

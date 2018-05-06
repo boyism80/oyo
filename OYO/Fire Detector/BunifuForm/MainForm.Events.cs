@@ -367,35 +367,35 @@ this._mutex.WaitOne();
             switch (key)
             {
                 case Keys.Up:
-                    this._pcmd.pitch = isDown ? 5 : 0;
+                    this._pcmd.pitch = isDown ? this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
                     break;
 
                 case Keys.Down:
-                    this._pcmd.pitch = isDown ? -5 : 0;
+                    this._pcmd.pitch = isDown ? -this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
                     break;
 
                 case Keys.Left:
-                    this._pcmd.roll = isDown ? -5 : 0;
+                    this._pcmd.roll = isDown ? -this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
                     break;
 
                 case Keys.Right:
-                    this._pcmd.roll = isDown ? 5 : 0;
+                    this._pcmd.roll = isDown ? this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
                     break;
 
                 case Keys.W:
-                    this._pcmd.gaz = isDown ? 25 : 0;
+                    this._pcmd.gaz = isDown ? 5 * this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
                     break;
 
                 case Keys.S:
-                    this._pcmd.gaz = isDown ? -25 : 0;
+                    this._pcmd.gaz = isDown ? -5 * this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
                     break;
 
                 case Keys.A:
-                    this._pcmd.yaw = isDown ? 50 : 0;
+                    this._pcmd.yaw = isDown ? 10 * this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
                     break;
 
                 case Keys.D:
-                    this._pcmd.yaw = isDown ? -50 : 0;
+                    this._pcmd.yaw = isDown ? -10 * this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
                     break;
             }
 

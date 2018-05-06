@@ -174,6 +174,11 @@ namespace Fire_Detector.Control.SideTabView
             { }
         }
 
+        public int GetDroneSpeed()
+        {
+            return 5 * this.droneSpeedSlider.Value;
+        }
+
         private void ConnectDroneButton_Click(object sender, EventArgs e)
         {
             if(this.Root == null)
