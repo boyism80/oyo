@@ -41,9 +41,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.droneAltitudeLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.smallWifiPictureBox = new System.Windows.Forms.PictureBox();
+            this.mediumWifiPictureBox = new System.Windows.Forms.PictureBox();
+            this.goodWifiPictureBox = new System.Windows.Forms.PictureBox();
+            this.highWifiPictureBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.bunifuProgressBar1 = new Bunifu.Framework.UI.BunifuProgressBar();
+            this.batteryLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.streamingFrameBox = new System.Windows.Forms.PictureBox();
             this.sideCollapsedBar = new Fire_Detector.Control.SideCollapsedBar();
@@ -53,7 +56,10 @@
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.smallWifiPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mediumWifiPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.goodWifiPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.highWifiPictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.streamingFrameBox)).BeginInit();
@@ -66,7 +72,10 @@
             this.currentStateBar.Controls.Add(this.panel4);
             this.currentStateBar.Controls.Add(this.panel3);
             this.currentStateBar.Controls.Add(this.panel2);
-            this.currentStateBar.Controls.Add(this.pictureBox2);
+            this.currentStateBar.Controls.Add(this.smallWifiPictureBox);
+            this.currentStateBar.Controls.Add(this.mediumWifiPictureBox);
+            this.currentStateBar.Controls.Add(this.goodWifiPictureBox);
+            this.currentStateBar.Controls.Add(this.highWifiPictureBox);
             this.currentStateBar.Controls.Add(this.panel1);
             this.currentStateBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.currentStateBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -79,21 +88,21 @@
             // 
             this.panel5.Controls.Add(this.bunifuCustomLabel2);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(311, 0);
+            this.panel5.Location = new System.Drawing.Point(496, 0);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
-            this.panel5.Size = new System.Drawing.Size(173, 50);
+            this.panel5.Size = new System.Drawing.Size(0, 50);
             this.panel5.TabIndex = 14;
             // 
             // bunifuCustomLabel2
             // 
             this.bunifuCustomLabel2.AutoEllipsis = true;
             this.bunifuCustomLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bunifuCustomLabel2.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel2.Font = new System.Drawing.Font("NEXON Football Gothic L", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.Lime;
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(0, 15);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(173, 20);
+            this.bunifuCustomLabel2.Size = new System.Drawing.Size(0, 20);
             this.bunifuCustomLabel2.TabIndex = 0;
             this.bunifuCustomLabel2.Text = "위치 정보를 얻어오지 못했습니다.";
             // 
@@ -132,7 +141,7 @@
             // detectingLabel
             // 
             this.detectingLabel.AutoSize = true;
-            this.detectingLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detectingLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.detectingLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.detectingLabel.Location = new System.Drawing.Point(33, 17);
             this.detectingLabel.Name = "detectingLabel";
@@ -145,7 +154,7 @@
             this.panel3.Controls.Add(this.bunifuCustomLabel1);
             this.panel3.Controls.Add(this.droneSpeedLabel);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(187, 0);
+            this.panel3.Location = new System.Drawing.Point(372, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(124, 50);
             this.panel3.TabIndex = 12;
@@ -153,7 +162,7 @@
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.Lime;
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(7, 17);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
@@ -164,7 +173,7 @@
             // droneSpeedLabel
             // 
             this.droneSpeedLabel.AutoSize = true;
-            this.droneSpeedLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.droneSpeedLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.droneSpeedLabel.ForeColor = System.Drawing.Color.Lime;
             this.droneSpeedLabel.Location = new System.Drawing.Point(48, 17);
             this.droneSpeedLabel.Name = "droneSpeedLabel";
@@ -177,7 +186,7 @@
             this.panel2.Controls.Add(this.bunifuCustomLabel5);
             this.panel2.Controls.Add(this.droneAltitudeLabel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(82, 0);
+            this.panel2.Location = new System.Drawing.Point(267, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(105, 50);
             this.panel2.TabIndex = 11;
@@ -185,7 +194,7 @@
             // bunifuCustomLabel5
             // 
             this.bunifuCustomLabel5.AutoSize = true;
-            this.bunifuCustomLabel5.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel5.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel5.ForeColor = System.Drawing.Color.Lime;
             this.bunifuCustomLabel5.Location = new System.Drawing.Point(7, 17);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
@@ -196,7 +205,7 @@
             // droneAltitudeLabel
             // 
             this.droneAltitudeLabel.AutoSize = true;
-            this.droneAltitudeLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.droneAltitudeLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.droneAltitudeLabel.ForeColor = System.Drawing.Color.Lime;
             this.droneAltitudeLabel.Location = new System.Drawing.Point(48, 17);
             this.droneAltitudeLabel.Name = "droneAltitudeLabel";
@@ -204,51 +213,92 @@
             this.droneAltitudeLabel.TabIndex = 6;
             this.droneAltitudeLabel.Text = "0.0 m";
             // 
-            // pictureBox2
+            // smallWifiPictureBox
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(60, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(22, 50);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
+            this.smallWifiPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.smallWifiPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.smallWifiPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.smallWifiPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("smallWifiPictureBox.Image")));
+            this.smallWifiPictureBox.Location = new System.Drawing.Point(217, 0);
+            this.smallWifiPictureBox.Name = "smallWifiPictureBox";
+            this.smallWifiPictureBox.Size = new System.Drawing.Size(50, 50);
+            this.smallWifiPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.smallWifiPictureBox.TabIndex = 10;
+            this.smallWifiPictureBox.TabStop = false;
+            this.smallWifiPictureBox.Visible = false;
+            // 
+            // mediumWifiPictureBox
+            // 
+            this.mediumWifiPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.mediumWifiPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.mediumWifiPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.mediumWifiPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("mediumWifiPictureBox.Image")));
+            this.mediumWifiPictureBox.Location = new System.Drawing.Point(167, 0);
+            this.mediumWifiPictureBox.Name = "mediumWifiPictureBox";
+            this.mediumWifiPictureBox.Size = new System.Drawing.Size(50, 50);
+            this.mediumWifiPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.mediumWifiPictureBox.TabIndex = 15;
+            this.mediumWifiPictureBox.TabStop = false;
+            this.mediumWifiPictureBox.Visible = false;
+            // 
+            // goodWifiPictureBox
+            // 
+            this.goodWifiPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.goodWifiPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.goodWifiPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.goodWifiPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("goodWifiPictureBox.Image")));
+            this.goodWifiPictureBox.Location = new System.Drawing.Point(117, 0);
+            this.goodWifiPictureBox.Name = "goodWifiPictureBox";
+            this.goodWifiPictureBox.Size = new System.Drawing.Size(50, 50);
+            this.goodWifiPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.goodWifiPictureBox.TabIndex = 16;
+            this.goodWifiPictureBox.TabStop = false;
+            this.goodWifiPictureBox.Visible = false;
+            // 
+            // highWifiPictureBox
+            // 
+            this.highWifiPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.highWifiPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.highWifiPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.highWifiPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("highWifiPictureBox.Image")));
+            this.highWifiPictureBox.Location = new System.Drawing.Point(67, 0);
+            this.highWifiPictureBox.Name = "highWifiPictureBox";
+            this.highWifiPictureBox.Size = new System.Drawing.Size(50, 50);
+            this.highWifiPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.highWifiPictureBox.TabIndex = 17;
+            this.highWifiPictureBox.TabStop = false;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.bunifuProgressBar1);
+            this.panel1.Controls.Add(this.batteryLabel);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(60, 50);
+            this.panel1.Size = new System.Drawing.Size(67, 50);
             this.panel1.TabIndex = 9;
             // 
-            // bunifuProgressBar1
+            // batteryLabel
             // 
-            this.bunifuProgressBar1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuProgressBar1.BorderRadius = 3;
-            this.bunifuProgressBar1.Location = new System.Drawing.Point(10, 17);
-            this.bunifuProgressBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.bunifuProgressBar1.MaximumValue = 100;
-            this.bunifuProgressBar1.Name = "bunifuProgressBar1";
-            this.bunifuProgressBar1.ProgressColor = System.Drawing.Color.Lime;
-            this.bunifuProgressBar1.Size = new System.Drawing.Size(37, 14);
-            this.bunifuProgressBar1.TabIndex = 7;
-            this.bunifuProgressBar1.Value = 67;
+            this.batteryLabel.BackColor = System.Drawing.Color.Transparent;
+            this.batteryLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.batteryLabel.ForeColor = System.Drawing.Color.Transparent;
+            this.batteryLabel.Location = new System.Drawing.Point(17, 16);
+            this.batteryLabel.Name = "batteryLabel";
+            this.batteryLabel.Size = new System.Drawing.Size(35, 20);
+            this.batteryLabel.TabIndex = 1;
+            this.batteryLabel.Text = "100%";
+            this.batteryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 13);
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(47, 20);
-            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.Size = new System.Drawing.Size(67, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // streamingFrameBox
@@ -269,8 +319,10 @@
             // 
             // sideCollapsedBar
             // 
+            this.sideCollapsedBar.Activated = null;
             this.sideCollapsedBar.BackColor = System.Drawing.Color.LightGray;
             this.sideCollapsedBar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.sideCollapsedBar.Hovered = null;
             this.sideCollapsedBar.Location = new System.Drawing.Point(604, 0);
             this.sideCollapsedBar.Name = "sideCollapsedBar";
             this.sideCollapsedBar.Size = new System.Drawing.Size(70, 738);
@@ -278,6 +330,7 @@
             // 
             // sideExpandedBar
             // 
+            this.sideExpandedBar.ActivatedTab = null;
             this.sideExpandedBar.BackColor = System.Drawing.Color.White;
             this.sideExpandedBar.Dock = System.Windows.Forms.DockStyle.Right;
             this.sideExpandedBar.Location = new System.Drawing.Point(674, 0);
@@ -305,7 +358,10 @@
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.smallWifiPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mediumWifiPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.goodWifiPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.highWifiPictureBox)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.streamingFrameBox)).EndInit();
@@ -317,8 +373,6 @@
         public SideExpandedBar sideExpandedBar;
         public SideCollapsedBar sideCollapsedBar;
         private System.Windows.Forms.Panel currentStateBar;
-        private Bunifu.Framework.UI.BunifuProgressBar bunifuProgressBar1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.PictureBox streamingFrameBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel5;
@@ -327,11 +381,16 @@
         private System.Windows.Forms.Panel panel2;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
         public Bunifu.Framework.UI.BunifuCustomLabel droneAltitudeLabel;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         public Bunifu.Framework.UI.BunifuCustomLabel droneSpeedLabel;
         public Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
         public Bunifu.Framework.UI.BunifuCircleProgressbar detectingProgressbar;
         public Bunifu.Framework.UI.BunifuCustomLabel detectingLabel;
+        private Bunifu.Framework.UI.BunifuCustomLabel batteryLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox mediumWifiPictureBox;
+        private System.Windows.Forms.PictureBox smallWifiPictureBox;
+        private System.Windows.Forms.PictureBox highWifiPictureBox;
+        private System.Windows.Forms.PictureBox goodWifiPictureBox;
     }
 }

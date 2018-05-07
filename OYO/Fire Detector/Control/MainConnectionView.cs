@@ -245,5 +245,42 @@ namespace Fire_Detector.Control
                 }));
             }
         }
+
+        public void Overlayer_OnReceiveAddressEvent(string address)
+        {
+            this.addressLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.addressLabel.Text = address;
+            }));
+        }
+
+        public void Bebop2_OnPositionChanged(Bebop2 bebop2, double lat, double lon, double alt)
+        {
+            this.latLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.latLabel.Text = string.Format("위도 {0}", lat);
+            }));
+            
+            this.lonLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.lonLabel.Text = string.Format("경도 {0}", lon);
+            }));
+        }
+
+        public void Bebop2_OnBatteryChanged(Bebop2 bebop2, int battery)
+        {
+            this.batteryLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.batteryLabel.Text = string.Format("Battery {0}%", battery);
+            }));
+        }
+
+        public void Bebop2_OnWifiChanged(Bebop2 bebop2, short rssi)
+        {
+            this.wifiLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.wifiLabel.Text = string.Format("{0}", rssi);
+            }));
+        }
     }
 }

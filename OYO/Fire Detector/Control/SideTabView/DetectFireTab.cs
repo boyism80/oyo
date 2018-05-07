@@ -53,6 +53,7 @@ namespace Fire_Detector.Control.SideTabView
                 this.Root.defaultView.detectingProgressbar.Invoke(new MethodInvoker(delegate  ()
                 {
                     this.Root.defaultView.detectingProgressbar.animated     = detecting;
+                    this.Root.defaultView.detectingProgressbar.Value        = detecting ? 15 : 0;
                 }));
 
                 this.Root.Detector.Enabled                                  = detecting;

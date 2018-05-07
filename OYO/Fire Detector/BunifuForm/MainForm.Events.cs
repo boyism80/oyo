@@ -53,6 +53,7 @@ namespace Fire_Detector.BunifuForm
             this.Recorder.OnIncreasedTime           += this.defaultView.sideExpandedBar.droneTab.Recorder_OnIncreasedTime;
 
             this.Overlayer.OnReceiveAddressEvent    += this.defaultView.Overlayer_OnReceiveAddressEvent;
+            this.Overlayer.OnReceiveAddressEvent    += this.mainView.mainConnectionView.Overlayer_OnReceiveAddressEvent;
 
             this.Bebop2.OnConnected                 += this.mainView.mainConnectionView.Bebop_OnConnectionChanged;
             this.Bebop2.OnConnected                 += this.defaultView.sideExpandedBar.droneTab.Bebop_OnConnectionChanged;
@@ -64,6 +65,11 @@ namespace Fire_Detector.BunifuForm
             this.Bebop2.OnAltitudeChanged           += this.defaultView.Bebop2_OnAltitudeChanged;
             this.Bebop2.OnPositionChanged           += this.Bebop_OnPositionChanged;
             this.Bebop2.OnError                     += this.Bebop_OnError;
+            this.Bebop2.OnBatteryChanged            += this.defaultView.Bebop2_OnBatteryChanged;
+            this.Bebop2.OnBatteryChanged            += this.mainView.mainConnectionView.Bebop2_OnBatteryChanged;
+            this.Bebop2.OnWifiChanged               += this.defaultView.Bebop2_OnWifiChanged;
+            this.Bebop2.OnWifiChanged               += this.mainView.mainConnectionView.Bebop2_OnWifiChanged;
+            this.Bebop2.OnPositionChanged           += this.mainView.mainConnectionView.Bebop2_OnPositionChanged;
 
 
 

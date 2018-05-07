@@ -35,6 +35,7 @@ namespace ParrotBebop2
         public delegate void                    PilotStateChanged(Bebop2 bebop2, Bebop2State currentState);
         public delegate void                    AltitudeChanged(Bebop2 bebop2, double altitude);
         public delegate void                    ErrorEvent(Bebop2 bebop, string message);
+        public delegate void                    WifiChanged(Bebop2 bebop2, short rssi);
 
         private int[]                           seq = new int[256];
         public Pcmd                             pcmd;
@@ -59,6 +60,7 @@ namespace ParrotBebop2
         public event PilotStateChanged          OnPilotStateChanged;
         public event AltitudeChanged            OnAltitudeChanged;
         public event ErrorEvent                 OnError;
+        public event WifiChanged                OnWifiChanged;
 
         public short RSSI { get; private set; }
 
@@ -367,6 +369,9 @@ namespace ParrotBebop2
                             if(commandClass == CommandSet.ARCOMMANDS_ID_COMMON_CLASS_COMMONSTATE && commandId == 7/*CommandSet.ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_WIFISIGNALCHANGED*/)
                             {
                                 this.RSSI = reader.ReadInt16();
+
+                                if(this.OnWifiChanged != null)
+                                    this.OnWifiChanged(this, this.RSSI);
                             }
                             else
                             { }

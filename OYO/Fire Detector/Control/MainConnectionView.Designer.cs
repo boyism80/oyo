@@ -57,11 +57,11 @@
             this.dronePanel = new System.Windows.Forms.Panel();
             this.droneRightPanel = new System.Windows.Forms.Panel();
             this.droneStatePanel = new System.Windows.Forms.Panel();
-            this.bunifuCustomLabel11 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel9 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.addressLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lonLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.latLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.wifiLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.batteryLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.droneConnectionLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.droneLeftPanel = new System.Windows.Forms.Panel();
@@ -356,9 +356,9 @@
             this.bunifuCustomLabel18.Location = new System.Drawing.Point(0, 32);
             this.bunifuCustomLabel18.Name = "bunifuCustomLabel18";
             this.bunifuCustomLabel18.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.bunifuCustomLabel18.Size = new System.Drawing.Size(279, 42);
+            this.bunifuCustomLabel18.Size = new System.Drawing.Size(184, 42);
             this.bunifuCustomLabel18.TabIndex = 8;
-            this.bunifuCustomLabel18.Text = "Raspberry Pi Camera Module V2";
+            this.bunifuCustomLabel18.Text = "Raspberry Pi Camera";
             // 
             // raspCamLeftPanel
             // 
@@ -463,11 +463,11 @@
             // 
             // droneStatePanel
             // 
-            this.droneStatePanel.Controls.Add(this.bunifuCustomLabel11);
-            this.droneStatePanel.Controls.Add(this.bunifuCustomLabel9);
-            this.droneStatePanel.Controls.Add(this.bunifuCustomLabel8);
-            this.droneStatePanel.Controls.Add(this.bunifuCustomLabel7);
-            this.droneStatePanel.Controls.Add(this.bunifuCustomLabel6);
+            this.droneStatePanel.Controls.Add(this.addressLabel);
+            this.droneStatePanel.Controls.Add(this.lonLabel);
+            this.droneStatePanel.Controls.Add(this.latLabel);
+            this.droneStatePanel.Controls.Add(this.wifiLabel);
+            this.droneStatePanel.Controls.Add(this.batteryLabel);
             this.droneStatePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.droneStatePanel.Location = new System.Drawing.Point(0, 112);
             this.droneStatePanel.Name = "droneStatePanel";
@@ -475,65 +475,65 @@
             this.droneStatePanel.TabIndex = 2;
             this.droneStatePanel.Visible = false;
             // 
-            // bunifuCustomLabel11
+            // addressLabel
             // 
-            this.bunifuCustomLabel11.AutoSize = true;
-            this.bunifuCustomLabel11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuCustomLabel11.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel11.Location = new System.Drawing.Point(0, 144);
-            this.bunifuCustomLabel11.Name = "bunifuCustomLabel11";
-            this.bunifuCustomLabel11.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.bunifuCustomLabel11.Size = new System.Drawing.Size(178, 36);
-            this.bunifuCustomLabel11.TabIndex = 11;
-            this.bunifuCustomLabel11.Text = "경기도 시흥시 산기대학로 237";
+            this.addressLabel.AutoSize = true;
+            this.addressLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.addressLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.addressLabel.Location = new System.Drawing.Point(0, 144);
+            this.addressLabel.Name = "addressLabel";
+            this.addressLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.addressLabel.Size = new System.Drawing.Size(173, 36);
+            this.addressLabel.TabIndex = 11;
+            this.addressLabel.Text = "위치 정보를 찾을 수 없습니다.";
             // 
-            // bunifuCustomLabel9
+            // lonLabel
             // 
-            this.bunifuCustomLabel9.AutoSize = true;
-            this.bunifuCustomLabel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuCustomLabel9.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel9.Location = new System.Drawing.Point(0, 108);
-            this.bunifuCustomLabel9.Name = "bunifuCustomLabel9";
-            this.bunifuCustomLabel9.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.bunifuCustomLabel9.Size = new System.Drawing.Size(63, 36);
-            this.bunifuCustomLabel9.TabIndex = 10;
-            this.bunifuCustomLabel9.Text = "경도 : 0.0";
+            this.lonLabel.AutoSize = true;
+            this.lonLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lonLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lonLabel.Location = new System.Drawing.Point(0, 108);
+            this.lonLabel.Name = "lonLabel";
+            this.lonLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.lonLabel.Size = new System.Drawing.Size(63, 36);
+            this.lonLabel.TabIndex = 10;
+            this.lonLabel.Text = "경도 : 0.0";
             // 
-            // bunifuCustomLabel8
+            // latLabel
             // 
-            this.bunifuCustomLabel8.AutoSize = true;
-            this.bunifuCustomLabel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuCustomLabel8.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel8.Location = new System.Drawing.Point(0, 72);
-            this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
-            this.bunifuCustomLabel8.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.bunifuCustomLabel8.Size = new System.Drawing.Size(63, 36);
-            this.bunifuCustomLabel8.TabIndex = 9;
-            this.bunifuCustomLabel8.Text = "위도 : 0.0";
+            this.latLabel.AutoSize = true;
+            this.latLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.latLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.latLabel.Location = new System.Drawing.Point(0, 72);
+            this.latLabel.Name = "latLabel";
+            this.latLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.latLabel.Size = new System.Drawing.Size(63, 36);
+            this.latLabel.TabIndex = 9;
+            this.latLabel.Text = "위도 : 0.0";
             // 
-            // bunifuCustomLabel7
+            // wifiLabel
             // 
-            this.bunifuCustomLabel7.AutoSize = true;
-            this.bunifuCustomLabel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuCustomLabel7.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel7.Location = new System.Drawing.Point(0, 36);
-            this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
-            this.bunifuCustomLabel7.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.bunifuCustomLabel7.Size = new System.Drawing.Size(60, 36);
-            this.bunifuCustomLabel7.TabIndex = 8;
-            this.bunifuCustomLabel7.Text = "신호 강함";
+            this.wifiLabel.AutoSize = true;
+            this.wifiLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.wifiLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.wifiLabel.Location = new System.Drawing.Point(0, 36);
+            this.wifiLabel.Name = "wifiLabel";
+            this.wifiLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.wifiLabel.Size = new System.Drawing.Size(60, 36);
+            this.wifiLabel.TabIndex = 8;
+            this.wifiLabel.Text = "신호 강함";
             // 
-            // bunifuCustomLabel6
+            // batteryLabel
             // 
-            this.bunifuCustomLabel6.AutoSize = true;
-            this.bunifuCustomLabel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuCustomLabel6.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel6.Location = new System.Drawing.Point(0, 0);
-            this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
-            this.bunifuCustomLabel6.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.bunifuCustomLabel6.Size = new System.Drawing.Size(101, 36);
-            this.bunifuCustomLabel6.TabIndex = 7;
-            this.bunifuCustomLabel6.Text = "Battery 100%";
+            this.batteryLabel.AutoSize = true;
+            this.batteryLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.batteryLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.batteryLabel.Location = new System.Drawing.Point(0, 0);
+            this.batteryLabel.Name = "batteryLabel";
+            this.batteryLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.batteryLabel.Size = new System.Drawing.Size(101, 36);
+            this.batteryLabel.TabIndex = 7;
+            this.batteryLabel.Text = "Battery 100%";
             // 
             // droneConnectionLabel
             // 
@@ -755,11 +755,11 @@
         private Bunifu.Framework.UI.BunifuCustomLabel droneConnectionLabel;
         private Bunifu.Framework.UI.BunifuCustomLabel leapmotionConnectionLabel;
         private System.Windows.Forms.Panel droneStatePanel;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel11;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel9;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel8;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel7;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel6;
+        private Bunifu.Framework.UI.BunifuCustomLabel addressLabel;
+        private Bunifu.Framework.UI.BunifuCustomLabel lonLabel;
+        private Bunifu.Framework.UI.BunifuCustomLabel latLabel;
+        private Bunifu.Framework.UI.BunifuCustomLabel wifiLabel;
+        private Bunifu.Framework.UI.BunifuCustomLabel batteryLabel;
         private System.Windows.Forms.Panel cameraStatePanel;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel15;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel16;

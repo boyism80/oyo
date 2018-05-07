@@ -19,6 +19,7 @@ namespace Fire_Detector.Control
         public DefaultView()
         {
             InitializeComponent();
+            this.batteryLabel.Parent = this.pictureBox1;
         }
 
         public void Receiver_OnConnectionChanged(OYOReceiver receiver)
@@ -133,7 +134,10 @@ namespace Fire_Detector.Control
 
         public void Overlayer_OnReceiveAddressEvent(string address)
         {
-            this.bunifuCustomLabel2.Text = address;
+            this.bunifuCustomLabel2.Invoke(new MethodInvoker(delegate ()
+            {
+                this.bunifuCustomLabel2.Text = address;
+            }));
         }
 
         public void Bebop2_OnSpeedChanged(Bebop2 bebop2, Leap.Vector speed)
@@ -150,6 +154,19 @@ namespace Fire_Detector.Control
             {
                 this.droneAltitudeLabel.Text = string.Format("{0:F2}m", altitude);
             }));
+        }
+
+        public void Bebop2_OnBatteryChanged(Bebop2 bebop2, int battery)
+        {
+            this.batteryLabel.Invoke(new MethodInvoker(delegate ()
+            {
+                this.batteryLabel.Text = string.Format("{0}%", battery);
+            }));
+        }
+
+        public void Bebop2_OnWifiChanged(Bebop2 bebop2, short rssi)
+        {
+            Console.WriteLine("wifi : {0}", rssi);
         }
     }
 }
