@@ -389,19 +389,19 @@ this._mutex.WaitOne();
                     break;
 
                 case Keys.W:
-                    this._pcmd.gaz = isDown ? 5 * this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
+                    this._pcmd.gaz = isDown ? this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
                     break;
-
+                    
                 case Keys.S:
-                    this._pcmd.gaz = isDown ? -5 * this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
+                    this._pcmd.gaz = isDown ? -this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
                     break;
 
                 case Keys.A:
-                    this._pcmd.yaw = isDown ? 10 * this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
+                    this._pcmd.yaw = isDown ? -this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
                     break;
 
                 case Keys.D:
-                    this._pcmd.yaw = isDown ? -10 * this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
+                    this._pcmd.yaw = isDown ? this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() : 0;
                     break;
             }
 
