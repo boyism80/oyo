@@ -463,10 +463,15 @@ this._mutex.ReleaseMutex();
                 var angle_rotated           = handRight.PalmNormal.AngleTo(Leap.Vector.Down) * (180 / Math.PI);
                 var cross_rotated           = handRight.PalmNormal.Cross(Leap.Vector.Down);
 
-                if(angle_rotated > MainForm.LEAPMOTION_MINIMUM_MOVE_SIDE_ANGLE)
-                    this._pcmd.roll         = 5 * (cross_rotated.z > 0 ? 1 : -1);
+                if (angle_rotated > MainForm.LEAPMOTION_MINIMUM_MOVE_SIDE_ANGLE)
+                {
+                    var percent             = (angle_rotated - MainForm.LEAPMOTION_MINIMUM_MOVE_SIDE_ANGLE) / (90.0f - MainForm.LEAPMOTION_MINIMUM_MOVE_SIDE_ANGLE);
+                    this._pcmd.roll         = (int)(percent * this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed() * (cross_rotated.z > 0 ? 1 : -1));
+                }
                 else
+                {
                     this._pcmd.roll         = 0;
+                }
 
 
                 
@@ -506,7 +511,11 @@ this._mutex.ReleaseMutex();
                 var angle                   = direction.AngleTo(Leap.Vector.Forward) * 180.0f / Math.PI * (cross.y < 0 ? 1 : -1) + MainForm.LEAPMOTION_CALIBRATION_ROTATION_VALUE;
 
                 if(Math.Abs(angle) > MainForm.LEAPMOTION_MINIMUM_ROTATION_ANGLE)
-                    this._pcmd.yaw          = 50 * (angle > 0.0f ? 1 : -1);
+                {
+                    angle                   = Math.Max(60, Math.Abs(angle)) * (angle > 0 ? 1 : -1);
+                    var percent             = (Math.Abs(angle) - MainForm.LEAPMOTION_MINIMUM_ROTATION_ANGLE) / (60.0f - MainForm.LEAPMOTION_MINIMUM_ROTATION_ANGLE);
+                    this._pcmd.yaw          = (int)(percent * this.defaultView.sideExpandedBar.droneTab.GetDroneSpeed()) * (angle > 0.0f ? 1 : -1);
+                }
                 else
                     this._pcmd.yaw          = 0;
             }

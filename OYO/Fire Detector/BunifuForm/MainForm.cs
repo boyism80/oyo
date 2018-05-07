@@ -51,7 +51,7 @@ namespace Fire_Detector.BunifuForm
         private static float                    DETECTION_ALPHA      = 1.5f;
 
 
-        private static float                    LEAPMOTION_MINIMUM_MOVE_SIDE_ANGLE      = 30.0f;
+        private static float                    LEAPMOTION_MINIMUM_MOVE_SIDE_ANGLE      = 15.0f;
         private static float                    LEAPMOTION_MINIMUM_UP_POSITION          = 250.0f;
         private static float                    LEAPMOTION_MINIMUM_DOWN_POSITION        = 150.0f;
         private static float                    LEAPMOTION_MINIMUM_FORWARD_ANGLE        = 20.0f;
