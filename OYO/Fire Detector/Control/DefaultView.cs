@@ -160,7 +160,7 @@ namespace Fire_Detector.Control
         {
             this.batteryLabel.Invoke(new MethodInvoker(delegate ()
             {
-                this.batteryLabel.Text = string.Format("{0}%", battery);
+                this.batteryLabel.Text = string.Format("{0}%%", battery);
             }));
         }
 

@@ -176,7 +176,7 @@ namespace Fire_Detector.Control.SideTabView
 
         public int GetDroneSpeed()
         {
-            return (int)(this.droneSpeedSlider.Value * (127.0f / (float)this.droneSpeedSlider.MaximumValue));
+            return (int)(this.droneSpeedSlider.Value * (sbyte.MaxValue / (float)this.droneSpeedSlider.MaximumValue));
         }
 
         private void ConnectDroneButton_Click(object sender, EventArgs e)
