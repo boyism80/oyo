@@ -6,6 +6,7 @@ using oyo;
 using ParrotBebop2;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -18,6 +19,8 @@ namespace Fire_Detector.BunifuForm
     /// </summary>
     partial class MainForm
     {
+        private StreamWriter        _wstream;
+
         /// <summary>
         /// 드론에게 보낼 컨트롤 정보입니다.
         /// </summary>
@@ -66,9 +69,7 @@ namespace Fire_Detector.BunifuForm
             this.Bebop2.OnPositionChanged           += this.Bebop_OnPositionChanged;
             this.Bebop2.OnError                     += this.Bebop_OnError;
             this.Bebop2.OnBatteryChanged            += this.defaultView.Bebop2_OnBatteryChanged;
-            this.Bebop2.OnBatteryChanged            += this.mainView.mainConnectionView.Bebop2_OnBatteryChanged;
             this.Bebop2.OnWifiChanged               += this.defaultView.Bebop2_OnWifiChanged;
-            this.Bebop2.OnWifiChanged               += this.mainView.mainConnectionView.Bebop2_OnWifiChanged;
             this.Bebop2.OnPositionChanged           += this.mainView.mainConnectionView.Bebop2_OnPositionChanged;
 
 
@@ -98,6 +99,8 @@ namespace Fire_Detector.BunifuForm
             this.loadConfig("config.json");
 
             this._stopwatch.Start();
+
+            this._wstream = new StreamWriter("alt.txt", false);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -115,6 +118,8 @@ namespace Fire_Detector.BunifuForm
             this.LeapController.FrameReady -= this.mainView.mainConnectionView.LeapController_FrameReady;
             this.LeapController.FrameReady -= this.defaultView.sideExpandedBar.leapmotionTab.LeapController_FrameReady;
             this.LeapController.FrameReady -= this.LeapController_FrameReady;
+
+            this._wstream.Close();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -293,6 +298,9 @@ namespace Fire_Detector.BunifuForm
                     {
                         var center                  = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
                         this.Visualizer.markTemperature(updatedFrame, new Point(detectedRect.Center.X, detectedRect.Center.Y), center, Scalar.Red);
+
+                        Console.WriteLine("alt : {0} / temp : {1}", this.Bebop2.Altitude, center);
+                        this._wstream.WriteLine("alt : {0} / temp : {1}", this.Bebop2.Altitude, center);
                     }
                 }
 

@@ -1,10 +1,16 @@
 ﻿using BebopCommandSet;
 using Fire_Detector.Dialog;
+using OpenCvSharp;
 using oyo;
 using ParrotBebop2;
+using SimpleJSON;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Sockets;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Fire_Detector.Control.SideTabView
@@ -590,6 +596,74 @@ namespace Fire_Detector.Control.SideTabView
                 var time = TimeSpan.FromSeconds(seconds);
                 this.recordTime.Text = time.ToString(@"hh\:mm\:ss");
             }));
+        }
+
+        private async void get()
+        {
+            try
+            {
+                var client = new HttpClient();
+                var form = new MultipartFormDataContent();
+
+                form.Add(new StringContent("0"), "offset");
+                form.Add(new StringContent("3"), "count");
+                var response = await client.PostAsync("http://localhost:9997/get", form);
+
+                response.EnsureSuccessStatusCode();
+                client.Dispose();
+                string sd = response.Content.ReadAsStringAsync().Result;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        private async void request()
+        {
+            try
+            {
+                var byte1 = Cv2.ImRead(@"C:\Users\CSHYEON\Desktop\Maple_A_180519_023848.jpg").ToBytes(".jpg");
+                var byte2 = Cv2.ImRead(@"C:\Users\CSHYEON\Desktop\Maple_A_180519_023848.jpg").ToBytes(".jpg");
+                var byte3 = Cv2.ImRead(@"C:\Users\CSHYEON\Desktop\Maple_A_180519_023848.jpg").ToBytes(".jpg");
+
+                var client = new HttpClient();
+                var form = new MultipartFormDataContent();
+
+                form.Add(new StringContent("0"), "lat");
+                form.Add(new StringContent("0"), "lon");
+
+                var inf_content = new ByteArrayContent(byte1, 0, byte1.Length);
+                inf_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                inf_content.Headers.ContentLength = byte1.Length;
+                form.Add(inf_content, "inf", "inf.jpg");
+
+                var vis_content = new ByteArrayContent(byte2, 0, byte2.Length);
+                vis_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                vis_content.Headers.ContentLength = byte2.Length;
+                form.Add(vis_content, "vis", "vis.jpg");
+
+                var bnd_content = new ByteArrayContent(byte3, 0, byte3.Length);
+                bnd_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                bnd_content.Headers.ContentLength = byte3.Length;
+                form.Add(bnd_content, "bnd", "bnd.jpg");
+
+                var response = await client.PostAsync("http://localhost:9997/detection", form);
+
+                response.EnsureSuccessStatusCode();
+                client.Dispose();
+                string sd = response.Content.ReadAsStringAsync().Result;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.request();
+            this.get();
         }
     }
 }
