@@ -166,7 +166,6 @@ namespace Fire_Detector.Control
 
         public void Bebop2_OnWifiChanged(Bebop2 bebop2, ushort rssi)
         {
-            Console.WriteLine("wifi : {0}", rssi);
         }
     }
 }

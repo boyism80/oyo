@@ -17,7 +17,7 @@ namespace oyo
     //
     public class OYOReceiver
     {
-        public static readonly Rect             CropArea                    = new Rect(new Point(11, 41), new Size(560, 420));
+        public static readonly Rect             CropArea                    = new Rect(new Point(29, 67), new Size(545, 408));
 
         //
         // CriteriaTable, RadioactiveBoundaryTable
@@ -295,6 +295,7 @@ namespace oyo
             }
         }
 
+
         //
         // ReceiveFrameRoutine
         //  서버로부터 데이터를 전달받기 위해 작업되는 스레드입니다.
@@ -424,13 +425,14 @@ namespace oyo
         //
         private float Radioactive2Temperature(ushort radioact)
         {
-            var criteria            = 0.0f;
-            var minTemperature      = 0.0f;
-            var minRadioactive      = (ushort)0;
-            if(this.GetRadioactivePartitions(radioact, out criteria, out minTemperature, out minRadioactive) == false)
-                return 0.0f;
+            //var criteria = 0.0f;
+            //var minTemperature = 0.0f;
+            //var minRadioactive = (ushort)0;
+            //if (this.GetRadioactivePartitions(radioact, out criteria, out minTemperature, out minRadioactive) == false)
+            //    return 0.0f;
 
-            return minTemperature + ((radioact - minRadioactive) / criteria);
+            //return minTemperature + ((radioact - minRadioactive) / criteria);
+            return radioact / 95.62f;
         }
 
         //
@@ -443,16 +445,17 @@ namespace oyo
         // Return
         //  변환된 방사값을 리턴합니다.
         //
-        private ushort Temperature2Radioactive(float temperature)
+        private float Temperature2Radioactive(float temperature)
         {
-            var criteria            = 0.0f;
-            var minTemperature      = 0.0f;
-            var minRadioactive      = (ushort)0;
+            //var criteria = 0.0f;
+            //var minTemperature = 0.0f;
+            //var minRadioactive = (ushort)0;
 
-            if (this.GetTemperaturePartitions(temperature, out criteria, out minTemperature, out minRadioactive) == false)
-                return 0;
+            //if (this.GetTemperaturePartitions(temperature, out criteria, out minTemperature, out minRadioactive) == false)
+            //    return 0;
 
-            return (ushort)((temperature - minTemperature) * criteria + minRadioactive);
+            //return (ushort)((temperature - minTemperature) * criteria + minRadioactive);
+            return 95.62f * temperature;
         }
 
         //

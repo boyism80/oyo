@@ -283,12 +283,11 @@
             this.batteryLabel.BackColor = System.Drawing.Color.Transparent;
             this.batteryLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.batteryLabel.ForeColor = System.Drawing.Color.Transparent;
-            this.batteryLabel.Location = new System.Drawing.Point(17, 16);
+            this.batteryLabel.Location = new System.Drawing.Point(18, 19);
             this.batteryLabel.Name = "batteryLabel";
             this.batteryLabel.Size = new System.Drawing.Size(35, 20);
             this.batteryLabel.TabIndex = 1;
-            this.batteryLabel.Text = "100%";
-            this.batteryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.batteryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 

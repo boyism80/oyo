@@ -266,21 +266,5 @@ namespace Fire_Detector.Control
                 this.lonLabel.Text = string.Format("경도 {0}", lon);
             }));
         }
-
-        public void Bebop2_OnBatteryChanged(Bebop2 bebop2, int battery)
-        {
-            this.batteryLabel.Invoke(new MethodInvoker(delegate ()
-            {
-                this.batteryLabel.Text = string.Format("Battery {0}%", battery);
-            }));
-        }
-
-        public void Bebop2_OnWifiChanged(Bebop2 bebop2, ushort rssi)
-        {
-            this.wifiLabel.Invoke(new MethodInvoker(delegate ()
-            {
-                this.wifiLabel.Text = string.Format("{0}", rssi);
-            }));
-        }
     }
 }
