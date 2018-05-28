@@ -623,32 +623,37 @@ namespace Fire_Detector.Control.SideTabView
         {
             try
             {
-                var byte1 = Cv2.ImRead(@"C:\Users\CSHYEON\Desktop\Maple_A_180519_023848.jpg").ToBytes(".jpg");
-                var byte2 = Cv2.ImRead(@"C:\Users\CSHYEON\Desktop\Maple_A_180519_023848.jpg").ToBytes(".jpg");
-                var byte3 = Cv2.ImRead(@"C:\Users\CSHYEON\Desktop\Maple_A_180519_023848.jpg").ToBytes(".jpg");
+                var inf = Cv2.ImRead(@"C:\Users\CSHYEON\Desktop\45937_86744_5534.jpg");
+                var vis = Cv2.ImRead(@"C:\Users\CSHYEON\Desktop\i14544601972.jpg");
+                var thumb = inf.Resize(new OpenCvSharp.Size(80, 60));
+
+                var inf_bytes = inf.ToBytes(".jpg");
+                var vis_bytes = vis.ToBytes(".jpg");
+                var thumb_bytes = thumb.ToBytes(".jpg");
 
                 var client = new HttpClient();
                 var form = new MultipartFormDataContent();
 
-                form.Add(new StringContent("0"), "lat");
-                form.Add(new StringContent("0"), "lon");
+                form.Add(new StringContent("37.56647"), "lat");
+                form.Add(new StringContent("126.977963"), "lon");
+                form.Add(new StringContent("72.65"), "tem");
 
-                var inf_content = new ByteArrayContent(byte1, 0, byte1.Length);
+                var inf_content = new ByteArrayContent(inf_bytes, 0, inf_bytes.Length);
                 inf_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
-                inf_content.Headers.ContentLength = byte1.Length;
+                inf_content.Headers.ContentLength = inf_bytes.Length;
                 form.Add(inf_content, "inf", "inf.jpg");
 
-                var vis_content = new ByteArrayContent(byte2, 0, byte2.Length);
+                var vis_content = new ByteArrayContent(vis_bytes, 0, vis_bytes.Length);
                 vis_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
-                vis_content.Headers.ContentLength = byte2.Length;
+                vis_content.Headers.ContentLength = vis_bytes.Length;
                 form.Add(vis_content, "vis", "vis.jpg");
 
-                var bnd_content = new ByteArrayContent(byte3, 0, byte3.Length);
+                var bnd_content = new ByteArrayContent(thumb_bytes, 0, thumb_bytes.Length);
                 bnd_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
-                bnd_content.Headers.ContentLength = byte3.Length;
-                form.Add(bnd_content, "bnd", "bnd.jpg");
+                bnd_content.Headers.ContentLength = thumb_bytes.Length;
+                form.Add(bnd_content, "thumb", "thumb.jpg");
 
-                var response = await client.PostAsync("http://localhost:9997/detection", form);
+                var response = await client.PostAsync("http://localhost:8001/detection", form);
 
                 response.EnsureSuccessStatusCode();
                 client.Dispose();
