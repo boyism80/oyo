@@ -40,6 +40,7 @@ sysinfo.txt
 
 # android
 FireDetection/.gradle
+FireDetection/app/build
 FireDetection/.idea
 FireDetection/build
 FireDetection/.gitignore

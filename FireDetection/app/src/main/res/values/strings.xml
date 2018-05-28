@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FireDetection</string>
+    <string name="host">http://cshyeon.dlinkddns.com:8001/</string>
+</resources>
