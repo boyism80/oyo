@@ -37,3 +37,14 @@ sysinfo.txt
 # Branch
 /cshyeon
 /kjseung
+
+# android
+FireDetection/.gradle
+FireDetection/.idea
+FireDetection/build
+FireDetection/.gitignore
+FireDetection/gradle.properties
+FireDetection/gradlew
+FireDetection/gradlew.bat
+FireDetection/local.properties
+FireDetection/*.pro
