@@ -657,9 +657,33 @@ namespace Fire_Detector.Control.SideTabView
 
                 response.EnsureSuccessStatusCode();
                 client.Dispose();
-                string sd = response.Content.ReadAsStringAsync().Result;
+                var result = response.Content.ReadAsStringAsync().Result;
             }
             catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        private async void generate_drone()
+        {
+            try
+            {
+                var client = new HttpClient();
+                var form = new MultipartFormDataContent();
+
+                form.Add(new StringContent(this.Root.Bebop2.GPS.lat.ToString()), "lat");
+                form.Add(new StringContent(this.Root.Bebop2.GPS.lon.ToString()), "lon");
+                form.Add(new StringContent(this.Root.Bebop2.GPS.alt.ToString()), "alt");
+
+                var response = await client.PostAsync("http://luxir01.iptime.org:8001/generate", form);
+
+                response.EnsureSuccessStatusCode();
+                client.Dispose();
+
+                var result = response.Content.ReadAsStringAsync().Result;
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
