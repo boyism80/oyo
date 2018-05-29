@@ -84,6 +84,9 @@ class DetectionActivity : Activity(), OYOReceiver.Listener, ViewPagerAdapter.Lis
 
         try {
 
+            var intent:Intent? = null
+            var bundle = Bundle()
+
             when (position) {
 
                 0 -> {
@@ -91,20 +94,24 @@ class DetectionActivity : Activity(), OYOReceiver.Listener, ViewPagerAdapter.Lis
                     val lat = pos.getDouble("lat")
                     val lon = pos.getDouble("lon")
 
-                    val intent = Intent(this, GmapActivity::class.java)
-                    val bundle = Bundle()
+                    intent = Intent(this, GmapActivity::class.java)
                     bundle.putDouble("lat", lat)
                     bundle.putDouble("lon", lon)
-                    intent.putExtras(bundle)
-                    startActivity(intent)
                 }
 
                 1 -> {
+                    intent = Intent(this, DetailViewactivity::class.java)
+                    bundle.putString("href", this._data.getString("inf"))
                 }
 
                 2 -> {
+                    intent = Intent(this, DetailViewactivity::class.java)
+                    bundle.putString("href", this._data.getString("vis"))
                 }
             }
+
+            intent?.putExtras(bundle)
+            startActivity(intent)
 
         } catch (e: Exception) {
 

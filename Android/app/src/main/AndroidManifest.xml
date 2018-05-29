@@ -24,8 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetectionActivity"></activity>
-        <activity android:name=".GmapActivity"></activity>
+        <activity android:name=".DetectionActivity" />
+        <activity android:name=".GmapActivity" />
+        <activity android:name=".DetailViewactivity" />
     </application>
 
 </manifest>
