@@ -1,20 +1,16 @@
 package oyo.com.firedetection
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
-import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.widget.TextView
-
-import org.json.JSONObject
-
-import butterknife.BindView
 import butterknife.ButterKnife
+import com.androidquery.AQuery
 import kotlinx.android.synthetic.main.activity_detection.*
+import kotlinx.android.synthetic.main.image_zoom_layout.view.*
+import org.json.JSONObject
 import oyo.com.firedetection.Adapter.ViewPagerAdapter
 
 class DetectionActivity : Activity(), OYOReceiver.Listener, ViewPagerAdapter.Listener {
@@ -84,9 +80,6 @@ class DetectionActivity : Activity(), OYOReceiver.Listener, ViewPagerAdapter.Lis
 
         try {
 
-            var intent:Intent? = null
-            var bundle = Bundle()
-
             when (position) {
 
                 0 -> {
@@ -94,24 +87,38 @@ class DetectionActivity : Activity(), OYOReceiver.Listener, ViewPagerAdapter.Lis
                     val lat = pos.getDouble("lat")
                     val lon = pos.getDouble("lon")
 
-                    intent = Intent(this, GmapActivity::class.java)
+                    val bundle = Bundle()
                     bundle.putDouble("lat", lat)
                     bundle.putDouble("lon", lon)
+
+                    val intent = Intent(this, GmapActivity::class.java)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
                 }
 
                 1 -> {
-                    intent = Intent(this, DetailViewactivity::class.java)
-                    bundle.putString("href", this._data.getString("inf"))
+
+                    val builder = AlertDialog.Builder(this)
+                    val view = layoutInflater.inflate(R.layout.image_zoom_layout, null)
+
+                    AQuery(view).id(view.image).image(this._data.getString("inf"))
+                    builder.setView(view)
+
+                    val dialog = builder.create()
+                    dialog.show()
                 }
 
                 2 -> {
-                    intent = Intent(this, DetailViewactivity::class.java)
-                    bundle.putString("href", this._data.getString("vis"))
+                    val builder = AlertDialog.Builder(this)
+                    val view = layoutInflater.inflate(R.layout.image_zoom_layout, null)
+
+                    AQuery(view).id(view.image).image(this._data.getString("vis"))
+                    builder.setView(view)
+
+                    val dialog = builder.create()
+                    dialog.show()
                 }
             }
-
-            intent?.putExtras(bundle)
-            startActivity(intent)
 
         } catch (e: Exception) {
 
