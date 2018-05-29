@@ -10,10 +10,13 @@ import android.widget.AdapterView
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 import oyo.com.firedetection.Adapter.DetectionAdapter
+import java.util.*
+import kotlin.concurrent.timerTask
 
 class MainActivity : Activity(), OYOReceiver.Listener, AdapterView.OnItemClickListener {
 
     private lateinit var _geocoder: Geocoder
+    private lateinit var _receiver: OYOReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +29,16 @@ class MainActivity : Activity(), OYOReceiver.Listener, AdapterView.OnItemClickLi
                 .route("gets")
                 .add("offset", "0")
                 .add("count", "10")
-                .start()
+                .request()
+
+        //
+        // 주기적으로 드론의 위치 요청
+        //
+        this._receiver = OYOReceiver(this, this.resources.getString(R.string.host), "position", this).route("position")
+        Timer(true).schedule(timerTask {
+
+            _receiver.request()
+        }, 1000, 1000)
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -55,11 +67,16 @@ class MainActivity : Activity(), OYOReceiver.Listener, AdapterView.OnItemClickLi
                         val position = json.getJSONObject("position")
                         val lat = position.getDouble("lat")
                         val lon = position.getDouble("lon")
-                        val addressList = this._geocoder!!.getFromLocation(lat, lon, 1)
+                        val addressList = this._geocoder.getFromLocation(lat, lon, 1)
                         position.put("address", addressList[0].getAddressLine(0))
                     }
                     val adapter = DetectionAdapter(this, data.getJSONArray("data"))
                     this.history.adapter = adapter
+                }
+
+                "position" -> {
+
+                    Log.d("on response", data.toString())
                 }
             }
         } catch (e: Exception) {

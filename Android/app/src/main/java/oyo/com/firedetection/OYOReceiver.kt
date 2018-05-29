@@ -7,7 +7,7 @@ import org.json.JSONObject
 
 import java.util.HashMap
 
-class OYOReceiver(private val _activity: Activity, private var _host: String, private val _id: String, private val _listener: Listener) : Thread() {
+class OYOReceiver(private val _activity: Activity, private var _host: String, private val _id: String, private val _listener: Listener) : Runnable {
     private val _parameters = HashMap<String, String>()
 
     interface Listener {
@@ -30,6 +30,11 @@ class OYOReceiver(private val _activity: Activity, private var _host: String, pr
 
         this._parameters[name] = value
         return this
+    }
+
+    fun request() {
+
+        Thread(this).start()
     }
 
     override fun run() {
