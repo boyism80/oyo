@@ -37,3 +37,15 @@ sysinfo.txt
 # Branch
 /cshyeon
 /kjseung
+
+# android
+Android/.gradle
+Android/app/build
+Android/.idea
+Android/build
+Android/.gitignore
+Android/gradle.properties
+Android/gradlew
+Android/gradlew.bat
+Android/local.properties
+Android/*.pro
