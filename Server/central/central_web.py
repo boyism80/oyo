@@ -28,6 +28,21 @@ def distance(p1, p2):
 
 	return R * c
 
+def notification_fcm(title, message):
+	try:
+		key = 'AAAAtlOL1Xo:APA91bG8x7sPpkDE9-CojYOUgbrUeijlnc6kMyd9kEY3xjh0YUPMg5DkJKeoueQubw0rmvHzfFBvZpMIczWdLoIMSE_CCTFYBbRi03VvXn41aKiLCQgDUsFh3wZ63x6HIkL9VmHibolM'
+
+		url = 'https://fcm.googleapis.com/fcm/send'
+		data = {'notification': {'title': 'hello title', 'body': 'hello body'}, 'to': '/topics/all'}
+		headers = {'Content-type': 'application/json', 'Authorization': 'key={}'.format(key)}
+		r = requests.post(url, data=json.dumps(data), headers=headers)
+		return json.loads(r.text)
+
+	except Exception as e:
+		print('error :', str(e))
+		return None
+
+
 
 def near_exists(lat, lon):
 	ago_5m = datetime.datetime.now() - datetime.timedelta(minutes=5)
@@ -100,6 +115,11 @@ def detection():
 		conn.commit()
 
 		ret['success'] = True
+
+		# notification
+		message_id = notification_fcm('hello', 'world!')
+		if message_id is None:
+			raise Exception('Failed receive message id from fcm server')
 	
 	except Exception as e:
 		ret['success'] = False
@@ -193,7 +213,7 @@ def position():
 if __name__ == '__main__':
 	global conn, cursor
 
-	conn = pymysql.connect(host='luxir01.iptime.org', user='oyo', password='oyoteam', db='oyo', charset='utf8')
+	conn = pymysql.connect(host='localhost', user='oyo', password='oyoteam', db='oyo', charset='utf8')
 	cursor = conn.cursor()
 	
 	app.run(host='0.0.0.0', port=8001)

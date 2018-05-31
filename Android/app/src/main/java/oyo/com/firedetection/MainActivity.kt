@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 import oyo.com.firedetection.Adapter.DetectionAdapter
@@ -36,6 +37,9 @@ class MainActivity : AppCompatActivity(), OYOReceiver.Listener, AdapterView.OnIt
 
         val notificationManager = NotificationManagerCompat.from(applicationContext)
         notificationManager.notify(this.getString(R.string.default_notification_channel_id), 0, builder.build())
+
+
+        FirebaseMessaging.getInstance().subscribeToTopic("all")
 
 
         if (intent.extras != null) {
