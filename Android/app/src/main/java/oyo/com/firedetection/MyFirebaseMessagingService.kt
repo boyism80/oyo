@@ -1,22 +1,21 @@
 package oyo.com.firedetection
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
-import android.net.Uri
 import android.os.Build
 import android.support.v4.app.NotificationCompat
 import android.support.v4.app.NotificationManagerCompat
 import android.util.Log
-
 import com.firebase.jobdispatcher.FirebaseJobDispatcher
 import com.firebase.jobdispatcher.GooglePlayDriver
-import com.firebase.jobdispatcher.Job
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+
 
 @Suppress("DEPRECATION")
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -27,6 +26,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      * @param remoteMessage Object representing the message received from Firebase Cloud Messaging.
      */
     // [START receive_message]
+    @SuppressLint("WrongConstant")
     override fun onMessageReceived(remoteMessage: RemoteMessage?) {
         // [START_EXCLUDE]
         // There are two types of messages data messages and notification messages. Data messages are handled
@@ -61,14 +61,28 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val notification = remoteMessage.notification
         if (notification != null) {
 
-            Log.d(TAG, "Message Notification Body: " + notification.body)
-
-            val builder = NotificationCompat.Builder(this).setContentTitle(notification.title).setContentText(notification.body).setTicker("Fire is detected!").setSmallIcon(R.drawable.ic_stat_ic_notification).setAutoCancel(true)
+            val intent = Intent()
+            val pendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, Intent.FLAG_ACTIVITY_NEW_TASK)
+            val builder = NotificationCompat
+                    .Builder(this)
+                    .setContentTitle(notification.title)
+                    .setContentText(notification.body)
+                    .setTicker("Fire is detected!")
+                    .setContentIntent(pendingIntent)
+                    .setSmallIcon(R.drawable.ic_stat_ic_notification)
+                    .setAutoCancel(true)
+                    .setChannelId(getString(R.string.default_notification_channel_id))
             val style = NotificationCompat.InboxStyle().setBigContentTitle(notification.body)
             builder.setStyle(style)
 
-            val notificationManager = NotificationManagerCompat.from(applicationContext)
-            notificationManager.notify(this.getString(R.string.default_notification_channel_id), 0, builder.build())
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val notificationManager = getSystemService(NotificationManager::class.java)
+                notificationManager.createNotificationChannel(NotificationChannel(getString(R.string.default_notification_channel_id), getString(R.string.common_google_play_services_notification_channel_name), NotificationManager.IMPORTANCE_LOW))
+                notificationManager.notify(this.getString(R.string.default_notification_channel_id), 0, builder.build())
+            } else {
+                val notificationManager = NotificationManagerCompat.from(applicationContext)
+                notificationManager.notify(this.getString(R.string.default_notification_channel_id), 0, builder.build())
+            }
         }
 
         // Also if you intend on generating your own notifications as a result of a received FCM
