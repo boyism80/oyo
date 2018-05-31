@@ -623,8 +623,8 @@ namespace Fire_Detector.Control.SideTabView
         {
             try
             {
-                var inf = Cv2.ImRead(@"C:\Users\LUXIR\Desktop\45937_86744_5534.jpg");
-                var vis = Cv2.ImRead(@"C:\Users\LUXIR\Desktop\i14544601972.jpg");
+                var inf = Cv2.ImRead(@"C:\Users\CSHYEON\Desktop\45937_86744_5534.jpg");
+                var vis = Cv2.ImRead(@"C:\Users\CSHYEON\Desktop\i14544601972.jpg");
                 var thumb = inf.Resize(new OpenCvSharp.Size(80, 60));
 
                 var inf_bytes = inf.ToBytes(".jpg");

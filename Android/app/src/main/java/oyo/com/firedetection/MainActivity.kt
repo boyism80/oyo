@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 import oyo.com.firedetection.Adapter.DetectionAdapter
 
-@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity(), OYOReceiver.Listener, AdapterView.OnItemClickListener {
 
     private val TAG = "MainActivity"
@@ -31,23 +30,9 @@ class MainActivity : AppCompatActivity(), OYOReceiver.Listener, AdapterView.OnIt
 //        val notificationManager = getSystemService(NotificationManager::class.java)
 //        notificationManager.createNotificationChannel(NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_LOW))
 
-        val builder = NotificationCompat.Builder(this).setContentTitle("set content title").setContentText("set content text").setTicker("new message alert").setSmallIcon(R.drawable.ic_stat_ic_notification).setAutoCancel(true)
-        val style = NotificationCompat.InboxStyle().setBigContentTitle("big content title")
-        builder.setStyle(style)
-
-        val notificationManager = NotificationManagerCompat.from(applicationContext)
-        notificationManager.notify(this.getString(R.string.default_notification_channel_id), 0, builder.build())
-
 
         FirebaseMessaging.getInstance().subscribeToTopic("all")
 
-
-        if (intent.extras != null) {
-            for (key in intent.extras!!.keySet()) {
-                val value = intent.extras!!.get(key)
-                Log.d(TAG, "Key: $key Value: $value")
-            }
-        }
 
         OYOReceiver(this, this.resources.getString(R.string.host), "get detections", this)
                 .route("gets")

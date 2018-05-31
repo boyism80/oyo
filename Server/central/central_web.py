@@ -1,3 +1,5 @@
+#-*- coding: utf-8 -*-
+
 import pymysql
 import os
 import uuid
@@ -5,22 +7,21 @@ import time
 import urllib
 import datetime
 import math
+import requests
 from flask import *
 
 
 app     = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-conn    = None
-cursor  = None
-lat     = 500
-lon     = 500
-alt     = 0
+conn, cursor = None, None
+lat, lon, alt = (500, 500, 0)
+FCM_API_KEY = 'AAAAtlOL1Xo:APA91bG8x7sPpkDE9-CojYOUgbrUeijlnc6kMyd9kEY3xjh0YUPMg5DkJKeoueQubw0rmvHzfFBvZpMIczWdLoIMSE_CCTFYBbRi03VvXn41aKiLCQgDUsFh3wZ63x6HIkL9VmHibolM'
 
 def distance(p1, p2):
 	R = 6373.0
 
 	lat1, lon1 = (math.radians(p1[0]), math.radians(p1[1]))
-	lat2, lon2 = (math.radians(p1[0]), math.radians(p1[1]))
+	lat2, lon2 = (math.radians(p2[0]), math.radians(p2[1]))
 	dlat, dlon = (lat2 - lat1, lon2 - lon1)
 
 	a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
@@ -30,11 +31,9 @@ def distance(p1, p2):
 
 def notification_fcm(title, message):
 	try:
-		key = 'AAAAtlOL1Xo:APA91bG8x7sPpkDE9-CojYOUgbrUeijlnc6kMyd9kEY3xjh0YUPMg5DkJKeoueQubw0rmvHzfFBvZpMIczWdLoIMSE_CCTFYBbRi03VvXn41aKiLCQgDUsFh3wZ63x6HIkL9VmHibolM'
-
 		url = 'https://fcm.googleapis.com/fcm/send'
-		data = {'notification': {'title': 'hello title', 'body': 'hello body'}, 'to': '/topics/all'}
-		headers = {'Content-type': 'application/json', 'Authorization': 'key={}'.format(key)}
+		data = {'notification': {'title': title, 'body': message}, 'to': '/topics/all'}
+		headers = {'Content-type': 'application/json', 'Authorization': 'key={}'.format(FCM_API_KEY)}
 		r = requests.post(url, data=json.dumps(data), headers=headers)
 		return json.loads(r.text)
 
@@ -83,8 +82,8 @@ def detection():
 	try:
 		host = request.remote_addr
 		lat, lon, tem = float(request.form.get('lat')), float(request.form.get('lon')), float(request.form.get('tem'))
-		if near_exists(lat, lon):
-			raise Exception('near exists')
+		# if near_exists(lat, lon):
+		# 	raise Exception('near exists')
 
 		inf, vis, thumb = request.files['inf'], request.files['vis'], request.files['thumb']
 		inf_path, vis_path, thumb_path = None, None, None
@@ -117,7 +116,7 @@ def detection():
 		ret['success'] = True
 
 		# notification
-		message_id = notification_fcm('hello', 'world!')
+		message_id = notification_fcm('산불이 감지되었습니다.', '클릭하여 자세한 정보를 확인하세요.')
 		if message_id is None:
 			raise Exception('Failed receive message id from fcm server')
 	
