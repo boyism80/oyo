@@ -692,7 +692,7 @@ namespace Fire_Detector.Control.SideTabView
         private void button1_Click(object sender, EventArgs e)
         {
             this.request();
-            this.get();
+            //this.get();
         }
     }
 }

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "783085720954",
+    "firebase_url": "https://firedetection-b2861.firebaseio.com",
+    "project_id": "firedetection-b2861",
+    "storage_bucket": "firedetection-b2861.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783085720954:android:7a6fd7939dcd01fe",
+        "android_client_info": {
+          "package_name": "oyo.com.firedetection"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783085720954-3pp9amjmikrafvpffrformgfnbs4gl8n.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "783085720954-3pp9amjmikrafvpffrformgfnbs4gl8n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWiXCEGT2Hmh7YhW_K4Ya2pv2vpLLA4ac"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

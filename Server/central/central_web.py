@@ -3,6 +3,8 @@ import os
 import uuid
 import time
 import urllib
+import datetime
+import math
 from flask import *
 
 
@@ -13,6 +15,36 @@ cursor  = None
 lat     = 500
 lon     = 500
 alt     = 0
+
+def distance(p1, p2):
+	R = 6373.0
+
+	lat1, lon1 = (math.radians(p1[0]), math.radians(p1[1]))
+	lat2, lon2 = (math.radians(p1[0]), math.radians(p1[1]))
+	dlat, dlon = (lat2 - lat1, lon2 - lon1)
+
+	a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
+	c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+	return R * c
+
+
+def near_exists(lat, lon):
+	ago_5m = datetime.datetime.now() - datetime.timedelta(minutes=5)
+	sql = "SELECT lat, lon FROM detection WHERE date >= %s"
+	count = cursor.execute(sql, (ago_5m.strftime('%Y-%m-%d %H:%M:%S'),))
+
+	for row in cursor.fetchall():
+		_lat, _lon = row
+		_lat, _lon = float(_lat), float(_lon)
+
+		if distance((lat, lon), (_lat, _lon)) < 0.02:
+			return True
+
+	return False
+
+
+
 
 def generate_filename(directory, prefix, ext):
 	if not os.path.exists(directory):
@@ -35,36 +67,33 @@ def detection():
 	ret = {}
 	try:
 		host = request.remote_addr
-		lat = float(request.form.get('lat'))
-		lon = float(request.form.get('lon'))
-		tem = float(request.form.get('tem'))
-		inf = request.files['inf']
-		vis = request.files['vis']
-		thumb = request.files['thumb']
-		inf_path = None
-		vis_path = None
-		thumb_path = None
+		lat, lon, tem = float(request.form.get('lat')), float(request.form.get('lon')), float(request.form.get('tem'))
+		if near_exists(lat, lon):
+			raise Exception('near exists')
+
+		inf, vis, thumb = request.files['inf'], request.files['vis'], request.files['thumb']
+		inf_path, vis_path, thumb_path = None, None, None
 
 		if inf:
 			content = inf.read()
 			inf_path = generate_filename('static/images', 'inf', 'jpg')
-			with open(inf_path, 'wb') as f:
-				f.write(content)
-			#inf.save(inf_path)
+			# with open(inf_path, 'wb') as f:
+			# 	f.write(content)
+			inf.save(inf_path)
 
 		if vis:
 			content = vis.read()
 			vis_path = generate_filename('static/images', 'vis', 'jpg')
-			with open(vis_path, 'wb') as f:
-				f.write(content)
-			# vis.save(vis_path)
+			# with open(vis_path, 'wb') as f:
+			# 	f.write(content)
+			vis.save(vis_path)
 
 		if thumb:
 			content = thumb.read()
 			thumb_path = generate_filename('static/images', 'thumb', 'jpg')
-			with open(thumb_path, 'wb') as f:
-				f.write(content)
-			# bnd.save(bnd_path)
+			# with open(thumb_path, 'wb') as f:
+			# 	f.write(content)
+			thumb.save(thumb_path)
 
 		sql = "INSERT INTO detection (addr, lat, lon, temperature, thumb, infrared, visual, date) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
 		cursor.execute(sql, (str(host), lat, lon, tem, thumb_path, inf_path, vis_path, time.strftime('%Y-%m-%d %H:%M:%S')))
@@ -162,10 +191,9 @@ def position():
 
 
 if __name__ == '__main__':
-	global conn
-	global cursor
+	global conn, cursor
 
-	conn = pymysql.connect(host='localhost', user='oyo', password='oyoteam', db='oyo', charset='utf8')
+	conn = pymysql.connect(host='luxir01.iptime.org', user='oyo', password='oyoteam', db='oyo', charset='utf8')
 	cursor = conn.cursor()
 	
 	app.run(host='0.0.0.0', port=8001)

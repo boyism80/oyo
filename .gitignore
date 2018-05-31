@@ -50,3 +50,4 @@ Android/gradlew
 Android/gradlew.bat
 Android/local.properties
 Android/*.pro
+Android/*.log

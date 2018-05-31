@@ -31,7 +31,7 @@ class DetectionActivity : Activity(), OYOReceiver.Listener, ViewPagerAdapter.Lis
             OYOReceiver(this, this.resources.getString(R.string.host), "get detection", this)
                     .route("get")
                     .add("id", Integer.toString(id))
-                    .request()
+                    .start()
         } catch (e: Exception) {
 
             Log.d("onCreate", e.message)
