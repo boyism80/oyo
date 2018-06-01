@@ -619,79 +619,10 @@ namespace Fire_Detector.Control.SideTabView
             }
         }
 
-        private async void request()
-        {
-            try
-            {
-                var inf = Cv2.ImRead(@"C:\Users\CSHYEON\Desktop\45937_86744_5534.jpg");
-                var vis = Cv2.ImRead(@"C:\Users\CSHYEON\Desktop\i14544601972.jpg");
-                var thumb = inf.Resize(new OpenCvSharp.Size(80, 60));
-
-                var inf_bytes = inf.ToBytes(".jpg");
-                var vis_bytes = vis.ToBytes(".jpg");
-                var thumb_bytes = thumb.ToBytes(".jpg");
-
-                var client = new HttpClient();
-                var form = new MultipartFormDataContent();
-
-                form.Add(new StringContent("37.56647"), "lat");
-                form.Add(new StringContent("126.977963"), "lon");
-                form.Add(new StringContent("72.65"), "tem");
-
-                var inf_content = new ByteArrayContent(inf_bytes, 0, inf_bytes.Length);
-                inf_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
-                inf_content.Headers.ContentLength = inf_bytes.Length;
-                form.Add(inf_content, "inf", "inf.jpg");
-
-                var vis_content = new ByteArrayContent(vis_bytes, 0, vis_bytes.Length);
-                vis_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
-                vis_content.Headers.ContentLength = vis_bytes.Length;
-                form.Add(vis_content, "vis", "vis.jpg");
-
-                var bnd_content = new ByteArrayContent(thumb_bytes, 0, thumb_bytes.Length);
-                bnd_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
-                bnd_content.Headers.ContentLength = thumb_bytes.Length;
-                form.Add(bnd_content, "thumb", "thumb.jpg");
-
-                var response = await client.PostAsync("http://luxir01.iptime.org:8001/detection", form);
-
-                response.EnsureSuccessStatusCode();
-                client.Dispose();
-                var result = response.Content.ReadAsStringAsync().Result;
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        private async void generate_drone()
-        {
-            try
-            {
-                var client = new HttpClient();
-                var form = new MultipartFormDataContent();
-
-                form.Add(new StringContent(this.Root.Bebop2.GPS.lat.ToString()), "lat");
-                form.Add(new StringContent(this.Root.Bebop2.GPS.lon.ToString()), "lon");
-                form.Add(new StringContent(this.Root.Bebop2.GPS.alt.ToString()), "alt");
-
-                var response = await client.PostAsync("http://luxir01.iptime.org:8001/generate", form);
-
-                response.EnsureSuccessStatusCode();
-                client.Dispose();
-
-                var result = response.Content.ReadAsStringAsync().Result;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.request();
             //this.get();
         }
     }

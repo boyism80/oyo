@@ -4,6 +4,8 @@ using oyo;
 using ParrotBebop2;
 using SimpleJSON;
 using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Windows.Forms;
 
 namespace Fire_Detector.BunifuForm
@@ -244,6 +246,72 @@ namespace Fire_Detector.BunifuForm
                 {
                     return new OpenCvSharp.Size(this.defaultView.streamingFrameBox.Width * aspect, this.defaultView.streamingFrameBox.Height);
                 }
+            }
+        }
+
+        private async void GenerateDronePosition(double lat, double lon, double alt)
+        {
+            try
+            {
+                var client = new HttpClient();
+                var form = new MultipartFormDataContent();
+
+                form.Add(new StringContent(this.Bebop2.GPS.lat.ToString()), "lat");
+                form.Add(new StringContent(this.Bebop2.GPS.lon.ToString()), "lon");
+                form.Add(new StringContent(this.Bebop2.GPS.alt.ToString()), "alt");
+
+                var response = await client.PostAsync("http://luxir01.iptime.org:8001/generate", form);
+
+                response.EnsureSuccessStatusCode();
+                client.Dispose();
+
+                var result = response.Content.ReadAsStringAsync().Result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        private async void PostDetection(Mat inf, Mat vis, Mat thumb, double lat, double lon, float temperature)
+        {
+            try
+            {
+                var inf_bytes = inf.ToBytes(".jpg");
+                var vis_bytes = vis.ToBytes(".jpg");
+                var thumb_bytes = thumb.ToBytes(".jpg");
+
+                var client = new HttpClient();
+                var form = new MultipartFormDataContent();
+
+                form.Add(new StringContent(lat.ToString()), "lat");
+                form.Add(new StringContent(lat.ToString()), "lon");
+                form.Add(new StringContent(temperature.ToString()), "tem");
+
+                var inf_content = new ByteArrayContent(inf_bytes, 0, inf_bytes.Length);
+                inf_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                inf_content.Headers.ContentLength = inf_bytes.Length;
+                form.Add(inf_content, "inf", "inf.jpg");
+
+                var vis_content = new ByteArrayContent(vis_bytes, 0, vis_bytes.Length);
+                vis_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                vis_content.Headers.ContentLength = vis_bytes.Length;
+                form.Add(vis_content, "vis", "vis.jpg");
+
+                var bnd_content = new ByteArrayContent(thumb_bytes, 0, thumb_bytes.Length);
+                bnd_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                bnd_content.Headers.ContentLength = thumb_bytes.Length;
+                form.Add(bnd_content, "thumb", "thumb.jpg");
+
+                var response = await client.PostAsync("http://luxir01.iptime.org:8001/detection", form);
+
+                response.EnsureSuccessStatusCode();
+                client.Dispose();
+                var result = response.Content.ReadAsStringAsync().Result;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
     }

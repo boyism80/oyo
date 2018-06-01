@@ -113,7 +113,7 @@ namespace oyo
 			var mask_inv			= (~mask).ToMat();
 
             var mask_norm           = new Mat();
-            var mask_inv_norm = new Mat();
+            var mask_inv_norm       = new Mat();
 			if (mask.CountNonZero() == 0)
             {
                 mask_inv_norm       = new Mat(mask.Size(), MatType.CV_32FC1, new Scalar(1.0));
