@@ -7,6 +7,7 @@ using ParrotBebop2;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Net.Http;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -33,6 +34,8 @@ namespace Fire_Detector.BunifuForm
 
         private Stopwatch           _stopwatch = new Stopwatch();
         private int                 _fps, _lastFps;
+
+        private Stopwatch           _detectedWatcher = new Stopwatch();
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -99,6 +102,7 @@ namespace Fire_Detector.BunifuForm
             this.loadConfig("config.json");
 
             this._stopwatch.Start();
+            this._detectedWatcher.Start();
 
             this._wstream = new StreamWriter("alt.txt", false);
         }
@@ -298,9 +302,23 @@ namespace Fire_Detector.BunifuForm
                     {
                         var center                  = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
                         this.Visualizer.markTemperature(updatedFrame, new Point(detectedRect.Center.X, detectedRect.Center.Y), center, Scalar.Red);
+                    }
 
-                        Console.WriteLine("alt : {0} / temp : {1}", this.Bebop2.Altitude, center);
-                        this._wstream.WriteLine("alt : {0} / temp : {1}", this.Bebop2.Altitude, center);
+
+                    //
+                    // Post information to central server
+                    //
+                    this._detectedWatcher.Stop();
+                    if (this._detectedWatcher.ElapsedMilliseconds > 5000 && this.Detector.DetectedRects.Length != 0)
+                    {
+                        var detectedRect = this.Detector.DetectedRects[0];
+                        var temperature = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
+                        this.PostDetection(updatedFrame, this.UpdatedDataBuffer.Visual, receiver.Infrared(), this.Bebop2.GPS.lat, this.Bebop2.GPS.lon, temperature);
+                        this._detectedWatcher.Restart();
+                    }
+                    else
+                    {
+                        this._detectedWatcher.Start();
                     }
                 }
 
@@ -447,6 +465,7 @@ this._mutex.ReleaseMutex();
         private void Bebop_OnPositionChanged(Bebop2 bebop2, double lat, double lon, double alt)
         {
             this.Overlayer.Update(bebop2.GPS);
+            this.GenerateDronePosition(lat, lon, alt);
         }
 
         private void Bebop_OnError(Bebop2 bebop, string message)

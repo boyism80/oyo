@@ -13,7 +13,7 @@ from flask import *
 
 app     = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-conn, cursor = None, None
+connection = None
 lat, lon, alt = (500, 500, 0)
 FCM_API_KEY = 'AAAAtlOL1Xo:APA91bG8x7sPpkDE9-CojYOUgbrUeijlnc6kMyd9kEY3xjh0YUPMg5DkJKeoueQubw0rmvHzfFBvZpMIczWdLoIMSE_CCTFYBbRi03VvXn41aKiLCQgDUsFh3wZ63x6HIkL9VmHibolM'
 
@@ -46,14 +46,16 @@ def notification_fcm(title, message):
 def near_exists(lat, lon):
 	ago_5m = datetime.datetime.now() - datetime.timedelta(minutes=5)
 	sql = "SELECT lat, lon FROM detection WHERE date >= %s"
-	count = cursor.execute(sql, (ago_5m.strftime('%Y-%m-%d %H:%M:%S'),))
 
-	for row in cursor.fetchall():
-		_lat, _lon = row
-		_lat, _lon = float(_lat), float(_lon)
+	with connection.cursor() as cursor:
+		count = cursor.execute(sql, (ago_5m.strftime('%Y-%m-%d %H:%M:%S'),))
 
-		if distance((lat, lon), (_lat, _lon)) < 0.02:
-			return True
+		for row in cursor.fetchall():
+			_lat, _lon = row
+			_lat, _lon = float(_lat), float(_lon)
+
+			if distance((lat, lon), (_lat, _lon)) < 0.02:
+				return True
 
 	return False
 
@@ -91,27 +93,25 @@ def detection():
 		if inf:
 			content = inf.read()
 			inf_path = generate_filename('static/images', 'inf', 'jpg')
-			# with open(inf_path, 'wb') as f:
-			# 	f.write(content)
-			inf.save(inf_path)
+			with open(inf_path, 'wb') as f:
+				f.write(content)
 
 		if vis:
 			content = vis.read()
 			vis_path = generate_filename('static/images', 'vis', 'jpg')
-			# with open(vis_path, 'wb') as f:
-			# 	f.write(content)
-			vis.save(vis_path)
+			with open(vis_path, 'wb') as f:
+				f.write(content)
 
 		if thumb:
 			content = thumb.read()
 			thumb_path = generate_filename('static/images', 'thumb', 'jpg')
-			# with open(thumb_path, 'wb') as f:
-			# 	f.write(content)
-			thumb.save(thumb_path)
+			with open(thumb_path, 'wb') as f:
+				f.write(content)
 
-		sql = "INSERT INTO detection (addr, lat, lon, temperature, thumb, infrared, visual, date) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-		cursor.execute(sql, (str(host), lat, lon, tem, thumb_path, inf_path, vis_path, time.strftime('%Y-%m-%d %H:%M:%S')))
-		conn.commit()
+		with connection.cursor() as cursor:
+			sql = "INSERT INTO detection (addr, lat, lon, temperature, thumb, infrared, visual, date) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+			cursor.execute(sql, (str(host), lat, lon, tem, thumb_path, inf_path, vis_path, time.strftime('%Y-%m-%d %H:%M:%S')))
+			connection.commit()
 
 		ret['success'] = True
 
@@ -121,6 +121,7 @@ def detection():
 			raise Exception('Failed receive message id from fcm server')
 	
 	except Exception as e:
+		connection.rollback()
 		ret['success'] = False
 		ret['error'] = str(e)
 
@@ -137,18 +138,19 @@ def gets():
 		ret['success'] = True
 		ret['data'] = []
 
-		count = cursor.execute(sql, (offset, count))
-		for element in cursor.fetchall():
-			item                = {}
-			id, lat, lon, tem, thumb, date = element
-		
-			item['id']          = id
-			item['temperature'] = float(tem)
-			item['position']    = {'lat': float(lat), 'lon': float(lon)}
-			item['date']        = str(date)
-			item['thumb']       = urllib.parse.urljoin(request.url_root, thumb)
+		with connection.cursor() as cursor:
+			count = cursor.execute(sql, (offset, count))
+			for element in cursor.fetchall():
+				item                = {}
+				id, lat, lon, tem, thumb, date = element
+			
+				item['id']          = id
+				item['temperature'] = float(tem)
+				item['position']    = {'lat': float(lat), 'lon': float(lon)}
+				item['date']        = str(date)
+				item['thumb']       = urllib.parse.urljoin(request.url_root, thumb)
 
-			ret['data'].append(item)
+				ret['data'].append(item)
 	except Exception as e:
 		ret['success'] = False
 		ret['error'] = str(e)
@@ -164,10 +166,12 @@ def get():
 	
 	ret = {}
 	try:
+		with connection.cursor() as cursor:
+			if cursor.execute(sql, (id,)) > 0:
+				id, lat, lon, tem, inf, vis, date = cursor.fetchone()
+				ret['data'] = {'id': id, 'position': {'lat': float(lat), 'lon': float(lon)}, 'tem': float(tem), 'inf': urllib.parse.urljoin(request.url_root, inf), 'vis': urllib.parse.urljoin(request.url_root, vis), 'date': str(date)}
+
 		ret['success'] = True
-		if cursor.execute(sql, (id,)) > 0:
-			id, lat, lon, tem, inf, vis, date = cursor.fetchone()
-			ret['data'] = {'id': id, 'position': {'lat': float(lat), 'lon': float(lon)}, 'tem': float(tem), 'inf': urllib.parse.urljoin(request.url_root, inf), 'vis': urllib.parse.urljoin(request.url_root, vis), 'date': str(date)}
 	except Exception as e:
 		ret['success'] = False
 		ret['error'] = str(e)
@@ -210,12 +214,9 @@ def position():
 
 
 if __name__ == '__main__':
-	global conn, cursor
-
-	conn = pymysql.connect(host='localhost', user='oyo', password='oyoteam', db='oyo', charset='utf8')
-	cursor = conn.cursor()
+	global connection
+	connection = pymysql.connect(host='localhost', user='oyo', password='oyoteam', db='oyo', charset='utf8')
 	
 	app.run(host='0.0.0.0', port=8001)
 
-	cursor.close()
-	conn.close()
+	connection.close()

@@ -619,13 +619,13 @@ namespace Fire_Detector.Control.SideTabView
             }
         }
 
-        private async void request()
+        private async void post()
         {
             try
             {
-                var inf = Cv2.ImRead(@"C:\Users\CSHYEON\Desktop\45937_86744_5534.jpg");
-                var vis = Cv2.ImRead(@"C:\Users\CSHYEON\Desktop\i14544601972.jpg");
-                var thumb = inf.Resize(new OpenCvSharp.Size(80, 60));
+                var inf = Cv2.ImRead(@"C:\Users\LUXIR\Desktop\45937_86744_5534.jpg");
+                var vis = Cv2.ImRead(@"C:\Users\LUXIR\Desktop\i14544601972.jpg");
+                var thumb = Cv2.ImRead(@"C:\Users\LUXIR\Desktop\i14544601972.jpg").Resize(new OpenCvSharp.Size(80, 60));
 
                 var inf_bytes = inf.ToBytes(".jpg");
                 var vis_bytes = vis.ToBytes(".jpg");
@@ -634,8 +634,8 @@ namespace Fire_Detector.Control.SideTabView
                 var client = new HttpClient();
                 var form = new MultipartFormDataContent();
 
-                form.Add(new StringContent("37.56647"), "lat");
-                form.Add(new StringContent("126.977963"), "lon");
+                form.Add(new StringContent("37.3487547"), "lat");
+                form.Add(new StringContent("126.74490070000002"), "lon");
                 form.Add(new StringContent("72.65"), "tem");
 
                 var inf_content = new ByteArrayContent(inf_bytes, 0, inf_bytes.Length);
@@ -665,34 +665,9 @@ namespace Fire_Detector.Control.SideTabView
             }
         }
 
-        private async void generate_drone()
-        {
-            try
-            {
-                var client = new HttpClient();
-                var form = new MultipartFormDataContent();
-
-                form.Add(new StringContent(this.Root.Bebop2.GPS.lat.ToString()), "lat");
-                form.Add(new StringContent(this.Root.Bebop2.GPS.lon.ToString()), "lon");
-                form.Add(new StringContent(this.Root.Bebop2.GPS.alt.ToString()), "alt");
-
-                var response = await client.PostAsync("http://luxir01.iptime.org:8001/generate", form);
-
-                response.EnsureSuccessStatusCode();
-                client.Dispose();
-
-                var result = response.Content.ReadAsStringAsync().Result;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            this.request();
-            //this.get();
+            this.post();
         }
     }
 }
