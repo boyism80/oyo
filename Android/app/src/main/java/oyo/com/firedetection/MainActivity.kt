@@ -1,11 +1,9 @@
 package oyo.com.firedetection
 
+import android.app.Activity
 import android.content.Intent
 import android.location.Geocoder
 import android.os.Bundle
-import android.support.v4.app.NotificationCompat
-import android.support.v4.app.NotificationManagerCompat
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -14,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 import oyo.com.firedetection.Adapter.DetectionAdapter
 
-class MainActivity : AppCompatActivity(), OYOReceiver.Listener, AdapterView.OnItemClickListener {
+class MainActivity : Activity(), OYOReceiver.Listener, AdapterView.OnItemClickListener {
 
     private val TAG = "MainActivity"
 
@@ -27,12 +25,7 @@ class MainActivity : AppCompatActivity(), OYOReceiver.Listener, AdapterView.OnIt
         this._geocoder = Geocoder(this)
         this.history.onItemClickListener = this
 
-//        val notificationManager = getSystemService(NotificationManager::class.java)
-//        notificationManager.createNotificationChannel(NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_LOW))
-
-
         FirebaseMessaging.getInstance().subscribeToTopic("all")
-
 
         OYOReceiver(this, this.resources.getString(R.string.host), "get detections", this)
                 .route("gets")
@@ -67,7 +60,10 @@ class MainActivity : AppCompatActivity(), OYOReceiver.Listener, AdapterView.OnIt
                         val position = json.getJSONObject("position")
                         val lat = position.getDouble("lat")
                         val lon = position.getDouble("lon")
-                        val addressList = this._geocoder!!.getFromLocation(lat, lon, 1)
+                        val addressList = this._geocoder.getFromLocation(lat, lon, 1)
+                        if(addressList.count() == 0)
+                            continue;
+
                         position.put("address", addressList[0].getAddressLine(0))
                     }
                     val adapter = DetectionAdapter(this, data.getJSONArray("data"))

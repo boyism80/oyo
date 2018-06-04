@@ -21,13 +21,17 @@
             android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="위치 : 경기도 시흥시 정왕동 1817-4" />
+            android:text="위치 : 경기도 시흥시 정왕동 1817-4"
+            android:textSize="14dp"
+            android:textColor="#151515"/>
 
         <TextView
             android:id="@+id/temperature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="감지온도 : 74.52'C" />
+            android:text="감지온도 : 74.52'C"
+            android:textSize="15dp"
+            android:textColor="#dd5566"/>
     </LinearLayout>
 
 </LinearLayout>
