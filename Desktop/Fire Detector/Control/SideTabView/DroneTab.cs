@@ -619,11 +619,55 @@ namespace Fire_Detector.Control.SideTabView
             }
         }
 
-        
+        private async void post()
+        {
+            try
+            {
+                var inf = Cv2.ImRead(@"C:\Users\LUXIR\Desktop\45937_86744_5534.jpg");
+                var vis = Cv2.ImRead(@"C:\Users\LUXIR\Desktop\i14544601972.jpg");
+                var thumb = Cv2.ImRead(@"C:\Users\LUXIR\Desktop\i14544601972.jpg").Resize(new OpenCvSharp.Size(80, 60));
+
+                var inf_bytes = inf.ToBytes(".jpg");
+                var vis_bytes = vis.ToBytes(".jpg");
+                var thumb_bytes = thumb.ToBytes(".jpg");
+
+                var client = new HttpClient();
+                var form = new MultipartFormDataContent();
+
+                form.Add(new StringContent("37.3487547"), "lat");
+                form.Add(new StringContent("126.74490070000002"), "lon");
+                form.Add(new StringContent("72.65"), "tem");
+
+                var inf_content = new ByteArrayContent(inf_bytes, 0, inf_bytes.Length);
+                inf_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                inf_content.Headers.ContentLength = inf_bytes.Length;
+                form.Add(inf_content, "inf", "inf.jpg");
+
+                var vis_content = new ByteArrayContent(vis_bytes, 0, vis_bytes.Length);
+                vis_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                vis_content.Headers.ContentLength = vis_bytes.Length;
+                form.Add(vis_content, "vis", "vis.jpg");
+
+                var bnd_content = new ByteArrayContent(thumb_bytes, 0, thumb_bytes.Length);
+                bnd_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                bnd_content.Headers.ContentLength = thumb_bytes.Length;
+                form.Add(bnd_content, "thumb", "thumb.jpg");
+
+                var response = await client.PostAsync("http://luxir01.iptime.org:8001/detection", form);
+
+                response.EnsureSuccessStatusCode();
+                client.Dispose();
+                var result = response.Content.ReadAsStringAsync().Result;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //this.get();
+            this.post();
         }
     }
 }

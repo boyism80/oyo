@@ -39,7 +39,7 @@ namespace Fire_Detector.BunifuForm
         /// <summary>
         /// 카메라서버의 주소입니다.
         /// </summary>
-        private static string                   HOST_NAME            = "192.168.42.80"; // luxir01.iptime.org (포트포워딩 ip)
+        private static string                   HOST_NAME            = "192.168.0.81"; // luxir01.iptime.org (포트포워딩 ip)
                                                                                              // 192.168.42.80 (드론 ip)
                                                                                              // 192.168.0.80 (테스트용 라즈베리파이 ip)
         /// <summary>

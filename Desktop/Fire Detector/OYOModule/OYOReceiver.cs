@@ -42,6 +42,7 @@ namespace oyo
         private Socket                          _socket;
         private string                          _host;
         private ushort                          _port;
+        private Mutex                           _mutex = new Mutex();
 
         //
         // _updateFrameThread
@@ -162,13 +163,13 @@ namespace oyo
 
                 if (this.Connected)
                 {
-                    if(this.OnConnected != null)
+                    if (this.OnConnected != null)
                         this.OnConnected.Invoke(this);
                     this.Execute();
                 }
                 else
                 {
-                    if(this.OnError != null)
+                    if (this.OnError != null)
                         this.OnError.Invoke(this, "서버와 연결할 수 없습니다.");
                 }
 
@@ -179,7 +180,7 @@ namespace oyo
                 this._socket.Close();
                 this._socket = null;
 
-                if(this.OnError != null)
+                if (this.OnError != null)
                     this.OnError.Invoke(this, "서버와 연결할 수 없습니다.");
                 return false;
             }
@@ -191,30 +192,44 @@ namespace oyo
         //
         private void Disconnect()
         {
-            if(this._socket == null)
+            if (this._socket == null)
                 return;
 
-            if(this._socket.Connected == false)
+            if (this._socket.Connected == false)
                 return;
 
+this._mutex.WaitOne();
             this._socket.Shutdown(SocketShutdown.Both);
             this._socket.Close();
             this._socket = null;
+this._mutex.ReleaseMutex();
         }
 
         private byte[] Receive(int size)
         {
+            if(this._socket == null)
+                return null;
+
             var bytes = new byte[size];
             var offset = 0;
 
-            while (size != offset)
+this._mutex.WaitOne();
+            try
             {
-                var recvsize = this._socket.Receive(bytes, offset, size - offset, SocketFlags.None);
-                if(recvsize == 0)
-                    return null;
+                while (size != offset)
+                {
+                    var recvsize = this._socket.Receive(bytes, offset, size - offset, SocketFlags.None);
+                    if (recvsize == 0)
+                        throw new Exception("Cannot receive data from server");
 
-                offset += recvsize;
+                    offset += recvsize;
+                }
             }
+            catch (Exception)
+            {
+                bytes = null;
+            }
+this._mutex.ReleaseMutex();
 
             return bytes;
         }
@@ -232,23 +247,20 @@ namespace oyo
         //
         private byte[] Receive(ref StreamingType streamingType, ref int width, ref int height)
         {
-            lock(this._socket)
+            var header = this.Receive(sizeof(int) * 4);
+            if (header == null)
+                return null;
+
+            using (var reader = new BinaryReader(new MemoryStream(header)))
             {
-                var header                      = this.Receive(sizeof(int) * 4);
-                if(header == null)
-                    return null;
-            
-                using (var reader = new BinaryReader(new MemoryStream(header)))
-                {
-                    var type                    = reader.ReadInt32();
-                    streamingType               = (type == 0 ? StreamingType.Infrared : StreamingType.Visual);
+                var type = reader.ReadInt32();
+                streamingType = (type == 0 ? StreamingType.Infrared : StreamingType.Visual);
 
-                    width                       = reader.ReadInt32();
-                    height                      = reader.ReadInt32();
-                    var size                    = reader.ReadInt32();
+                width = reader.ReadInt32();
+                height = reader.ReadInt32();
+                var size = reader.ReadInt32();
 
-                    return this.Receive(size);
-                }
+                return this.Receive(size);
             }
         }
 
@@ -294,7 +306,6 @@ namespace oyo
             {
             }
         }
-
 
         //
         // ReceiveFrameRoutine
@@ -432,7 +443,7 @@ namespace oyo
             //    return 0.0f;
 
             //return minTemperature + ((radioact - minRadioactive) / criteria);
-            return radioact / 95.62f;
+            return radioact / 92.60f;
         }
 
         //
@@ -455,7 +466,7 @@ namespace oyo
             //    return 0;
 
             //return (ushort)((temperature - minTemperature) * criteria + minRadioactive);
-            return 95.62f * temperature;
+            return 92.60f * temperature;
         }
 
         //
