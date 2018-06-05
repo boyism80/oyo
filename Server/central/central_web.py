@@ -44,6 +44,7 @@ def notification_fcm(title, message):
 
 
 def near_exists(lat, lon):
+	global connection
 	ago_5m = datetime.datetime.now() - datetime.timedelta(minutes=5)
 	sql = "SELECT lat, lon FROM detection WHERE date >= %s"
 
@@ -80,6 +81,8 @@ def index():
 
 @app.route('/detection', methods=['POST'])
 def detection():
+	global connection
+
 	ret = {}
 	try:
 		host = request.remote_addr
@@ -129,6 +132,8 @@ def detection():
 
 @app.route('/gets', methods=['POST'])
 def gets():
+	global connection
+
 	offset = int(request.form.get('offset'))
 	count = int(request.form.get('count'))
 
@@ -161,6 +166,8 @@ def gets():
 
 @app.route('/get', methods=['POST'])
 def get():
+	global connection
+	
 	id = int(request.form.get('id'))
 	sql = "SELECT id, lat, lon, temperature, infrared, visual, date FROM detection WHERE id = %s AND deleted = 0 LIMIT 1"
 	
