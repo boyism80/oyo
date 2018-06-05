@@ -60,7 +60,10 @@ class MainActivity : Activity(), OYOReceiver.Listener, AdapterView.OnItemClickLi
                         val position = json.getJSONObject("position")
                         val lat = position.getDouble("lat")
                         val lon = position.getDouble("lon")
-                        val addressList = this._geocoder!!.getFromLocation(lat, lon, 1)
+                        val addressList = this._geocoder.getFromLocation(lat, lon, 1)
+                        if(addressList.count() == 0)
+                            continue;
+
                         position.put("address", addressList[0].getAddressLine(0))
                     }
                     val adapter = DetectionAdapter(this, data.getJSONArray("data"))
