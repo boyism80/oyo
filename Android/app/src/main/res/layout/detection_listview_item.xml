@@ -5,9 +5,6 @@
     android:layout_height="wrap_content"
     android:background="#F4F4F4"
     android:paddingLeft="10px">
-    <!--android:layout_marginLeft="40px"
-    android:layout_marginRight="40px"
-    android:layout_marginBottom="8px"-->
 
 
     <ImageView
