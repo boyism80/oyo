@@ -35,9 +35,16 @@
             android:id="@+id/temperature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="12dp"
+            android:textSize="14dp"
             android:text="감지온도 : 74.2'C"
             android:textColor="#dd5566" />
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:text="2000/00/00 00:00:00"
+            android:textColor="#bb3344" />
 
     </LinearLayout>
 

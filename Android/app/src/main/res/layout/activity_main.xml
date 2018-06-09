@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
             android:text="경기도 시흥시 정왕동 1817-4"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:textColor="#151515"/>
 
         <TextView
@@ -28,6 +28,13 @@
             android:text="맑음, 32.5ºC"
             android:textSize="19dp"
             android:textColor="#dd5566" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:text="배터리 : 100%"
+            android:textColor="#338888"
+            android:layout_marginTop="5dp"/>
     </LinearLayout>
 
     <ListView

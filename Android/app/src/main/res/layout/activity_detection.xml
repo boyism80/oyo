@@ -16,14 +16,17 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="40"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="8dp">
 
         <TextView
             android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="위치 : 경기도 시흥시 정왕동 1817-4"
-            android:textSize="14dp"
+            android:textSize="20dp"
             android:textColor="#151515"/>
 
         <TextView
@@ -31,8 +34,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="감지온도 : 74.52'C"
-            android:textSize="15dp"
+            android:textSize="18dp"
             android:textColor="#dd5566"/>
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="2000/00/00 00:00:00"
+            android:textColor="#bb3344" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="위도 : 0.0"
+            android:textColor="#338888"
+            android:layout_marginTop="15dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="경도 : 0.0"
+            android:textColor="#338888"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="고도 : 0.0"
+            android:textColor="#336666"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:text="상태 : 자율주행"
+            android:textColor="#333388"
+            android:layout_marginTop="15dp"/>
     </LinearLayout>
 
 </LinearLayout>
