@@ -66,6 +66,7 @@ namespace Fire_Detector.Control
             this.visualizationTabButton.Tag = this.Root.mainView.visualizeLabel;
             this.leapmotionTabButton.Tag = this.Root.mainView.leapmotionLabel;
             this.detectionTabButton.Tag = this.Root.mainView.detectFireLabel;
+            this.autoflyButton.Tag = this.Root.mainView.autoflyLabel;
         }
 
         private void button_Click(object sender, EventArgs e)

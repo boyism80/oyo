@@ -82,6 +82,12 @@ namespace Fire_Detector.Control
 
             this.detectFireTabShow.Tag = this.Root.defaultView.sideExpandedBar.detectFireTab;
             this.detectFireLabel.Tag = this.detectFireTabShow;
+
+            this.detectFireTabShow.Tag = this.Root.defaultView.sideExpandedBar.detectFireTab;
+            this.detectFireLabel.Tag = this.detectFireTabShow;
+
+            this.autoFlyingTabShow.Tag = this.Root.defaultView.sideExpandedBar.autoFlyingTab;
+            this.autoflyLabel.Tag = this.autoFlyingTabShow;
         }
 
         public void OnScreenStateChanged(System.Drawing.Size size, bool isMaximize)

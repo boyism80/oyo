@@ -58,8 +58,8 @@ namespace Fire_Detector.BunifuForm
 
             this.Recorder.OnIncreasedTime           += this.defaultView.sideExpandedBar.droneTab.Recorder_OnIncreasedTime;
 
-            this.Overlayer.OnReceiveAddressEvent    += this.defaultView.Overlayer_OnReceiveAddressEvent;
-            this.Overlayer.OnReceiveAddressEvent    += this.mainView.mainConnectionView.Overlayer_OnReceiveAddressEvent;
+            this.Overlayer.ReceiveAddress           += this.defaultView.Overlayer_OnReceiveAddressEvent;
+            this.Overlayer.ReceiveAddress           += this.mainView.mainConnectionView.Overlayer_OnReceiveAddressEvent;
 
             this.Bebop2.OnConnected                 += this.mainView.mainConnectionView.Bebop_OnConnectionChanged;
             this.Bebop2.OnConnected                 += this.defaultView.sideExpandedBar.droneTab.Bebop_OnConnectionChanged;
@@ -464,7 +464,7 @@ this._mutex.ReleaseMutex();
 
         private void Bebop_OnPositionChanged(Bebop2 bebop2, double lat, double lon, double alt)
         {
-            this.Overlayer.Update(bebop2.GPS);
+            this.Overlayer.SetPosition((float)lat, (float)lon);
             this.GenerateDronePosition(lat, lon, alt);
         }
 

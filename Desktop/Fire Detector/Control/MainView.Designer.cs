@@ -47,6 +47,7 @@
             this.connectionPanel = new System.Windows.Forms.Panel();
             this.mainConnectionView = new Fire_Detector.Control.MainConnectionView();
             this.activatedConnectionIconPanel = new System.Windows.Forms.Panel();
+            this.autoFlyingTabShow = new Fire_Detector.Control.AutoFlyingTabShow();
             this.detectFireTabShow = new Fire_Detector.Control.DetectFireTabShow();
             this.leapmotionTabShow = new Fire_Detector.Control.LeapmotionTabShow();
             this.visualizeTabShow = new Fire_Detector.Control.VisualizeTabShow();
@@ -55,7 +56,7 @@
             this.detectFirePanel = new System.Windows.Forms.Panel();
             this.detectFireLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.etcPanel = new System.Windows.Forms.Panel();
-            this.etcLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.autoflyLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.leapmotionPanel = new System.Windows.Forms.Panel();
             this.leapmotionLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.droneControlPanel = new System.Windows.Forms.Panel();
@@ -273,6 +274,7 @@
             // 
             // activatedConnectionIconPanel
             // 
+            this.activatedConnectionIconPanel.Controls.Add(this.autoFlyingTabShow);
             this.activatedConnectionIconPanel.Controls.Add(this.detectFireTabShow);
             this.activatedConnectionIconPanel.Controls.Add(this.leapmotionTabShow);
             this.activatedConnectionIconPanel.Controls.Add(this.visualizeTabShow);
@@ -286,6 +288,18 @@
             this.activatedConnectionIconPanel.Size = new System.Drawing.Size(1024, 510);
             this.activatedConnectionIconPanel.TabIndex = 24;
             this.activatedConnectionIconPanel.Visible = false;
+            // 
+            // autoFlyingTabShow
+            // 
+            this.bunifuTransition2.SetDecoration(this.autoFlyingTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.autoFlyingTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition.SetDecoration(this.autoFlyingTabShow, BunifuAnimatorNS.DecorationType.None);
+            this.autoFlyingTabShow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.autoFlyingTabShow.Location = new System.Drawing.Point(0, 0);
+            this.autoFlyingTabShow.Name = "autoFlyingTabShow";
+            this.autoFlyingTabShow.Size = new System.Drawing.Size(1024, 510);
+            this.autoFlyingTabShow.TabIndex = 4;
+            this.autoFlyingTabShow.Visible = false;
             // 
             // detectFireTabShow
             // 
@@ -358,6 +372,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1024, 46);
             this.tableLayoutPanel2.TabIndex = 23;
             // 
@@ -400,7 +415,7 @@
             // etcPanel
             // 
             this.etcPanel.BackColor = System.Drawing.Color.DarkSalmon;
-            this.etcPanel.Controls.Add(this.etcLabel);
+            this.etcPanel.Controls.Add(this.autoflyLabel);
             this.bunifuTransition.SetDecoration(this.etcPanel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition1.SetDecoration(this.etcPanel, BunifuAnimatorNS.DecorationType.None);
             this.bunifuTransition2.SetDecoration(this.etcPanel, BunifuAnimatorNS.DecorationType.None);
@@ -413,24 +428,24 @@
             this.etcPanel.Size = new System.Drawing.Size(208, 46);
             this.etcPanel.TabIndex = 6;
             // 
-            // etcLabel
+            // autoflyLabel
             // 
-            this.etcLabel.BackColor = System.Drawing.Color.DarkSalmon;
-            this.etcLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTransition2.SetDecoration(this.etcLabel, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition1.SetDecoration(this.etcLabel, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTransition.SetDecoration(this.etcLabel, BunifuAnimatorNS.DecorationType.None);
-            this.etcLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.etcLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.etcLabel.Location = new System.Drawing.Point(0, 0);
-            this.etcLabel.Name = "etcLabel";
-            this.etcLabel.Size = new System.Drawing.Size(208, 46);
-            this.etcLabel.TabIndex = 21;
-            this.etcLabel.Text = "etc";
-            this.etcLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.etcLabel.Click += new System.EventHandler(this.bottomLabel_Click);
-            this.etcLabel.MouseEnter += new System.EventHandler(this.bottomLabel_MouseEnter);
-            this.etcLabel.MouseLeave += new System.EventHandler(this.bottomLabel_MouseLeave);
+            this.autoflyLabel.BackColor = System.Drawing.Color.DarkSalmon;
+            this.autoflyLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuTransition2.SetDecoration(this.autoflyLabel, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition1.SetDecoration(this.autoflyLabel, BunifuAnimatorNS.DecorationType.None);
+            this.bunifuTransition.SetDecoration(this.autoflyLabel, BunifuAnimatorNS.DecorationType.None);
+            this.autoflyLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.autoflyLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoflyLabel.Location = new System.Drawing.Point(0, 0);
+            this.autoflyLabel.Name = "autoflyLabel";
+            this.autoflyLabel.Size = new System.Drawing.Size(208, 46);
+            this.autoflyLabel.TabIndex = 21;
+            this.autoflyLabel.Text = "AutoFlying";
+            this.autoflyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.autoflyLabel.Click += new System.EventHandler(this.bottomLabel_Click);
+            this.autoflyLabel.MouseEnter += new System.EventHandler(this.bottomLabel_MouseEnter);
+            this.autoflyLabel.MouseLeave += new System.EventHandler(this.bottomLabel_MouseLeave);
             // 
             // leapmotionPanel
             // 
@@ -664,9 +679,10 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
         public Bunifu.Framework.UI.BunifuCustomLabel detectFireLabel;
-        public Bunifu.Framework.UI.BunifuCustomLabel etcLabel;
+        public Bunifu.Framework.UI.BunifuCustomLabel autoflyLabel;
         public Bunifu.Framework.UI.BunifuCustomLabel leapmotionLabel;
         public Bunifu.Framework.UI.BunifuCustomLabel droneControlLabel;
         public Bunifu.Framework.UI.BunifuCustomLabel visualizeLabel;
+        public AutoFlyingTabShow autoFlyingTabShow;
     }
 }

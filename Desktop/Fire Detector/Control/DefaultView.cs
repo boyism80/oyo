@@ -78,7 +78,7 @@ namespace Fire_Detector.Control
                     break;
             }
 
-            this.Root.Overlayer.Update();
+            this.Root.Overlayer.Refresh();
         }
 
         private void streamingFrameBox_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -87,7 +87,7 @@ namespace Fire_Detector.Control
                 return;
 
             this.Root.Visualizer.Scaled += (e.Delta / 120);
-            this.Root.Overlayer.Update();
+            this.Root.Overlayer.Refresh();
         }
 
         private void streamingFrameBox_MouseClick(object sender, MouseEventArgs e)
@@ -111,7 +111,7 @@ namespace Fire_Detector.Control
                 else
                     this.Root.Overlayer.State = oyo.GmapState.Collapsed;
 
-                this.Root.Overlayer.Update();
+                this.Root.Overlayer.Refresh();
 
                 return;
             }

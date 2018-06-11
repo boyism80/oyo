@@ -62,6 +62,7 @@ namespace Fire_Detector.Control
             this.visualizeTab.Tag   = new object[] { "Visualization", this.Root.defaultView.sideCollapsedBar.visualizationTabButton }; 
             this.leapmotionTab.Tag  = new object[] { "Leapmotion", this.Root.defaultView.sideCollapsedBar.leapmotionTabButton }; 
             this.detectFireTab.Tag  = new object[] { "Detection", this.Root.defaultView.sideCollapsedBar.detectionTabButton }; 
+            this.autoFlyingTab.Tag  = new object[] { "Auto Flying", this.Root.defaultView.sideCollapsedBar.autoflyButton }; 
         }
     }
 }
