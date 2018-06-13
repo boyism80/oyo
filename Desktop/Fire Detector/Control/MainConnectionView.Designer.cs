@@ -163,7 +163,7 @@
             // 
             this.leapRightDetectingLabel.AutoSize = true;
             this.leapRightDetectingLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.leapRightDetectingLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.leapRightDetectingLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.leapRightDetectingLabel.Location = new System.Drawing.Point(0, 36);
             this.leapRightDetectingLabel.Name = "leapRightDetectingLabel";
             this.leapRightDetectingLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -175,7 +175,7 @@
             // 
             this.leapLeftDetectingLabel.AutoSize = true;
             this.leapLeftDetectingLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.leapLeftDetectingLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.leapLeftDetectingLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.leapLeftDetectingLabel.Location = new System.Drawing.Point(0, 0);
             this.leapLeftDetectingLabel.Name = "leapLeftDetectingLabel";
             this.leapLeftDetectingLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -187,7 +187,7 @@
             // 
             this.leapmotionConnectionLabel.AutoSize = true;
             this.leapmotionConnectionLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.leapmotionConnectionLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.leapmotionConnectionLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.leapmotionConnectionLabel.ForeColor = System.Drawing.Color.Salmon;
             this.leapmotionConnectionLabel.Location = new System.Drawing.Point(0, 74);
             this.leapmotionConnectionLabel.Name = "leapmotionConnectionLabel";
@@ -200,7 +200,7 @@
             // 
             this.bunifuCustomLabel25.AutoSize = true;
             this.bunifuCustomLabel25.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuCustomLabel25.Font = new System.Drawing.Font("NEXON Football Gothic B", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel25.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel25.Location = new System.Drawing.Point(0, 32);
             this.bunifuCustomLabel25.Name = "bunifuCustomLabel25";
             this.bunifuCustomLabel25.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -224,7 +224,7 @@
             // leapmotionNameLabel
             // 
             this.leapmotionNameLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.leapmotionNameLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leapmotionNameLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.leapmotionNameLabel.ForeColor = System.Drawing.Color.Coral;
             this.leapmotionNameLabel.Location = new System.Drawing.Point(0, 241);
             this.leapmotionNameLabel.Name = "leapmotionNameLabel";
@@ -315,7 +315,7 @@
             // 
             this.bunifuCustomLabel15.AutoSize = true;
             this.bunifuCustomLabel15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuCustomLabel15.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel15.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel15.Location = new System.Drawing.Point(0, 36);
             this.bunifuCustomLabel15.Name = "bunifuCustomLabel15";
             this.bunifuCustomLabel15.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -327,7 +327,7 @@
             // 
             this.bunifuCustomLabel16.AutoSize = true;
             this.bunifuCustomLabel16.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuCustomLabel16.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel16.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel16.Location = new System.Drawing.Point(0, 0);
             this.bunifuCustomLabel16.Name = "bunifuCustomLabel16";
             this.bunifuCustomLabel16.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -339,7 +339,7 @@
             // 
             this.cameraConnectionLabel.AutoSize = true;
             this.cameraConnectionLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.cameraConnectionLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cameraConnectionLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cameraConnectionLabel.ForeColor = System.Drawing.Color.Salmon;
             this.cameraConnectionLabel.Location = new System.Drawing.Point(0, 74);
             this.cameraConnectionLabel.Name = "cameraConnectionLabel";
@@ -352,7 +352,7 @@
             // 
             this.bunifuCustomLabel18.AutoSize = true;
             this.bunifuCustomLabel18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuCustomLabel18.Font = new System.Drawing.Font("NEXON Football Gothic B", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel18.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel18.Location = new System.Drawing.Point(0, 32);
             this.bunifuCustomLabel18.Name = "bunifuCustomLabel18";
             this.bunifuCustomLabel18.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -376,7 +376,7 @@
             // raspCamNameLabel
             // 
             this.raspCamNameLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.raspCamNameLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.raspCamNameLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.raspCamNameLabel.ForeColor = System.Drawing.Color.Coral;
             this.raspCamNameLabel.Location = new System.Drawing.Point(0, 241);
             this.raspCamNameLabel.Name = "raspCamNameLabel";
@@ -479,7 +479,7 @@
             // 
             this.addressLabel.AutoSize = true;
             this.addressLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.addressLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.addressLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.addressLabel.Location = new System.Drawing.Point(0, 144);
             this.addressLabel.Name = "addressLabel";
             this.addressLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -491,7 +491,7 @@
             // 
             this.lonLabel.AutoSize = true;
             this.lonLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lonLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lonLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lonLabel.Location = new System.Drawing.Point(0, 108);
             this.lonLabel.Name = "lonLabel";
             this.lonLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -503,7 +503,7 @@
             // 
             this.latLabel.AutoSize = true;
             this.latLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.latLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.latLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.latLabel.Location = new System.Drawing.Point(0, 72);
             this.latLabel.Name = "latLabel";
             this.latLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -515,7 +515,7 @@
             // 
             this.wifiLabel.AutoSize = true;
             this.wifiLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.wifiLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.wifiLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.wifiLabel.Location = new System.Drawing.Point(0, 36);
             this.wifiLabel.Name = "wifiLabel";
             this.wifiLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -527,7 +527,7 @@
             // 
             this.batteryLabel.AutoSize = true;
             this.batteryLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.batteryLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.batteryLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.batteryLabel.Location = new System.Drawing.Point(0, 0);
             this.batteryLabel.Name = "batteryLabel";
             this.batteryLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -539,7 +539,7 @@
             // 
             this.droneConnectionLabel.AutoSize = true;
             this.droneConnectionLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.droneConnectionLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.droneConnectionLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.droneConnectionLabel.ForeColor = System.Drawing.Color.Salmon;
             this.droneConnectionLabel.Location = new System.Drawing.Point(0, 74);
             this.droneConnectionLabel.Name = "droneConnectionLabel";
@@ -552,7 +552,7 @@
             // 
             this.bunifuCustomLabel1.AutoSize = true;
             this.bunifuCustomLabel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("NEXON Football Gothic B", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(0, 32);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -577,7 +577,7 @@
             // 
             this.droneNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.droneNameLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.droneNameLabel.Font = new System.Drawing.Font("NEXON Football Gothic B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.droneNameLabel.Font = new System.Drawing.Font("넥슨 풋볼고딕 B", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.droneNameLabel.ForeColor = System.Drawing.Color.Coral;
             this.droneNameLabel.Location = new System.Drawing.Point(0, 241);
             this.droneNameLabel.Name = "droneNameLabel";
@@ -642,7 +642,7 @@
             // label3
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label3.Location = new System.Drawing.Point(0, 192);
             this.label3.Name = "label3";
@@ -655,7 +655,7 @@
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("NEXON Football Gothic L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label2.Location = new System.Drawing.Point(0, 156);
             this.label2.Name = "label2";
@@ -668,7 +668,7 @@
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("NEXON Football Gothic L", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("넥슨 풋볼고딕 L", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label1.Location = new System.Drawing.Point(0, 120);
             this.label1.Name = "label1";
