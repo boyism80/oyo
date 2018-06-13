@@ -79,7 +79,7 @@ def gets():
 	offset = int(request.form.get('offset'))
 	count = int(request.form.get('count'))
 
-	sql = "SELECT id, lat, lon, temperature, thumb, date FROM detection WHERE deleted = 0 ORDER BY id DESC LIMIT %s, %s"
+	sql = "SELECT id, lat, lon, temperature, thumb, date FROM detection WHERE deleted = 0 AND lat != 500 AND lon != 500 AND lat != 0 AND lon != 0 ORDER BY id DESC LIMIT %s, %s"
 	ret = {}
 	try:
 		ret['success'] = True

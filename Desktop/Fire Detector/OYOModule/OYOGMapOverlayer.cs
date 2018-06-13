@@ -9,6 +9,14 @@ namespace oyo
     {
         public double lat, lon, alt;
 
+        public bool Valid
+        {
+            get
+            {
+                return this.lat != 500 && this.lon != 500;
+            }
+        }
+
         public GPS(double lat, double lon, double alt)
         {
             this.lat = lat;

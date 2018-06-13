@@ -309,7 +309,7 @@ namespace Fire_Detector.BunifuForm
                     // Post information to central server
                     //
                     this._detectedWatcher.Stop();
-                    if (this._detectedWatcher.ElapsedMilliseconds > 5000 && this.Detector.DetectedRects.Length != 0)
+                    if (this._detectedWatcher.ElapsedMilliseconds > 5000 && this.Detector.DetectedRects.Length != 0 && this.Bebop2.GPS.Valid)
                     {
                         var detectedRect = this.Detector.DetectedRects[0];
                         var temperature = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
