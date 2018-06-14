@@ -380,7 +380,7 @@ namespace ParrotBebop2
                         {
                             if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_POSITIONCHANGED)
                             {
-                                this.GPS = new oyo.GPS(reader.ReadDouble(), reader.ReadDouble(), reader.ReadDouble());
+                                this.GPS = new oyo.GPS((float)reader.ReadDouble(), (float)reader.ReadDouble(), (float)reader.ReadDouble());
 
                                 if(this.OnPositionChanged != null)
                                     this.OnPositionChanged.Invoke(this, this.GPS.lat, this.GPS.lon, this.GPS.alt);

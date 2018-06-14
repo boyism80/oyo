@@ -5,26 +5,18 @@ using System.Windows.Forms;
 
 namespace oyo
 {
-    public struct GPS
+    public class GPS : GCS
     {
-        public double lat, lon, alt;
+        public float alt;
 
-        public bool Valid
-        {
-            get
-            {
-                return this.lat != 500 && this.lon != 500;
-            }
-        }
-
-        public GPS(double lat, double lon, double alt)
+        public GPS(float lat, float lon, float alt) : base(lat, lon)
         {
             this.lat = lat;
             this.lon = lon;
             this.alt = alt;
         }
 
-        public GPS(double lat, double lon) : this(lat, lon, 0.0)
+        public GPS(float lat, float lon) : this(lat, lon, 0.0f)
         { }
     }
 
