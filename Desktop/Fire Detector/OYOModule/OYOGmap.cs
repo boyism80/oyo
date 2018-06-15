@@ -17,16 +17,16 @@ namespace oyo
 
         public List<GCS> Points { get; private set; }
 
-        protected OYOGmapElement()
+        protected OYOGmapElement(params GCS[] points)
         {
             this.Color = Color.FromArgb(128, Color.Red);
-            this.Points = new List<GCS>();
+            this.Points = new List<GCS>(points);
         }
 
-        protected OYOGmapElement(Color color)
+        protected OYOGmapElement(Color color, params GCS[] points)
         {
             this.Color = color;
-            this.Points = new List<GCS>();
+            this.Points = new List<GCS>(points);
         }
     }
 
@@ -34,12 +34,12 @@ namespace oyo
     {
         public Color FillColor { get; private set; }
 
-        public OYOGmapPolygon()
+        public OYOGmapPolygon(params GCS[] points) : base(points)
         {
             this.FillColor = Color.FromArgb(128, Color.Red);
         }
 
-        public OYOGmapPolygon(int weight, Color fillcolor, Color color) : base(weight, color)
+        public OYOGmapPolygon(int weight, Color fillcolor, Color color, params GCS[] points) : base(weight, color, points)
         {
             this.FillColor = fillcolor;
         }
@@ -49,12 +49,12 @@ namespace oyo
     {
         public string Label { get; private set; }
 
-        public OYOGmapMarker()
+        public OYOGmapMarker(params GCS[] points) : base(points)
         {
             this.Label = "X";
         }
 
-        public OYOGmapMarker(string label, Color color) : base(color)
+        public OYOGmapMarker(string label, Color color, params GCS[] points) : base(color, points)
         {
             this.Label = label;
         }
@@ -64,12 +64,12 @@ namespace oyo
     {
         public int Weight { get; set; }
 
-        public OYOGmapPath()
+        public OYOGmapPath(params GCS[] points) : base(points)
         {
             this.Weight = 3;
         }
 
-        public OYOGmapPath(int weight, Color color) : base(color)
+        public OYOGmapPath(int weight, Color color, params GCS[] points) : base(color, points)
         {
             this.Weight = weight;
         }
@@ -77,7 +77,7 @@ namespace oyo
 
     public class GCS
     {
-        public float lat, lon;
+        public double lat, lon;
 
         public bool IsValid
         {
@@ -94,7 +94,7 @@ namespace oyo
             this.lon = 0;
         }
 
-        public GCS(float lat, float lon)
+        public GCS(double lat, double lon)
         {
             this.lat = lat;
             this.lon = lon;
@@ -104,24 +104,26 @@ namespace oyo
     public class OYOGmap
     {
         private static string               GOOGLE_API_KEY = "AIzaSyDO1LpjNHsEWBWLFdBPc6acJgyujd8ur2s";
-        public static float                 EARTH_RADIUS = 6371.0f;
+        public static double                EARTH_RADIUS = 6371.0f;
 
         public delegate void                OnReceiveGmap(Mat mat);
-        public delegate void                OnReceiveAddress(string addr);
-        public delegate void                OnError(string message);
+        public delegate void                OnReceiveAddress(string name, string addr);
+        public delegate void                OnReceiveGmapError(string message);
+        public delegate void                OnReceiveAddressError(string name, string message);
 
         private GCS                         _gcs = new GCS();
         private int                         _zoom = 18;
         private Mat                         _cached;
         private Mutex                       _mutex_gmap = new Mutex();
         private Mutex                       _mutex_addr = new Mutex();
-        private Dictionary<string, OYOGmapPath> _path = new Dictionary<string, OYOGmapPath>();
-        private Dictionary<string, OYOGmapMarker> _marker = new Dictionary<string, OYOGmapMarker>();
+        private Dictionary<string, OYOGmapPath>     _path = new Dictionary<string, OYOGmapPath>();
+        private Dictionary<string, OYOGmapMarker>   _marker = new Dictionary<string, OYOGmapMarker>();
         private Dictionary<string, OYOGmapPolygon>  _polygons = new Dictionary<string, OYOGmapPolygon>();
 
         public OnReceiveGmap                ReceiveGmap;
         public OnReceiveAddress             ReceiveAddress;
-        public OnError                      Error;
+        public OnReceiveGmapError           ReceiveGmapError;
+        public OnReceiveAddressError        ReceiveAddressError;
 
         public int                          Width { get; private set; }
 
@@ -172,7 +174,7 @@ namespace oyo
             this.Height = 320;
         }
 
-        private void RequestGmap()
+        private void RequestGmapThreadRoutine()
         {
             try
             {
@@ -244,13 +246,6 @@ namespace oyo
                         foreach(var gcs in this._path[key].Points)
                             href.Append(string.Format("|{0},{1}", gcs.lat, gcs.lon));
                     }
-                    
-
-                    //if(this._gcs.IsValid)
-                    //    href.Append(string.Format("|{0},{1}", this._gcs.lat, this._gcs.lon));
-
-                    //foreach(var gcs in this._pathes)
-                    //    href.Append(string.Format("|{0},{1}", gcs.lat, gcs.lon));
                 }
 
                 href.Append(string.Format("&size={0}x{1}", this.Width, this.Height));
@@ -275,52 +270,57 @@ this._mutex_gmap.ReleaseMutex();
             }
             catch (Exception e)
             {
-                if(this.Error != null)
-                    this.Error.Invoke(e.Message);
+                if(this.ReceiveGmapError != null)
+                    this.ReceiveGmapError.Invoke(e.Message);
             }
         }
 
-        private void RequestAddress()
+        private void RequestAddressThreadRoutine(object param)
         {
+            var args                        = param as object[];
+            var name                        = args[0] as string;
+            var gcs                         = args[1] as GCS;
             try
             {
-                var url                     = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&sensor=false&key=AIzaSyDO1LpjNHsEWBWLFdBPc6acJgyujd8ur2s", this._gcs.lat, this._gcs.lon);
+                var url                     = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&sensor=false&key={2}", gcs.lat, gcs.lon, GOOGLE_API_KEY);
                 var xml                     = XElement.Load(url);
                 if (xml.Element("status").Value != "OK")
-                    return;
+                    throw new Exception("Cannot find address");
 
-                this.ReceiveAddress(xml.Element("result").Element("formatted_address").Value);
+                this.ReceiveAddress(name, xml.Element("result").Element("formatted_address").Value);
             }
             catch (Exception e)
             {
-                if(this.Error != null)
-                    this.Error(e.Message);
+                if(this.ReceiveAddressError != null)
+                    this.ReceiveAddressError(name, e.Message);
             }
         }
 
 
-        public void UpdateGmap()
+        public void RequestGmap()
         {
-            var requestGmapThread           = new Thread(this.RequestGmap);
+            var requestGmapThread           = new Thread(this.RequestGmapThreadRoutine);
             requestGmapThread.Start();
         }
 
-        public void UpdateAddress()
+        public void RequestAddress(string name, GCS gcs)
         {
-            var requestAddrThread           = new Thread(this.RequestAddress);
-            requestAddrThread.Start();
+            var requestAddrThread           = new Thread(new ParameterizedThreadStart(this.RequestAddressThreadRoutine));
+            requestAddrThread.Start(new object[] { name, gcs });
         }
 
-        public void SetPosition(float lat, float lon, bool update = false)
+        public void RequestAddress(string name, double lat, double lon)
+        {
+            this.RequestAddress(name, new GCS(lat, lon));
+        }
+
+        public void SetPosition(double lat, double lon, bool update = false)
         {
             this._gcs.lat = lat;
             this._gcs.lon = lon;
 
             if (update)
-            {
-                this.UpdateGmap();
-                this.UpdateAddress();
-            }
+                this.RequestGmap();
         }
 
         public void SetPosition(GCS coord, bool update = false)
@@ -334,7 +334,7 @@ this._mutex_gmap.ReleaseMutex();
             this.Height = height;
 
             if(update)
-                this.UpdateGmap();
+                this.RequestGmap();
         }
 
         public void Resize(System.Drawing.Size size)
@@ -349,7 +349,7 @@ this._mutex_gmap.ReleaseMutex();
 
             this._zoom = value;
             if(update)
-                this.UpdateGmap();
+                this.RequestGmap();
         }
 
         public GCS Pixel2Coord(int x, int y)
@@ -357,8 +357,8 @@ this._mutex_gmap.ReleaseMutex();
             var parallel_multiplier = Math.Cos(this._gcs.lat * Math.PI / 180);
             var degrees_per_pixelX = 360 / Math.Pow(2, this.Zoom + 8);
             var degrees_per_pixelY = 360 / Math.Pow(2, this.Zoom + 8) * parallel_multiplier;
-            var lat = (float)(this._gcs.lat - degrees_per_pixelY * (y - this.Height / 2));
-            var lon = (float)(this._gcs.lon + degrees_per_pixelX * (x - this.Width / 2));
+            var lat = (double)(this._gcs.lat - degrees_per_pixelY * (y - this.Height / 2));
+            var lon = (double)(this._gcs.lon + degrees_per_pixelX * (x - this.Width / 2));
 
             return new GCS(lat, lon);
         }
@@ -379,33 +379,38 @@ this._mutex_gmap.ReleaseMutex();
             this.SetPosition(pixel.Y, pixel.X, update);
         }
 
-        public static Vector GetVector(float lat1, float lon1, float lat2, float lon2)
+        public static Vector GetVector(double lat1, double lon1, double lat2, double lon2)
         {
-            var delta = new Vector(lon2 - lon1, lat2 - lat1, 0).Normalized;
+            var delta = new Vector((float)(lon2 - lon1), (float)(lat2 - lat1), 0).Normalized;
 
-            return delta * GetDistance(lat1, lon1, lat2, lon2);
+            return delta * (float)GetDistance(lat1, lon1, lat2, lon2);
         }
 
-        public static float GetDistance(float lat1, float lon1, float lat2, float lon2)
+        public static Vector GetVector(GCS gcs1, GCS gcs2)
         {
-            var rlat1 = Math.PI * lat1 / 180;
-            var rlat2 = Math.PI * lat2 / 180;
-            var theta = lon1 - lon2;
-            var rtheta = Math.PI * theta / 180;
-            var distance = Math.Sin(rlat1) * Math.Sin(rlat2) + Math.Cos(rlat1) * Math.Cos(rlat2) * Math.Cos(rtheta);
-            distance = Math.Acos(distance);
-            distance = distance * 180 / Math.PI;
-            distance = distance * 60 * 1.1515;
-
-            return (float)distance * 1.609344f;
+            return GetVector(gcs1.lat, gcs1.lon, gcs2.lat, gcs2.lon);
         }
 
-        public static float GetDistance(GCS begin, GCS end)
+        public static double GetDistance(double lat1, double lon1, double lat2, double lon2)
+        {
+            var lat1_rad        = Math.PI * lat1 / 180;
+            var lat2_rad        = Math.PI * lat2 / 180;
+            var theta           = lon1 - lon2;
+            var theta_rad       = Math.PI * theta / 180;
+            var distance        = Math.Sin(lat1_rad) * Math.Sin(lat2_rad) + Math.Cos(lat1_rad) * Math.Cos(lat2_rad) * Math.Cos(theta_rad);
+            distance            = Math.Acos(distance);
+            distance            = distance * 180 / Math.PI;
+            distance            = distance * 60 * 1.1515;
+
+            return (double)distance * 1.609344f;    // km
+        }
+
+        public static double GetDistance(GCS begin, GCS end)
         {
             return GetDistance(begin.lat, begin.lon, end.lat, end.lon);
         }
 
-        public float GetDistance(float lat, float lon)
+        public double GetDistance(double lat, double lon)
         {
             return GetDistance(this._gcs.lat, this._gcs.lon, lat, lon);
         }
@@ -414,35 +419,35 @@ this._mutex_gmap.ReleaseMutex();
         {
             this._marker[name] = marker;
             if(update)
-                this.UpdateGmap();
+                this.RequestGmap();
         }
 
         public void ClearMarkers(bool update = false)
         {
             this._marker.Clear();
             if(update)
-                this.UpdateGmap();
+                this.RequestGmap();
         }
 
         public void AddPath(string name, OYOGmapPath path, bool update = false)
         {
             this._path[name] = path;
             if(update)
-                this.UpdateGmap();
+                this.RequestGmap();
         }
 
         public void ClearPath(bool update = false)
         {
             this._path.Clear();
             if(update)
-                this.UpdateGmap();
+                this.RequestGmap();
         }
 
         public void AddPolygon(string name, OYOGmapPolygon polygon, bool update = false)
         {
             this._polygons[name] = polygon;
             if(update)
-                this.UpdateGmap();
+                this.RequestGmap();
         }
 
         public void RemovePolygon(string name)

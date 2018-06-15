@@ -132,7 +132,7 @@ namespace Fire_Detector.Control
                 this.Cursor = Cursors.Default;
         }
 
-        public void Overlayer_OnReceiveAddressEvent(string address)
+        public void Overlayer_OnReceiveAddressEvent(string name, string address)
         {
             this.bunifuCustomLabel2.Invoke(new MethodInvoker(delegate ()
             {

@@ -246,7 +246,7 @@ namespace Fire_Detector.Control
             }
         }
 
-        public void Overlayer_OnReceiveAddressEvent(string address)
+        public void Overlayer_OnReceiveAddressEvent(string name, string address)
         {
             this.addressLabel.Invoke(new MethodInvoker(delegate ()
             {

@@ -7,16 +7,16 @@ namespace oyo
 {
     public class GPS : GCS
     {
-        public float alt;
+        public double alt;
 
-        public GPS(float lat, float lon, float alt) : base(lat, lon)
+        public GPS(double lat, double lon, double alt) : base(lat, lon)
         {
             this.lat = lat;
             this.lon = lon;
             this.alt = alt;
         }
 
-        public GPS(float lat, float lon) : this(lat, lon, 0.0f)
+        public GPS(double lat, double lon) : this(lat, lon, 0.0f)
         { }
     }
 

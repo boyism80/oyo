@@ -97,6 +97,8 @@ namespace ParrotBebop2
             this._d2c.OnReceiveFrame           += this.OnReceiveFrame;
 
             this._c2d                           = new C2DSocket();
+
+            this.GPS                            = new oyo.GPS(500, 500);
         }
 
         public void Connect()
@@ -380,7 +382,7 @@ namespace ParrotBebop2
                         {
                             if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_POSITIONCHANGED)
                             {
-                                this.GPS = new oyo.GPS((float)reader.ReadDouble(), (float)reader.ReadDouble(), (float)reader.ReadDouble());
+                                this.GPS = new oyo.GPS(reader.ReadDouble(), reader.ReadDouble(), reader.ReadDouble());
 
                                 if(this.OnPositionChanged != null)
                                     this.OnPositionChanged.Invoke(this, this.GPS.lat, this.GPS.lon, this.GPS.alt);

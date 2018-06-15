@@ -38,7 +38,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.autoFlyingStateLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.gmapBox = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.autoFlyingStartEndButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.autoFlyingSettingButton = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -50,14 +49,17 @@
             this.bunifuCustomeLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.gmapBox = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.autoFlyingButton)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gmapBox)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gmapBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -157,24 +159,13 @@
             // panel1
             // 
             this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.gmapBox);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel8);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 167);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(350, 462);
+            this.panel1.Size = new System.Drawing.Size(350, 222);
             this.panel1.TabIndex = 35;
-            // 
-            // gmapBox
-            // 
-            this.gmapBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gmapBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gmapBox.Location = new System.Drawing.Point(0, 162);
-            this.gmapBox.Name = "gmapBox";
-            this.gmapBox.Size = new System.Drawing.Size(350, 300);
-            this.gmapBox.TabIndex = 24;
-            this.gmapBox.TabStop = false;
             // 
             // panel2
             // 
@@ -189,7 +180,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 26);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(350, 136);
+            this.panel2.Size = new System.Drawing.Size(350, 196);
             this.panel2.TabIndex = 23;
             // 
             // autoFlyingStartEndButton
@@ -210,7 +201,7 @@
             this.autoFlyingStartEndButton.IdleFillColor = System.Drawing.Color.Transparent;
             this.autoFlyingStartEndButton.IdleForecolor = System.Drawing.Color.Salmon;
             this.autoFlyingStartEndButton.IdleLineColor = System.Drawing.Color.Salmon;
-            this.autoFlyingStartEndButton.Location = new System.Drawing.Point(240, 93);
+            this.autoFlyingStartEndButton.Location = new System.Drawing.Point(244, 159);
             this.autoFlyingStartEndButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.autoFlyingStartEndButton.Name = "autoFlyingStartEndButton";
             this.autoFlyingStartEndButton.Size = new System.Drawing.Size(86, 30);
@@ -236,7 +227,7 @@
             this.autoFlyingSettingButton.IdleFillColor = System.Drawing.Color.Transparent;
             this.autoFlyingSettingButton.IdleForecolor = System.Drawing.Color.Salmon;
             this.autoFlyingSettingButton.IdleLineColor = System.Drawing.Color.Salmon;
-            this.autoFlyingSettingButton.Location = new System.Drawing.Point(167, 93);
+            this.autoFlyingSettingButton.Location = new System.Drawing.Point(171, 159);
             this.autoFlyingSettingButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.autoFlyingSettingButton.Name = "autoFlyingSettingButton";
             this.autoFlyingSettingButton.Size = new System.Drawing.Size(67, 30);
@@ -249,7 +240,7 @@
             this.bunifuCustomLabel2.AutoSize = true;
             this.bunifuCustomLabel2.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(41, 75);
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(40, 137);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(52, 15);
             this.bunifuCustomLabel2.TabIndex = 0;
@@ -260,7 +251,7 @@
             this.bunifuCustomLabel6.AutoSize = true;
             this.bunifuCustomLabel6.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bunifuCustomLabel6.Location = new System.Drawing.Point(40, 42);
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(40, 72);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
             this.bunifuCustomLabel6.Size = new System.Drawing.Size(53, 15);
             this.bunifuCustomLabel6.TabIndex = 0;
@@ -271,7 +262,7 @@
             this.bunifuCustomLabel1.AutoSize = true;
             this.bunifuCustomLabel1.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(113, 75);
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(112, 137);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(30, 15);
             this.bunifuCustomLabel1.TabIndex = 0;
@@ -279,23 +270,21 @@
             // 
             // endSpotLabel
             // 
-            this.endSpotLabel.AutoSize = true;
             this.endSpotLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.endSpotLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.endSpotLabel.Location = new System.Drawing.Point(112, 42);
+            this.endSpotLabel.Location = new System.Drawing.Point(112, 72);
             this.endSpotLabel.Name = "endSpotLabel";
-            this.endSpotLabel.Size = new System.Drawing.Size(121, 15);
+            this.endSpotLabel.Size = new System.Drawing.Size(218, 45);
             this.endSpotLabel.TabIndex = 0;
             this.endSpotLabel.Text = "영역 설정이 필요합니다.";
             // 
             // startSpotLabel
             // 
-            this.startSpotLabel.AutoSize = true;
             this.startSpotLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.startSpotLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.startSpotLabel.Location = new System.Drawing.Point(112, 10);
             this.startSpotLabel.Name = "startSpotLabel";
-            this.startSpotLabel.Size = new System.Drawing.Size(121, 15);
+            this.startSpotLabel.Size = new System.Drawing.Size(218, 45);
             this.startSpotLabel.TabIndex = 0;
             this.startSpotLabel.Text = "영역 설정이 필요합니다.";
             // 
@@ -332,11 +321,31 @@
             this.bunifuCustomLabel3.TabIndex = 0;
             this.bunifuCustomLabel3.Text = "자동 비행";
             // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.gmapBox);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(0, 389);
+            this.panel9.Name = "panel9";
+            this.panel9.Padding = new System.Windows.Forms.Padding(5);
+            this.panel9.Size = new System.Drawing.Size(350, 305);
+            this.panel9.TabIndex = 36;
+            // 
+            // gmapBox
+            // 
+            this.gmapBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gmapBox.Location = new System.Drawing.Point(5, 5);
+            this.gmapBox.Name = "gmapBox";
+            this.gmapBox.Size = new System.Drawing.Size(340, 295);
+            this.gmapBox.TabIndex = 25;
+            this.gmapBox.TabStop = false;
+            // 
             // AutoFlyingTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel3);
@@ -350,11 +359,12 @@
             this.panel6.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gmapBox)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gmapBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -382,6 +392,7 @@
         private Bunifu.Framework.UI.BunifuCustomLabel startSpotLabel;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
+        private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.PictureBox gmapBox;
     }
 }

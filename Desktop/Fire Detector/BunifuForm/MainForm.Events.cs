@@ -74,6 +74,7 @@ namespace Fire_Detector.BunifuForm
             this.Bebop2.OnBatteryChanged            += this.defaultView.Bebop2_OnBatteryChanged;
             this.Bebop2.OnWifiChanged               += this.defaultView.Bebop2_OnWifiChanged;
             this.Bebop2.OnPositionChanged           += this.mainView.mainConnectionView.Bebop2_OnPositionChanged;
+            this.Bebop2.OnPositionChanged           += this.defaultView.sideExpandedBar.autoFlyingTab.Bebop2_OnPositionChanged;
 
 
 
@@ -105,6 +106,11 @@ namespace Fire_Detector.BunifuForm
             this._detectedWatcher.Start();
 
             this._wstream = new StreamWriter("alt.txt", false);
+        }
+
+        private void Bebop2_OnPositionChanged(Bebop2 bebop2, double lat, double lon, double alt)
+        {
+            throw new NotImplementedException();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -464,7 +470,8 @@ this._mutex.ReleaseMutex();
 
         private void Bebop_OnPositionChanged(Bebop2 bebop2, double lat, double lon, double alt)
         {
-            this.Overlayer.SetPosition((float)lat, (float)lon);
+            this.Overlayer.SetPosition(lat, lon);
+            this.Overlayer.RequestAddress("self", lat, lon);
             this.GenerateDronePosition(lat, lon, alt);
         }
 
