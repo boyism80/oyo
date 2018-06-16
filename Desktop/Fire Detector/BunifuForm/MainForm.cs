@@ -127,6 +127,8 @@ namespace Fire_Detector.BunifuForm
         public OYOLeapmotion                    LeapController { get; private set; }
 
         public OYOPatrol                        Patrol { get; private set;}
+
+        public OYOAutoFlight                    AutoFlight { get; private set; }
         #endregion
 
         public MainForm()
@@ -143,6 +145,7 @@ namespace Fire_Detector.BunifuForm
             this.Bebop2                         = new Bebop2();
             this.LeapController                 = new OYOLeapmotion();
             this.Patrol                         = new OYOPatrol();
+            this.AutoFlight                     = new OYOAutoFlight();
 
             this.LeapController.SetPolicy(Leap.Controller.PolicyFlag.POLICY_ALLOW_PAUSE_RESUME);
         }
@@ -259,6 +262,7 @@ namespace Fire_Detector.BunifuForm
                 form.Add(new StringContent(this.Bebop2.GPS.lat.ToString()), "lat");
                 form.Add(new StringContent(this.Bebop2.GPS.lon.ToString()), "lon");
                 form.Add(new StringContent(this.Bebop2.GPS.alt.ToString()), "alt");
+                form.Add(new StringContent(this.Bebop2.Battery.ToString()), "battery");
 
                 var response = await client.PostAsync("http://luxir01.iptime.org:8001/generate", form);
 
@@ -273,7 +277,7 @@ namespace Fire_Detector.BunifuForm
             }
         }
 
-        private async void PostDetection(Mat inf, Mat vis, Mat thumb, double lat, double lon, float temperature)
+        private async void PostDetection(Mat inf, Mat vis, Mat thumb, double lat, double lon, double alt, float temperature)
         {
             try
             {
@@ -286,6 +290,7 @@ namespace Fire_Detector.BunifuForm
 
                 form.Add(new StringContent(lat.ToString()), "lat");
                 form.Add(new StringContent(lat.ToString()), "lon");
+                form.Add(new StringContent(alt.ToString()), "alt");
                 form.Add(new StringContent(temperature.ToString()), "tem");
 
                 var inf_content = new ByteArrayContent(inf_bytes, 0, inf_bytes.Length);

@@ -4,17 +4,29 @@ namespace oyo
 {
     public class OYOAutoFlight
     {
-        public static int MAX_SPEED = 127;
-        public static int MIN_SPEED = 1;
-        public static int MAX_DISTANCE = 50; // meter
-        public static int MIN_DISTANCE = 10; // meter
+        public delegate void            OnStartEvent();
+        public delegate void            OnPauseEvent();
+        public delegate void            OnStopEvent();
+        public delegate void            OnCompleteEvent();
+        public delegate void            OnLookNextDestinationEvent();
 
-        private GCS _currentGCS;
-        private GCS[] _destinations;
-        private float _rotation;
-        private int _currentDestinationIndex;
+        public static int               MAX_SPEED = 127;
+        public static int               MIN_SPEED = 1;
+        public static int               MAX_DISTANCE = 50; // meter
+        public static int               MIN_DISTANCE = 10; // meter
 
-        public bool IsFlying { get; private set; }
+        private GCS                     _currentGCS;
+        private GCS[]                   _destinations;
+        private float                   _rotation;
+        private int                     _currentDestinationIndex;
+
+        public bool                     IsFlying { get; private set; }
+
+        public event OnStartEvent                   OnStart;
+        public event OnPauseEvent                   OnPause;
+        public event OnStopEvent                    OnStop;
+        public event OnCompleteEvent                OnComplete;
+        public event OnLookNextDestinationEvent     OnLookNextDestination;
 
         private GCS Destination
         {
@@ -29,9 +41,6 @@ namespace oyo
 
         public bool Update(GCS gcs, float rotation, out int roll, out int pitch)
         {
-            this._currentGCS = gcs;
-            this._rotation = rotation;
-
             try
             {
                 if(this.IsFlying == false)
@@ -39,6 +48,9 @@ namespace oyo
 
                 if(this._currentGCS.IsValid == false)
                     throw new Exception();
+
+                this._currentGCS = gcs;
+                this._rotation = rotation;
 
                 // 현재 드론의 회전 각도
                 var degree = this._rotation * 180 / Math.PI;
@@ -58,12 +70,12 @@ namespace oyo
                 {
                     this._currentDestinationIndex++;
                     roll = pitch = 0;
-                    Console.WriteLine("near");
+                    this.OnLookNextDestination?.Invoke();
 
                     if (this._currentDestinationIndex > this._destinations.Length - 1)
                     {
                         this.IsFlying = false;
-                        Console.WriteLine("complete");
+                        this.OnComplete?.Invoke();
                     }
 
                     return true;
@@ -106,6 +118,8 @@ namespace oyo
 
             this._currentDestinationIndex = 0;
             this.IsFlying = true;
+            this.OnStart?.Invoke();
+
             return true;
         }
 
@@ -115,13 +129,18 @@ namespace oyo
                 return false;
 
             this.IsFlying = false;
+            this.OnPause?.Invoke();
             return true;
         }
 
         public void Stop()
         {
+            if(this.IsFlying == false)
+                return;
+
             this.IsFlying = false;
             this._currentDestinationIndex = 0;
+            this.OnStop?.Invoke();
         }
     }
 }

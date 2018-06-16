@@ -86,6 +86,7 @@
             this.autoFlyingButton.TabIndex = 29;
             this.autoFlyingButton.TabStop = false;
             this.autoFlyingButton.Zoom = 10;
+            this.autoFlyingButton.Click += new System.EventHandler(this.autoFlyingButton_Click);
             // 
             // connectDroneProgressbar
             // 

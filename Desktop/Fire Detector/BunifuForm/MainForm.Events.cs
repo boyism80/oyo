@@ -70,6 +70,7 @@ namespace Fire_Detector.BunifuForm
             this.Bebop2.OnSpeedChanged              += this.defaultView.Bebop2_OnSpeedChanged;
             this.Bebop2.OnAltitudeChanged           += this.defaultView.Bebop2_OnAltitudeChanged;
             this.Bebop2.OnPositionChanged           += this.Bebop_OnPositionChanged;
+            this.Bebop2.OnRotationChanged           += this.Bebop2_OnRotationChanged;
             this.Bebop2.OnError                     += this.Bebop_OnError;
             this.Bebop2.OnBatteryChanged            += this.defaultView.Bebop2_OnBatteryChanged;
             this.Bebop2.OnWifiChanged               += this.defaultView.Bebop2_OnWifiChanged;
@@ -96,6 +97,16 @@ namespace Fire_Detector.BunifuForm
             this.Patrol.Reader.OnChanged            += this.PatrolReader_OnChanged;
             this.Patrol.Reader.OnExit               += this.PatrolReader_OnExit;
 
+
+            this.AutoFlight.OnStart                 += this.defaultView.sideExpandedBar.autoFlyingTab.AutoFlight_OnStart;
+            this.AutoFlight.OnPause                 += this.defaultView.sideExpandedBar.autoFlyingTab.AutoFlight_OnPause;
+            this.AutoFlight.OnPause                 += this.AutoFlight_OnStop;
+            this.AutoFlight.OnStop                  += this.defaultView.sideExpandedBar.autoFlyingTab.AutoFlight_OnStop;
+            this.AutoFlight.OnStop                  += this.AutoFlight_OnStop;
+            this.AutoFlight.OnLookNextDestination   += this.defaultView.sideExpandedBar.autoFlyingTab.AutoFlight_OnLookNextDestination;
+            this.AutoFlight.OnComplete              += this.defaultView.sideExpandedBar.autoFlyingTab.AutoFlight_OnComplete;
+            this.AutoFlight.OnComplete              += this.AutoFlight_OnStop;
+
             OYOKeysHook.OnKeyboardHook              += this.OnKeyboardHook;
             OYOKeysHook.Set();
 
@@ -106,11 +117,6 @@ namespace Fire_Detector.BunifuForm
             this._detectedWatcher.Start();
 
             this._wstream = new StreamWriter("alt.txt", false);
-        }
-
-        private void Bebop2_OnPositionChanged(Bebop2 bebop2, double lat, double lon, double alt)
-        {
-            throw new NotImplementedException();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -319,7 +325,7 @@ namespace Fire_Detector.BunifuForm
                     {
                         var detectedRect = this.Detector.DetectedRects[0];
                         var temperature = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
-                        this.PostDetection(updatedFrame, this.UpdatedDataBuffer.Visual, receiver.Infrared(), this.Bebop2.GPS.lat, this.Bebop2.GPS.lon, temperature);
+                        this.PostDetection(updatedFrame, this.UpdatedDataBuffer.Visual, receiver.Infrared(), this.Bebop2.GPS.lat, this.Bebop2.GPS.lon, this.Bebop2.Altitude, temperature);
                         this._detectedWatcher.Restart();
                     }
                     else
@@ -401,6 +407,9 @@ namespace Fire_Detector.BunifuForm
             if(this.LeapController.Enabled)
                 return;
 
+            if(this.AutoFlight.IsFlying)
+                return;
+
 this._mutex.WaitOne();
             switch (key)
             {
@@ -473,6 +482,21 @@ this._mutex.ReleaseMutex();
             this.Overlayer.SetPosition(lat, lon);
             this.Overlayer.RequestAddress("self", lat, lon);
             this.GenerateDronePosition(lat, lon, alt);
+
+            if(this.AutoFlight.IsFlying)
+            {
+                this.AutoFlight.Update(bebop2.GPS, (float)(bebop2.Roll * 180 / Math.PI), out this._pcmd.roll, out this._pcmd.pitch);
+                this._pcmd.flag = 1;
+            }
+        }
+
+        private void Bebop2_OnRotationChanged(Bebop2 bebop2, float pitch, float yaw, float roll)
+        {
+            if(this.AutoFlight.IsFlying)
+            {
+                this.AutoFlight.Update(bebop2.GPS, (float)(bebop2.Roll * 180 / Math.PI), out this._pcmd.roll, out this._pcmd.pitch);
+                this._pcmd.flag = 1;
+            }
         }
 
         private void Bebop_OnError(Bebop2 bebop, string message)
@@ -488,6 +512,9 @@ this._mutex.ReleaseMutex();
         private void LeapController_FrameReady(object sender, Leap.FrameEventArgs e)
         {
             if(this.Patrol.Reader.IsEnabled())
+                return;
+
+            if(this.AutoFlight.IsFlying)
                 return;
 
             var handRight                   = e.frame.RightHand();
@@ -585,6 +612,11 @@ this._mutex.ReleaseMutex();
         {
             this._pcmd = new Pcmd(pcmd);
             this.defaultView.sideExpandedBar.droneTab.updatePcmdUI(this._pcmd);
+        }
+
+        private void AutoFlight_OnStop()
+        {
+            this._pcmd.Reset();
         }
     }
 }

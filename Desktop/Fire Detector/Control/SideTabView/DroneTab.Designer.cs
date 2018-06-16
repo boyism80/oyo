@@ -93,7 +93,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.patrolWriteTimer = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.recordPanel.SuspendLayout();
             this.recordControlPanel.SuspendLayout();
@@ -147,7 +146,6 @@
             // 
             // recordControlPanel
             // 
-            this.recordControlPanel.Controls.Add(this.button1);
             this.recordControlPanel.Controls.Add(this.recordFileNameTextBox);
             this.recordControlPanel.Controls.Add(this.recordFileTextbox);
             this.recordControlPanel.Controls.Add(this.recordFileBrowseButton);
@@ -1023,16 +1021,6 @@
             this.patrolWriteTimer.Interval = 1000;
             this.patrolWriteTimer.Tick += new System.EventHandler(this.patrolWriteTimer_Tick);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(43, 74);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 45;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // DroneTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1141,6 +1129,5 @@
         private Bunifu.Framework.UI.BunifuCustomLabel patrolTime;
         private System.Windows.Forms.Timer patrolWriteTimer;
         private Bunifu.Framework.UI.BunifuSlider droneSpeedSlider;
-        private System.Windows.Forms.Button button1;
     }
 }

@@ -1,16 +1,11 @@
 ﻿using BebopCommandSet;
 using Fire_Detector.Dialog;
-using OpenCvSharp;
 using oyo;
 using ParrotBebop2;
-using SimpleJSON;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Net.Sockets;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Fire_Detector.Control.SideTabView
@@ -202,22 +197,6 @@ namespace Fire_Detector.Control.SideTabView
                 this.Root.Bebop2.takeoff();
             else
                 this.Root.Bebop2.landing();
-
-            //if (takeoffSwitch.Value == true)
-            //{
-            //    detectionStateLabel.Text = "비행중";
-            //    droneFlightProgressbar.Value = 30;
-            //    droneFlightProgressbar.animated = true;
-            //    droneFlightProgressbar.Visible = true;
-
-            //}
-            //else
-            //{
-            //    detectionStateLabel.Text = "비행정지";
-            //    droneFlightProgressbar.Value = 0;
-            //    droneFlightProgressbar.animated = false;
-            //    droneFlightProgressbar.Visible = false;
-            //}
         }
 
         private void DroneSpeedSlider_ValueChanged(object sender, EventArgs e)
@@ -617,57 +596,6 @@ namespace Fire_Detector.Control.SideTabView
             {
                 Console.WriteLine(e.Message);
             }
-        }
-
-        private async void post()
-        {
-            try
-            {
-                var inf = Cv2.ImRead(@"C:\Users\LUXIR\Desktop\45937_86744_5534.jpg");
-                var vis = Cv2.ImRead(@"C:\Users\LUXIR\Desktop\i14544601972.jpg");
-                var thumb = Cv2.ImRead(@"C:\Users\LUXIR\Desktop\i14544601972.jpg").Resize(new OpenCvSharp.Size(80, 60));
-
-                var inf_bytes = inf.ToBytes(".jpg");
-                var vis_bytes = vis.ToBytes(".jpg");
-                var thumb_bytes = thumb.ToBytes(".jpg");
-
-                var client = new HttpClient();
-                var form = new MultipartFormDataContent();
-
-                form.Add(new StringContent("37.3487547"), "lat");
-                form.Add(new StringContent("126.74490070000002"), "lon");
-                form.Add(new StringContent("72.65"), "tem");
-
-                var inf_content = new ByteArrayContent(inf_bytes, 0, inf_bytes.Length);
-                inf_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
-                inf_content.Headers.ContentLength = inf_bytes.Length;
-                form.Add(inf_content, "inf", "inf.jpg");
-
-                var vis_content = new ByteArrayContent(vis_bytes, 0, vis_bytes.Length);
-                vis_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
-                vis_content.Headers.ContentLength = vis_bytes.Length;
-                form.Add(vis_content, "vis", "vis.jpg");
-
-                var bnd_content = new ByteArrayContent(thumb_bytes, 0, thumb_bytes.Length);
-                bnd_content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
-                bnd_content.Headers.ContentLength = thumb_bytes.Length;
-                form.Add(bnd_content, "thumb", "thumb.jpg");
-
-                var response = await client.PostAsync("http://luxir01.iptime.org:8001/detection", form);
-
-                response.EnsureSuccessStatusCode();
-                client.Dispose();
-                var result = response.Content.ReadAsStringAsync().Result;
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.post();
         }
     }
 }
