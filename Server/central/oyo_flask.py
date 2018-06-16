@@ -17,6 +17,7 @@ class oyo_flask(Flask):
 		self.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 		self.lat, self.lon, self.alt = (500, 500, 0)
+		self.battery = 0
 
 		self.__connection = None
 

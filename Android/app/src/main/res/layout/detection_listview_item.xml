@@ -39,7 +39,7 @@
             android:text="감지온도 : 74.2'C"
             android:textColor="#dd5566" />
         <TextView
-            android:id="@+id/time"
+            android:id="@+id/datetime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="13dp"

@@ -38,7 +38,7 @@
             android:textColor="#dd5566"/>
 
         <TextView
-            android:id="@+id/time"
+            android:id="@+id/datetime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18dp"
@@ -46,6 +46,7 @@
             android:textColor="#bb3344" />
 
         <TextView
+            android:id="@+id/lat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16dp"
@@ -53,24 +54,19 @@
             android:textColor="#338888"
             android:layout_marginTop="15dp"/>
         <TextView
+            android:id="@+id/lon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16dp"
             android:text="경도 : 0.0"
             android:textColor="#338888"/>
         <TextView
+            android:id="@+id/alt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16dp"
             android:text="고도 : 0.0"
             android:textColor="#336666"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:text="상태 : 자율주행"
-            android:textColor="#333388"
-            android:layout_marginTop="15dp"/>
     </LinearLayout>
 
 </LinearLayout>

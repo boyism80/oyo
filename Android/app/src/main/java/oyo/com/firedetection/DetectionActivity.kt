@@ -16,7 +16,7 @@ import oyo.com.firedetection.Adapter.ViewPagerAdapter
 class DetectionActivity : Activity(), OYOReceiver.Listener, ViewPagerAdapter.Listener {
 
     private lateinit var _data: JSONObject
-    private lateinit var _geocoder: Geocoder
+    private lateinit var _geocoder: OYOGeocoder
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,7 @@ class DetectionActivity : Activity(), OYOReceiver.Listener, ViewPagerAdapter.Lis
         setContentView(R.layout.activity_detection)
         ButterKnife.bind(this)
 
-        this._geocoder = Geocoder(this)
+        this._geocoder = OYOGeocoder(this)
 
         try {
             val id = intent.getIntExtra("id", 0)
@@ -49,7 +49,10 @@ class DetectionActivity : Activity(), OYOReceiver.Listener, ViewPagerAdapter.Lis
 
                     val position = this._data.getJSONObject("position")
                     val lat = position.getDouble("lat")
+                    this.lat.text = "위도 : $lat"
+
                     val lon = position.getDouble("lon")
+                    this.lon.text = "경도 : $lon"
 
                     val hrefGmap = String.format("http://maps.googleapis.com/maps/api/staticmap?center=%f,%f&markers=color:blue%%7Clabel:OYO%%7C%f,%f&size=%dx%d&sensor=true&format=png&maptype=roadmap&zoom=18&language=ko&key=AIzaSyDO1LpjNHsEWBWLFdBPc6acJgyujd8ur2s", lat, lon, lat, lon, 640, 480)
                     val hrefInf = this._data.getString("inf")
@@ -58,11 +61,12 @@ class DetectionActivity : Activity(), OYOReceiver.Listener, ViewPagerAdapter.Lis
                     val adapter = ViewPagerAdapter(this, this, hrefGmap, hrefInf, hrefVis)
                     this.viewpager.adapter = adapter
 
-                    val addressList = this._geocoder.getFromLocation(lat, lon, 1)
-                    this.address.text = "위치 : " + addressList[0].getAddressLine(0)
+                    this.address.text = "위치 : " + this._geocoder.address(lat, lon)
 
                     val tem = this._data.getDouble("tem")
                     this.temperature.text = "감지 온도 : $tem"
+
+                    this.datetime.text = this._data.getString("date")
                 }
             }
         } catch (e: Exception) {

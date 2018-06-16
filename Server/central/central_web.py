@@ -26,9 +26,9 @@ def detection():
 
 	try:
 		host = request.remote_addr
-		lat, lon, tem = float(request.form.get('lat')), float(request.form.get('lon')), float(request.form.get('tem'))
-		# if app.near_exists(lat, lon):
-		# 	raise Exception('near exists')
+		lat, lon, alt, tem = float(request.form.get('lat')), float(request.form.get('lon')), float(request.form.get('alt')), float(request.form.get('tem'))
+		if app.near_exists(lat, lon):
+			raise Exception('near exists')
 
 		inf, vis, thumb = request.files['inf'], request.files['vis'], request.files['thumb']
 		inf_path, vis_path, thumb_path = None, None, None
@@ -52,8 +52,8 @@ def detection():
 				f.write(content)
 
 		with connection.cursor() as cursor:
-			sql = "INSERT INTO detection (addr, lat, lon, temperature, thumb, infrared, visual, date) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-			cursor.execute(sql, (str(host), lat, lon, tem, thumb_path, inf_path, vis_path, time.strftime('%Y-%m-%d %H:%M:%S')))
+			sql = "INSERT INTO detection (addr, lat, lon, alt, temperature, thumb, infrared, visual, date) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+			cursor.execute(sql, (str(host), lat, lon, alt, tem, thumb_path, inf_path, vis_path, time.strftime('%Y-%m-%d %H:%M:%S')))
 			connection.commit()
 
 		ret['success'] = True
@@ -79,7 +79,7 @@ def gets():
 	offset = int(request.form.get('offset'))
 	count = int(request.form.get('count'))
 
-	sql = "SELECT id, lat, lon, temperature, thumb, date FROM detection WHERE deleted = 0 AND lat != 500 AND lon != 500 AND lat != 0 AND lon != 0 ORDER BY id DESC LIMIT %s, %s"
+	sql = "SELECT id, lat, lon, alt, temperature, thumb, date FROM detection WHERE deleted = 0 AND lat != 500 AND lon != 500 AND lat != 0 AND lon != 0 ORDER BY id DESC LIMIT %s, %s"
 	ret = {}
 	try:
 		ret['success'] = True
@@ -89,11 +89,11 @@ def gets():
 			count = cursor.execute(sql, (offset, count))
 			for element in cursor.fetchall():
 				item                = {}
-				id, lat, lon, tem, thumb, date = element
+				id, lat, lon, alt, tem, thumb, date = element
 			
 				item['id']          = id
 				item['temperature'] = float(tem)
-				item['position']    = {'lat': float(lat), 'lon': float(lon)}
+				item['position']    = {'lat': float(lat), 'lon': float(lon), 'alt': float(alt)}
 				item['date']        = str(date)
 				item['thumb']       = urllib.parse.urljoin(request.url_root, thumb)
 
@@ -113,14 +113,14 @@ def gets():
 def get():
 	connection = app.connect_db()
 	id = int(request.form.get('id'))
-	sql = "SELECT id, lat, lon, temperature, infrared, visual, date FROM detection WHERE id = %s AND deleted = 0 LIMIT 1"
+	sql = "SELECT id, lat, lon, alt, temperature, infrared, visual, date FROM detection WHERE id = %s AND deleted = 0 LIMIT 1"
 	
 	ret = {}
 	try:
 		with connection.cursor() as cursor:
 			if cursor.execute(sql, (id,)) > 0:
-				id, lat, lon, tem, inf, vis, date = cursor.fetchone()
-				ret['data'] = {'id': id, 'position': {'lat': float(lat), 'lon': float(lon)}, 'tem': float(tem), 'inf': urllib.parse.urljoin(request.url_root, inf), 'vis': urllib.parse.urljoin(request.url_root, vis), 'date': str(date)}
+				id, lat, lon, alt, tem, inf, vis, date = cursor.fetchone()
+				ret['data'] = {'id': id, 'position': {'lat': float(lat), 'lon': float(lon), 'alt': float(alt)}, 'tem': float(tem), 'inf': urllib.parse.urljoin(request.url_root, inf), 'vis': urllib.parse.urljoin(request.url_root, vis), 'date': str(date)}
 
 		ret['success'] = True
 	except Exception as e:
@@ -141,6 +141,7 @@ def generate():
 		app.lat = float(request.form.get('lat'))
 		app.lon = float(request.form.get('lon'))
 		app.alt = float(request.form.get('alt'))
+		app.battery = int(request.form.get('battery'))
 
 		ret['success'] = True
 	except Exception as e:
@@ -152,19 +153,21 @@ def generate():
 
 	return json.dumps(ret)
 
-@app.route('/position', methods=['GET', 'POST'])
-def position():
+@app.route('/status', methods=['GET', 'POST'])
+def status():
 	connection = app.connect_db()
 	ret = {}
 	try:
-		if lat == 500 or lon == 500:
-			raise Exception('Cannot generate drone\'s position')
-
-		ret['lat'] = app.lat
-		ret['lon'] = app.lon
-		ret['alt'] = app.alt
+		ret['position'] = {'lat': app.lat, 'lon': app.lon, 'alt': app.alt}
+		ret['battery'] = app.battery
 		ret['success'] = True
 	except Exception as e:
+		if 'position' in ret:
+			del ret['position']
+
+		if 'battery' in ret:
+			del ret['battery']
+			
 		ret['success'] = False
 		ret['error'] = str(e)
 

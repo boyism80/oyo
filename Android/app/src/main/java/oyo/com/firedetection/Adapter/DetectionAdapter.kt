@@ -50,6 +50,7 @@ class DetectionAdapter
             val position = data.getJSONObject("position")
             contentView.address.text = position.getString("address")
             contentView.temperature.text = "감지 온도 : " + data.getDouble("temperature")
+            contentView.datetime.text = data.getString("date")
             aq.id(contentView.thumb).image(data.getString("thumb"))
 
         } catch (e: Exception) {

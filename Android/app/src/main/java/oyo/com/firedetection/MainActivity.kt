@@ -2,7 +2,6 @@ package oyo.com.firedetection
 
 import android.app.Activity
 import android.content.Intent
-import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,18 +10,20 @@ import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 import oyo.com.firedetection.Adapter.DetectionAdapter
+import java.util.*
+import kotlin.concurrent.timerTask
 
 class MainActivity : Activity(), OYOReceiver.Listener, AdapterView.OnItemClickListener {
 
     private val TAG = "MainActivity"
 
-    private lateinit var _geocoder: Geocoder
+    private lateinit var _geocoder: OYOGeocoder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        this._geocoder = Geocoder(this)
+        this._geocoder = OYOGeocoder(this)
         this.history.onItemClickListener = this
 
         FirebaseMessaging.getInstance().subscribeToTopic("all")
@@ -32,6 +33,12 @@ class MainActivity : Activity(), OYOReceiver.Listener, AdapterView.OnItemClickLi
                 .add("offset", "0")
                 .add("count", "10")
                 .start()
+
+        val timer = Timer(true)
+        timer.scheduleAtFixedRate(timerTask {
+
+            requestPosition()
+        }, 0, 1000)
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -50,6 +57,9 @@ class MainActivity : Activity(), OYOReceiver.Listener, AdapterView.OnItemClickLi
     override fun onResponse(id: String, data: JSONObject) {
 
         try {
+            if(data.getBoolean("success") == false)
+                throw Exception(data.getString("error"))
+
             when (id) {
 
                 "get detections" -> {
@@ -60,17 +70,35 @@ class MainActivity : Activity(), OYOReceiver.Listener, AdapterView.OnItemClickLi
                         val position = json.getJSONObject("position")
                         val lat = position.getDouble("lat")
                         val lon = position.getDouble("lon")
-                        val addressList = this._geocoder.getFromLocation(lat, lon, 1)
-                        if(addressList.count() == 0)
-                            continue;
-
-                        position.put("address", addressList[0].getAddressLine(0))
+                        position.put("address", this._geocoder.address(lat, lon))
                     }
                     val adapter = DetectionAdapter(this, data.getJSONArray("data"))
                     this.history.adapter = adapter
                 }
+
+                "get status" -> {
+
+                    val position = data.getJSONObject("position")
+                    val lat = position.getDouble("lat")
+                    val lon = position.getDouble("lon")
+//                    val alt = position.getDouble("alt")
+                    val battery = data.getInt("battery")
+
+                    this.runOnUiThread {
+                        this.address.text = this._geocoder.address(lat, lon) ?: "위치 정보를 얻어올 수 없습니다."
+                        this.battery.text = "배터리 : $battery%"
+                    }
+                }
             }
         } catch (e: Exception) {
+
+            when (id) {
+
+                "get status" -> {
+
+                    this.runOnUiThread { this.address.text = "위치 정보를 찾을 수 없습니다." }
+                }
+            }
 
             Log.d("onResponse", e.message)
         }
@@ -79,5 +107,12 @@ class MainActivity : Activity(), OYOReceiver.Listener, AdapterView.OnItemClickLi
 
     override fun onError(id: String, message: String?) {
 
+    }
+
+    private fun requestPosition() {
+
+        OYOReceiver(this, this.resources.getString(R.string.host), "get status", this)
+                .route("status")
+                .start()
     }
 }

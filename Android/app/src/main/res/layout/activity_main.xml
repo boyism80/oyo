@@ -15,6 +15,7 @@
         android:padding="10dp">
 
         <TextView
+            android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
@@ -29,6 +30,7 @@
             android:textSize="19dp"
             android:textColor="#dd5566" />
         <TextView
+            android:id="@+id/battery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14dp"
