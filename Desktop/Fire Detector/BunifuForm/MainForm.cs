@@ -1,4 +1,5 @@
-﻿using Fire_Detector.Source;
+﻿using Fire_Detector.Properties;
+using Fire_Detector.Source;
 using OpenCvSharp;
 using oyo;
 using ParrotBebop2;
@@ -264,7 +265,7 @@ namespace Fire_Detector.BunifuForm
                 form.Add(new StringContent(this.Bebop2.GPS.alt.ToString()), "alt");
                 form.Add(new StringContent(this.Bebop2.Battery.ToString()), "battery");
 
-                var response = await client.PostAsync("http://luxir01.iptime.org:8001/generate", form);
+                var response = await client.PostAsync(Resources.CENTRAL_HOST + "/generate", form);
 
                 response.EnsureSuccessStatusCode();
                 client.Dispose();
@@ -308,7 +309,7 @@ namespace Fire_Detector.BunifuForm
                 bnd_content.Headers.ContentLength = thumb_bytes.Length;
                 form.Add(bnd_content, "thumb", "thumb.jpg");
 
-                var response = await client.PostAsync("http://luxir01.iptime.org:8001/detection", form);
+                var response = await client.PostAsync(Resources.CENTRAL_HOST + "/detection", form);
 
                 response.EnsureSuccessStatusCode();
                 client.Dispose();

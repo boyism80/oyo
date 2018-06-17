@@ -71,6 +71,15 @@ namespace Fire_Detector.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to http://luxir.tplinkdns.com:8001.
+        /// </summary>
+        internal static string CENTRAL_HOST {
+            get {
+                return ResourceManager.GetString("CENTRAL_HOST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap no_image_available {
