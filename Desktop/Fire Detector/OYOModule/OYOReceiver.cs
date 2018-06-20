@@ -333,6 +333,10 @@ this._mutex.ReleaseMutex();
                     this.Exit();
                     break;
                 }
+                catch (OpenCvSharpException)
+                {
+                    // 메모리 부족
+                }
                 catch (Exception e)
                 {
                     if (this.OnError != null)
