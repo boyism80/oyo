@@ -37,10 +37,10 @@ namespace Fire_Detector.Control.SideTabView
                 if(this.Root.AutoFlight.IsFlying)
                     return;
 
-                //if (this.Root.Bebop2.GPS.IsValid == false)
-                //    throw new Exception("현재 드론의 위치정보가 없습니다.");
+                if (this.Root.Bebop2.GPS.IsValid == false)
+                    throw new Exception("현재 드론의 위치정보가 없습니다.");
 
-                var dialog = new Fire_Detector.Dialog.AutoFlyingDialog(new GCS(37.3487547f, 126.74490070000002f));
+                var dialog = new Fire_Detector.Dialog.AutoFlyingDialog(this.Root.Bebop2.GPS);
                 if (dialog.ShowDialog(this.Root) != DialogResult.OK)
                     return;
 

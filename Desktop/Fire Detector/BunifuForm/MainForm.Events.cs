@@ -485,7 +485,7 @@ this._mutex.ReleaseMutex();
 
             if(this.AutoFlight.IsFlying)
             {
-                this.AutoFlight.Update(bebop2.GPS, (float)(bebop2.Roll * 180 / Math.PI), out this._pcmd.roll, out this._pcmd.pitch);
+                this.AutoFlight.Update(bebop2.GPS, bebop2.Yaw, out this._pcmd.roll, out this._pcmd.pitch);
                 this._pcmd.flag = 1;
             }
         }
@@ -494,7 +494,7 @@ this._mutex.ReleaseMutex();
         {
             if(this.AutoFlight.IsFlying)
             {
-                this.AutoFlight.Update(bebop2.GPS, (float)(bebop2.Roll * 180 / Math.PI), out this._pcmd.roll, out this._pcmd.pitch);
+                this.AutoFlight.Update(bebop2.GPS, bebop2.Yaw, out this._pcmd.roll, out this._pcmd.pitch);
                 this._pcmd.flag = 1;
             }
         }
