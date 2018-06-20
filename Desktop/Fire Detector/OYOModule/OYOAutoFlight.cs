@@ -1,26 +1,27 @@
-﻿using System;
+﻿using Leap;
+using System;
 
 namespace oyo
 {
     public class OYOAutoFlight
     {
-        public delegate void            OnStartEvent();
-        public delegate void            OnPauseEvent();
-        public delegate void            OnStopEvent();
-        public delegate void            OnCompleteEvent();
-        public delegate void            OnLookNextDestinationEvent();
+        public delegate void                        OnStartEvent();
+        public delegate void                        OnPauseEvent();
+        public delegate void                        OnStopEvent();
+        public delegate void                        OnCompleteEvent();
+        public delegate void                        OnLookNextDestinationEvent();
 
-        public static int               MAX_SPEED = 127;
-        public static int               MIN_SPEED = 1;
-        public static int               MAX_DISTANCE = 50; // meter
-        public static int               MIN_DISTANCE = 10; // meter
+        public static int                           MAX_SPEED = 127;
+        public static int                           MIN_SPEED = 1;
+        public static int                           MAX_DISTANCE = 50; // meter
+        public static int                           MIN_DISTANCE = 10; // meter
 
-        private GCS                     _currentGCS;
-        private GCS[]                   _destinations;
-        private float                   _rotation;
-        private int                     _currentDestinationIndex;
+        private GCS                                 _currentGCS;
+        private GCS[]                               _destinations;
+        private float                               _rotation;
+        private int                                 _currentDestinationIndex;
 
-        public bool                     IsFlying { get; private set; }
+        public bool                                 IsFlying { get; private set; }
 
         public event OnStartEvent                   OnStart;
         public event OnPauseEvent                   OnPause;
@@ -49,23 +50,23 @@ namespace oyo
                 if(gcs.IsValid == false)
                     throw new Exception();
 
-                this._currentGCS = gcs;
-                this._rotation = rotation;
-                this._rotation -= (float)(-6.7f * (Math.PI / 180.0f));
+                this._currentGCS                    = gcs;
+                this._rotation                      = rotation;
+                this._rotation                      -= (float)(-6.7f * (Math.PI / 180.0f));
 
                 // 현재 드론의 회전 각도
-                var degree = this._rotation * 180 / Math.PI;
+                var degree                          = this._rotation * 180 / Math.PI;
 
                 // 드론의 현재 위치로부터 목표지점까지의 벡터
-                var vector = OYOGmap.GetVector(this._currentGCS, this.Destination);
+                var vector                          = OYOGmap.GetVector(this._currentGCS, this.Destination);
 
                 // 드론의 회전정도만큼 벡터를 회전
-                vector.x = (float)(Math.Cos(this._rotation) * vector.x - Math.Sin(this._rotation) * vector.y);
-                vector.y = (float)(Math.Sin(this._rotation) * vector.x + Math.Cos(this._rotation) * vector.y);
+                vector.x                            = (float)(Math.Cos(this._rotation) * vector.x - Math.Sin(this._rotation) * vector.y);
+                vector.y                            = (float)(Math.Sin(this._rotation) * vector.x + Math.Cos(this._rotation) * vector.y);
 
 
-                var normal = vector.Normalized;
-                var distance = vector.MagnitudeSquared;
+                var normal                          = vector.Normalized;
+                var distance                        = vector.MagnitudeSquared;
 
                 if (distance * 1000.0f < 1)
                 {
@@ -75,24 +76,27 @@ namespace oyo
 
                     if (this._currentDestinationIndex > this._destinations.Length - 1)
                     {
-                        this.IsFlying = false;
+                        this.IsFlying               = false;
                         this.OnComplete?.Invoke();
                     }
 
                     return true;
                 }
 
-                var maxSpeed = (int)Math.Max(1, MAX_SPEED * Math.Min(1, (distance - MIN_DISTANCE) / (MAX_DISTANCE - MIN_DISTANCE)));
+                // 이게 무조건 양수인 문제가 있음
+                var maxSpeed                        = (int)Math.Max(1, MAX_SPEED * Math.Min(1, (distance - MIN_DISTANCE) / (MAX_DISTANCE - MIN_DISTANCE)));
+                var directionX                      = normal.x > 0 ? 1 : -1;
+                var directionY                      = normal.y > 0 ? 1 : -1;
 
-                if (normal.x > normal.y)
+                if(Math.Abs(normal.x / normal.y) > 0) // x가 y보다 클 때
                 {
-                    roll = maxSpeed;
-                    pitch = (int)(maxSpeed * (normal.y / normal.x));
+                    roll                            = maxSpeed * directionX;
+                    pitch                           = (int)(maxSpeed * Math.Abs(normal.y / normal.x)) * directionY;
                 }
                 else
                 {
-                    pitch = maxSpeed;
-                    roll = (int)(maxSpeed * (normal.x / normal.y));
+                    pitch                           = maxSpeed * directionX;
+                    roll                            = (int)(maxSpeed * Math.Abs(normal.x / normal.y)) * directionY;
                 }
 
                 return true;
