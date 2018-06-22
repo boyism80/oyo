@@ -26,8 +26,10 @@ namespace Fire_Detector.Dialog
         {
             InitializeComponent();
 
+            this._gmap.DrawMarker = true;
             this._gmap.DrawSelfMarker = true;
             this._gmap.SetPosition(center);
+            this._gmap.AddMarker("init", new OYOGmapMarker(center));
             this._gmap.Resize(this.gmapBox.Size);
             this._gmap.DrawPolygon      = true;
             this._gmap.ReceiveGmap      += this.OnReceiveGmap;

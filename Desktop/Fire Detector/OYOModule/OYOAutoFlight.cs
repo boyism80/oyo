@@ -53,6 +53,7 @@ namespace oyo
                 this._currentGCS                    = gcs;
                 this._rotation                      = rotation;
                 this._rotation                      -= (float)(-6.7f * (Math.PI / 180.0f));
+                this._rotation -= (float)(-6.7f * (Math.PI / 180.0f));
 
                 // 현재 드론의 회전 각도
                 var degree                          = this._rotation * 180 / Math.PI;
@@ -61,9 +62,8 @@ namespace oyo
                 var vector                          = OYOGmap.GetVector(this._currentGCS, this.Destination);
 
                 // 드론의 회전정도만큼 벡터를 회전
-                vector.x                            = (float)(Math.Cos(this._rotation) * vector.x - Math.Sin(this._rotation) * vector.y);
-                vector.y                            = (float)(Math.Sin(this._rotation) * vector.x + Math.Cos(this._rotation) * vector.y);
-
+                vector.x                            = Math.Cos(this._rotation) * vector.x - Math.Sin(this._rotation) * vector.y;
+                vector.y                            = Math.Sin(this._rotation) * vector.x + Math.Cos(this._rotation) * vector.y;
 
                 var normal                          = vector.Normalized;
                 var distance                        = vector.MagnitudeSquared;

@@ -37,10 +37,11 @@ namespace Fire_Detector.Control.SideTabView
                 if(this.Root.AutoFlight.IsFlying)
                     return;
 
-                if (this.Root.Bebop2.GPS.IsValid == false)
-                    throw new Exception("현재 드론의 위치정보가 없습니다.");
+                //if (this.Root.Bebop2.GPS.IsValid == false)
+                //    throw new Exception("현재 드론의 위치정보가 없습니다.");
 
-                var dialog = new Fire_Detector.Dialog.AutoFlyingDialog(this.Root.Bebop2.GPS);
+                //var dialog = new Fire_Detector.Dialog.AutoFlyingDialog(this.Root.Bebop2.GPS);
+                var dialog = new Fire_Detector.Dialog.AutoFlyingDialog(new GCS(37.3403904, 126.7334985));
                 if (dialog.ShowDialog(this.Root) != DialogResult.OK)
                     return;
 
@@ -63,9 +64,9 @@ namespace Fire_Detector.Control.SideTabView
 
 
                 // 면적 계산
-                var width = OYOGmap.GetDistance(dialog.Begin.lat, dialog.Begin.lon, dialog.Begin.lat, dialog.End.lon);
-                var height = OYOGmap.GetDistance(dialog.Begin.lat, dialog.Begin.lon, dialog.End.lat, dialog.Begin.lon);
-                this.bunifuCustomLabel1.Text = string.Format("{0} ㎡", ((width * height) * 1000).ToString("0.00"));
+                var width = OYOGmap.GetDistance(dialog.Begin.lat, dialog.Begin.lon, dialog.Begin.lat, dialog.End.lon) * 1000.0;
+                var height = OYOGmap.GetDistance(dialog.Begin.lat, dialog.Begin.lon, dialog.End.lat, dialog.Begin.lon) * 1000.0;
+                this.areaLabel.Text = string.Format("{0} ㎡", (width * height).ToString("0.00"));
             }
             catch (Exception exc)
             {

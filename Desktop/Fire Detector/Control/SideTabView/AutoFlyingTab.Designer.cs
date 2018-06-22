@@ -43,7 +43,7 @@
             this.autoFlyingSettingButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.areaLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.endSpotLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.startSpotLabel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomeLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -174,7 +174,7 @@
             this.panel2.Controls.Add(this.autoFlyingSettingButton);
             this.panel2.Controls.Add(this.bunifuCustomLabel2);
             this.panel2.Controls.Add(this.bunifuCustomLabel6);
-            this.panel2.Controls.Add(this.bunifuCustomLabel1);
+            this.panel2.Controls.Add(this.areaLabel);
             this.panel2.Controls.Add(this.endSpotLabel);
             this.panel2.Controls.Add(this.startSpotLabel);
             this.panel2.Controls.Add(this.bunifuCustomeLabel2);
@@ -260,14 +260,14 @@
             // 
             // bunifuCustomLabel1
             // 
-            this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bunifuCustomLabel1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(112, 137);
-            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(30, 15);
-            this.bunifuCustomLabel1.TabIndex = 0;
-            this.bunifuCustomLabel1.Text = "0 ㎡";
+            this.areaLabel.AutoSize = true;
+            this.areaLabel.Font = new System.Drawing.Font("NEXON Football Gothic L", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.areaLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.areaLabel.Location = new System.Drawing.Point(112, 137);
+            this.areaLabel.Name = "bunifuCustomLabel1";
+            this.areaLabel.Size = new System.Drawing.Size(30, 15);
+            this.areaLabel.TabIndex = 0;
+            this.areaLabel.Text = "0 ㎡";
             // 
             // endSpotLabel
             // 
@@ -392,7 +392,7 @@
         private Bunifu.Framework.UI.BunifuCustomLabel endSpotLabel;
         private Bunifu.Framework.UI.BunifuCustomLabel startSpotLabel;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
+        private Bunifu.Framework.UI.BunifuCustomLabel areaLabel;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.PictureBox gmapBox;
     }

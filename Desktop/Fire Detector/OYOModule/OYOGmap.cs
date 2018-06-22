@@ -104,7 +104,7 @@ namespace oyo
     public class OYOGmap
     {
         private static string               GOOGLE_API_KEY = "AIzaSyDO1LpjNHsEWBWLFdBPc6acJgyujd8ur2s";
-        public static double                EARTH_RADIUS = 6371.0f;
+        public static double                EARTH_RADIUS = 6373.0f;
 
         public delegate void                OnReceiveGmap(Mat mat);
         public delegate void                OnReceiveAddress(string name, string addr);
@@ -379,14 +379,13 @@ this._mutex_gmap.ReleaseMutex();
             this.SetPosition(pixel.Y, pixel.X, update);
         }
 
-        public static Vector GetVector(double lat1, double lon1, double lat2, double lon2)
+        public static OYOVector GetVector(double lat1, double lon1, double lat2, double lon2)
         {
-            var delta = new Vector((float)(lon2 - lon1), (float)(lat2 - lat1), 0).Normalized;
-
-            return delta * (float)GetDistance(lat1, lon1, lat2, lon2);
+            var delta = new OYOVector(lon2 - lon1, lat2 - lat1).Normalized;
+            return delta * GetDistance(lat1, lon1, lat2, lon2);
         }
 
-        public static Vector GetVector(GCS gcs1, GCS gcs2)
+        public static OYOVector GetVector(GCS gcs1, GCS gcs2)
         {
             return GetVector(gcs1.lat, gcs1.lon, gcs2.lat, gcs2.lon);
         }
@@ -402,7 +401,7 @@ this._mutex_gmap.ReleaseMutex();
             distance            = distance * 180 / Math.PI;
             distance            = distance * 60 * 1.1515;
 
-            return (double)distance * 1.609344f;    // km
+            return distance * 1.609344;    // km
         }
 
         public static double GetDistance(GCS begin, GCS end)
