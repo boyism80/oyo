@@ -447,7 +447,7 @@ this._mutex.ReleaseMutex();
             //    return 0.0f;
 
             //return minTemperature + ((radioact - minRadioactive) / criteria);
-            return radioact / 92.60f;
+            return radioact / 84.33f;
         }
 
         //
@@ -470,7 +470,7 @@ this._mutex.ReleaseMutex();
             //    return 0;
 
             //return (ushort)((temperature - minTemperature) * criteria + minRadioactive);
-            return 92.60f * temperature;
+            return 84.33f * temperature;
         }
 
         //
