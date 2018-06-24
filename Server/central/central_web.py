@@ -21,9 +21,7 @@ def index():
 @app.route('/detection', methods=['POST'])
 def detection():
 
-	connection = app.connect_db()
 	ret = {}
-
 	try:
 		host = request.remote_addr
 		lat, lon, alt, tem = float(request.form.get('lat')), float(request.form.get('lon')), float(request.form.get('alt')), float(request.form.get('tem'))
@@ -51,10 +49,12 @@ def detection():
 			with open(thumb_path, 'wb') as f:
 				f.write(content)
 
+		connection = app.connect_db()
 		with connection.cursor() as cursor:
 			sql = "INSERT INTO detection (addr, lat, lon, alt, temperature, thumb, infrared, visual, date) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
 			cursor.execute(sql, (str(host), lat, lon, alt, tem, thumb_path, inf_path, vis_path, time.strftime('%Y-%m-%d %H:%M:%S')))
 			connection.commit()
+		app.disconnect_db()
 
 		ret['success'] = True
 
@@ -64,13 +64,10 @@ def detection():
 			raise Exception('Failed receive message id from fcm server')
 	
 	except Exception as e:
-		connection.rollback()
 		ret['success'] = False
 		ret['error'] = str(e)
 	finally:
-		app.disconnect_db()
-
-	return json.dumps(ret)
+		return json.dumps(ret)
 
 @app.route('/gets', methods=['POST'])
 def gets():

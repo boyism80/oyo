@@ -48,12 +48,12 @@ class oyo_flask(Flask):
 			return None
 
 	def near_exists(self, lat, lon):
-		ago_5m = datetime.datetime.now() - datetime.timedelta(minutes=5)
+		ago_5m = datetime.datetime.now() - datetime.timedelta(seconds=10)
 		sql = "SELECT lat, lon FROM detection WHERE date >= %s"
 		ret = False
 
-		__connection = self.connect_db()
-		with __connection.cursor() as cursor:
+		connection = self.connect_db()
+		with connection.cursor() as cursor:
 			count = cursor.execute(sql, (ago_5m.strftime('%Y-%m-%d %H:%M:%S'),))
 
 			for row in cursor.fetchall():
