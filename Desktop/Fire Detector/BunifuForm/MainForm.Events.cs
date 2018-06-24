@@ -325,7 +325,7 @@ namespace Fire_Detector.BunifuForm
                     {
                         var detectedRect = this.Detector.DetectedRects[0];
                         var temperature = this.UpdatedDataBuffer.Temperature.Get<float>((int)detectedRect.Center.Y, (int)detectedRect.Center.X);
-                        this.PostDetection(updatedFrame, this.UpdatedDataBuffer.Visual, receiver.Infrared(), this.Bebop2.GPS.lat, this.Bebop2.GPS.lon, this.Bebop2.Altitude, temperature);
+                        this.PostDetection(this.Detector.DrawDetectedRects(this.UpdatedDataBuffer.Infrared), this.UpdatedDataBuffer.Visual, receiver.Infrared(), this.Bebop2.GPS.lat, this.Bebop2.GPS.lon, this.Bebop2.Altitude, temperature);
                         this._detectedWatcher.Restart();
                     }
                     else
@@ -483,7 +483,7 @@ this._mutex.ReleaseMutex();
             this.Overlayer.RequestAddress("self", lat, lon);
             this.GenerateDronePosition(lat, lon, alt);
 
-            if(this.AutoFlight.IsFlying)
+            if (this.AutoFlight.IsFlying)
             {
                 this.AutoFlight.Update(bebop2.GPS, bebop2.Yaw, out this._pcmd.roll, out this._pcmd.pitch);
                 this._pcmd.flag = 1;

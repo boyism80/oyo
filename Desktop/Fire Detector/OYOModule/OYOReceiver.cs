@@ -17,7 +17,7 @@ namespace oyo
     //
     public class OYOReceiver
     {
-        public static readonly Rect             CropArea                    = new Rect(new Point(29, 67), new Size(545, 408));
+        public static readonly Rect             CropArea                    = new Rect(new Point(47, 58), new Size(560, 420));
 
         //
         // CriteriaTable, RadioactiveBoundaryTable

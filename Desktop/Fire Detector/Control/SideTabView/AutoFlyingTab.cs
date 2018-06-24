@@ -20,6 +20,7 @@ namespace Fire_Detector.Control.SideTabView
 
             this._gmap.AutoZoom             = true;
             this._gmap.DrawMarker           = true;
+            this._gmap.DrawSelfMarker       = true;
             this._gmap.DrawPath             = true;
             this._gmap.ReceiveGmap          += this.OnReceiveGmap;
             this._gmap.ReceiveAddress       += this.OnReceiveAddress;
@@ -37,11 +38,11 @@ namespace Fire_Detector.Control.SideTabView
                 if(this.Root.AutoFlight.IsFlying)
                     return;
 
-                //if (this.Root.Bebop2.GPS.IsValid == false)
-                //    throw new Exception("현재 드론의 위치정보가 없습니다.");
+                if (this.Root.Bebop2.GPS.IsValid == false)
+                    throw new Exception("현재 드론의 위치정보가 없습니다.");
 
-                //var dialog = new Fire_Detector.Dialog.AutoFlyingDialog(this.Root.Bebop2.GPS);
-                var dialog = new Fire_Detector.Dialog.AutoFlyingDialog(new GCS(37.3403904, 126.7334985));
+                var dialog = new Fire_Detector.Dialog.AutoFlyingDialog(this.Root.Bebop2.GPS);
+                //var dialog = new Fire_Detector.Dialog.AutoFlyingDialog(new GCS(37.3403904, 126.7334985));
                 if (dialog.ShowDialog(this.Root) != DialogResult.OK)
                     return;
 
@@ -140,7 +141,7 @@ namespace Fire_Detector.Control.SideTabView
 
         public void Bebop2_OnPositionChanged(Bebop2 bebop2, double lat, double lon, double alt)
         {
-
+            this._gmap.SetPosition(new GCS(lat, lon), true);
         }
 
         private void autoFlyingButton_Click(object sender, EventArgs e)

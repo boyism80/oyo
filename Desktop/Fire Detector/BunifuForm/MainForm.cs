@@ -289,8 +289,12 @@ namespace Fire_Detector.BunifuForm
                 var client = new HttpClient();
                 var form = new MultipartFormDataContent();
 
+                // 테스트용
+                //lat = 37.339732028;
+                //lon = 126.7335414991;
+
                 form.Add(new StringContent(lat.ToString()), "lat");
-                form.Add(new StringContent(lat.ToString()), "lon");
+                form.Add(new StringContent(lon.ToString()), "lon");
                 form.Add(new StringContent(alt.ToString()), "alt");
                 form.Add(new StringContent(temperature.ToString()), "tem");
 

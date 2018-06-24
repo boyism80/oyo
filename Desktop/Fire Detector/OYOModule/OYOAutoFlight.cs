@@ -13,7 +13,7 @@ namespace oyo
 
         public static int                           MAX_SPEED = 127;
         public static int                           MIN_SPEED = 1;
-        public static int                           MAX_DISTANCE = 50; // meter
+        public static int                           MAX_DISTANCE = 200; // meter
         public static int                           MIN_DISTANCE = 10; // meter
 
         private GCS                                 _currentGCS;
@@ -44,16 +44,16 @@ namespace oyo
         {
             try
             {
-                if(this.IsFlying == false)
+                if (this.IsFlying == false)
                     throw new Exception();
 
-                if(gcs.IsValid == false)
+                if (gcs.IsValid == false)
                     throw new Exception();
 
                 this._currentGCS                    = gcs;
                 this._rotation                      = rotation;
-                this._rotation                      -= (float)(-6.7f * (Math.PI / 180.0f));
-                this._rotation -= (float)(-6.7f * (Math.PI / 180.0f));
+                //this._rotation                      -= (float)(-6.7f * (Math.PI / 180.0f));
+                //this._rotation -= (float)(-6.7f * (Math.PI / 180.0f));
 
                 // 현재 드론의 회전 각도
                 var degree                          = this._rotation * 180 / Math.PI;
@@ -66,18 +66,21 @@ namespace oyo
                 vector.y                            = Math.Sin(this._rotation) * vector.x + Math.Cos(this._rotation) * vector.y;
 
                 var normal                          = vector.Normalized;
-                var distance                        = vector.MagnitudeSquared;
+                var distance                        = vector.Magnitude;
+                Console.WriteLine("distance : {0}m", (distance * 1000.0f).ToString("0.00"));
 
                 if (distance * 1000.0f < 1)
                 {
                     this._currentDestinationIndex++;
                     roll = pitch = 0;
                     this.OnLookNextDestination?.Invoke();
+                    Console.WriteLine("next point");
 
                     if (this._currentDestinationIndex > this._destinations.Length - 1)
                     {
                         this.IsFlying               = false;
                         this.OnComplete?.Invoke();
+                        Console.WriteLine("complete");
                     }
 
                     return true;
@@ -98,6 +101,13 @@ namespace oyo
                     pitch                           = maxSpeed * directionX;
                     roll                            = (int)(maxSpeed * Math.Abs(normal.x / normal.y)) * directionY;
                 }
+
+                //Console.WriteLine("x speed : {0}, z speed : {1}", roll, pitch);
+
+                //if (this.IsFlying == false)
+                //{
+                //    pitch = roll = 0;
+                //}
 
                 return true;
             }

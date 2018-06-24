@@ -383,8 +383,10 @@ namespace ParrotBebop2
                             if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_POSITIONCHANGED)
                             {
                                 this.GPS = new oyo.GPS(reader.ReadDouble(), reader.ReadDouble(), reader.ReadDouble());
+                                //this.GPS = new oyo.GPS(37.34018433, 126.73366433);
+                                Console.WriteLine("{0} / {1}", this.GPS.lat, this.GPS.lon);
 
-                                if(this.OnPositionChanged != null)
+                                if (this.OnPositionChanged != null)
                                     this.OnPositionChanged.Invoke(this, this.GPS.lat, this.GPS.lon, this.GPS.alt);
                             }
                             else if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_SPEEDCHANGED)
