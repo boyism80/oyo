@@ -1,7 +1,9 @@
 ﻿using OpenCvSharp;
+using SimpleJSON;
 using System;
 using System.IO;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading;
 
 namespace oyo
@@ -17,7 +19,7 @@ namespace oyo
     //
     public class OYOReceiver
     {
-        public static readonly Rect             CropArea                    = new Rect(new Point(47, 58), new Size(560, 420));
+        public static readonly Size             VisualSize                  = new Size(640, 480);
 
         //
         // CriteriaTable, RadioactiveBoundaryTable
@@ -30,6 +32,7 @@ namespace oyo
 
 
         public delegate void                    ConnectionEvent(OYOReceiver receiver);
+        public delegate void                    DisconnectingEvent(OYOReceiver receiver);
         public delegate void                    DisconnectionEvent(OYOReceiver receiver);
         public delegate void                    UpdateEvent(OYOReceiver receiver, StreamingType streamingType);
         public delegate void                    ErrorEvent(OYOReceiver receiver, string message);
@@ -40,9 +43,8 @@ namespace oyo
         //  현재 카메라 서버는 192.168.0.80:8000으로 설정되어 있습니다.
         //
         private Socket                          _socket;
-        private string                          _host;
-        private ushort                          _port;
         private Mutex                           _mutex = new Mutex();
+        private Rect                            _vcrop, _icrop;
 
         //
         // _updateFrameThread
@@ -71,7 +73,50 @@ namespace oyo
         //
         private Mat                             _visual;
 
+
+        private Rect _crop;
+        public Rect CropArea
+        {
+            get
+            {
+                return this._crop;
+            }
+            set
+            {
+                this._crop = value;
+
+                this._vcrop = new Rect(CropArea.Location, CropArea.Size);
+                this._icrop = new Rect(0, 0, CropArea.Width, CropArea.Height);
+                if (this._icrop.Left < 0)
+                {
+                    this._vcrop.Width += this.CropArea.Left;
+                    this._icrop.Width = this._vcrop.Width;
+                    this._vcrop.Left = 0;
+                    this._icrop.Left = -this.CropArea.Left;
+                }
+                else if (this._vcrop.Left + this._vcrop.Width > VisualSize.Width)
+                {
+                    this._vcrop.Width -= (this._vcrop.Left + this._vcrop.Width - VisualSize.Width);
+                    this._icrop.Width = this._vcrop.Width;
+                }
+
+                if (this._vcrop.Top < 0)
+                {
+                    this._vcrop.Height += this.CropArea.Top;
+                    this._icrop.Height = this._vcrop.Height;
+                    this._vcrop.Top = 0;
+                    this._icrop.Top = -this.CropArea.Top;
+                }
+                else if (this._vcrop.Top + this._vcrop.Height > VisualSize.Height)
+                {
+                    this._vcrop.Height -= (this._vcrop.Top + this._vcrop.Height - VisualSize.Height);
+                    this._icrop.Height = this._vcrop.Height;
+                }
+            }
+        }
+
         public event ConnectionEvent            OnConnected;
+        public event DisconnectingEvent         OnDisconnecting;
         public event DisconnectionEvent         OnDisconnected;
         public event UpdateEvent                OnUpdate;
         public event ErrorEvent                 OnError;
@@ -118,6 +163,9 @@ namespace oyo
             }
         }
 
+        public string Host { get; private set; }
+        public int Port { get; private set; }
+
         //
         // Running
         //  서버로부터 데이터를 받아오는 작업이 진행중인지의 여부를 나타냅니다.
@@ -138,10 +186,22 @@ namespace oyo
             }
         }
 
-        public OYOReceiver(string host, ushort port)
+        public OYOReceiver()
         {
-            this._host                      = host;
-            this._port                      = port;
+            this.CropArea = new Rect(new Point(71, 64), new Size(560, 420));
+        }
+
+
+        public void Reset(string host, ushort port, bool connect = false)
+        {
+            if(this.Running)
+                this.Exit();
+
+            this.Host                      = host;
+            this.Port                      = port;
+
+            if(connect)
+                this.Connect();
         }
 
         //
@@ -159,7 +219,7 @@ namespace oyo
             try
             {
                 this._socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                this._socket.Connect(this._host, this._port);
+                this._socket.Connect(this.Host, this.Port);
 
                 if (this.Connected)
                 {
@@ -300,7 +360,7 @@ this._mutex.ReleaseMutex();
             else if (streamingType == StreamingType.Visual)
             {
                 this._visual = Cv2.ImDecode(buffer, ImreadModes.AnyColor);
-                this._visual = this._visual.Clone(CropArea);
+                this._visual = this._visual.Clone(this._vcrop);
             }
             else
             {
@@ -333,14 +393,8 @@ this._mutex.ReleaseMutex();
                     this.Exit();
                     break;
                 }
-                catch (OpenCvSharpException)
+                catch (Exception)
                 {
-                    // 메모리 부족
-                }
-                catch (Exception e)
-                {
-                    if (this.OnError != null)
-                        this.OnError.Invoke(this, e.Message);
                 }
             }
         }
@@ -497,6 +551,7 @@ this._mutex.ReleaseMutex();
         //
         public void Exit()
         {
+            this.OnDisconnecting?.Invoke(this);
             this.Disconnect();
             this.Running = false;
 
@@ -545,6 +600,10 @@ this._mutex.ReleaseMutex();
         public Mat Infrared()
         {
             var radioactive         = this.Radioactive();
+
+            var minval = 0.0;
+            var maxval = 0.0;
+            radioactive.MinMaxLoc(out minval, out maxval);
             if (this.FixLevel)
             {
                 var minRadioactive  = this.Temperature2Radioactive(this.LevelTemperatureRange.Start);   // 사용자 지정 최저 방사값
@@ -574,7 +633,10 @@ this._mutex.ReleaseMutex();
 
         public Mat Infrared(Size size)
         {
-            return this.Infrared().Resize(size);
+            var ret                 = this.Infrared();
+            ret                     = ret.Resize(CropArea.Size);
+            ret                     = ret.Clone(this._icrop);
+            return ret.Resize(size);
         }
 
         //
@@ -601,7 +663,10 @@ this._mutex.ReleaseMutex();
 
         public Mat Temperature(Size size)
         {
-            return this.Temperature().Resize(size);
+            var ret                 = this.Temperature();
+            ret                     = ret.Resize(CropArea.Size);
+            ret                     = ret.Clone(this._icrop);
+            return ret.Resize(size);
         }
 
         //
@@ -628,6 +693,42 @@ this._mutex.ReleaseMutex();
         public Mat Visual(Size size)
         {
             return this._visual.Resize(size);
+        }
+
+        private bool Send(byte[] bytes)
+        {
+            try
+            {
+                var send_size = 0;
+                var result = 0;
+                while (send_size < bytes.Length)
+                {
+                    result = this._socket.Send(bytes, send_size, bytes.Length - send_size, SocketFlags.None);
+                    if (result == -1)
+                        throw new Exception();
+
+                    send_size += result;
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool Request(JSONNode json)
+        {
+            var dumped = json.ToString();
+            var encoded = Encoding.UTF8.GetBytes(dumped);
+
+            if(this.Send(BitConverter.GetBytes(encoded.Length)) == false)
+                return false;
+
+            if(this.Send(encoded) == false)
+                return false;
+
+            return true;
         }
     }
 }

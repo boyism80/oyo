@@ -137,7 +137,7 @@ namespace Fire_Detector.BunifuForm
             InitializeComponent();
 
             this.UpdatedDataBuffer              = new UpdatedDataBuffer();
-            this.Receiver                       = new OYOReceiver(HOST_NAME, 8000);
+            this.Receiver                       = new OYOReceiver();
             this.Blender                        = new OYOBlender(new OpenCvSharp.Size(640, 480));
             this.Detector                       = new OYODetector();
             this.Visualizer                     = new OYOVisualizer();
@@ -147,6 +147,8 @@ namespace Fire_Detector.BunifuForm
             this.LeapController                 = new OYOLeapmotion();
             this.Patrol                         = new OYOPatrol();
             this.AutoFlight                     = new OYOAutoFlight();
+
+            this.Receiver.Reset(HOST_NAME, 8000);
 
             this.LeapController.SetPolicy(Leap.Controller.PolicyFlag.POLICY_ALLOW_PAUSE_RESUME);
         }

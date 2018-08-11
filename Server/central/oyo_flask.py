@@ -81,7 +81,7 @@ class oyo_flask(Flask):
 
 	def connect_db(self):
 		self.__db_lock.acquire()
-		self.__connection = pymysql.connect(host='localhost', user='oyo', password='oyoteam', db='oyo', charset='utf8')
+		self.__connection = pymysql.connect(host='localhost', user='oyo', password='oyo', db='oyo', charset='utf8')
 		return self.__connection
 
 	def disconnect_db(self):
