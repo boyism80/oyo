@@ -140,7 +140,7 @@ namespace ParrotBebop2
                 this.GenerateAllSettings();
 
                 //enable video streaming
-                this.EnableVideoStream();
+                //this.EnableVideoStream();
 
                 if (this._d2c.Connect() == false)
                     return;
@@ -383,8 +383,8 @@ namespace ParrotBebop2
                             if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_POSITIONCHANGED)
                             {
                                 this.GPS = new oyo.GPS(reader.ReadDouble(), reader.ReadDouble(), reader.ReadDouble());
-                                //this.GPS = new oyo.GPS(37.34018433, 126.73366433);
-                                Console.WriteLine("{0} / {1}", this.GPS.lat, this.GPS.lon);
+                                this.GPS = new oyo.GPS(37.34860159999999, 126.7271088, 2.43);
+                                //Console.WriteLine("{0} / {1}", this.GPS.lat, this.GPS.lon);
 
                                 if (this.OnPositionChanged != null)
                                     this.OnPositionChanged.Invoke(this, this.GPS.lat, this.GPS.lon, this.GPS.alt);
@@ -408,6 +408,7 @@ namespace ParrotBebop2
                             else if(commandClass == CommandSet.ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE && commandId == CommandSet.ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_ALTITUDECHANGED)
                             {
                                 this.Altitude = reader.ReadDouble();
+                                this.Altitude = 2.43;
 
                                 if(this.OnAltitudeChanged != null)
                                     this.OnAltitudeChanged.Invoke(this, this.Altitude);

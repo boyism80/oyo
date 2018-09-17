@@ -25,8 +25,11 @@ def detection():
 	try:
 		host = request.remote_addr
 		lat, lon, alt, tem = float(request.form.get('lat')), float(request.form.get('lon')), float(request.form.get('alt')), float(request.form.get('tem'))
+		print('before check near')
 		if app.near_exists(lat, lon):
 			raise Exception('near exists')
+
+		print('after check near')
 
 		inf, vis, thumb = request.files['inf'], request.files['vis'], request.files['thumb']
 		inf_path, vis_path, thumb_path = None, None, None
@@ -50,11 +53,14 @@ def detection():
 				f.write(content)
 
 		connection = app.connect_db()
+
+		print('before send query')
 		with connection.cursor() as cursor:
 			sql = "INSERT INTO detection (addr, lat, lon, alt, temperature, thumb, infrared, visual, date) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
 			cursor.execute(sql, (str(host), lat, lon, alt, tem, thumb_path, inf_path, vis_path, time.strftime('%Y-%m-%d %H:%M:%S')))
 			connection.commit()
 		app.disconnect_db()
+		print('after send query')
 
 		ret['success'] = True
 
@@ -67,6 +73,7 @@ def detection():
 		ret['success'] = False
 		ret['error'] = str(e)
 	finally:
+		print(ret)
 		return json.dumps(ret)
 
 @app.route('/gets', methods=['POST'])
